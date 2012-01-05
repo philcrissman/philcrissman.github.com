@@ -1,0 +1,959 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Automagical Thinking</title>
+  <meta name="author" content="Your Name">
+
+  
+  <meta name="description" content="title: &#8220;Rails: Testing Your Floating Point Numbers&#8221;
+date: 17/04/2009 You&#8217;re being a Good Software developer and diligently testing &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://philcrissman.github.com/blog/page/6">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Automagical Thinking" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Automagical Thinking</a></h1>
+  
+    <h2>I forgot what I was going to say here.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:philcrissman.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2009/04/17/rails-testing-your-floating-point-numbers/">Rails Testing Your Floating Point Numbers</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-04-17T00:00:00-05:00" pubdate data-updated="true">Apr 17<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><hr />
+
+<p>title: &#8220;Rails: Testing Your Floating Point Numbers&#8221;
+date: 17/04/2009</p>
+
+<p>You&#8217;re being a Good Software developer and diligently testing all your code, and lo and behold, you get this result to one of your tests:</p>
+
+<pre>
+<code class="ruby">
+1) Failure: ... &lt;1.0&gt; expected but was &lt;1.0&gt;
+</code>
+</pre>
+
+
+<p>An annoying problem with floats that might look and for all practical purposes be equal, but internally as stored by the computer are not <em>precisely</em> equal.</p>
+
+<p>You&#8217;re probably using:</p>
+
+<pre>
+<code class="ruby">
+assert_equal 1.0, a_value_expected_to_be_1.0
+</code>
+</pre>
+
+
+<p>Instead, use:</p>
+
+<pre>
+<code class="ruby">
+assert_in_delta 1.0, a_value_expected_to_be_1.0, 0.000001
+</code>
+</pre>
+
+
+<p>Though, you may also want to ask yourself if you really need to be using floating point numbers; but assuming that you <em>do</em> need them, <code>assert_in_delta</code> will compensate for the annoying fact that floating point numbers might not actually be precisely what you expect them to be.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2009/01/18/testing-ajax-requests-in-rails/">Testing Ajax Requests in Rails</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-01-18T00:00:00-06:00" pubdate data-updated="true">Jan 18<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><hr />
+
+<p>title: Testing Ajax Requests In Rails
+date: 18/01/2009</p>
+
+<p>Just figured out a test on which I spent far too long wondering why it wasn&#8217;t working. I kept coming back to it and trying something else, and it kept not working.</p>
+
+<p>We have a form which submits to a create action by a remote_form_for; so, an Ajax request, in other words. The controller action just uses <code>render :update</code> and replaces some HTML instead of redirecting. But in every other respect, it&#8217;s a POST to the controller, and is going to call :create. Easy, right?</p>
+
+<p>We&#8217;re using shoulda, and despite having a perfectly reasonable <code>post :create, :whatever_id => @thing.id, :our_model => { :stuff => "stuff" }</code> in the setup, it wasn&#8217;t actually creating the item; shoulda&#8217;s handy <code>should_change "Thing.count", :by => 1</code> kept failing.</p>
+
+<p>I finally just started flipping through The Literature (in this case, the Rails Way&#8217;s chapter on testing), and happened to notice an off-hand remark that, in addition to methods for POST, PUT, GET, etc, there was an <code>xhr</code> method, to simulate an XMHHttpRequest.</p>
+
+<p>Well.</p>
+
+<p>What I should have been writing, all along, was:</p>
+
+<pre>
+<code class="ruby">
+xhr :post, :create, 
+  :whatever_id => @thing.id, 
+  :our_model => {:stuff => "stuff"}
+</code>
+</pre>
+
+
+<p>It&#8217;s always the little things.</p>
+
+<p>Remember to read the literature.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2009/01/16/in-which-i-am-no-longer-a-very-good-bachelor/">In Which I Am No Longer a Very Good Bachelor</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-01-16T00:00:00-06:00" pubdate data-updated="true">Jan 16<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><hr />
+
+<p>title: In Which I Am No Longer A Very Good Bachelor
+date: 16/01/2009</p>
+
+<p>My wife has gone to Thailand for two weeks. So I&#8217;m on my own.</p>
+
+<p>I am, as they say, &#8220;batching it&#8221; for a couple weeks. This is usually understood to mean that I will wear the same underwear for two weeks, eat nothing but junk food, abandon cleaning the house, and play video games all night.</p>
+
+<p>This isn&#8217;t working out so well.</p>
+
+<p>The video game thing isn&#8217;t happening. I look at my X-box (old one, not a 360) and think, <em>I could sit and play something for&#8230; for, well for hours.</em> But then I think, <em>But I&#8217;ve finished all the games I own. And I don&#8217;t really feel like replaying them yet, and I could go get a new used game, but I can&#8217;t think of anything I&#8217;d want to own, and really, is that responsible?</em></p>
+
+<p>I tried to leave the dishes in the sink. Normally this is no problem. This week I keep looking at them and thinking, <em>Sheesh, it&#8217;s only going to take five more seconds to put it in the dishwasher.</em> And the next thing I know, it&#8217;s in the dishwasher.</p>
+
+<p>I bought a huge bag of potato chips when I went grocery shopping. They are still sitting unopened on the kitchen table. Every time I look at them, I think, <em>Those sound good, but I should really eat some real food. Those aren&#8217;t very good for me.</em></p>
+
+<p>I have a strange compulsion to vacuum the rug. I can&#8217;t explain it, it&#8217;s just there.</p>
+
+<p>I&#8217;ve tried leaving my clothes on the floor when I change, but it just throws the whole room off. I have to put them in the hamper.</p>
+
+<p>I&#8217;m beginning to think that I am no longer a very good bachelor.</p>
+
+<p>Oh, I can talk the talk. I can say I&#8217;ll eat cereal two meals a day, shower &#8220;later,&#8221; and stay up till 3am. Except that there are some leftovers to eat, and that sounds a little better. Or maybe pasta. Or a roast. With some potatoes and broccoli. And I will feel a lot better if I have a shower, and 3am&#8230; man, I need to get up early, I can&#8217;t do that.</p>
+
+<p>So far, I have not shaved my face. I am counting that as a point for the &#8220;batching it&#8221; score.</p>
+
+<p>But for now, I should get back to work. And if I&#8217;m not going to open those potato chips, I think I should really take them off the kitchen table and put them in the pantry.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2009/01/14/i-hold-strong-opinions-about-the-placement-of-curly-braces/">I Hold Strong Opinions About the Placement of Curly Braces</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-01-14T00:00:00-06:00" pubdate data-updated="true">Jan 14<span>th</span>, 2009</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><hr />
+
+<p>title: I Hold Strong Opinions About The Placement Of Curly Braces
+date: 14/01/2009</p>
+
+<p>I hold strong opinions about the placement of curly braces.</p>
+
+<p>I don&#8217;t care where K &amp; R put them, I&#8217;ll put them wherever I want to put them. And don&#8217;t even start with the CSS files with the closing curly brace indented inline with the rules. Where did that come from?</p>
+
+<p>It appears that I also hold strong opinions about indentation. Also, on whether or not a space should be left on the inside of opening and closing delimiters before the argument(s) they contain, where such delimiters are optional, whether or not they should be used, and whether or not text should wrap in the source listing, .</p>
+
+<p>I have strong opinions about choices of languages to use for programming. Although I will concede, probably grudgingly, that there are other languages which may be faster, more elegant, more efficient, or more popular than my favorite language(s), this will not alter my preference, and if pressed I will defend my language regardless of its perceived shortcomings. If nothing else, I will claim that my language is more fun, or some other reason for its superiority which has nothing to do with programming languages <em>per se</em>. Furthermore, I will not accept the use of these same arguments if used to show that a different language is somehow superior to my favorite language or languages.</p>
+
+<p>I have a great respect for people who understand topics or concepts which I do not understand yet, but which I nevertheless place on a pedestal as pinnacles of programming wisdom.</p>
+
+<p>I have deeply held convictions about text editors. Really, it&#8217;s better not to talk about it. Just walk away.</p>
+
+<p>I am strongly attached to the frameworks and libraries which I approve of, and repulsed by the ones of which I do not approve. Large libraries which I like are <em>multifaceted</em>, while the ones which I do not like are <em>bloated</em>. Small libraries which I like are <em>elegant and efficient</em>, while those which I do not like are <em>incomplete or trivial</em>.</p>
+
+<p>I have strong opinions about Operating Systems. People who are not using my favorite Operating System would be far more productive if they would simply &#8220;wake up&#8221; and get &#8220;real computers&#8221;. Brilliant people whom I respect but who nevertheless use other Operating Systems are exempt.</p>
+
+<p>We should talk about indentation some more. I hold opinions on whether said indentations should use spaces or tabs, and how many spaces they should use. They are only opinions. However, if you do not share them, you are probably wrong.</p>
+
+<p>When there is more than one way to do something, I will have an opinion on which is the best way to do it. This opinion is correct, although I may tell you that your way of doing it is fine also. <em>I am just being nice. Your way is retarded, slow, inefficient, insufficiently clever, unmaintainable, obfuscated or deprecated, pick two.</em></p>
+
+<p>I have opinions about software development methodologies. These opinions cover project management styles, agile methodologies, artifacts, modeling languages, and best practices. Projects which fail to do well invariably failed because they neglected an area which I feel very strongly about, and will describe to you in great detail if you show a sign you are interested.</p>
+
+<p>I am deeply attached to my preferred tool for source control management, which is better than your preferred tool for source control management, unless you happen to prefer the same one, in which case you are correct.</p>
+
+<p>I have a favorite computer acronym, a favorite obsolete piece of hardware, a favorite programming anecdote, joke, historical event, and aphorism. I have a favorite algorithm, meme, binary operator, ascii character and UTF entity. I have a favorite NP Complete problem, which is more interesting than your favorite NP Complete problem, even though they can both be shown to be reducible to a common problem, or even to each other.</p>
+
+<p>Despite my not yet having designed or created a killer app, I am convinced that I know why other apps have failed, and will not hesitate to share this knowledge if prompted. Despite having not run a multi-million dollar technology company, I know exactly what is wrong with the companies which are out there, and how they could be fixed.</p>
+
+<p>Just don&#8217;t ask me about politics or religion, now; I prefer not to be argumentative on the internet.</p>
+
+<p><a href="http://xkcd.com/386/"><img src="http://imgs.xkcd.com/comics/duty_calls.png" /></a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2008/08/27/some-ruby-and-rails-tricks/">Some Ruby and Rails Tricks</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-08-27T00:00:00-05:00" pubdate data-updated="true">Aug 27<span>th</span>, 2008</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><hr />
+
+<p>title: Some Ruby &amp; Rails Tricks
+date: 27/08/2008</p>
+
+<p>I certainly can&#8217;t claim to have <em>discovered</em> these tips; but they&#8217;ve been pretty helpful to me. Maybe this will just make them a little easier to find for whoever is looking for them next.</p>
+
+<h3>Getting A Collection&#8217;s Index From Within a Partial</h3>
+
+
+<p>Lets say you&#8217;re passing a collection to a partial, but that somewhere in that partial you are interested in knowing which index you&#8217;re at. Do you need to implement a counter? Nope; there already is one. A collection passed to a partial implicitly creates a counter called <code>[partial_name]_counter</code>. So, if you called with</p>
+
+<pre>
+<code class="ruby">
+< %= render :partial => 'thing', :collection => @a_few_of_my_favorite_things %>
+</code>
+</pre>
+
+
+<p>then in your partial, you could use:</p>
+
+<pre>
+<code class="ruby">
+< %= thing_counter %>
+</code>
+</pre>
+
+
+<p>to return the index as you plow through the collection. Life is good. Rails is looking out for you. (Hat tip to <a href="http://gmarik.blogspot.com/2007/09/rails-collection-index-within-partial.html">GMarik</a>, which is where I saw this one.)</p>
+
+<h3>Obtaining a Class name From a String</h3>
+
+
+<p>Today I found myself wanting to take a string, let&#8217;s say <code>"Thing"</code>, and use it as a class name, <code>Thing</code>. Again, it turns out this can be done. In Ruby, class names are constants, so you can do</p>
+
+<pre>
+<code class="ruby">
+str = "Thing" #=> "Thing"
+Kernel.const_get(str) #=> Thing
+</code>
+</pre>
+
+
+<p>Hooray!</p>
+
+<h3>Make Finding Easier</h3>
+
+
+<p>Find yourself writing long, complicated find expressions in your code? There is a better way.</p>
+
+<p>Perhaps in your code&#8230; maybe even in a view&#8230; maybe you want to find all <code>Things</code> that don&#8217;t belong to the current use, and which are flagged with some property, and you&#8217;re temped to write something like:</p>
+
+<pre>
+<code class="ruby">
+Thing.find(:all, :conditions => ["user != ? and flag = true", current_user])
+</code>
+</pre>
+
+
+<p>What we could do is put some <code>has_finder</code>s in the Thing model, something like</p>
+
+<pre>
+<code class="ruby">
+class Thing < ActiveRecord::Base
+has_finder :exclude_user, lambda {|user| {:conditions => "things.user_id != #{user.id}"}
+has_finder :with_flag, :conditions => "things.flag = true"
+</code>
+</pre>
+
+
+<p>Having done that, you could now replace that first bit with:</p>
+
+<pre>
+<code class="ruby">
+Thing.find(:all).with_flag.exclude_user(current_user)
+</code>
+</pre>
+
+
+<p>It&#8217;s a little shorter, sure, but more importantly, when you read it, it just makes more sense. A completely new person coming to look at this line would have a good idea what it was doing without even looking in the model to see what the <code>has_finder</code>s were doing.</p>
+
+<h3>Okay then</h3>
+
+
+<p>If you&#8217;ve spent any amount of time using rails, these probably aren&#8217;t new to you. Everything&#8217;s new at least <em>once</em>, though, so hopefully these are helpful to someone.</p>
+
+<p>Other favorite ruby or rails tricks? Leave a comment! Heck, we&#8217;re not prejudiced, here, go ahead and comment with your favorite Python or Perl or [other language] tricks, too, if you like.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2008/05/09/clearing-form-fields-with-jquery/">Clearing Form Fields With Jquery</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-05-09T00:00:00-05:00" pubdate data-updated="true">May 9<span>th</span>, 2008</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><hr />
+
+<p>title: Clearing Form Fields With jQuery
+date: 09/05/2008</p>
+
+<p>I used a little jQuery last night to clear some form fields. The basic idea was, there were a couple text inputs in the form for first and last name; rather than label the fields, I made the value of each form to be initially &#8220;First&#8221; and &#8220;Last&#8221; respectively.</p>
+
+<p>Then I was requested to make it so that when the field was clicked on, the word &#8220;First&#8221; or &#8220;Last&#8221; (respectively) would disappear, so that you could then proceed to enter a value without needing to highlight and delete the existing value of the text field.</p>
+
+<p>It turns out that with jQuery, this is simple enough; let&#8217;s assume your field has the class &#8220;clearme&#8221;:</p>
+
+<pre>
+<code class="javascript" line="1">
+$(document).ready(function () {
+  $('.clearme').focus(function() {
+    $(this).val("");
+  });
+});
+</code>
+</pre>
+
+
+<p>If you&#8217;re familiar with jQuery, you know that the wrapper <code>$(document).ready()</code> simply waits until the page is finished loading, then executes the function you&#8217;ve passed to it. In this case, the function passed looks for an item of the class &#8220;clearme&#8221; and waits for that element to receive focus. When it does, it changes the value to &#8220;&#8221;.</p>
+
+<p>Simple enough&#8230; but wait! Now if the user types in &#8220;Beauregard Charles Maurice&#8221; as a first name, if he inadvertently clicks on the text box again, his name will disappear. <em>He would need to type that all over again.</em> What can be done?</p>
+
+<p>There may be multiple ways; but jQuery has a handy method called &#8220;one&#8221; which will execute an event <em>one time only</em>, which sounds like just what we want. So we&#8217;d change the body of that inner function to look like:</p>
+
+<pre>
+<code class="javascript" line="1">
+$('.clearme').one("focus", function() {
+  $(this).val("");
+});
+</code>
+</pre>
+
+
+
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2006/09/25/blizzard-closes-my-unused-world-of-warcraft-account-for-unclear-reasons/">Blizzard Closes My Unused World of Warcraft Account for Unclear Reasons</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2006-09-25T00:00:00-05:00" pubdate data-updated="true">Sep 25<span>th</span>, 2006</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><hr />
+
+<p>title: Blizzard Closes My Unused World Of Warcraft Account For Unclear Reasons
+date: 25/09/2006</p>
+
+<p>So, this was in my inbox this morning:</p>
+
+<blockquote style="text-align:left">
+***Notice of Account Closure***
+
+Greetings,
+
+This is a notification regarding your World of Warcraft account.  Access to this account has been permanently disabled for exploitation of the World of Warcraft economy or for being associated to accounts which have been closed for intended exploitation.  While we try to be as lenient as possible in our assessments of the results of exploitation investigations, reoccurring trends in exploitative endeavors on your account have ultimately resulted in account closure.
+
+As a result, this account will no longer be able to access any aspect of World of Warcraft.  This action has been taken in accordance with the Terms of Use (http://www.worldofwarcraft.com/legal/termsofuse.html) and our game policies (http://www.blizzard.com/support/wowgm/?id=agm01712p).  According to the World of Warcraft Terms of Use, to which all players agree when installing World of Warcraft, Section 3, Paragraph C [Rules Related to Game Play] states that you may not do anything that Blizzard Entertainment considers contrary to the &#8220;essence&#8221; of World of Warcraft.
+
+Thank you for your time and understanding of our position in this matter.  Please feel free to contact us with any questions or concerns you may have.
+
+Regards,
+
+Account Administration
+Blizzard Entertainment
+www.WorldOfWarcraft.com
+</blockquote>
+
+
+<p>Hmm. <em>Access to this account has been permanently disabled for exploitation of the World of Warcraft economy or for being associated to accounts which have been closed for intended exploitation.</em>  That&#8217;s interesting.</p>
+
+<p>It&#8217;s especially interesting considering I cancelled my subscription over a month ago since I simply <em>did not have time to play World of Warcraft</em>. I&#8217;m fairly certain I have not logged on to any WoW server in well over two months, possibly longer.</p>
+
+<p>I was considering re-activating the subscription at some point, if and/or when I have more free time to play MMORPG-type games (I just like typing MMORPG) &#8211; so this is a little annoying.</p>
+
+<p>I replied to them; hopefully they can explain exactly what it is about <em>NOT PLAYING</em> that flags an account as &#8220;exploitative&#8221;.</p>
+
+<p>UPDATE: Folks keep visiting this post, so I can only guess that this keeps happening to people, or that people are still trying to resolve it.</p>
+
+<p>In my own case, my World of Warcraft account is <em>still closed</em>. The only means they will accept to re-open it, apparently, is for me to send them a fax (yes! a FAX) of my driver&#8217;s license. I don&#8217;t have a fax machine, nor a scanner most of the time, so I keep putting this off. I finally got around to doing it one day, and they replied that the incoming fax was too fuzzy and that I should scan my ID again and re-fax it.</p>
+
+<p>That was about a year ago. I haven&#8217;t bothered to re-fax it yet.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2006/09/22/the-emperors-new-web/">The Emperors New Web</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2006-09-22T00:00:00-05:00" pubdate data-updated="true">Sep 22<span>nd</span>, 2006</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><hr />
+
+<p>title: The Emperor&#8217;s New Web
+date: 22/09/2006</p>
+
+<p>Once upon a time there was an emperor of a far country. In this country, the internet prospered and grew, and the web was used by many of the emperor&#8217;s subjects. The emperor himself was a web aficionado, and was a great patron of Internet and web related ventures in his empire.</p>
+
+<p>One day, two developers arrived at the palace, and asked if they could have an audience with the emperor. When pressed, they stated that their purpose was something mysterious to do with the web, in which they believed that the emperor would have great interest, but which they could not reveal to the porter unless he signed a NDA. The porter, knowing his majesty&#8217;s affinity for all things webby, immediately ushered them to the audience room.</p>
+
+<p>When the emperor learned of their presence, he immediately went to meet them, and to ask them what it was they wished to show him.</p>
+
+<p>&#8220;We are working on a Whole New Web,&#8221; said the first.</p>
+
+<p>&#8220;It will be the New New Internet,&#8221; said the other.</p>
+
+<p>The emperor raised an eyebrow.</p>
+
+<p>&#8220;It will be more responsive&#8230; more socially connected,&#8221; said the first.</p>
+
+<p>&#8220;It will look fancier,&#8221; said the second. &#8220;Everything will be shiny and beautiful.&#8221;</p>
+
+<p>&#8220;It may have to stay in beta for awhile,&#8221; began the first.</p>
+
+<p>&#8220;Also &#8211; it possesses the unique quality that only those users who &#8216;get it&#8217; &#8211; users with &#8216;clue&#8217; &#8211; will be able to see it,&#8221; said the second.</p>
+
+<p>&#8220;Yes,&#8221; said the first. &#8220;You will immediately be able to tell who are the best and brightest in your empire by how they react to the New New Internet.&#8221;</p>
+
+<p>&#8220;I&#8217;m interested,&#8221; said the emperor. &#8220;Tell you what; you can stay in the palace, and work on this.&#8221;</p>
+
+<p>And so the two strangers began to work. For a long time, they worked in solitude, but eventually, after the emperor had signed up for their release notification mailing list several times, they announced that they were ready to show him the results of their labors.</p>
+
+<p>Extremely excited, the emperor rushed down to the development lab. There he sat down in anticipation in front of a computer, and one of the developers clicked a link, and their new site sprang to life.</p>
+
+<p>The emperor blinked.</p>
+
+<p>&#8220;Well,&#8221; said the first, &#8220;What do you think?&#8221;</p>
+
+<p>The emperor considered. Certainly, it was very pretty. All the colors were vivid, and there was an attractive design scheme to the whole page. The logo was very shiny. It had a transparent shiny badge that said &#8220;Beta&#8221; covering one corner of it. You could connect with other users of the site. It had tags. It had RSS feeds.</p>
+
+<p>But none of these were things that were new to his majesty the emperor.</p>
+
+<p>&#8220;Well,&#8221; he began.</p>
+
+<p>&#8220;Have you seen <em>this</em>?&#8221; said the second, and he began clicking things.</p>
+
+<p>As he clicked, various bits of the page would fade in and out, and slide around, and expand and contract. It was very slick-looking, and while it was not a completely <em>common</em> practice, the emperor was aware of how this was done, and that it had been possible to do things like this on web pages for some time.</p>
+
+<p>&#8220;That is nice,&#8221; he admitted. &#8220;Well&#8230;&#8221;</p>
+
+<p>&#8220;As we mentioned,&#8221; said the first, &#8220;Only people who &#8216;get it&#8217;, netizens with &#8216;clue&#8217; are able to see the New New Web.&#8221;</p>
+
+<p>Anxiously, the second said, &#8220;You do <em>see it</em>, don&#8217;t you?&#8221;</p>
+
+<p>At this point, the emperor was unwilling to say that he did not have &#8220;clue&#8221;, or that he did not &#8220;get it&#8221;, so he said, &#8220;Well of course I see it. It&#8217;s the new new web. I &#8216;get it&#8217;!&#8221;</p>
+
+<p>&#8220;Wonderful,&#8221; said the two developers in chorus. &#8220;We knew you would!&#8221;</p>
+
+<p>&#8220;Now we just need to share this with the rest of the empire,&#8221; said the first. &#8220;You will notice that you have several &#8216;invites&#8217; to share to our beta.&#8221;</p>
+
+<p>&#8220;Perhaps after it has spread around we can talk about second round funding,&#8221; said the second.</p>
+
+<p>The emperor agreed, and dutifully &#8220;invited&#8221; some of his relatives and courtiers to the beta. He was sure to say that this was, indeed, <em>The New New Web</em>, and that only those &#8220;with clue&#8221; could &#8220;get it.&#8221;</p>
+
+<p>Needless to say, all of his invitees gladly proclaimed that they, too, &#8220;get it&#8221;, and began to invite others to the Emperor&#8217;s New Web.</p>
+
+<p>All over the empire, everyone began to flock to the Emperor&#8217;s New Web, and everyone said they &#8220;got it,&#8221; and were not about to admit they did not have &#8220;clue.&#8221;</p>
+
+<p>One day, they threw a New New Web Conference, and gathered together to talk about important things like well-styled XHTML, the use of gradients in company logos, tag clouds, and social networks. While the emperor himself was giving the keynote of the highlights of the New New Interweb, a young boy in the crowd proclaimed loudly:</p>
+
+<p>&#8220;But it&#8217;s just the same as the old web! There isn&#8217;t anything new at all!&#8221;</p>
+
+<p>There was an awkward pause, and then the crowd began to laugh. &#8220;Pay no attention to him,&#8221; they said. &#8220;He&#8217;s just a boy. He doesn&#8217;t &#8216;get it&#8217;.&#8221;</p>
+
+<p>&#8220;Sure it&#8217;s shiny,&#8221; said the boy, &#8220;But shiny is not enough to call it a Whole New Web.&#8221;</p>
+
+<p>&#8220;It has social networking and tagging!&#8221; said someone.</p>
+
+<p>&#8220;Social networking is not new,&#8221; said the boy. &#8220;Bulletin boards are an example older as old as my parents. And surely <em>tags</em> alone are not&#8230; the Whole New Web?&#8221;</p>
+
+<p>&#8220;It has Ajax and fancy JavaScript effects!&#8221; said someone else.</p>
+
+<p>&#8220;And those&#8230; programming languages and effects that are caught on but are not &#8216;new&#8217; at all &#8211; those are all that you are calling the New New Web?&#8221; asked the boy.</p>
+
+<p>The emperor decided it was time to speak. &#8220;But it is the <em>combination</em> of all these elements, together, that is new.&#8221;</p>
+
+<p>The boy seemed perplexed. &#8220;Is it?&#8221; he asked.</p>
+
+<p>The emperor stammered. The crowd began to murmur and to look suspiciously at the emperor, and at the large plasma screen which displayed a page of the Emperor&#8217;s New Web.</p>
+
+<p>Suddenly, the emperor said, &#8220;Also, I would like to announce that I am providing first round venture capital for entrepreneurs who are developing applications for the New New Web!&#8221;</p>
+
+<p>At this, everyone in the crowd proclaimed, &#8220;Ah! Now we see it! There it is &#8211; it&#8217;s the New New Interweb!&#8221; And they began to rush forward to display their Powerpoint presentations.</p>
+
+<p>And that is the story of the Emperor&#8217;s New Web.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2006/07/25/howto-add-your-xscreensavers-to-gnome-screensaver/">Howto Add Your Xscreensavers to Gnome Screensaver</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2006-07-25T00:00:00-05:00" pubdate data-updated="true">Jul 25<span>th</span>, 2006</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>The fully qualified directories in this particular &#8220;howto&#8221; are specific to SLED 10, and will undoubtedly be different on a different version of Linux.</p>
+
+<p>Something you might notice on installing SLED 10 is that, like most distros which feature Gnome 2.12 or 2.14, xscreensaver has been partially or fully replaced by gnome-screensaver. In the case of SLED 10, xscreensaver was <em>installed</em>, but none of its screensavers were available; gnome-screensaver listed only a scant five or six options.</p>
+
+<p>I spent some time tracking down how to make xscreensaver&#8217;s hacks available to gnome-screensaver, so here it is.</p>
+
+<p>Each screensaver, for both gnome-screensaver and xscreensaver, has a config file. So to move files from xscreensaver to gnome-screensaver, we need to move not only the screensaver programs themselves, but also the config files.</p>
+
+<p>Moving the screensavers is the easy part; all you&#8217;d need to do is:</p>
+
+<pre>
+<code>
+cp -i /usr/lib/xscreensaver/* /opt/gnome/lib/gnome-screensaver/gnome-screensaver/
+</code>
+</pre>
+
+
+<p>Yes, technically this code <em>copies</em> the screensavers, not moves them&#8230; but that&#8217;s okay. The -i switch is to make the process interactive; if any other the new screensavers has the same name as an existing one, it will as if you want to overwrite it, rather than just deciding for you. There should be only one such anomaly: popsquares. I chose not to overwrite it, as it works fine already and is probably exactly the same.</p>
+
+<p>Next, you need to move the config files. The only problem is, xscreensaver config files are .xml files, and gnome-screensaver files are .desktop files.</p>
+
+<p>It turns out that this is a problem with a ready made solution: our friends at Gnome have a script which will migrate our .xml files into .desktop files. For this to work, you&#8217;ll need 2 files:</p>
+
+<p><a href="http://cvs.gnome.org/viewcvs/gnome-screensaver/data/migrate-xscreensaver-config.sh?rev=1.1&view=log">migrate-xscreensaver-config.sh</a></p>
+
+<p><a href="http://cvs.gnome.org/viewcvs/gnome-screensaver/data/xscreensaver-config.xsl?rev=1.1&view=log">xscreensaver-config.xsl</a></p>
+
+<p>Just click the &#8220;download&#8221; links on the above two pages. I moved the two files to /opt/gnome/lib/gnome-screensaver/, but you can put them anywhere &#8211; they just need to be in the same place.</p>
+
+<p>You&#8217;ll need to make migrate-xscreensaver-config.sh executable (it should go without saying, but you&#8217;ll need to execute the following command from whatever directory you put the files in):</p>
+
+<pre>
+<code class="code2">
+# chmod +x migrate-xscreensaver-config.sh
+</code>
+</pre>
+
+
+<p>That being done, all you&#8217;ll have left is:</p>
+
+<pre>
+<code># cd /opt/gnome/share/gnome-screensaver/themes/
+# /opt/gnome/lib/gnome-screensaver/migrate-xscreensaver-config.sh /etc/xscreensaver/*.xml
+</code>
+</pre>
+
+
+<p>That&#8217;s that. You will find (at least on SLED 10) that you need to restart X &#8211; just logging out of Gnome and back in should do it.</p>
+
+<p>If you&#8217;re attempting to use these steps on a different version of linux, you may need to use find or locate to figure out the proper file paths to use. Enjoy.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="/blog/page/5/">Newer &rarr;</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2011/10/12/how-to-quit-your-job/">How To Quit Your Job</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/10/10/how-to-read-web-analytics/">How To Read Web Analytics</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/07/12/aside-00/">Aside 00</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/07/06/too-clever-to-debug/">Too Clever To Debug</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/06/28/aside-01/">Aside 01</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>Github Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  
+  <a href="https://github.com/philcrissman">@philcrissman</a> on Github
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'philcrissman',
+            count: 4,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("philcrissman", 4, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/philcrissman" class="twitter-follow-button" data-show-count="false">Follow @philcrissman</a>
+  
+</section>
+
+
+<section>
+  <h1>My Pinboard</h1>
+  <ul id="pinboard_linkroll">Fetching linkroll&#8230;</ul>
+  <p><a href="http://pinboard.in/u:philcrissman">My Pinboard Bookmarks &raquo;</a></p>
+</section>
+<script type="text/javascript">
+  var linkroll = 'pinboard_linkroll'; //id target for pinboard list
+  var pinboard_user = "philcrissman"; //id target for pinboard list
+  var pinboard_count = 3; //id target for pinboard list
+  (function(){
+    var pinboardInit = document.createElement('script');
+    pinboardInit.type = 'text/javascript';
+    pinboardInit.async = true;
+    pinboardInit.src = '/javascripts/pinboard.js';
+    document.getElementsByTagName('head')[0].appendChild(pinboardInit);
+  })();
+</script>
+
+
+
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - Your Name -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

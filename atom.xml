@@ -4,7 +4,7 @@
   <title><![CDATA[Automagical Thinking]]></title>
   <link href="http://philcrissman.github.com/atom.xml" rel="self"/>
   <link href="http://philcrissman.github.com/"/>
-  <updated>2012-01-05T10:33:51-06:00</updated>
+  <updated>2012-01-05T10:52:28-06:00</updated>
   <id>http://philcrissman.github.com/</id>
   <author>
     <name><![CDATA[Your Name]]></name>
@@ -12,5 +12,862 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[How To Quit Your Job]]></title>
+    <link href="http://philcrissman.github.com/blog/2011/10/12/how-to-quit-your-job/"/>
+    <updated>2011-10-12T00:00:00-05:00</updated>
+    <id>http://philcrissman.github.com/blog/2011/10/12/how-to-quit-your-job</id>
+    <content type="html"><![CDATA[<hr />
+
+<p>title: How to quit your job
+date: 12/10/2011</p>
+
+<p>So you want to quit your job. Welcome to the club. Membership is free,
+we don&#8217;t have meetings or rules, but we also don&#8217;t give you a t-shirt or
+a name-tag on a colorful lanyard. So, yeah. Pros and cons.</p>
+
+<p>You may or may not have, or have had, a job you dislike. That&#8217;s not
+really the issue. Maybe your job is great. That can sometimes make it
+harder. Regardless, you want to quit; not to go get another job, but to
+go off on your own and do&#8230; well, whatever it is you do.</p>
+
+<p>So, now what? Well, the title of this post oversells a bit. I don&#8217;t have
+a clue how, or even <em>if</em>, you should quit your job. I can tell you what
+I did. Twice.</p>
+
+<p>Roll back to 2008. I worked for Oracle Corporation in a support role.
+The people I worked with were top notch, but I had been in tech support
+for about 5 years at that point, and I was completely burnt out on
+counseling people with what to do about exceeding their inbox quota. I
+wanted to move into development, something I was going to school for and
+would play around with in my spare time. I had developed small
+Coldfusion and PHP apps, and some academic apps with Java, and wayyyyy
+back in high school (that would be, in the late 80s) some BASIC and
+Pascal. I was just starting to learn Ruby on Rails, but at that point
+&#8220;learning&#8221; meant only, scaffolding and mucking about with a very basic
+app. I was toying with the idea of quitting and going into freelance
+web-development. With a little bit of networking, I had wound up with 2
+possible full-time contracts right at the same time. Both would require
+me to quit my job to go full-time on the contract. One was a PHP
+application. The other was a Ruby on Rails job. After not very much
+deliberation, I chose to go with the Ruby contract.</p>
+
+<p>The Ruby contract was in essence an internship. My rate was very low,
+but I was just learning. It wound up being a fantastic opportunity for a
+new-to-rails developer; I was able to work with Jon Dahl and Luke Francl
+(both of <a href="http://railspikes.com">RailSpikes</a>, among other things) on a startup called
+<a href="http://tumblon.com">tumblon</a>.
+I&#8217;m going to be honest; some of the code I wrote was probably awful. But
+it mostly worked, and when it didn&#8217;t, I figured out why and changed it
+so it did work. I also had the benefit of working on a codebase which
+had already been around for 8-10 months, so when there were things that
+I didn&#8217;t know how to do, I could look to see what Jon and Luke had
+already done in other parts of the app. I&#8217;m pretty sure I learned better
+habits by doing that than I would if I had been forced to teach myself
+Rails all on my own.</p>
+
+<h2>If at all possible, work with people who are smarter/more experienced</h2>
+
+<p>than you, and read all their code.</p>
+
+<p>So, that was helpful. Tumblon eventually ran low on funding, so I moved
+on to work with some other local folks, like Matt Bauer (currently
+founder of <a href="http://pedalbrain.com">Pedalbrain</a>) and Todd Emmel
+(<a href="http://slantwiselabs.com">Slantwise Labs</a>) for the next
+couple years.</p>
+
+<p>During this time, I continued to learn a lot, frequently by doing things
+wrong and needing to figure out how to do them right. I continued to
+raise my rates as I learned more about what I was doing.</p>
+
+<p>Early this year, 2011, the work at Slantwise Labs ran dry. A couple
+contracts finished up, and I was left without any work for a few weeks.
+At first I wasn&#8217;t concerned, but when there continued to be no new work
+for a couple more weeks, I started to look a little harder. Also, we had
+a newborn by this time, so the pressure was a little higher than in
+times past. So, I took a full-time job.</p>
+
+<p>The job I took was doing Ruby on Rails for a local <a href="http://ackmanndickenson.com">web development
+shop</a>
+&#8211; a great company with a great team, by the way. I was hoping that it
+would work out; I planned to stay there for at least a year, if not two.
+I figured the stability of a full-time gig, the benefits, the vacation
+days, would balance out and compensate for the things I missed from
+contracting.</p>
+
+<p>It turns out I was not correct in that assumption. I really started to
+miss the freedom, and marginally higher income, of contracting. After
+debating internally for weeks, I finally decided I had to go back to
+freelance work. I decided ahead of time to finish the project I was
+working on, gave them plenty of notice, and made sure I had something
+lined up for the following month.</p>
+
+<h2>Always make sure you have something else lined up.</h2>
+
+<p>This is the problem I made earlier this year. I had grown a little
+complacent that I could always find a new project without really trying
+all that hard. Actually, I was probably just lucky. In any case, going
+forward, I knew I would need (and will need) to keep my eyes on when a
+project or contract is going to end, and make sure that there is another
+project or contract lined up soon after the current one finishes.</p>
+
+<h2>Do the best work you can possibly do. Totally own it. If you write</h2>
+
+<p>something that sucks, own that too. If possible, of course, fix it
+yourself.</p>
+
+<p>A huge benefit I&#8217;ve had is that I&#8217;m pretty sure anyone I&#8217;ve worked for
+in the past three years, I could work for again. I&#8217;ve learned a ton, and
+I continue to push myself to learn more. Realize that you don&#8217;t
+necessarily need to find clients directly &#8211; I&#8217;ve done almost 100%
+contracting for other development shops, which means I do very little
+client interaction. There are pros and cons to that, but it has worked
+well for me so far.</p>
+
+<p>Of course, the end of this little story about how I twice quit a full
+time job to go do freelance development is that if at all possible, I&#8217;d
+like now go on to bootstrap a small or not-so-small startup or product
+company, and never do consulting again. But consulting is still the best
+thing I&#8217;ve ever done for my career.</p>
+
+<p>If that resonates with you &#8211; do
+your homework, have things lined up, make sure you know what you&#8217;re
+getting yourself into, and &#8230; good luck.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[How To Read Web Analytics]]></title>
+    <link href="http://philcrissman.github.com/blog/2011/10/10/how-to-read-web-analytics/"/>
+    <updated>2011-10-10T00:00:00-05:00</updated>
+    <id>http://philcrissman.github.com/blog/2011/10/10/how-to-read-web-analytics</id>
+    <content type="html"><![CDATA[<hr />
+
+<p>title: How To Read Web Analytics
+date: 10/10/2011</p>
+
+<p>The CEO of BigCorp just got the company&#8217;s web analytics report and is
+trying to make sense of it. He calls in his lead developer and asks him
+what the analytics report says.</p>
+
+<p>&#8220;We&#8217;re doing great,&#8221; says the developer. &#8220;Look at all these hits and
+page views. We&#8217;re having no scaling issues. The report says everything
+is going well.&#8221;</p>
+
+<p>Happy but not satisfied, the CEO calls in his head of marketing and asks
+her what the analytics report says.</p>
+
+<p>&#8220;Not so good,&#8221; says the head of marketing. &#8220;We have a lot of page views,
+but no one is sticking around very long or drilling deeper into the
+site. We need to generate more content and revamp our web design.&#8221;</p>
+
+<p>A little nervous now, the CEO also calls in the SEO consultant who&#8217;s
+been working with the company, and asks the consultant what the
+analytics report says.</p>
+
+<p>The SEO consultant spends a few minutes reading the report. After
+looking around to make sure the door is closed and no one is listening,
+the SEO consultant leans forward and asks, &#8220;What would you like it to
+say?&#8221;</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Aside 00]]></title>
+    <link href="http://philcrissman.github.com/blog/2011/07/12/aside-00/"/>
+    <updated>2011-07-12T00:00:00-05:00</updated>
+    <id>http://philcrissman.github.com/blog/2011/07/12/aside-00</id>
+    <content type="html"><![CDATA[<hr />
+
+<p>title: aside-00
+date: 12/07/2011
+aside: true</p>
+
+<p><img src="http://philcrissman.github.com/images/posts/php.jpg" /></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Too Clever To Debug]]></title>
+    <link href="http://philcrissman.github.com/blog/2011/07/06/too-clever-to-debug/"/>
+    <updated>2011-07-06T00:00:00-05:00</updated>
+    <id>http://philcrissman.github.com/blog/2011/07/06/too-clever-to-debug</id>
+    <content type="html"><![CDATA[<hr />
+
+<p>title: Too Clever To Debug
+date: 06/07/2011</p>
+
+<p><a href="http://www.flickr.com/photos/themadlolscientist/2538226772/sizes/z/in/photostream/"><img src="http://philcrissman.github.com/images/posts/math_fail.jpg" width="440" /></a></p>
+
+<blockquote><p>&#8220;Debugging is twice as hard as writing the code in the first place.  Therefore, if you write the code as cleverly as possible, you are, by definition, not smart enough to debug it.&#8221;
+&#8211;Brian Kernighan</p></blockquote>
+
+<p>This sounds nice, and can (maybe) be good advice in some cases. But it can&#8217;t possibly be true; in fact, it rests on a bit of a logically flawed syllogism:</p>
+
+<ul>
+<li>A: Debugging is twice as hard as writing code.</li>
+<li>B: Writing code is hard.</li>
+<li>C: Ergo, if you write the hardest code you possibly can, you are not smart enough to debug your own code.</li>
+</ul>
+
+
+<p>The problem sits in both in assumption A, and in an unspoken assumption about what it means for something to be &#8220;hard&#8221;.</p>
+
+<p>Regarding A, there&#8217;s no backing behind this &#8220;debugging is twice as hard&#8221; assumption; it&#8217;s simply stated. Regarding the idea of relative <em>hardness</em> of a problem; the conclusion to the above syllogism assumes that there is a ceiling of &#8220;hardness&#8221; which you are capable of comprehending. If your code is at that ceiling, it argues, then debugging it will be impossible for you, because debugging it will be harder than writing it, which was the limit of how &#8220;hard&#8221; a problem you can solve. I reality, I don&#8217;t believe this to be the case; something may be &#8220;harder&#8221; than anything I&#8217;ve yet worked through, but that only means it might take me more time and more effort to understand it; not that I cannot possibly comprehend it.</p>
+
+<p>Now, we all know that bugs can be hard to find and fix, so we tend to simply accept, even encourage, statements like this. But are they really true?</p>
+
+<p>Think back to your Algebra, Trig, or Calculus classes; if you took these in the same sort of classes, with the same sort of textbooks, that I did, you were routinely given assignments whose answers were in the back of the book. The idea was, you would work through the problems, and then check your answer to see how you did. If you had an incorrect answer, then you would look at the steps you took to solve the equation until you found the point at which you had made a mistake.</p>
+
+<p>This is, to my mind, completely analogous to programming. You write a piece of code to do a certain thing; then you either write a test, or you simply run it with some sample input, to ensure that it does what you think it does. If you test it thoroughly (note: this <em>is</em> actually hard, and is the reason that bugs often slip into production code), then you will either:</p>
+
+<ul>
+<li>a) discover that your code successfully does what you intended, or</li>
+<li>b) discover a case where your code returns an incorrect result; in other words, a bug, or a place where you made a mistake.</li>
+</ul>
+
+
+<p>In case b, you&#8217;ll do the same thing you used to do with your math homework; you&#8217;ll start going through it until you find the place where you made a mistake, and you&#8217;ll fix it, and (ideally), you&#8217;ll write a test that mocks this scenario, and be satisfied that this bug is squashed.</p>
+
+<p>Debugging is indeed hard; there are several things which make it harder than just solving a math equation. For one thing, in your programs, you may not have total control over what inputs (if applicable) are sent to your function. You might intend that factorial(num) always receives an integer as its argument. What if some malevolent person calls it and sends a String? An octal value? An object? An array? Do you care? Does your function try to detect this and either raise an error or return false? Is returning false or nil <em>really</em> what you want to do in that case? What if a number is sent that is larger than MAX_INT? Does it fail silently, interpret the number as whatever your programming language sees it, raise an error&#8230; ? In comparison, you can pretty much ensure that x, whatever it may be, in your Algebra exercise, is a number. It&#8217;s probably a Real number. And you can probably find it without too much trouble.</p>
+
+<p>Another thing that I like about this example is that it basically shows that the process of learning math is essentially the process of locating and fixing your mistakes. The instructor, the course, <em>assumes</em> that you will not always get the correct answer. That&#8217;s the whole reason there are answers in the back of the book, and that you are assigned those questions which actually have answers. The basic premise is that you will get some questions wrong, and that through the process of realizing you are wrong and going back to find where you are wrong (and fixing it), you are doing something which we call <em>learning math</em>.</p>
+
+<p>Programming, I&#8217;d argue, works the same way. You learn to program, <em>not</em> by consistently writing correct programs, but by writing bugs. Then, once you realize you have written a bug, you locate it, attempt to understand <em>why</em> it&#8217;s a bug, why you erroneously believed that it would work, what you should do instead, and how to do that thing.</p>
+
+<p>We call this &#8220;learning to program&#8221;.</p>
+
+<p>If you are not smart enough to find and fix bugs, you are actually not smart enough to learn to program. The good news is, you <em>are</em> smart enough to find and fix bugs, and you are smart enough to program.</p>
+
+<p>The logical error comes in the assumption that <em>writing the hardest/most complex/most clever code that you can</em> is the theoretical limit of your intelligence, and that, since &#8220;debugging is harder than coding&#8221;, you are not clever enough to see the bugs in your own code.</p>
+
+<p>That&#8217;s similar to saying that if you are doing the hardest Calculus question you are currently capable (or barely capable) of doing, if you make a mistake, you are unable to find and fix that mistake, because finding the mistake is (somehow) harder than solving the problem.</p>
+
+<p>Put that way, it seems absurd. Of course finding your mistake isn&#8217;t &#8220;harder&#8221; than solving the problem; finding the mistake is <em>part of</em> the problem. In fact, since generally every step in solving an equation or working out an integral or a derivative involves smaller steps based on things you have <em>already learned and mastered</em> (again&#8230; theoretically), you almost definitely <em>can</em>, for sure, find your error if you go through each of your steps carefully, thinking about what you are doing and why you&#8217;re doing it.</p>
+
+<p>Sure, finding bugs is hard. That&#8217;s because if it was easy, you wouldn&#8217;t have written the bug in the first place. The bug represents that place in your algebra homework where you&#8217;d make that tiny arithmetic error, or forget to flip the sign when a number was/wasn&#8217;t negative, or where you&#8217;d mis-apply some other mathematical rule. Spotting where you made that error is simply the process of learning math.</p>
+
+<p>That&#8217;s not the same as it being <em>too hard</em> for you to accomplish. I would guess (though I can&#8217;t <em>know</em> this) that Mr. Kernighan intended his little aphorism to be taken with a rather liberal grain of salt, that it was actually a bit of the subtle humor engineers and geeks are so fond of. The fact that we&#8217;ve taken it at face value and treated it as though it were actually true is <em>our</em> fault, not Brian Kernighan&#8217;s.</p>
+
+<p>Now, the actual quote (according to <a href="http://en.wikiquote.org/wiki/Brian_Kernighan">wikiquote</a>) seems to be from Elements of Programming Style, and goes:</p>
+
+<blockquote><p>&#8220;Everyone knows that debugging is twice as hard as writing a program in the first place. So if you&#8217;re as clever as you can be when you write it, how will you ever debug it?&#8221;</p></blockquote>
+
+<p>This still has that logical leap embedded in it (&#8221;<em>Everyone knows</em> that debugging is twice as hard&#8221;, etc.), but it does have a good, valid point, <em>depending on how you define &#8220;as clever as you can be&#8221;</em>. (If <em>being clever</em> is actually <em>being smart</em>, then &#8220;as clever as you can be&#8221; would be to only write code which you are capable of debugging&#8230; but I digress.)</p>
+
+<p>What I think this really is <em>intended</em> to mean is: if you write code <em>that you do not completely understand</em>, you will (potentially) introduce bugs <em>which you are not capable of identifying or resolving</em>.</p>
+
+<p>The key is code that <em>you don&#8217;t understand</em>. The reason you won&#8217;t be able to find the bugs is that you don&#8217;t understand what your code is doing in the first place. If that&#8217;s true, then yes, of course you have written un-debuggable software (for <em>you</em>, at least; someone who understands what you wrote can certainly find your bugs). The other side of this coin is that, if you take the time and effort to understand the code that you wrote, you <em>can</em> find the bugs. And you can remove them.</p>
+
+<p>This is called <em>programming</em>. You&#8217;ve probably been doing it for a long time. The fact that we&#8217;re still creating and fixing bugs only means that we haven&#8217;t finished learning to do it yet.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Aside 01]]></title>
+    <link href="http://philcrissman.github.com/blog/2011/06/28/aside-01/"/>
+    <updated>2011-06-28T00:00:00-05:00</updated>
+    <id>http://philcrissman.github.com/blog/2011/06/28/aside-01</id>
+    <content type="html"><![CDATA[<hr />
+
+<p>title: aside-01
+date: 28/06/2011
+aside: true</p>
+
+<p>HER: We should just go out to eat.</p>
+
+<p>HIM: Okay. Where do you want to go?</p>
+
+<p>HER: Anywhere. Just pick a place.</p>
+
+<p>HIM: How about [place x]?</p>
+
+<p>HER: Hm. No, not that place.</p>
+
+<p>HIM: Okay, ah&#8230; [place y]?</p>
+
+<p>HER: &#8230;. yeah, you know, not [place y], you remember last time we were there.</p>
+
+<p>HIM: Oh? Oh. Okay, well. How about&#8230; how about [place z]?</p>
+
+<p>HER: No, I don&#8217;t feel like [place z] cuisine tonight.</p>
+
+<p>HIM: Well, where do you want to go?</p>
+
+<p>HER: Anywhere! Can&#8217;t you just pick a place?</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Aside 00]]></title>
+    <link href="http://philcrissman.github.com/blog/2011/06/28/aside-00/"/>
+    <updated>2011-06-28T00:00:00-05:00</updated>
+    <id>http://philcrissman.github.com/blog/2011/06/28/aside-00</id>
+    <content type="html"><![CDATA[<hr />
+
+<p>title: aside-00
+date: 28/06/2011
+aside: true</p>
+
+<p>Over the last month or so, started watching LOST. We&#8217;re up to Season 4, episode 4, which means we&#8217;ve watched approximately 57 hours of television, after work, in our spare time, in roughly a month.</p>
+
+<p>And I say I don&#8217;t have enough time to do things.</p>
+
+<p>Also. A smoke monster? Really? wtf LOST.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Pretending To Be Productive]]></title>
+    <link href="http://philcrissman.github.com/blog/2011/04/14/pretending-to-be-productive/"/>
+    <updated>2011-04-14T00:00:00-05:00</updated>
+    <id>http://philcrissman.github.com/blog/2011/04/14/pretending-to-be-productive</id>
+    <content type="html"><![CDATA[<hr />
+
+<p>title: Pretending to be Productive
+date: 14/04/2011</p>
+
+<p>I&#8217;m noticing recently that I use a few of things that make me feel more productive, when I&#8217;m not <em>necessarily</em> any more productive by using them. Maybe.</p>
+
+<h1>Focusbooster</h1>
+
+<p>I really like <a href="http://www.focusboosterapp.com/">focusbooster</a>. It&#8217;s a cool little app. It&#8217;s a basic <a href="http://www.pomodorotechnique.com/">Pomodoro</a> timer made in Adobe Air, so it&#8217;s shiny and easy to install. You start it, and it times you for 25 minutes (during which time you are to be <em>hard at work</em>), and then starts counting down a 5 minute break (during which I guess you&#8217;re supposed to look at twitter or hacker news or pictures of Bettie Page (hi, <a href="http://www.kungfugrippe.com/">Merlin</a>)).</p>
+
+<p>Maybe focusbooster works for some people, but I find it doesn&#8217;t really work <em>that</em> much for me. I qualify it only because, sure, it serves as a subtle reminder: while the 25-minute timer is running, I&#8217;m working. I&#8217;m not doing <em>whatever</em>. That said, it&#8217;s easy to ignore. Especially if you&#8217;re like me and habitually ignore the break. I guess the 5 minute break is supposed to be the carrot on the stick that keeps you hard at work for the prior 25 minutes, but for me, I usually am halfway through writing or testing some method or class for an application, and I&#8217;m not going to stop and take a break, I keep working right through my &#8220;break&#8221;. Which leads to basically running focusbooster all day and generally ignoring it.</p>
+
+<p>Which is fine, I guess, if only for those handful of times where the fact that there&#8217;s a little timer running on your desktop reminds you that you&#8217;re working. So I do like it, even though I feel like a lot of the imagined productivity I feel from a day of using it might be illusory.</p>
+
+<p>Maybe if it was going to cut one of my kid&#8217;s fingers off whenever I visited Facebook it would be more effective, but I think that sort of thing is frowned on.</p>
+
+<h1>RescueTime</h1>
+
+<p>So, <a href="http://www.rescuetime.com/">RescueTime</a> is neat. It&#8217;s an app that lives on your desktop and records what you&#8217;re doing and then sort of tells you what you&#8217;ve been up to, and how productive or distracted you&#8217;ve been. You can teach it which of your activities you consider &#8220;productive&#8221; or &#8220;distracting&#8221;. You can delete some of your activities, if desired.</p>
+
+<p><img src="http://philcrissman.github.com/images/posts/rescue_time.png" width="440" /><br/></p>
+
+<p>So, again, I sort of like it. But at the same time, I&#8217;m a little obsessive when I see a chart like the one on the RescueTime dashboard. I want to be at the far right end, in the &#8220;productive&#8221; zone. Trouble is, it&#8217;s very very easy to start &#8220;tweaking&#8221; your activities to make your overall day look more productive. &#8220;That 12 minutes on twitter? No, no, that was when I just left my browser open to that page and walked away for a bit. I can delete that. Hm, 5 minutes visiting <a href="http://www.leancrew.com/all-this/">leancrew.com</a>? That&#8217;s not -2 Distracting, we&#8217;ll call that +1 Productive.&#8221; You can also game it in other ways. Leave your computer open to your text editor or the terminal when you walk away, and it&#8217;s recording all that idle time as &#8220;Productive.&#8221;</p>
+
+<p>&#8220;But you&#8217;re cheating,&#8221; you may say. &#8220;You&#8217;re like, you&#8217;re like the guy who reshuffles the cards while playing solitaire. Bad developer. Bad.&#8221; Mmm. Maybe. I don&#8217;t know. Regardless, even though I feel like some of the &#8220;productivity&#8221; it&#8217;s showing me is <em>not necessarily real</em>, it still helps just to know that it&#8217;s on. It&#8217;s one of those reminders, &#8220;Hm, this is going to show up as &#8216;distracting&#8217; on RescueTime; I should bookmark it and look at it later.&#8221; And that&#8217;s basically good.</p>
+
+<h1>And all that means is</h1>
+
+<p>I don&#8217;t know. I started out talking about &#8220;pretend productivity&#8221; and in each case I essentially just argued that I am actually still being helped, at least a little, to be more productive by running apps like these. Maybe. I&#8217;m not actually sure.</p>
+
+<p>So, what gives you the false sense of security that you&#8217;ve been productive today?</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Current Desktop]]></title>
+    <link href="http://philcrissman.github.com/blog/2011/03/10/current-desktop/"/>
+    <updated>2011-03-10T00:00:00-06:00</updated>
+    <id>http://philcrissman.github.com/blog/2011/03/10/current-desktop</id>
+    <content type="html"><![CDATA[<hr />
+
+<p>title: Current Desktop
+date: 10/03/2011</p>
+
+<p><a href="http://philcrissman.com/images/posts/theDesktop3-10-11.png"><img src="http://philcrissman.com/images/posts/theDesktop3-10-11-sm.png" width="440" /></a></p>
+
+<p>I&#8217;m a sucker for a nice desktop. Currently using <a href="http://mutablecode.com/apps/nerdtool">NerdTool</a> (thanks, <a href="http://www.leancrew.com/all-this/">drdrang</a> and <a href="http://brettterpstra.com/">Brett Terpstra</a>) and <a href="http://wallsaverapp.com/">WallSaver</a>.</p>
+
+<p>UPDATE:</p>
+
+<p>Forgot to detail, just for the sake of completeness, the items in the menubar. From left to right, we have:</p>
+
+<p><a href="http://peepcode.com/products/peepopen">PeepOpen</a>: Great plugin for TextMate, MacVim, Emacs, Aquamacs, Coda or XCode for finding files. It&#8217;s really good. One of my favorite features is that it automatically orders by the date you late modified something; so if you look in a rails app for a file named index (of which you probably have dozens), the first one listed will be the last one you edited, which is often exactly the one I want.</p>
+
+<p><a href="https://www.dropbox.com/">Dropbox</a>: Files, online. Wait, am I supposed to say &#8220;in the cloud&#8221; now? Anyway. The truth is out there.</p>
+
+<p><a href="http://toolbar.google.com/gmail-helper/notifier_mac.html">Google Calendar/Mail Notifiers</a>: If you want to be notified of that sort of thing.</p>
+
+<p><a href="http://www.alfredapp.com/">Alfred</a>: Instead of Spotlight. It has a few extra features (empty your trash bin with a few keystrokes), I find I like it a lot.</p>
+
+<p><a href="http://evernote.com/">Evernote</a>: I&#8217;m still not sold on this app, but I&#8217;m giving it a try.</p>
+
+<p><a href="http://stereopsis.com/flux/">Flux</a>: You&#8217;ll just have to read the description on the site&#8230;</p>
+
+<p><a href="http://littleipsum.com/">Littleipsum</a>: Lorem ipsum text generator. I wish the UI was better, but it&#8217;s ok.</p>
+
+<p><a href="http://www.lightheadsw.com/caffeine/">Caffeine</a>: Keeps your mac awake, of course. Nice for presentations.</p>
+
+<p><a href="http://www.ragingmenace.com/software/menumeters/">MenuMeters</a>: So you don&#8217;t <em>need</em> to keep activity monitor open all the time. I mean, you will anyways, but you don&#8217;t <em>need</em> to.</p>
+
+<p>The rest are just standard Mac OS stuff: Spaces, Displays, TimeMachine(not used, using <a href="http://www.crashplan.com/">Crashplan</a>), Bluetooth, WiFi, Sound, Keyboard-switcher (for when I switch back to Dvorak&#8230; eventually), Battery, Date, Spotlight, phew.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Test First As A Productivity Hack]]></title>
+    <link href="http://philcrissman.github.com/blog/2011/02/21/test-first-as-a-productivity-hack/"/>
+    <updated>2011-02-21T00:00:00-06:00</updated>
+    <id>http://philcrissman.github.com/blog/2011/02/21/test-first-as-a-productivity-hack</id>
+    <content type="html"><![CDATA[<hr />
+
+<p>title: Test First As A Productivity Hack
+date: 21/02/2011</p>
+
+<p><a href="http://philcrissman.github.com/images/posts/focus.jpg"><img src="http://philcrissman.github.com/images/posts/focus.jpg" width="440" /></a></p>
+
+<p>If you&#8217;re like me, and live primarily online, you have countless distractions in the form of blogs, news sites, photo sites, chat applications, twitter/facebook, web comics, etc. It&#8217;s really easy to sit down at your computer, and if you&#8217;re not focused, simply call up <a href="http://thisisnthappiness.com">TIH</a> or <a href="http://news.ycombinator.com">HN</a> or <a href="http://bestofwikipedia.tumblr.com">bestofwikipedia</a> and soon find the first hour of your day has been completely sucked up just <em>looking at stuff</em>.</p>
+
+<p>Well, if you&#8217;re a contractor or freelancer, that may not be how you wanted to spend the first hour of your day. You just lost an hour of billable time; do that every day and you&#8217;re cheating yourself out of a lot of hours, especially if (guilty look) you&#8217;re prone to a similar web-surfing session after returning from lunch.</p>
+
+<p>Something I&#8217;ve started doing, that I&#8217;ve found to be a great help in avoiding losing focus like this, is to sit down and make the <em>my very first task</em> to be writing a test for the app that I&#8217;m currently working on.</p>
+
+<p>So, in this context, I&#8217;m not talking about &#8220;test first&#8221; in the TDD (Test Driven Development) sense, although I do practice that. I mean &#8220;test first&#8221; literally, as, <em>when my seat hits the chair, and my fingers touch the keyboard, write a test</em>.</p>
+
+<p>This accomplishes a few different things.</p>
+
+<ol>
+<li>An immediate thing to focus on. Part of the reason I get distracted by the web is that I may not have an <em>immediate</em> action to start on. Having an immediate, easy to start, first action makes a world of difference.</li>
+<li>It gets me in the &#8220;work&#8221; mindset and flow. It doesn&#8217;t matter what the test is. It might be as simple as a throw-away &#8220;when I go to this page, I should see the correct page title&#8221; test &#8211; the point isn&#8217;t that this test <em>needs</em> to be written for the health of the application&#8217;s test suite; it&#8217;s simply a hack to get you into work-mode. Once I look at the code, add a test, make sure it runs, by then I&#8217;ve only spent about 2-4 minutes, but I&#8217;ve avoided getting side-tracked, and I&#8217;m already into the codebase, so it&#8217;s very natural to look at what needs to be done next, and start doing it.</li>
+<li>Hey, if I choose wisely, some of this uber-simple tests I&#8217;m adding as a first action may actually be useful. If a test is <em>truly</em> trivial, you probably just want to delete it; but chances are you can find <em>something</em> simple to test that actually does need to be true in the finished app; all the better. You <em>have</em> actually improved your test suite, while simultaneously avoiding that &#8220;morning distraction&#8221; time, and getting yourself into the flow of <em>getting things done</em>.</li>
+</ol>
+
+
+<p>Your mileage may vary. But it&#8217;s been working for me. Adding something like the <a href="http://www.pomodorotechnique.com/">Pomodoro technique</a> to this means that I&#8217;ll still get a chance to catch up on my blogs/etc during the day, but without the trap of spending my first hour surfing mindlessly.</p>
+
+<p>What are your &#8220;get back to work&#8221; hacks?</p>
+
+<p><span style="font-size: 0.8em; color: #666;">
+Photo credit: <a href="http://www.flickr.com/photos/ihtatho/627226315/sizes/m/in/photostream/">flickr</a>
+</span></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Ujs In Rails 3 Slides]]></title>
+    <link href="http://philcrissman.github.com/blog/2011/02/01/ujs-in-rails-3-slides/"/>
+    <updated>2011-02-01T00:00:00-06:00</updated>
+    <id>http://philcrissman.github.com/blog/2011/02/01/ujs-in-rails-3-slides</id>
+    <content type="html"><![CDATA[<hr />
+
+<p>title: UJS in Rails 3 Slides
+date: 01/02/2011</p>
+
+<p>So, here&#8217;s those slides from the other night.</p>
+
+<div style="width:425px" id="__ss_6775992"><strong style="display:block;margin:12px 0 4px"><a href="http://www.slideshare.net/philcrissman/ujs-in-rails-3-6775992" title="UJS in Rails 3">UJS in Rails 3</a></strong><object id="__sse6775992" width="425" height="355"><param name="movie" value="http://static.slidesharecdn.com/swf/ssplayer2.swf?doc=ujs-110201093325-phpapp02&stripped_title=ujs-in-rails-3-6775992&userName=philcrissman" /><param name="allowFullScreen" value="true"/><param name="allowScriptAccess" value="always"/><embed name="__sse6775992" src="http://static.slidesharecdn.com/swf/ssplayer2.swf?doc=ujs-110201093325-phpapp02&stripped_title=ujs-in-rails-3-6775992&userName=philcrissman" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="425" height="355"></embed></object><div style="padding:5px 0 12px">View more <a href="http://www.slideshare.net/">presentations</a> from <a href="http://www.slideshare.net/philcrissman">philcrissman</a>.</div></div>
+
+
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Ujs In Rails 3 Tonight At Rum]]></title>
+    <link href="http://philcrissman.github.com/blog/2011/01/31/ujs-in-rails-3-tonight-at-rum/"/>
+    <updated>2011-01-31T00:00:00-06:00</updated>
+    <id>http://philcrissman.github.com/blog/2011/01/31/ujs-in-rails-3-tonight-at-rum</id>
+    <content type="html"><![CDATA[<hr />
+
+<p>title: UJS in Rails 3 tonight at RUM
+date: 31/01/2011</p>
+
+<p>UJS in Rails 3, tonight at RUM</p>
+
+<p>I&#8217;ll be speaking tonight on UJS and Rails 3 at <a href="http://ruby.mn/">RUM</a>. Slides will be posted somewhere later this week, and I may follow up with a post that summarizes the content, if the slides don&#8217;t seem complete enough to cover the topic on their own.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Looselyjoinednet]]></title>
+    <link href="http://philcrissman.github.com/blog/2011/01/14/looselyjoinednet/"/>
+    <updated>2011-01-14T00:00:00-06:00</updated>
+    <id>http://philcrissman.github.com/blog/2011/01/14/looselyjoinednet</id>
+    <content type="html"><![CDATA[<hr />
+
+<p>title: looselyjoined.net
+date: 14/01/2011</p>
+
+<p>I&#8217;ve been piling a lot of links, images, and whatnot up on a <a href="http://posterous.com">posterous.com</a> website: see <a href="http://looselyjoined.net">looselyjoined.net</a>. Enjoy, if you are so inclined.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Rockers]]></title>
+    <link href="http://philcrissman.github.com/blog/2010/12/11/rockers/"/>
+    <updated>2010-12-11T00:00:00-06:00</updated>
+    <id>http://philcrissman.github.com/blog/2010/12/11/rockers</id>
+    <content type="html"><![CDATA[<hr />
+
+<p>title: Rockers
+date: 11/12/2010</p>
+
+<p><img src="http://philcrissman.github.com/images/posts/rockers.jpg" /></p>
+
+<p>My sister made this out of an old photo of us. Being rockers. I don&#8217;t think it&#8217;s dated, but I&#8217;m guessing we&#8217;re around 4 and 2, respectively.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Gratuitious Web Bling]]></title>
+    <link href="http://philcrissman.github.com/blog/2010/11/21/gratuitious-web-bling/"/>
+    <updated>2010-11-21T00:00:00-06:00</updated>
+    <id>http://philcrissman.github.com/blog/2010/11/21/gratuitious-web-bling</id>
+    <content type="html"><![CDATA[<hr />
+
+<p>title: Gratuitious web bling
+date: 21/11/2010</p>
+
+<h3>or, <em>Just Because We Can Doesn&#8217;t Mean We Should</em></h3>
+
+<p><a href="http://www.20thingsilearned.com/home">20 things</a> is a site setup by Google which talks about the technologies behind and within web browsers.</p>
+
+<p><img src="http://philcrissman.github.com/images/posts/20things.jpg" width="440" alt="image of page turning in a web page made to look like a book" /></p>
+
+<p>Color me impressed, absolutely. It&#8217;s a pretty website, and a nice feat of html + JS + html5 technologies to make a &#8220;book-like&#8221; experience within a web page. It works and it&#8217;s a smooth effect, not to mention content that seems to make the ideas around the web and web browsers accessible to a non-technical audience. Well done.</p>
+
+<p>The only thing is, by the time I got to about the fourth page, I was wishing I could view it as a normal web page, and just scroll down, rather than having to &#8220;turn the page&#8221; each time. I wound up downloading the PDF version, which I will probably use to read the rest of it, as I just don&#8217;t want to deal with &#8220;reading&#8221; the virtual book any more.</p>
+
+<p>Making a website that acts like a book is marvelous. But <em>why</em> would we want to do that?</p>
+
+<div class="side-text">
+At least, provide a link to an alternate version for, you know&#8230; people who use web browsers.
+</div>
+
+
+<p>It strikes me as a little like trying to figure out a way to get a paper book to simulate clay or stone tablets. Maybe make the pages an inch thick and have them weigh a few pounds each. Neat if you can manage it, but <em>why</em>?</p>
+
+<p>That&#8217;s all. I don&#8217;t want to be a hater, I think the effect was executed wonderfully.</p>
+
+<p>But there&#8217;s no way I could read the whole thing in that format. If you want me to read it as a a book, publish it as one and put it on a shelf. If it&#8217;s going to be in a web page, let it act like a web page.</p>
+
+<p>At <em>least</em>, provide a link to an alternate one-long-page-we-can-scroll-down version for, you know&#8230; people who use web browsers.</p>
+
+<p>&#8211;</p>
+
+<p><strong>Please Comment:</strong> I&#8217;m curious: what did you think? Did you read the whole <em>20 things</em> &#8220;book&#8221;, or stop a few pages into it? If there had been an alternate &#8216;regular web page&#8217; version of the content, would you have read that version instead?</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Lets Roll]]></title>
+    <link href="http://philcrissman.github.com/blog/2010/11/11/lets-roll/"/>
+    <updated>2010-11-11T00:00:00-06:00</updated>
+    <id>http://philcrissman.github.com/blog/2010/11/11/lets-roll</id>
+    <content type="html"><![CDATA[<hr />
+
+<p>title: Let&#8217;s roll
+date: 11/11/2010</p>
+
+<p><a href="http://philcrissman.github.com/images/posts/d20-iwojima.jpg"><img src="http://philcrissman.github.com/images/posts/d20-iwojima.jpg" width="440" /></a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Anti Gravity]]></title>
+    <link href="http://philcrissman.github.com/blog/2010/11/09/anti-gravity/"/>
+    <updated>2010-11-09T00:00:00-06:00</updated>
+    <id>http://philcrissman.github.com/blog/2010/11/09/anti-gravity</id>
+    <content type="html"><![CDATA[<hr />
+
+<p>title: Anti-Gravity
+date: 09/11/2010</p>
+
+<p><img src="http://philcrissman.github.com/images/posts/antigravbook.jpg" alt="Anti-Gravity" /></p>
+
+<p><a href="http://comixed.memebase.com/2010/10/26/4-koma-comic-strip-a-real-page-turner/">link</a></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[How To Read Error Messages For Ruby On Rails]]></title>
+    <link href="http://philcrissman.github.com/blog/2010/11/08/how-to-read-error-messages-for-ruby-on-rails/"/>
+    <updated>2010-11-08T00:00:00-06:00</updated>
+    <id>http://philcrissman.github.com/blog/2010/11/08/how-to-read-error-messages-for-ruby-on-rails</id>
+    <content type="html"><![CDATA[<hr />
+
+<p>title: How To Read Error Messages for Ruby on Rails
+date: 08/11/2010</p>
+
+<p><img src="http://philcrissman.github.com/images/posts/stack.jpg" alt="stack" /></p>
+
+<p>Off and on (more off than on, recently) I lurk in the #rubyonrails IRC channel and try to be helpful. It&#8217;s sad to say, but it&#8217;s really common that people have questions &#8211; something isn&#8217;t working &#8211; and when they post the error message that they&#8217;re getting, their problem (and its implicit solution) is written in plain English in the first few lines of the error message. Not every time of course, but more often than not, error messages are trying to tell you something, and you should listen to what they&#8217;re telling you.</p>
+
+<p>The greatest possible help you can give someone who is having this sort of problem is to advise them to read the error messages and try to figure it out. It sounds a little harsh, shades of the RTFM-type of &#8220;help&#8221; that some communities are known for. But in the long run, it&#8217;s going to help the new developer a lot more to be able to read an error message than to simply ask you to read it for them.</p>
+
+<p>That said, here&#8217;s some things to look for in some fairly common Ruby and/or Rails error messages:</p>
+
+<h3>These are not the gems you&#8217;re looking for.</h3>
+
+<p><code>[gem] not found</code>, not present, etc. : so, you think you have installed a gem or plugin. Make sure.</p>
+
+<h3>You can&#8217;t <em>do</em> that with <em>this</em></h3>
+
+<p><code>no method error 'something' on SomeClass.</code> You&#8217;re trying to call a method on an object which does not actually have that method. Yes, I know, you think it does, but if it did, then your code would be working. So what is happening is that either you have a different object than you expected to have, or some Module which provides the method has not been included, or (if it&#8217;s an ActiveRecord object) the column or association you&#8217;re assuming is there is not actually there. Also, you may have spelled the method wrong, or it may be that the method you think is there doesn&#8217;t actually exist.</p>
+
+<p>A variation of this is when you have <code>no method 'whatever' for NilClass</code>&#8230; the issue here is that the object you&#8217;re looking for (almost certainly an ActiveRecord object) was not found; there was no record with a given id in the scope you were searching. So nil is what you were calling the method on, and NilClass has surprisingly few methods to call its own.</p>
+
+<p>A slight variation, somewhat related to the above case, is the error that you&#8217;re attempting to call the id for 4 which is nil, or some such confusing warning. Well, again, your object is nil. The id of nil is 4. Open up irb and check: the id (object_id, really) for nil is 4.</p>
+
+<p>Other things that can cause a nil error in a controller action and/or view are: not actually setting a value for an instance variable, forgetting to pass a local variable to a partial, and things of that nature.</p>
+
+<p>I thought I would be writing more, but most errors I can think of off the top of my head fall into one of these categories: a gem/library/plugin isn&#8217;t present, a no-method-error, and/or having an object be nil when you really expected it to be something else.</p>
+
+<p>Bottom line:</p>
+
+<p>Read the error messages.</p>
+
+<p>Read the error messages.</p>
+
+<p>Read the error messages.</p>
+
+<h3>But the error message isn&#8217;t helping!</h3>
+
+<p>Yeah, sometimes you just don&#8217;t know quite what the issue is. Or you can see what it is, but you aren&#8217;t sure <em>where</em> exactly it&#8217;s coming from. That&#8217;s where the stack trace comes it.</p>
+
+<p>Most error messages are accompanied by a stack trace which lists the method calls that led to the error that occurred. By going back down the stack trace, you can generally find the exact file, the exact method, and even the exact line number, which is ultimately responsible for causing the error.</p>
+
+<p>In Rails, most often (maybe not every time, but most often) the error will be in a file that you wrote, not one of the rails files. When I need to look through a stack trace for an error, I generally just start scanning down the list, skipping over any/all files that belong to a Rails core gem or library until I get to something in app/, config/, or lib/; basically, until I get to something that <em>I</em> wrote. Then I look for the line number, and most likely there I&#8217;ll find the reason the error was called.</p>
+
+<h3>I still can&#8217;t figure out what&#8217;s wrong.</h3>
+
+<p>Sometimes you just have to think about it for awhile. The key is, you have found the reason the error is being raised. You might <em>think</em> that your code is correct, but if an error is being raised, something isn&#8217;t right. It may be an assumption you&#8217;re using that isn&#8217;t really true, a typo, a logical error, a syntax error, but <em>somewhere</em>, there is a problem. If you get to your line of code which is responsible for the error and you still don&#8217;t know why it&#8217;s failing, (and a google search for the error and/or situation reveals nothing new), that might be a good time to ask for advice on IRC. You can also just start asking yourself: okay, I know this line of code is causing an error. Why would it be failing? What assumptions is this line of code making which may have turned out not be true? Would any of those assumptions cause this error?</p>
+
+<p>&#8230; and so forth.</p>
+
+<p>But again:</p>
+
+<ul>
+<li><p>Read the error message.</p></li>
+<li><p>Read the stack trace.</p></li>
+<li><p>Read your code.</p></li>
+<li><p>Think about it.</p></li>
+</ul>
+
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[One Does Not Simply Walk Into Mordor]]></title>
+    <link href="http://philcrissman.github.com/blog/2010/10/22/one-does-not-simply-walk-into-mordor/"/>
+    <updated>2010-10-22T00:00:00-05:00</updated>
+    <id>http://philcrissman.github.com/blog/2010/10/22/one-does-not-simply-walk-into-mordor</id>
+    <content type="html"><![CDATA[<hr />
+
+<p>title: One Does Not Simply Walk Into Mordor
+date: 22/10/2010</p>
+
+<p><img src="http://philcrissman.com/images/posts/walksintomordor.jpg" width="440" /></p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[By Land And By Sea And By Reference]]></title>
+    <link href="http://philcrissman.github.com/blog/2010/10/06/by-land-and-by-sea-and-by-reference/"/>
+    <updated>2010-10-06T00:00:00-05:00</updated>
+    <id>http://philcrissman.github.com/blog/2010/10/06/by-land-and-by-sea-and-by-reference</id>
+    <content type="html"><![CDATA[<hr />
+
+<p>title: By Land and By Sea and By Reference
+date: 06/10/2010</p>
+
+<p><img src="http://philcrissman.github.com/images/posts/travel_land_sea_air.jpg" width="440" />
+<span style="font-size:0.8em"><a href="http://www.flickr.com/photos/hitchster/4118220915/">Photo source</a></span></p>
+
+<p>I recently attempted to fit the quicksort algorithm into under 140 characters of Ruby. It looks like:</p>
+
+<pre>
+<code class="ruby">
+
+def q(s);t=s.dup;t.size<=1 ? t :(p=t[i=t.size/2];t.delete_at(i);x,y=[],[];t.each{|e|e&lt;p ? x&lt;&lt;e : y&lt;&lt;e};n=q(x);m=q(y);n+[p]+m)end
+
+</code>
+</pre>
+
+
+<p></p>
+
+<p>That&#8217;s a little hard to read, so here&#8217;s the first working version I wrote before attempting to squeeze it into twitterable form:</p>
+
+<pre>
+<code class="ruby">
+def quicksort(sequence)
+  tmp = sequence.clone
+  if tmp.count <= 1 
+    return tmp
+  else
+    pivot_index = (tmp.count / 2)
+    pivot = tmp[pivot_index]
+    # pull the pivot out of the array.
+    tmp.delete_at(pivot_index)
+    
+    # create 2 sub-sequences, one < pivot, one >= pivot
+    sub_sequence_a = []
+    sub_sequence_b = []
+    tmp.each do |element|
+      if element < pivot
+        sub_sequence_a << element
+      elsif element >= pivot
+        sub_sequence_b << element
+      end
+    end
+
+    # quicksort sub-sequence 1
+    new_sub_sequence_a = quicksort(sub_sequence_a)
+    
+    # quicksort sub-sequence 2
+    new_sub_sequence_b = quicksort(sub_sequence_b)
+    
+    # return sub1 plus pivot plus sub2
+    new_sub_sequence_a + [pivot] + new_sub_sequence_b
+  end
+end
+</code>
+</pre>
+
+
+<p>A key step in this implementation is pulling the pivot <em>out</em> of the array (see around line 9). In my first naive attempt at quicksort I just deleted the pivot right from <code>sequence</code>, the array object that is passed in to be sorted.</p>
+
+<p>Anyone see the problem there?</p>
+
+<p>At first, I sure didn&#8217;t. After all, I put the pivot back in the return value, right? (Second to last line.)</p>
+
+<p>That does indeed ensure that the <em>returned</em>, <em>sorted</em> array has all the same elements as the original array. But the original array that I passed in would now have one less item. It would (did) lose an element every time I&#8217;d run my naive (read: incorrect) implementation of quicksort on it.</p>
+
+<h3>WTF?</h3>
+
+
+<p>Enter passing objects by reference. In Ruby, everything is passed by reference.(1) It can be easy to forget this, though, especially if you&#8217;re used to changing objects with the assignment (&#8220;=&#8221;) operator.</p>
+
+<blockquote style="font-size:0.85em">
+1 Just in case that&#8217;s not a familiar phrase, &#8220;by reference&#8221; refers to the idea that a reference to the <strong>actual object</strong> (like a pointer, if you will) is being passed, not just a copy of the object, or just the value of the object (which is called passing &#8220;by value&#8221;). (And no, by &#8220;pointer&#8221; I&#8217;m not talking about pointers in C/C++, I&#8217;m just trying to say that a reference <strong>refers to</strong> or in a sense, <strong>points to</strong>, the actual original object.)
+</blockquote>
+
+
+<p>For example:</p>
+
+<pre>
+<code class="ruby">
+def reassign(obj)
+  obj = "Not the same!"
+end
+
+#irb
+> greeting = "Hello!"
+=> "Hello!"
+> reassign(greeting)
+=> "Not the same!"
+> puts greeting
+Hello!
+=> nil
+</code>
+</pre>
+
+
+<p>So, assignment inside a method doesn&#8217;t change our object. Ruby must not <em>really</em> be passing a referece, right? Wrong, it sure is.</p>
+
+<pre>
+<code class="ruby">
+def shiftit(obj)
+  obj.shift
+end
+
+#irb
+> h = {:foo => "bar", :bar => "baz", :baz => "qux"}
+=> {:foo=>"bar",:bar =>"baz",:baz=>"qux"}
+> a = [1,2,3,4,5,6]
+=> [1,2,3,4,5,6]
+> shiftit(h)
+=> {:bar =>"baz",:baz=>"qux"}
+> shiftit(a)
+=> [2,3,4,5,6]
+> # BUT WAIT
+> h
+=> {:bar =>"baz",:baz=>"qux"}
+> a
+=> [2,3,4,5,6]
+</code>
+</pre>
+
+
+<p>Huh. How about that. Our original objects were changed when they were modified inside the method.</p>
+
+<p>You&#8217;ll find that any method of modifying an object inside another method with actually change (even delete, if you go that far) the original object that you passed in. Ruby quite definitely, always, passed objects by reference.</p>
+
+<h3>Then How come <em>assignment</em> in a method doesn&#8217;t change an object?</h3>
+
+
+<p>That&#8217;s a good question. I was stumped on this one myself for a bit. The answer comes down to the idea of <em>bindings</em> and <em>scope</em>. When I tell Ruby that <code>foo = "bar"</code>, Ruby binds the local variable named <em>foo</em> to a String object, &#8220;bar&#8221;. foo is a String object, and when I pass it to my <code>reassign</code> method, I am passing a reference to the real object, <code>foo</code>.</p>
+
+<p>However, inside the method, I&#8217;m in a new scope. When I type <code>foo = "Some new value"</code> inside the method scope, trying to reassign <code>foo</code>, Ruby sees that I&#8217;m binding foo to a new value; but from inside method scope, Ruby is not going to let me change the binding from another scope. So instead, Ruby figures that I want a local variable that is <em>also</em> named <code>foo</code>, inside my method scope, and it assigns my new value to the local <code>foo</code>, not the original <code>foo</code>.</p>
+
+<p>I could alter it, still: if I changed the <code>reassign</code> method so that it did <code>obj.replace("Some new value!")</code> inside the method body, the original object would be changed, just like <code>shiftit</code> did to the array and the hash.</p>
+
+<h3>I think I&#8217;m a clone, now</h3>
+
+
+<p>Back to the quicksort implementation I started with: the way to get around this is to use .clone or .dup to get a <em>copy</em> of the object. That way you aren&#8217;t actually modifying the original object. Even when I realized this was happening, I still made the mistake of just doing <code>tmp = sequence</code> on my first try. No good; same exact problem. <code>tmp</code> is now just a reference straight to <code>sequence</code>, so altering <code>tmp</code> modifies <code>sequence</code> as well. Need to use <code>tmp = sequence.clone</code>, or something like it.</p>
+
+<h3>That&#8217;s all I have to say about that</h3>
+
+
+<p>Say it with me now: &#8220;Ruby passes objects by reference. <em>Ruby passes objects by reference.</em> Every time. <em>All the time.</em> <strong>By reference.</strong>&#8221;</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Why I Dont Like Location Based Services]]></title>
+    <link href="http://philcrissman.github.com/blog/2010/09/14/why-i-dont-like-location-based-services/"/>
+    <updated>2010-09-14T00:00:00-05:00</updated>
+    <id>http://philcrissman.github.com/blog/2010/09/14/why-i-dont-like-location-based-services</id>
+    <content type="html"><![CDATA[<hr />
+
+<p>title: Why I don&#8217;t like location based services
+date: 14/09/2010</p>
+
+<p>So, I&#8217;ve resisted being involved in <a href="http://foursquare.com">foursquare</a>, <a href="http://gowalla.com">gowalla</a>, yelp check-in, Facebook places, even geo-tagging twitter entries, et al.: all the &#8220;location&#8221; based check-in type services out there. There was always something I just didn&#8217;t care for about them.</p>
+
+<p>Until recently, I&#8217;ve never really tried to say exactly <em>what</em> it is that I dislike about them. It isn&#8217;t simply the notion of saying where you are: I say where I am on twitter frequently. Am I a hypocrite? I don&#8217;t think so. But <em>why not</em>? What, you may ask, O Wise Phil Crissman, is the difference between saying where you are in a tweet, and in &#8216;checking in&#8217; with one of the afore-mentioned services?</p>
+
+<p>What indeed.</p>
+
+<h2>1. It can be really annoying. By frequency.</h2>
+
+
+<p>Well, there is the frequency. By making it &#8220;easier&#8221; to broadcast your location, it&#8217;s not hard to see that this will increase the frequency with which a user does this. While I will probably only tweet my location at times where it is in some way, to my mind, significant, a user of the above services can easily broadcast their presence at the gas station, the library, the street corner, the adult bookstore, the bathroom, and the local dumpster. Just the fact of making it <em>easier</em> to do increases the amount of times users will do it, and therefore increases the level of <em>noise</em> in a given feed.</p>
+
+<p><em>Why is it noise?</em> you may ask. <em>People care where I am. Besides, you already said you tweet your location sometimes. Is <strong>that</strong> noise?</em></p>
+
+<p>If people think it&#8217;s noise, they can always unfollow me. But since I tweet my location <em>less frequently</em>, it&#8217;s also more likely to be a significant (to me, at least) location: I&#8217;m at <a href="http://www.loumalnatis.com/">Lou Malnati&#8217;s</a>. I&#8217;m at <a href="http://minnebar.org">minnebar</a>. I&#8217;m at <a href="http://cornerchurch.tv">Corner Church</a>. Whatever. The very fact that I don&#8217;t say <em>every single place I ever visit</em> makes the ones that I do mention&#8230; well, if nothing else, a better indicator of the things that I find important.</p>
+
+<h2>2. It can be really annoying. By advertisement.</h2>
+
+
+<p>There&#8217;s a good reason a lot of social media &amp; marketing types love these; because for brick and mortar businesses, they&#8217;re a marketers wet dream.</p>
+
+<p>&#8220;What? Every single time a person goes to a <em>WHATEVER Coffee</em> they are willing to announce it to everyone who might happen to know them? &#8230; Wow! Free word of mouth advertising!&#8221;</p>
+
+<p>There&#8217;s even built-in <em>incentive</em> to check-in to these places (thereby advertising them) more frequently. <em>You can be the mayor. Of Snowbutts Coffee. Isn&#8217;t that great? They might even give you 50% off a biscotti, which you wouldn&#8217;t have ordered otherwise, but hey, it&#8217;s a deal, right?</em></p>
+
+<p>The next step from this, to my mind, is a service that lets you broadcast everytime you consume a TastyBeverage Cola (&#8220;I just had a TastyBeverage Cola, shared via Consumatron3000!&#8221;). They could even automate it; put an RFID on, well, basically everything, and just have your mobile device read it.</p>
+
+<p><em>Oh boy. I just can&#8217;t wait for that to catch on, how about you?</em> :-(</p>
+
+<p>Now, some of you might protest. You don&#8217;t <em>mind</em> advertising for some places. You <em>love</em> your Snowbutts coffee, and you think everyone else should be constantly reminded of how great it is. Not too much, though, or you might not be mayor anymore. But regardless. It&#8217;s <em>opt in</em>, you may say, and therefore valid and legit word of mouth.</p>
+
+<p>Sure, okay. I get that. And you can do that. I just don&#8217;t feel like giving permission for my twitter feed to become a billboard for every <em>brandname</em> outlet I walk into. You go right ahead.</p>
+
+<h2>3. It can be really annoying. Period.</h2>
+
+
+<p>I know for sure of at least two, probably more, times where I&#8217;ve seen folks rhapsodizing about location-based services, and seen the sentiment that those of us who refuse to use them just don&#8217;t &#8220;get it&#8221;.</p>
+
+<p>Well, aside from that marginally offending my geek pride (until I stop and consider the source), I think that idea is just plain wrong. I think people who refuse to participate in 4sq, et al. &#8220;get&#8221; the idea just fine. The very fact that they &#8220;get&#8221; what these services are about is the reason they refuse to use them. (I&#8217;m just hypothesizing, here, but you&#8217;ve read this far, just humor me.)</p>
+
+<p>Look, I&#8217;m just as susceptible as anyone else in this western consumer society to &#8220;love&#8221; a brand or a commodity. I might tweet or talk about my favorite restaurants, tv shows, movies, or coffee brand. Sure; there are things I like, things I find worthwhile enough to be a willing word-of-mouth participant in their organic marketing. I just don&#8217;t want to automate it to the point where I fill my twitter (or other) feed with these things, increasing their frequency because of the subtle (or not so subtle) psychological/material rewards of being &#8220;mayor&#8221; or getting a free doodad from WhizBangDoodad store.</p>
+
+<h2>In conclusion</h2>
+
+
+<p>Once again, Mr. Horse put it best:</p>
+
+<object width="439" height="272"><param name="movie" value="http://www.youtube.com/v/R6Mj1Us13Yk?fs=1&amp;hl=en_US&amp;color1=0x006699&amp;color2=0x54abd6"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/R6Mj1Us13Yk?fs=1&amp;hl=en_US&amp;color1=0x006699&amp;color2=0x54abd6" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="439" height="272"></embed></object>
+
+]]></content>
+  </entry>
   
 </feed>

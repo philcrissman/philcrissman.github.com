@@ -1,0 +1,29 @@
+<hr />
+
+<p>title: Testing Ajax Requests In Rails
+date: 18/01/2009</p>
+
+<p>Just figured out a test on which I spent far too long wondering why it wasn&#8217;t working. I kept coming back to it and trying something else, and it kept not working.</p>
+
+<p>We have a form which submits to a create action by a remote_form_for; so, an Ajax request, in other words. The controller action just uses <code>render :update</code> and replaces some HTML instead of redirecting. But in every other respect, it&#8217;s a POST to the controller, and is going to call :create. Easy, right?</p>
+
+<p>We&#8217;re using shoulda, and despite having a perfectly reasonable <code>post :create, :whatever_id => @thing.id, :our_model => { :stuff => "stuff" }</code> in the setup, it wasn&#8217;t actually creating the item; shoulda&#8217;s handy <code>should_change "Thing.count", :by => 1</code> kept failing.</p>
+
+<p>I finally just started flipping through The Literature (in this case, the Rails Way&#8217;s chapter on testing), and happened to notice an off-hand remark that, in addition to methods for POST, PUT, GET, etc, there was an <code>xhr</code> method, to simulate an XMHHttpRequest.</p>
+
+<p>Well.</p>
+
+<p>What I should have been writing, all along, was:</p>
+
+<pre>
+<code class="ruby">
+xhr :post, :create, 
+  :whatever_id => @thing.id, 
+  :our_model => {:stuff => "stuff"}
+</code>
+</pre>
+
+
+<p>It&#8217;s always the little things.</p>
+
+<p>Remember to read the literature.</p>

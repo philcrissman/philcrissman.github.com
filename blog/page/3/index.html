@@ -1,0 +1,1164 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Automagical Thinking</title>
+  <meta name="author" content="Your Name">
+
+  
+  <meta name="description" content="title: Fun With The Major Scale
+date: 11/08/2010 Got to chatting with Nate (@fowlduck) about musical notation last night. He was pointing out that &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://philcrissman.github.com/blog/page/3">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Automagical Thinking" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+
+  
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Automagical Thinking</a></h1>
+  
+    <h2>I forgot what I was going to say here.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:philcrissman.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div class="blog-index">
+  
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/08/11/fun-with-the-major-scale/">Fun With the Major Scale</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-08-11T00:00:00-05:00" pubdate data-updated="true">Aug 11<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><hr />
+
+<p>title: Fun With The Major Scale
+date: 11/08/2010</p>
+
+<p>Got to chatting with Nate <a href="http://twitter.com/fowlduck">(@fowlduck)</a> about musical notation last night. He was pointing out that bits of the notation seem arbitrary and probably archaic, likening it to legacy code of a sort. For example, why no whole tone between B and C, E and F? This post is NOT meant to be a defense of music notation, a &#8220;setting straight&#8221; of anything, or even a definitive description of musical theory (at which I&#8217;m a rank amateur). It just got me thinking about the major scale and the circle of fourths &amp; fifths, which led to some playing around on the command line, which led to this. Enjoy.</p>
+
+<p>The thing that makes it seem so strange is, at least in part, the major scale. The octave consists of twelve semi-tones, in which the major scale is set in this pattern: whole tone, whole tone, semitone, whole tone, whole tone, whole tone, whole tone, semi-tone. Like so:</p>
+
+<pre>
+  1   2   3   4   5   6   7   8   9   10  11  12  13
+| C |   | D |   | E | F |   | G |   | A |   | B | C | ... (etc) 
+</pre>
+
+
+<p>The next root note (13th semi-tone, above) is only a semi-tone off from the last note of the scale. And so on. The semi-tone before or after any given note is a flat or a sharp respectively, giving rise to the B# == C, Cb == B, E# == F, Fb == E identities. So, let&#8217;s just accept the scale as a given; that this pattern of whole tones and semi-tones sounds pleasing to the ear.</p>
+
+<p>So why is it C that has all natural notes (no sharps or flats)? Good question. That part, to me at least, does seem arbitrary, but effectively it doesn&#8217;t matter. Given the above system, the major scale in one key and one key only will have no sharps or flats. But still, why structure the notes this way? It still doesn&#8217;t necessarily seem to make sense.</p>
+
+<p>There are a few reasons. For one, we want to be able to express every scale by naming off the notes, and we&#8217;d like each note to be a different letter. So we need 7 letters.</p>
+
+<p>Where it gets really interesting is the circle of fourths and fifths.</p>
+
+<p><img src="http://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Circle_of_fifths_deluxe_4.svg/400px-Circle_of_fifths_deluxe_4.svg.png" /></p>
+
+<p>So, if you go around clockwise, you&#8217;re counting by fifths (G is the fifth note of the C major scale, D is the fifth note of the G major scale, etc) and if you go around counter-clockwise you&#8217;re counting by fourths (F is the fourth note of C, Bb is the fourth note of F, etc). If you go around clockwise, each scale has one additional sharped note until you get to 180 degrees around, then it has n-1 flat notes, and loses one flat each fifth till you get back to C (no sharps or flats); vis versa the other direction. This is actually really cool; each scale, in addition to being unique in that, well, it has a different root note, is unique in that it is the only scale to have its specific number of sharps or flats. If a scale has 3 sharps, it&#8217;s A. Period. There isn&#8217;t another choice. Neat!</p>
+
+<p>So for fun, we can explore the circle of fifths in the command line. First lets set it up:</p>
+
+<pre>
+<code class="ruby">
+> circle = (0..11).map{|n| n*7%12 }
+ => [0, 7, 2, 9, 4, 11, 6, 1, 8, 3, 10, 5] 
+</code>
+</pre>
+
+
+<p>Well. That doesn&#8217;t mean a whole lot. How can we map it to notes? Let&#8217;s just construct a reference array really quick. (I&#8217;m making it an instance variable so I can use it in a method later; this was all done in irb.)</p>
+
+<pre>
+<code class="ruby">
+> @notes = ["C", "C#/Db", "D", "D#/Eb", "E", "E#/F", "F#/Gb", "G", "G#/Ab", "A", "A#/Bb", "B/Cb"]
+ => ["C", "C#/Db", "D", "D#/Eb", "E", "E#/F", "F#/Gb", "G", "G#/Ab", "A", "A#/Bb", "B/Cb"]
+</code>
+</pre>
+
+
+<p>So, to read our circle, we&#8217;d do:</p>
+
+<pre>
+<code class="ruby">
+> circle.map{|n| @notes[n]}
+ => ["C", "G", "D", "A", "E", "B/Cb", "F#/Gb", "C#/Db", "G#/Ab", "D#/Eb", "A#/Bb", "E#/F"]
+</code>
+</pre>
+
+
+<p>Hooray. The circle of fifths. Now, so what? Well, let&#8217;s make a little method to construct a major scale from the <code>@notes</code> variable. We&#8217;ll take a root note as an argument, so we can construct any major scale we like.</p>
+
+<pre>
+<code class="ruby">
+> def major(root=0)
+?>  offset = (0..11).map{|n| @notes[(n+root)%12]}
+?>  [offset[0], offset[2], offset[4], offset[5], offset[7], offset[9], offset[11]].join(" ")
+?>  end
+ => nil
+</code>
+</pre>
+
+
+<p>So, just calling <code>major</code> with no arguments should give us the C major scale; calling with, say, 5 should give us F major (5 in this case is the index of F in @notes; but you were already following that, I know):</p>
+
+<pre>
+<code class="ruby">
+> major
+ => "C D E E#/F G A B/Cb" 
+> major(5)
+ => "E#/F G A A#/Bb C D E" 
+
+</code>
+</pre>
+
+
+<p>So we said that the circle of fifths added a sharp each increment, and then flipped to flats and removed on each increment. Let&#8217;s watch it happen:</p>
+
+<pre>
+<code class="">
+>> circle.each{|n| puts major(n) }
+C D E F G A B
+G A B C D E F#/Gb
+D E F#/Gb G A B C#/Db
+A B C#/Db D E F#/Gb G#/Ab
+E F#/Gb G#/Ab A B C#/Db D#/Eb
+B C#/Db D#/Eb E F#/Gb G#/Ab A#/Bb
+F#/Gb G#/Ab A#/Bb B C#/Db D#/Eb F
+C#/Db D#/Eb F F#/Gb G#/Ab A#/Bb C
+G#/Ab A#/Bb C C#/Db D#/Eb F G
+D#/Eb F G G#/Ab A#/Bb C D
+A#/Bb C D D#/Eb F G A
+F G A A#/Bb C D E
+</code>
+</pre>
+
+
+<p>Not as neat as it could look since I put the #/b both in the original notes array; the note you&#8217;d read would be the one with a consecutive letter after the previous note. So in G, the note following E is F#. In Eb, the note following G is Ab&#8230; and so on. The same note <em>letter</em> only appears once in any given scale. A sharp or flat is added or removed each increment you go around the circle.</p>
+
+<p>I don&#8217;t have any startling conclusions to close this off with. Just that music is pretty cool, and that a few of the things that <em>seem</em> arbitrary just have to be that way &#8211; assuming we&#8217;re going to base the system around 12 equally tempered semitones (see <a href="http://en.wikipedia.org/wiki/Equal_temperament">Equal Temperment</a>, or even <a href="http://en.wikipedia.org/wiki/The_Well-Tempered_Clavier">Bach&#8217;s Well-Tempered Clavier</a> (evidently there&#8217;s some dispute over whether or not Bach&#8217;s intended tuning was equal or, uh, &#8220;well&#8221; tempered; I was not aware of this!)) and a 7 note major scale &#8211; neither of which are absolutely necessary, of course, and there are other ways to do it. See <a href="http://en.wikipedia.org/wiki/Mathematics_of_musical_scales#Mathematics_of_musical_scales">Mathematics of musical scales</a> and <a href="http://en.wikipedia.org/wiki/Musical_tuning#Tuning_systems">tuning systems</a> for more.</p>
+
+<p>Happy musicking.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/08/06/push-it-somewhere-else/">Push It Somewhere Else</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-08-06T00:00:00-05:00" pubdate data-updated="true">Aug 6<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><hr />
+
+<p>title: Push it somewhere else
+date: 06/08/2010</p>
+
+<p><img src="http://philcrissman.com/images/posts/patrick-make-a-gist.jpg" width="440" /></p>
+
+<p>For all the folks in #rubyonrails, and beyond.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/08/04/graffiti-on-a-train/">Graffiti on a Train</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-08-04T00:00:00-05:00" pubdate data-updated="true">Aug 4<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><hr />
+
+<p>title: graffiti on a train
+date: 04/08/2010</p>
+
+<p><img src="http://philcrissman.com/images/posts/hbak_graffiti.jpg" width="440" /></p>
+
+<p>Pic taken along the trail on the way from Minneapolis to Hopkins.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/08/03/there-will-be-no-newsletter/">There Will Be No Newsletter</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-08-03T00:00:00-05:00" pubdate data-updated="true">Aug 3<span>rd</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><hr />
+
+<p>title: There Will Be No Newsletter
+date: 03/08/2010</p>
+
+<p>So, a few weeks ago I saw <a href="http://letter.ly">letter.ly</a> and I thought, hey, there&#8217;s an idea, so I created an account and thought to myself, <em>what could I send out a newsletter about? I know, how about time management? I have to manage my own time, I get stuff done. That&#8217;s useful, right?</em> And so I wrote a couple posts, debated on actually getting started. Yesterday I went ahead and pulled the trigger, send out the first one and also publicized it on twitter (to no real response, which is more or less as I expected).</p>
+
+<p>I started to reconsider almost right away. While I like writing, I&#8217;m not certain I want to make a job of it. And while I like time management, and I think I&#8217;m decent at it, it doesn&#8217;t really drive me to fits of enthusiasm as a topic. I&#8217;d probably be better off taking my top few time management ideas and making blog posts out of them than I would attempting to come up with something new every single week.</p>
+
+<p>The for-profit newsletter does seem like a good idea, but I think I&#8217;m going to stick with one channel of writing, for now. The blog has a couple ads on it, which I don&#8217;t apologize for (nor do I really care if you block ads; your prerogative), so I guess if whatever I write gets immense attention (not likely, but it&#8217;s happened a few times), some reward will trickle back.</p>
+
+<p>Now, an e-book of some sort does seem like a better idea, and I have several ideas (one of which might well have to do with time management) that I might try to eventually work on in that direction. But a newsletter; I don&#8217;t really think I want to pour my efforts into that, right now. I think they&#8217;re better placed elsewhere.</p>
+
+<p>So if you saw yesterday&#8217;s tweet about the experiment, and followed the link over to <a href="http://letter.ly">letter.ly</a>, yeah. That&#8217;s the backstory, and that&#8217;s why if you look for it now, you&#8217;ll see it has a message saying it&#8217;s <em>ceased</em>. (UX note: could not find a way to actually <em>delete</em> a newsletter. Seems like that would be a handy function.)</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/07/29/rvm/">Rvm</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-07-29T00:00:00-05:00" pubdate data-updated="true">Jul 29<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><hr />
+
+<p>title: RVM
+date: 29/07/2010</p>
+
+<p><img src="http://philcrissman.com/images/posts/rvm_image.png" width="440" /></p>
+
+<p>I gave a short presentation on <a href="http://rvm.beginrescueend.com">RVM</a> on Monday at <a href="http://ruby.mn">RUM</a>.</p>
+
+<p>The slides can be found at <a href="http://rubymn-rvm.heroku.com">rubymn-rvm.heroku.com</a>.</p>
+
+<p>Enjoy!</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/07/28/faith/">Faith</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-07-28T00:00:00-05:00" pubdate data-updated="true">Jul 28<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><hr />
+
+<p>title: Faith
+date: 28/07/2010</p>
+
+<p><img src="http://philcrissman.com/images/posts/vader_faith.jpg" width="440" /></p>
+
+<p>I know, I know, the faux motivational poster is an old and tired <a href="http://en.wikipedia.org/wiki/Meme">meme</a>. Sorry.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/07/27/i-write-like/">I Write Like</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-07-27T00:00:00-05:00" pubdate data-updated="true">Jul 27<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><hr />
+
+<p>title: I Write Like
+date: 27/07/2010</p>
+
+<p>I&#8217;ve seen the <a href="http://iwl.me/">I write like</a> links show up on facebook and twitter a few times, so I decided I&#8217;d take a look. Not content to simply feed it one sample, I fed it the text from several of the posts from the archive. Here were the results:</p>
+
+<ul>
+<li><a href="http://philcrissman.com/2009/01/14/i-hold-strong-opinions-about-the-placement-of-curly-braces">I Hold Strong Opinions About The Placement Of Curly Braces</a></li>
+<li><p>=> I write like: <strong>H.P. Lovecraft</strong>. <em>Really? Wait&#8230; what?</em></p></li>
+<li><p><a href="http://philcrissman.com/2010/02/16/no-were-not-the-stupid-ones">No, We&#8217;re Not The Stupid Ones</a></p></li>
+<li><a href="http://philcrissman.com/2009/01/16/in-which-i-am-no-longer-a-very-good-bachelor">In Which I Am No Longer A Very Good Bachelor</a></li>
+<li><a href="http://philcrissman.com/2010/04/01/oracle-to-acquire-oracle">Oracle To Acquire Oracle</a></li>
+<li><p>=> I write like: <strong>Cory Doctorow</strong>. <em>Huh. You think? Well, okay. Thanks!</em></p></li>
+<li><p><a href="http://philcrissman.com/2006/09/22/the-emperors-new-web">The Emperor&#8217;s New Web</a></p></li>
+<li>=> I write like: <strong>Jonathan Swift</strong>. <em>[blushing] No, no&#8230; you&#8217;re too kind.</em></li>
+</ul>
+
+
+<p>Not sure how they are analyzing the text and reaching their conclusions, but there&#8217;s at least a <em>little</em> bit of smarts in there; that last one, the one which was compared to Swift, is indeed a satire, though I&#8217;m not going to claim it&#8217;s in the calibre of Swift&#8217;s satire, but still; their algorithm picked something out of it which prompted the comparison. Not bad.</p>
+
+<p>So, evidently, according to their analyses, I write most often like Cory Doctorow. I&#8217;ve only read <em>Down And Out In The Magic Kingdom</em>, and several of his blog posts/essays, but enough to consider it a compliment, though I&#8217;m not certain it&#8217;s deserved. Regardless, there we have it.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/07/18/how-not-to-write-sorting-algorithms-in-ruby/">How Not to Write Sorting Algorithms in Ruby</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-07-18T00:00:00-05:00" pubdate data-updated="true">Jul 18<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><hr />
+
+<p>title: How Not To Write Sorting Algorithms in Ruby
+date: 18/07/2010</p>
+
+<p>The second chapter of <a href="http://www.amazon.com/gp/product/0262033844?ie=UTF8&amp;tag=idepermin-20&amp;linkCode=as2&amp;camp=1789&amp;creative=390957&amp;creativeASIN=0262033844"><em>Introduction To Algorithms</em></a> by Cormen, Leiserson, et al., describes the algorithms for Insertion Sort and Merge Sort in pseudocode, and compares their relative efficiency (or lack thereof). I decided to write them out in Ruby and run some simple benchmarks, just for fun.</p>
+
+<h2>Insertion Sort</h2>
+
+
+<p>There are a variety of ways one could write the insertion sort in Ruby; this is more or less an literal translation of the <em>Intro to Algorithms</em> pseudocode to ruby &#8211; it could perhaps be made a little more ruby-ish, but here&#8217;s my version:</p>
+
+<pre>
+<code class="ruby">
+def insertion_sort(sequence)
+  sequence[1..sequence.size].each_with_index do |j, index|
+    i = index
+    sequence[0..i].reverse.each do |k|
+      break unless k > j
+      sequence[i + 1] = k
+      i = i - 1
+    end
+    sequence[i+1] = j
+  end
+end
+</code>
+</pre>
+
+
+<p>In a nutshell:</p>
+
+<ol>
+<li>Start with the second element (index 1).</li>
+<li>Save the index in a local variable, because we&#8217;re going to use it to figure out which array element to swap the current element into.</li>
+<li>Take the sub-array 0..i (where <em>i</em> is the current index being looked at), and go backwards until the element in your inner loop is less than the current element from the outer loop, also decrementing <em>i</em> each iteration.</li>
+<li>Copy the element in index [i] to index [i + 1]</li>
+<li>Outside the inner loop, we&#8217;ll put the current element at [i + 1].</li>
+</ol>
+
+
+<p>In case this is a little unclear, it would go something like this:</p>
+
+<p>Starting array: [5,2,3,1,4,0]</p>
+
+<p>First pass: [<strong>2</strong>,<em>5</em>,3,1,4,0]</p>
+
+<p>Second pass: [2,<strong>3</strong>,<em>5</em>,1,4,0]</p>
+
+<p>Third pass: [<strong>1</strong>,<em>2</em>,<em>3</em>,<em>5</em>,4,0]</p>
+
+<p>Fourth pass: [1,2,3,<strong>4</strong>,<em>5</em>,0]</p>
+
+<p>Fifth pass: [<strong>0</strong>,<em>1</em>,<em>2</em>,<em>3</em>,<em>4</em>,<em>5</em>]</p>
+
+<p>(<strong>Bold elements</strong> are the ones which were the &#8220;current&#8221; element moved back, <em>italic elements</em> are the ones that had to be shifted forward in this step.)</p>
+
+<h2>Merge Sort</h2>
+
+
+<p>The merge sort is split into two parts; a <code>merge</code> method that acts as a helper, and the actual <code>merge_sort</code> which calls itself recursively, also calling <code>merge</code> when needed.</p>
+
+<p>Here&#8217;s a version modeled after the pseudocode in <em>Intro to Algorithms</em>:</p>
+
+<pre>
+<code class="ruby">
+def merge_sort(sequence, first, last)
+  if first < last
+    mid = (first + last) / 2
+    merge_sort(sequence, first, mid)
+    merge_sort(sequence, mid + 1, last)
+    merge(sequence, first, mid + 1, last)
+  end
+end
+
+def merge(sequence, first, mid, last)
+  left = sequence[first..mid - 1]
+  right = sequence[mid..last]
+  left.push(Float::MAX)
+  right.push(Float::MAX)
+  i = 0
+  j = 0
+  (first..last).each do |n|
+    if left[i] <= right[j]
+      sequence[n] = left[i]
+      i = i + 1
+    else
+      sequence[n] = right[j]
+      j = j + 1
+    end
+  end
+end
+</code>
+</pre>
+
+
+<p>A few notes: You&#8217;ll notice that in the <code>merge</code> method, when the sequence is split into two parts, the value Float::MAX is pushed onto each as the final element. <em>Intro to Algorithms</em> uses the idea that &#8220;infinity&#8221; is set to the last element. Hopefully I can explain why in the description of the algorithm.</p>
+
+<p>First, the merge method. The merge method assumes that the left half and the right half of the section of the array it&#8217;s looking at are <em>already sorted</em>. Having made this assumption, it loops through the range it&#8217;s considering (<code>first..last</code>), and puts either the first element of the left side, or the first element of the right side, whichever it least. It increments each subarray as it goes; when it gets past the last element of either array, Float::MAX will <em>always</em> be higher (or so we assume, for the sake of this implementation) than whatever is in the other array. So merge finishes up, basically (ahem) <em>merging</em> the two halves together in place, with the whole first..last range sorted.</p>
+
+<p>Now, the actual merge_sort method. It first checks to see if first &lt; last; if this were <em>false</em>, then the range would be an array of size 1, and an array of size 1 is already sorted. So assuming the range first..last is > 1, it calculates a midpoint; integer division works fine for this, using <code>(first + last) / 2</code>. Then it calls itself recursively on each subarray; these in turn will continue splitting each subarray into two parts until it gets to the point where it&#8217;s just two subarrays of one element each; which are then fed to <code>merge</code> and sorted. As the method returns from each level of recursion, each &#8220;half&#8221; of the subarray under consideration has been sorted, until it gets all the way back to the first call to <code>merge_sort</code>, and executes <code>merge</code> on each (sorted) half of the full array.</p>
+
+<p>Phew. I&#8217;m going to attempt to show another example, in case that&#8217;s helpful. Let&#8217;s say we started with the same starting array as the insertion_sort example. This time, to show what the recursion is actually doing, I&#8217;ll write out what each nested call to merge_sort( and/or merge) would actually look like:</p>
+
+<p>Starting array: [5,2,3,1,4,0]</p>
+
+<pre style="font-size:0.8em !important;">
+merge_sort([5,2,3,1,4,0], 0, 5):
+  mid <- 2
+  merge_sort([5,2,3], 0, 2):
+    mid <- 1
+    merge_sort([5,2], 0, 1):
+      mid <- 0
+      merge_sort([5], 0, 0):
+      merge_sort([2], 1, 1):
+      merge([5,2],0, 1, 1):
+        left <- [5,&infin;]
+        right <- [2,&infin;]
+        loop(0..1):
+          [2,5] # just showing the result in this step; the two elements are sorted.
+    merge_sort([3], 2, 2):
+    merge([2,5,3], 0, 2, 2):
+      left <- [2,5,&infin;]
+      right <- [3,&infin;]
+      loop(0..2):
+        [2,3,5]
+  merge_sort([1,4,0], 3, 5):
+    mid <- 4
+    merge_sort([1,4], 3, 4):
+      mid <- 3
+      merge_sort([1], 3, 3):
+      merge_sort([4], 4, 4):
+      merge([1,4], 3, 4, 4):
+        left <- [1,&infin;]
+        right <- [4,&infin;]
+        loop(3..4):
+          [1,4]
+    merge_sort([0], 5, 5):
+    merge([1,4,0], 3, 5, 5):
+      left <- [1,4,&infin;]
+      right <- [0,&infin;]
+      loop(3..5):
+        [0,1,4]
+  merge([2,3,5,0,1,4], 0, 3, 5):
+    left <- [2,3,5,&infin;]
+    right <- [0,1,4,&infin;]
+    loop(0..5):
+      [0,1,2,3,4,5]
+</pre>
+
+
+<p>Uhm, hopefully that&#8217;s clear. If you&#8217;re bothering to read this and it still isn&#8217;t clear, just run the sort locally and add some <code>print</code> or <code>puts</code> statements liberally so you can see what&#8217;s going on. Note: I did take a liberty in the above listing of what&#8217;s happening; in actuality the entire array is passed each time; I made it look as though just the subarray were being passed in each case, because that is the only part that is being looked at in each nested section. Again, if you&#8217;re interested enough in the topic that you&#8217;re still working out this algorithm, fire up irb and just try it out, it will make more sense as you do so.</p>
+
+<h2>Wait, why is this called &#8220;how <em>not</em> to write sorting algorithms&#8230;?&#8221;</h2>
+
+
+<p>Aha. I thought you&#8217;d never ask. Well, the main reason is that both of these methods are significantly slower than good old Array::sort, which is built in to Ruby (and which, as far as I know, is implemented using the <a href="http://en.wikipedia.org/wiki/Quicksort">quicksort</a> algorithm).</p>
+
+<p>So, just for fun, I wrote a little script to make some benchmarks of these various methods on arrays of various sizes. Here were the results:</p>
+
+<pre style="font-size:0.8em !important;">
+      user     system      total        real
+
+ small_array has 100 elements in it...
+Insertion Sort (small_array): 
+  0.000000   0.000000   0.000000 (  0.002122)
+Merge sort (small_array): 
+  0.000000   0.000000   0.000000 (  0.001499)
+Ruby Array::sort (small_array): 
+  0.000000   0.000000   0.000000 (  0.000016)
+
+ bigger_array has 1000 elements in it...
+Insertion sort (bigger_array): 
+  0.240000   0.000000   0.240000 (  0.238994)
+Merge sort (bigger array): 
+  0.030000   0.010000   0.040000 (  0.027746)
+Ruby Array::sort (bigger_array): 
+  0.000000   0.000000   0.000000 (  0.000161)
+
+ medium_array has 10,000 elements in it...
+Insertion sort (medium_array): 
+ 23.960000   0.010000  23.970000 ( 24.096455)
+Merge sort (medium_array): 
+  0.720000   0.020000   0.740000 (  0.726312)
+Ruby Array::sort (medium_array): 
+  0.000000   0.000000   0.000000 (  0.001637)
+
+ huge_array has 100,000 elements in it...
+Sorry, the insertion_sort was taking too long! Skipped it.
+Merge sort (huge_array): 
+ 61.710000  11.990000  73.700000 ( 74.332743)
+ruby Array::sort (huge_array): 
+  0.020000   0.000000   0.020000 (  0.020800)
+
+
+</pre>
+
+
+<p>The interesting column is the last one: <em>real</em>, as in &#8220;real time&#8221; (more or less, taking into the account that we&#8217;re just benchmarking).</p>
+
+<p>The small array is pretty fast for all three methods, but even still, we can see that merge_sort is a <em>little</em> faster, and the built in .sort! (using quicksort) is <em>way</em> faster: only 0.000016 seconds.</p>
+
+<p>The next bigger, bigger_array, the differences stand out a little more. Insertion takes 0.24 seconds, merge takes 0.028, and sort! (again), way faster, only 0.00016 seconds.</p>
+
+<p>A ten thousand element array starts to show the difference even more dramatically: insertion_sort now takes 24.1 seconds, close to half a minute, while the merge_sort still runs in under a second. sort!, once again, is blowing them away at only 0.0016 seconds.</p>
+
+<p>Finally, a hundred thousand element array; sorry for the lack of stats, but I was too impatient to let insertion_sort finish. Let&#8217;s just say it would take awhile. Now even the merge_sort shows its limits, taking over a minute, about 74.3 seconds. And finally, good old sort! clocking in at only 0.02 seconds.</p>
+
+<p>So the reason this is how <em>not</em> to write sorting algorithms in ruby is simply that, you really probably don&#8217;t need to, unless you need something faster than a quicksort written in C. The reason, hopefully, to be playing around writing algorithms in Ruby or in <em>whatever</em> your favorite language happens to be, is just to understand them better.</p>
+
+<p>And it&#8217;s fun.</p>
+
+<p>See also:</p>
+
+<p><a href="http://en.wikipedia.org/wiki/Insertion_sort">Insertion Sort</a></p>
+
+<p><a href="http://en.wikipedia.org/wiki/Merge_sort">Merge Sort</a></p>
+
+<p><a href="http://github.com/kanwei/algorithms">Ruby Algorithm library</a> &lt;&#8211; some pretty interesting stuff in here. I didn&#8217;t look at this until after I&#8217;d already written my versions of the insertion sort and the merge sort; their version of insertion_sort is nearly the same, but their merge sort is somewhat more succinct, and looks worth playing around with.)</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/07/08/relative-primes-revisited/">Relative Primes Revisited</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-07-08T00:00:00-05:00" pubdate data-updated="true">Jul 8<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><hr />
+
+<p>title: Relative Primes, Revisited
+date: 08/07/2010</p>
+
+<p>As I thought; there&#8217;s always a better way to do it. <a href="http://twitter.com/jmchilton">@jmchilton</a>, who was a TA when I took Structure of Computer Programming I (or whatever it was called; the Scheme class) at the U of M, supplied this alternative solution to the relative prime problem:</p>
+
+<pre>
+<code class="ruby">
+def gcd(a, b); b == 0 ? a : gcd(b, a % b); end; def rp(a, b); gcd(a, b) == 1; end
+</code>
+</pre>
+
+
+<p>Or, indented:</p>
+
+<pre>
+<code class="ruby">
+def gcd(a, b)
+  b == 0 ? a : gcd(b, a % b)
+end
+
+def rp(a, b)
+  gcd(a, b) == 1
+end
+</code>
+</pre>
+
+
+<p>In other words, it pays to know your math. <code>gcd</code> is a recursive function, basically Euclid&#8217;s algorithm for finding the greatest common denominator. <code>rp</code>, then, simply returns true if the GCD of a and b is 1; otherwise false.</p>
+
+<p>Very nice. I wish I&#8217;d thought to do it that way, but I&#8217;ll certainly remember it.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/07/07/relative-primes/">Relative Primes</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-07-07T00:00:00-05:00" pubdate data-updated="true">Jul 7<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><hr />
+
+<p>title: Relative Primes
+date: 07/07/2010</p>
+
+<p>I didn&#8217;t expect to do a &#8220;code kata&#8221;-type post again so quickly, but here it is anyways.</p>
+
+<p>I was reading Randall Hyde&#8217;s excellent <a href="http://www.amazon.com/gp/product/1593270038?ie=UTF8&amp;tag=idepermin-20&amp;linkCode=as2&amp;camp=1789&amp;creative=390957&amp;creativeASIN=1593270038">Writing Great Code: Volume 1</a> and came across the concept of relative primes.</p>
+
+<p>If you haven&#8217;t heard the term in awhile, relative primes are simply two numbers that are not both evenly divisible by the same value (not counting 1, of course).</p>
+
+<p>Writing some code to determine if two integers are relatively prime seemed interesting, so I gave it a first shot:</p>
+
+<pre>
+<code class="ruby">
+# relprime01.rb
+
+def rel_prime(a, b)  
+  # if either number is one, they are automatically relatively prime.
+  return true if (a == 1 || b == 1)
+  
+  # determine a's factors.
+  fa = factors(a)
+  # determine b's factors.
+  fb = factors(b)
+  
+  # are any factors the same? then false
+  # if no factors are shared, then true.
+  # ie, if the intersect is empty, true, else false.
+  (fa & fb).empty?
+  
+end
+
+def factors(a)
+  return a if a == 1
+  (2..a).map{|k| k if a%k==0 }.compact
+end
+</code>
+</pre>
+
+
+<p>So, open up irb, <code>require 'rel_prime01.rb'</code>, and you have a method for determining if 2 integers are relatively prime. It has some issues, and would not be very efficient for large values. Before addressing that, I thought I&#8217;d just go straight to monkeypatching <code>Integer</code> again.</p>
+
+<p>Note: there&#8217;s another problem with the above method, too. See it? See below the next listing for what it is.</p>
+
+<pre>
+<code class="ruby">
+# rel_prime02.rb
+
+class Integer
+
+  # usage: x.rel_prime?(y)
+  # returns true if x and y are relatively prime.
+  def rel_prime?(n)
+    return true if (self.abs == 1 || n.abs == 1)
+    
+    # All number pairs have 1 as a shared factor; it doesn't count. So we subtract it from the array before checking [ ].empty?
+    ((self.factors & n.factors) - [1]).empty?
+  end
+
+  # usage: x.factors
+  # returns an array of the factors of x
+  def factors
+    (1..self.abs).map{|k| k if self.abs%k==0 }.compact
+  end
+end
+</code>
+</pre>
+
+
+<p>Essentially the same algorithm; if either integer is 1, then the numbers are automatically relative primes; 1 has no factors other than itself, so the only factor they share is 1. If both numbers are not 1, it gets the full list of factors of both numbers, checks to see if they have any in common, returns false if they do, and true if they don&#8217;t.</p>
+
+<p>The problem fixed in the second code is the use of Integer::abs in the appropriate places; that first code listing would blow up if you supplied a negative integer. Negative integers should be allowed, so this code uses .abs to make everything work properly, as it should.</p>
+
+<p>There&#8217;s still a big problem for checking large numbers. Each time we check relative primes, we&#8217;re getting ALL the factors of each integer, and then comparing them when we&#8217;re done. That could take a really long time, and the code above iterates though every single value from <code>1..x</code> for each <code>x</code> we give it&#8230; even if that number turns out to be (gasp!) prime. This won&#8217;t do at all. It will give us correct answers, but it will take a really long time to do it if we supply large values.</p>
+
+<p>How could we improve it? Well, one way would be to check common factors as we go. That way, if both numbers are even, we find out they share a factor on the very first iteration, and we simply stop: they are not relatively prime. Here&#8217;s this one:</p>
+
+<pre>
+<code class="ruby">
+# rel_prime03.rb
+
+class Integer
+
+  # usage: x.rel_prime?(y)
+  # returns true if x and y are relatively prime.
+  def rel_prime?(n)
+    return true if (self.abs == 1 || n.abs == 1)
+    
+    # different approach; go through (1..min(self,n).abs), 
+    # build an array for each number's factors as we go.
+    # each time you add a factor, check if the two arrays share it.
+    # if they do, end right away with false; 
+    # else, keep searching for common factors.
+    x,y =[],[]
+    
+    
+    (2..[self,n].sort[0].abs).each do |k|
+      x << k if self % k  == 0
+      y << k if n % k     == 0
+      return false unless (x & y).empty?
+    end
+    
+    # if you get here, it's because you found no common factors. return true.
+    true
+  end
+
+end
+</code>
+</pre>
+
+
+<p>So, this time we make 2 empty arrays, x and y. Each time we find a factor of self or n we add it to either x or y and then check if the intersection of those two arrays (using &amp;) is empty; if it&#8217;s ever not empty, return false right away and stop checking. If we get all the way to the end without finding a common factor, we can return true.</p>
+
+<p>This is better; works great for large numbers IFF the common factor is a fairly low number. But what if it isn&#8217;t? What if the common factor is a 7 digit long prime number?</p>
+
+<p>We know that there will be cases &#8230; large primes, for example &#8230; where we do basically need to check all the way up till we reach the last value that could be possible (the lesser of self and n, whichever that happens to be). But there&#8217;s a lot of number in-between that we don&#8217;t need to check. For example, if 2 is not a common factor, then we never need to check multiples of 2 again. If 3 is not a common factor, we never need to check multiples of 3 again. And so on. So really, if x is the lesser of self and n, the range we need to check will look something like:</p>
+
+<p><code>[2,3,5,7,11,13 ... x]</code></p>
+
+<p>Hm. That list looks familiar. Basically, we only need to check to see if prime numbers are factors of self and n; if a given prime number is not a factor, neither will any of its multiples be a factor.</p>
+
+<p>Generating a list of primes wasn&#8217;t on the to-do list, but fortunately ruby has a class in mathn called Prime, which returns an enumerator for iterating over the prime numbers. How convenient!</p>
+
+<pre>
+<code class="ruby">
+# rel_prime04.rb
+require 'mathn'
+
+class Integer
+
+  # usage: x.rel_prime?(y)
+  # returns true if x and y are relatively prime.
+  def rel_prime?(n)
+    return true if (self.abs == 1 || n.abs == 1)
+    
+    # one more quick check; does self % n == 0?
+    # if it does, we save some time; we know right away they aren't relatively prime,
+    # and we don't need to iterate all the way up before we find out.
+    return true if self % n == 0
+    
+    x,y =[],[]
+    
+    # Prime.instance gives us an enumerator over the Prime numbers.
+    # Enumerating over only primes saves us the wasted effort 
+    # of rechecking multiples of factors we've already ruled out.
+    # etc.
+    p = Prime.instance
+    
+    p.each do |k|
+      x << k if self % k  == 0
+      y << k if n % k     == 0
+      return false unless (x & y).empty?
+      break if k >= [self,n].sort[0].abs
+    end
+    
+    # if you get here, it's because you found no common factors. return true.
+    true
+  end
+end
+</code>
+</pre>
+
+
+<p>Now, the above code uses Prime::instance to create the enumerator, which is a ruby 1.9 thing; you can do this in ruby 1.8.x, but you&#8217;ll need <code>Prime.new</code> instead of <code>Prime.instance</code>. Warning, though, I found that the Prime enumerator in 1.8.x was still pretty slow for larger integers. The 1.9 version is <em>very</em> fast. For easy ways to get ruby 1.9.x installed without messing too much with your existing environment, check out <a href="http://rvm.beginrescueend.com/">rvm</a>.</p>
+
+<p>So now we&#8217;re doing essentially the same as the rel_prime03.rb version, but we&#8217;re skipping the multiples of any factors we&#8217;ve already ruled out by <em>only</em> iterating through the prime numbers. In the loop, you&#8217;ll see we stop if <code>k >= [self,n].sort[0]</code>, which is the lesser of self and n (I felt like there might be a more elegant way to quickly find the lesser of two integers, but I didn&#8217;t look; anyone?).</p>
+
+<p>One more thing was added, here: right at the beginning, after checking if self or n (abs) is equal to 1, we also check if self % n == 0. If it does, we just saved some time; see the comments in the listing above.</p>
+
+<p>That&#8217;s that, then. A method added to Integer that checks if two integers are relatively prime.</p>
+
+<p>Is there a better way to do it? I&#8217;m fairly certain there is (there usually is), so if you know of one, feel free to leave a note or a link in the comments.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  <div class="pagination">
+    
+      <a class="prev" href="/blog/page/4/">&larr; Older</a>
+    
+    <a href="/blog/archives">Blog Archives</a>
+    
+    <a class="next" href="/blog/page/2/">Newer &rarr;</a>
+    
+  </div>
+</div>
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/blog/2011/10/12/how-to-quit-your-job/">How To Quit Your Job</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/10/10/how-to-read-web-analytics/">How To Read Web Analytics</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/07/12/aside-00/">Aside 00</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/07/06/too-clever-to-debug/">Too Clever To Debug</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/06/28/aside-01/">Aside 01</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>Github Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  
+  <a href="https://github.com/philcrissman">@philcrissman</a> on Github
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'philcrissman',
+            count: 4,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating&#8230;</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("philcrissman", 4, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/philcrissman" class="twitter-follow-button" data-show-count="false">Follow @philcrissman</a>
+  
+</section>
+
+
+<section>
+  <h1>My Pinboard</h1>
+  <ul id="pinboard_linkroll">Fetching linkroll&#8230;</ul>
+  <p><a href="http://pinboard.in/u:philcrissman">My Pinboard Bookmarks &raquo;</a></p>
+</section>
+<script type="text/javascript">
+  var linkroll = 'pinboard_linkroll'; //id target for pinboard list
+  var pinboard_user = "philcrissman"; //id target for pinboard list
+  var pinboard_count = 3; //id target for pinboard list
+  (function(){
+    var pinboardInit = document.createElement('script');
+    pinboardInit.type = 'text/javascript';
+    pinboardInit.async = true;
+    pinboardInit.src = '/javascripts/pinboard.js';
+    document.getElementsByTagName('head')[0].appendChild(pinboardInit);
+  })();
+</script>
+
+
+
+
+  
+</aside>
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - Your Name -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
