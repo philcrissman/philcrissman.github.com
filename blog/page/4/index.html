@@ -9,8 +9,7 @@
   <meta name="author" content="Your Name">
 
   
-  <meta name="description" content="title: various fizzbuzzes
-date: 06/07/2010 Every so often I remember reading posts like Why can&#8217;t programmers&#8230; program?, or Are you one &hellip;">
+  <meta name="description" content="[Wittel and Webber] defined a &#8220;wicked&#8221; problem as one that could be clearly defined only by solving it&#8230; &#8230; One of the main &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -71,448 +70,6 @@ date: 06/07/2010 Every so often I remember reading posts like Why can&#8217;t pr
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2010/07/06/various-fizzbuzzes/">Various Fizzbuzzes</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-07-06T00:00:00-05:00" pubdate data-updated="true">Jul 6<span>th</span>, 2010</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><hr />
-
-<p>title: various fizzbuzzes
-date: 06/07/2010</p>
-
-<p>Every so often I remember reading posts like <a href="http://www.codinghorror.com/blog/2007/02/why-cant-programmers-program.html">Why can&#8217;t programmers&#8230; program?</a>, or <a href="http://reprog.wordpress.com/2010/04/19/are-you-one-of-the-10-percent/">Are you one of the 10% of programmers who can implement a binary search?</a>, or even various things about the idea of <a href="http://duckduckgo.com/?q=code+kata&amp;v=">code kata</a>, and that makes me want to just spend a little time practicing, rather than just working. Very often while working, we&#8217;re resolving a problem we (and/or others) have solve dozens of times before, and it&#8217;s really not very challenging or stretching.</p>
-
-<p>Since I was thinking about it, I decided to just start with the FizzBuzz example, from <a href="http://weblog.raganwald.com/2007/01/dont-overthink-fizzbuzz.html">Reginald Braithwaite</a> via Jeff Atwood.</p>
-
-<p>First solution:</p>
-
-<pre>
-<code class="ruby">
-(1..100).each do |k|
-  print k % 3 == 0 ? "Fizz" : ""
-  print k % 5 == 0 ? "Buzz" : ""
-  print k unless (k % 3 == 0 || k % 5 == 0)
-  print " "
-end
-</code>
-</pre>
-
-
-<p>So, that&#8217;s simple enough. I thought maybe it could be a little more compact, but essentially unchanged, here was the next version:</p>
-
-<pre>
-<code class="ruby">
-(1..100).each do |k|
-  print k%3==0 ? "Fizz" : "", k%5==0 ? "Buzz" : "", (k%3==0 || k%5==0) ? "" : k,  " "
-end
-</code>
-</pre>
-
-
-<p>That&#8217;s nice and all, but I&#8217;m now trying to think if I can find other ways to do it. Preferably shorter and/or more elegant. Maybe. <code>003.rb</code> was next.</p>
-
-<pre>
-<code class="ruby">
-(1..100).each do |k|
-  word = ''
-  word << "Fizz" if k%3==0
-  word << "Buzz" if k%5==0
-  print word.empty? ? k : word, " "
-end
-</code>
-</pre>
-
-
-<p>Not really shorter or elegant, but a slightly different approach, filling a placeholder variable with &#8220;Fizz&#8221;, &#8220;Buzz&#8221; (or both), and then deciding which one to display based on whether or not the placeholder was <code>empty?</code> (If you aren&#8217;t familiar with Ruby, <code>"".empty? == true &amp;&amp; "anything".empty? == false</code>.)</p>
-
-<p>Again, I tried to pare that down a little.</p>
-
-<pre>
-<code class="ruby">
-puts (1..100).map {|k| w='';w<<"Fizz"if k%3==0;w<<"Buzz"if k%5==0;w.empty? ? k : w }.join(" ")
-</code>
-</pre>
-
-
-<p>Well, I don&#8217;t know if it&#8217;s readable, or anything resembling elegant, but it&#8217;s, um&#8230; more compact.</p>
-
-<p>At that point I glanced back at my first solution, and something was bugging me about it; oh, yeah. The ternary expressions that returned &#8220;&#8221; for the false case. That seemed unnecessary. 005.rb tries to fix it.</p>
-
-<pre>
-<code class="ruby">
-(1..100).each do |k|
-  print "Fizz" if k % 3 == 0
-  print "Buzz" if k % 5 == 0
-  print k unless (k % 3 == 0 || k % 5 == 0)
-  print " "
-end
-</code>
-</pre>
-
-
-<p>Essentially unchanged. I&#8217;m not even sure it&#8217;s any more efficient but it <em>feels</em> less like there&#8217;s wasted code in there, so I like it a little better. Now, it&#8217;s not really <em>changing</em> much, but what if we extract the logic into it&#8217;s own method?</p>
-
-<pre>
-<code class="ruby">
-def fizzbuzz(k)
-  w = ''
-  w << "Fizz" if k%3==0
-  w << "Buzz" if k%5==0
-  w.empty? ? k : w
-end
-
-(1..100).each {|k| print fizzbuzz(k), " " }
-</code>
-</pre>
-
-
-<p>Hey, that&#8217;s&#8230; well, it&#8217;s essentially the same, but the lesser rites of refactoring have been appeased by pulling that code into it&#8217;s own little method.</p>
-
-<p>Hey. That makes me think we could just:</p>
-
-<pre>
-<code class="ruby">
-class Integer
-  def fizzbuzz
-    w=''<<(self%3==0 ? "Fizz" : "")<<(self%5==0 ? "Buzz" : "")
-    w.empty? ? self : w
-  end
-end
-
-puts (1..100).map{|k| k.fizzbuzz }.join(" ")
-</code>
-</pre>
-
-
-<p>So, a couple different things here. We open up <code>Integer</code> and add a fizzbuzz method to it. The idea of a place holder with either &#8220;Fizz&#8221;, &#8220;Buzz&#8221;, or both added to it is streamlined slightly by adding the concatenation lines right into the variable assignment. To make that work, we have to go back to using the ternary operator (can you see why? If we just did <code>w &lt;&lt; "Fizz" if k%3==0</code>, it would try to append <code>nil</code> to the String, and you&#8217;d get a horrible &#8220;Unable to convert nil to String&#8221; error anytime a non-multiple of 3 or 5 came up).</p>
-
-<p>So, that&#8217;s that. I know this is simple, maybe trivial, but hey, who wants to be the guy who couldn&#8217;t program a FizzBuzz solution in the interview?</p>
-
-<p>This was a fun exercise, so I&#8217;ll probably try to do some more like it. I&#8217;ll likely start by mining Code Kata, implementing some algorithms, or something. Feel free to leave problem suggestions in the comments.</p>
-
-<p>Thanks!</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2010/06/28/introducing-henry-a-theme-for-toto/">Introducing Henry a Theme for Toto</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-06-28T00:00:00-05:00" pubdate data-updated="true">Jun 28<span>th</span>, 2010</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><hr />
-
-<p>title: Introducing henry, a theme for Toto
-date: 28/06/2010</p>
-
-<p>As a response to no demand whatsoever, I nevertheless extracted my theme for this blog into it&#8217;s own standalone theme for <a href="http://cloudhead.io/toto">toto</a> that you could use just like <a href="http://github.com/cloudhead/dorothy">dorothy</a></p>
-
-<p>Keeping with the Oz names, I called it <a href="http://github.com/philcrissman/henry">henry</a>.</p>
-
-<p>Installation is pretty much identical as you would to for toto and dorothy:</p>
-
-<pre>
-<code class="bash">
-gem install toto
-git clone git://github.com/philcrissman/henry.git myblog
-cd myblog
-heroku create myblog
-git push heroku master
-</code>
-</pre>
-
-
-<p>Now, I pretty much completely disregarded IE support when I designed the blog, so as a result I don&#8217;t think henry will look like anything much in IE. You&#8217;re on your own. I will probably eventually feel like I should update this or address it somehow, but I&#8217;m not making any guarantees as to when that would be.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2010/06/25/rails-links-001/">Rails Links 001</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-06-25T00:00:00-05:00" pubdate data-updated="true">Jun 25<span>th</span>, 2010</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><hr />
-
-<p>title: Rails Links 001
-date: 25/06/2010</p>
-
-<p>As an experiment, I&#8217;m going to start making a link-post every so often. Maybe weekly? We&#8217;ll see.</p>
-
-<ul>
-<li>Eric Davis provides a big <a href="http://theadmin.org/articles/2010/06/24/capistrano-variables/">list of Capistrano variables</a> (via <a href="http://larkware.com/shots">larkgroup</a>)</li>
-<li>Fabio Akita took the opportunity to <a href="http://www.rubyinside.com/quality-interviews-with-10-rubyists-and-bob-martin-3458.html">interview</a> a bunch of folks at RailsConf (via <a href="http://rubyinside.com">RubyInside</a>)</li>
-<li>You still have time to take Hampton Catlin&#8217;s 2010 <a href="http://survey.hamptoncatlin.com/">Ruby Survey</a></li>
-<li>Some thoughts on <a href="http://ducktypo.blogspot.com/2010/06/new-ruby-ecosystem.html">the new Ruby ecosystem</a> from Paolo Perrotta (via <a href="http://coder.io">coder.io</a>)</li>
-</ul>
-
-
-<p>Also, feedback appreciated. Is this sort of post useful, informative, handy? Or overdone, redundant, irrelevant? Somewhere in between?</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2010/06/23/its-unanimous/">Its Unanimous</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-06-23T00:00:00-05:00" pubdate data-updated="true">Jun 23<span>rd</span>, 2010</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><hr />
-
-<p>title: It&#8217;s unanimous
-date: 23/06/2010</p>
-
-<p><img src="/images/posts/bones-nod-kirk-nod.gif" /></p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2010/06/18/whinyrendering/">Whinyrendering</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-06-18T00:00:00-05:00" pubdate data-updated="true">Jun 18<span>th</span>, 2010</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><hr />
-
-<p>title: WhinyRendering
-date: 18/06/2010</p>
-
-<p>Quite often I&#8217;ll come into a Rails project with a good portion of the code already written. Depending on style the developers were using, this sometimes means that I may not be able to easily tell, when looking at a given view, how the view is being generated. The URL may <em>say</em> /pages/1, but for all I know, the routes file has instructions to use the ArmpitsController when it sees a route for pages/*; the URL might say /user/login, but for all we know, that may map to SessionController::sign_in. In other words, it&#8217;s not always clear.</p>
-
-<p>And that&#8217;s not even getting into the cases where there are multiple partials being used, some of which might be in app/views/shared, or who knows where.</p>
-
-<p>We&#8217;ve talked in the office a few times about a mythical plugin that could provide a little output stating exactly what controller, action, and template are being rendered, as well as any and all partials. Thus the idea for WhinyRendering was born.</p>
-
-<p>If any of the preceding scenario sounds familiar, I hope it&#8217;s helpful.</p>
-
-<p><a href="http://github.com/philcrissman/whiny_rendering">WhinyRendering</a></p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2010/06/17/all-your-webs/">All Your Webs</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-06-17T00:00:00-05:00" pubdate data-updated="true">Jun 17<span>th</span>, 2010</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><hr />
-
-<p>title: All Your Webs
-date: 17/06/2010</p>
-
-<p>Taptaptap made an extension that <a href="http://taptaptap.com/blog/speaking-of-comments/">adds comments</a> to <a href="http://daringfireball.net">Daring Fireball</a>, and, as you can see in the comments, sparked a little debate on whether or not this was A Good Thing.</p>
-
-<p>It&#8217;s fine. I mean, I don&#8217;t really care if I can comment on DF or not, but if someone wants to, and if people use this and like it, great. It&#8217;s the web. You can&#8217;t control how people view your page. They could view it on any browser, with any extension, greasemonkey script, or other shenanigans inbetween, and there is absolutely nothing you or I can do about it.</p>
-
-<p>They can <a href="https://addons.mozilla.org/en-US/firefox/addon/1865/">block</a> <a href="https://chrome.google.com/extensions/detail/gighmmpiobklfepjocnamgkkbiglidom">your</a> <a href="http://safariadblock.com/">ads</a>. And that&#8217;s fine, because it&#8217;s their computer, and they can do that if they want to. Period.</p>
-
-<p>They can implement their own stylesheets for your site (yes! they can!) and they will never again see the letter-spacing and line-height choices you painstakingly tested and implemented the last time you redesigned your blog. They can view your articles through <a href="http://lab.arc90.com/experiments/readability/">Readability</a> or something like it.</p>
-
-<p>It just is. That&#8217;s just how the web is set up to work. And it&#8217;s a good thing. <em>It doesn&#8217;t matter</em>.</p>
-
-<p><a href="http://icanhascheezburger.com/2008/01/28/funny-pictures-all-your-bass/"><img src="http://icanhascheezburger.wordpress.com/files/2008/01/funny-pictures-cat-sound-studio.jpg" alt="funny pictures" /></a><br />see more <a href="http://icanhascheezburger.com">Lolcats and funny pictures</a></p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2010/06/07/you-should-really-consider-parking-somewhere-else/">You Should Really Consider Parking Somewhere Else</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-06-07T00:00:00-05:00" pubdate data-updated="true">Jun 7<span>th</span>, 2010</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><hr />
-
-<p>title: You Should Really Consider Parking Somewhere Else
-date: 07/06/2010</p>
-
-<p><img src="/images/posts/never_ever_park_here.jpg" width="440" /></p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
       <h1 class="entry-title"><a href="/blog/2010/06/01/design-is-a-wicked-problem/">Design Is a Wicked Problem</a></h1>
     
     
@@ -536,12 +93,7 @@ date: 07/06/2010</p>
   </header>
 
 
-  <div class="entry-content"><hr />
-
-<p>title: Design Is a Wicked Problem
-date: 01/06/2010</p>
-
-<blockquote>
+  <div class="entry-content"><blockquote>
 [Wittel and Webber] defined a &#8220;wicked&#8221; problem as one that could be clearly defined only by solving it&#8230;
 </blockquote>
 
@@ -585,12 +137,7 @@ date: 01/06/2010</p>
   </header>
 
 
-  <div class="entry-content"><hr />
-
-<p>title: Roll Your Own Computer Science Masters Program
-date: 01/05/2010</p>
-
-<p>Struck by some sort of errant whim to get more edumacated, I started googling Computer Science Master&#8217;s Degree programs today. Actually, I did one google search and then jumped straight to the <a href="http://www.stthomas.edu/gradsoftware/programs/ms/default.html">University of St. Thomas</a> page on graduate programs in software. Did a little back of the envelope thinking, noted that St. Thomas wants $762.50 per credit, and decided against a Masters degree at this point in time.</p>
+  <div class="entry-content"><p>Struck by some sort of errant whim to get more edumacated, I started googling Computer Science Master&#8217;s Degree programs today. Actually, I did one google search and then jumped straight to the <a href="http://www.stthomas.edu/gradsoftware/programs/ms/default.html">University of St. Thomas</a> page on graduate programs in software. Did a little back of the envelope thinking, noted that St. Thomas wants $762.50 per credit, and decided against a Masters degree at this point in time.</p>
 
 <p>But it did get me thinking. Why would I <em>want</em> a Masters Degree, anyways? All the reasons I could think of boiled down to these two:</p>
 
@@ -741,12 +288,7 @@ date: 01/05/2010</p>
   </header>
 
 
-  <div class="entry-content"><hr />
-
-<p>title: Validating Nested Attributes on Update
-date: 12/04/2010</p>
-
-<p>So, let&#8217;s say you have a model, and a has_many relationship to another model. You want to accept nested attributes for the child models in your forms, and you also want to validate that the children must be present; the parent model can&#8217;t be saved unless it has <em>at least one</em> of the child model associated. Easy enough, right?</p>
+  <div class="entry-content"><p>So, let&#8217;s say you have a model, and a has_many relationship to another model. You want to accept nested attributes for the child models in your forms, and you also want to validate that the children must be present; the parent model can&#8217;t be saved unless it has <em>at least one</em> of the child model associated. Easy enough, right?</p>
 
 <pre>
 <code class="ruby">
@@ -823,6 +365,483 @@ end
 
     </article>
   
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/04/01/xwing/">Xwing</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-04-01T00:00:00-05:00" pubdate data-updated="true">Apr 1<span>st</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><img src="http://philcrissman.com/images/B0CsT.jpg" width="440" /></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/04/01/oracle-to-acquire-oracle/">Oracle to Acquire Oracle</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-04-01T00:00:00-05:00" pubdate data-updated="true">Apr 1<span>st</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>REDWOOD SHORES &#8211; Oracle is rumored to have lined up yet another in a long string of billion dollar acquisitions, and this time they have set their sights on their very own corporation. No one from Oracle has been willing to make an official statement regarding the rumors, but the news has been spreading throughout Silicon Valley.</p>
+
+<p>Oracle, currently worth an estimated 47 billion USD, is a market leader in enterprise software, known particularly for their database product. Industry analysts admit that a corporation buying itself outright is unprecedented, but that, &#8220;As a strategic move, it makes a great deal of sense.&#8221; Enterprise consultant Robert Forsythe comments, &#8220;At this point, there are not a whole lot of other companies for Oracle to acquire. Purchasing themselves provides a creative way around this dilemma. Also, adding Oracle&#8217;s stellar sales staff to their already exhaustive line of software products is sure to be a winning combination.&#8221; Forsythe added, &#8220;I would predict that the shareholders will be happy to hear this rumor confirmed in the near future.&#8221;</p>
+
+<p>Not all industry analysts are quite so certain. &#8220;Rumors fly all over Silicon Valley on a regular basis,&#8221; said veteran Valley analyst Pratik Singh. &#8220;This is just the latest in a long line of the same. Could Oracle buy Oracle? Well, sure they could. They certainly have the capital to do so, and are in a better position than anyone else to know the details of Oracle&#8217;s business and strategy. But I fear this will only end up much like last year&#8217;s rumored acquisition of software giant Microsoft, by software giant Microsoft. That had everyone&#8217;s heads turning as well.&#8221; Pratik added, &#8220;Of course, no one in the press bothered to pay attention to the fact that this would have been a terrible acquisition.&#8221;</p>
+
+<p>When questioned about the apparent contradiction inherent to the rumors, Forsythe said, &#8220;Sure, industry outsiders might ask questions like, <em>why would Oracle buy themselves? Don&#8217;t they already own themselves?</em>&#8221; Forsythe paused to allow himself a knowing chuckle. &#8220;But that just betrays a lack of understanding of how things work in the Valley.&#8221;</p>
+
+<p>Indeed, acquisitions in and around Silicon Valley have a long and convoluted history, especially Oracle&#8217;s own long list of corporate purchases. Just last year, Oracle announced a purchase of BEA Software, an announcement which was hastily retracted when it was discovered that Oracle had already purchased BEA Software the previous fiscal year.</p>
+
+<p>Even the skeptical Singh notes, &#8220;Oracle does have some of the brightest business minds in the world on their payroll. It would be irresponsible to assume that they have not considered the possibility of an acquisition of Oracle, by Oracle, and that they would not have made some detailed projections on the possible results of such a transaction. If they believed it would be a positive move for the shareholders, well, of course, every consideration would be made and Oracle would ultimately make the decision that is best for itself, it&#8217;s shareholders and its customers and other stakeholders.&#8221;</p>
+
+<p>Regardless of the many and varied opinions put forth by the industry pundits, the rumors continue to gain momentum, and Oracle&#8217;s stock price has indeed jumped several points by close of business yesterday as a result.</p>
+
+<p>Oracle&#8217;s CEO, Larry Ellison, also refused to comment directly on the rumors, saying only, &#8220;I&#8217;m Larry f@#$ing Ellison, I&#8217;ll buy whatever the f@#$ I want to,&#8221; before threatening members of the press corps with disembowelment at the hands of his samurai bodyguards.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/03/23/here-are-the-news/">Here Are the News</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-03-23T00:00:00-05:00" pubdate data-updated="true">Mar 23<span>rd</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>This is simply awesome.</p>
+
+<object width="640" height="385"><param name="movie" value="http://www.youtube.com/v/YtGSXMuWMR4&color1=0xb1b1b1&color2=0xcfcfcf&hl=en_US&feature=player_embedded&fs=1"></param><param name="allowFullScreen" value="true"></param><param name="allowScriptAccess" value="always"></param><embed src="http://www.youtube.com/v/YtGSXMuWMR4&color1=0xb1b1b1&color2=0xcfcfcf&hl=en_US&feature=player_embedded&fs=1" type="application/x-shockwave-flash" allowfullscreen="true" allowScriptAccess="always" width="425" height="385"></embed></object>
+
+
+<p>Courtesy <a href="http://misener.org/archives/618">Dan Misener</a>.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/02/28/hello-toto/">Hello Toto</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-02-28T00:00:00-06:00" pubdate data-updated="true">Feb 28<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Moving this blog over to Toto. I did not move all the posts, but I don&#8217;t think there&#8217;s a big loss for the ones I neglected, and you can alway spend time looking for cached or archived pages if it Really Matters. Sorry.</p>
+
+<p>Was having some trouble getting the feed to worked automagically, we&#8217;ll see what has happened there when it goes live.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/02/18/dumb-results-can-be-better-than-smart-results/">Dumb Results Can Be Better Than Smart Results</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-02-18T00:00:00-06:00" pubdate data-updated="true">Feb 18<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><img src="http://philcrissman.com/images/posts/find_x.jpg" alt="" title="find_x" width="394" /><br /></p>
+
+<p>The last couple posts have crossed over into a couple really big topics; one is web application usability, the other is the quality of results returned by an algorithm. They are not the same topic. Anything that can be made more usable should be. The quality of an algorithm&#8217;s results are not necessarily related to that. I started chatting with <a href="http://twitter.com/KuraFire">@Kurafire</a> about this, and he is making some great points&#8230; but I still don&#8217;t precisely agree.</p>
+
+<p>For example:</p>
+
+<blockquote><a href="http://twitter.com/KuraFire/status/9266841104">The problem with Google&#8217;s algorithm is that a &#8220;mere&#8221; blog could outweigh the second-most visited website on the planet.</a></blockquote>
+
+
+
+
+<blockquote><a href="http://twitter.com/KuraFire/status/9267865186">My point is that a site&#8217;s traffic rank should be weighed more heavily, certainly when the difference btwn the two is so huge.</a></blockquote>
+
+
+<p>Let&#8217;s forget the &#8220;Facebook login&#8221; going to ReadWriteWeb rather than Facebook itself, for a moment. Let&#8217;s generalize.</p>
+
+<p><strong style="font-size:1.5em;">Question: should an article <em>about</em> a company or entity <em>ever</em> get a higher search ranking than the website of the company or entity itself?</strong></p>
+
+<p>When you phrase it that way, I think the answer is clearly <strong>YES</strong>, there are situations where that could and should happen.</p>
+
+<p>In late 2001, it would make a lot of sense for a search for &#8220;ENRON quarterly earnings&#8221; to point to an article about the accounting scandal rather than simply going straight to an official PDF of their earnings.</p>
+
+<p>It&#8217;s reasonable that a search for &#8220;Amway&#8221; could return an article skeptical of MLMs as high or sometimes higher than the company&#8217;s own site.</p>
+
+<p>Not all the time, and not every time, but there are situations where an article about something could or should get a higher result than the thing itself.</p>
+
+<p>A human being organizing the results might never do that; or they would only do it after it became obvious. Algorithms are dumb. They will just spit out a result based on some sort of process. Sometimes, that&#8217;s better, since it removes our innate bias to how we think things should be ordered. If we try to weight an algorithm too much for the things we innately think should be on top, we could actually be detracting from the value of the algorithm.</p>
+
+<p>Just a thought. I&#8217;m by no means saying that the googorithm can do no wrong, or has no room for improvement. Just that it&#8217;s possible for dumb results to be better than &#8220;smart&#8221; results.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/02/17/why-its-not-a-google-failure/">Why It&#8217;s Not a Google Failure</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-02-17T00:00:00-06:00" pubdate data-updated="true">Feb 17<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>By far the most common and seemingly reasonable objections to my <a href="/2010/02/16/no-were-not-the-stupid-ones">recent post</a> about internet applications and users have been along these lines:</p>
+
+<blockquote style="font-size: 1.5em;">Well, a ReadWriteWeb article about Facebook login is <em>certainly not the same</em> as Facebook&#8217;s actual login page. So if people are looking for Facebook&#8217;s login page, using Google, and are getting to a blog post instead, Google has indeed failed them.</blockquote>
+
+
+<p>Guys, gals, listen. This sounds very reasonable. It sounds empathetic. It feels right.</p>
+
+<p><strong style="font-size: 3em;">It&#8217;s wrong.</strong></p>
+
+<p>Stop and think, for a second, what it means to hold the conclusion that Google has failed their users in this case. It would mean, first and foremost, that in an ideal world, <strong style="font-size: 1.5em;">Google should never have returned any other result than the Facebook login page as a response to the query &#8220;facebook login.&#8221;</strong> Okay; <em>if</em> that were true, what does that mean? Either:</p>
+
+<ol>
+    <li><strong>Their algorithm is not good enough.</strong> It&#8217;s easy to say this, but let&#8217;s remember that this algorithm that is &#8220;not good enough&#8221; is the same algorithm that catapulted a startup out of nowhere to complete domination in a field (search) that was well saturated by large successful search engines, even in the late 90s; this algorithm that is &#8220;not good enough,&#8221; was nevertheless good enough to pull users away from every other established search engine.
+
+In this case, for an algorithm to be &#8220;good enough&#8221; to anticipate this particular scenario, I think it would basically need to be fully fledged artificially intelligent. So great, good luck with that; have fun on the research staff at the major university of your choosing.
+
+Also, I&#8217;d dare to suggest that if you can come up with a better algorithm, you have a corner office and a stack of VC money with your name on it waiting for you any time you want it, so get cracking.</li>
+    <li><strong>Google should have anticipated this and manually set a top search result with the correct site for this query.</strong> It seems that people actually think this; it seems outrageous and unthinkable to me. There&#8217;s no way Google, or any other large service, could anticipate this. I mean, it would be insulting to even suggest it:
+
+<strong>Engineer 1:</strong> Wait&#8230; wait&#8230; what if people are searching for a website login, and they query that? We should make sure that it is returned as the first result. Otherwise they might go to another page and think that they are on their website, and they will be confused that they can&#8217;t log in.
+<strong>Engineers 2-999:</strong> Wait, now, the users may not be technical, but they aren&#8217;t <em>that</em> clueless. 
+<strong>Engineer 1:</strong> But&#8230;
+<strong>Engineers 2-999:</strong> Man, are you ever condescending.
+<strong>Engineer 1:</strong> I just&#8230;
+<strong>Engineers 2-999:</strong> Why do you hate users so much?
+<strong>Engineer 1:</strong> But I&#8217;m just trying to help&#8230;
+<strong>Engineers 2-999:</strong> Come on, users are going to <em>know</em> that they are not on the webpage they&#8217;re looking for. It won&#8217;t look the same. It&#8217;ll have a different name. Unless it&#8217;s a deliberate phishing scheme, and we are implementing this to detect and remove those&#8230; 
+<em>(long technical discussion about programmatically detecting phishing sites begins)</em>
+
+Seriously, stop and think about it. You would need to be <em>horribly and resolutely cynical</em> about the intelligence level of your users to even suggest, ahead of time, that they (for example) would mistake a blog post from a different website for a web application that they use regularly, possibly daily.
+
+Besides that, there is an unwritten contract implied by Google&#8217;s search listings. The fact that sponsored listings occur (reasonably clearly marked) at the top of the list, implies that the rest of the search results are <em>untampered</em> with. They have been selected based on their relevance to the search query which you supplied. If Google can just select any old result at the top of the list, it completely destroys the credibility of the results.
+
+<em>But wait,</em> you might say. <em>They could do something along the same lines as the &#8220;Did you mean: [this]? that they already attempt to do for common mispellings&#8230;&#8221;</em>. 
+
+<img src="http://philcrissman.com/images/posts/didyoumean.png" alt="" title="Screen shot 2010-02-16 at 10.49.12 PM" width="248" height="140" />
+<br />
+<small>Oh, yeah, that *is* what I meant.</small><br />
+
+Yep, they could. And it&#8217;s on this that I will concede, willingly, that perhaps they should try to do something like this in the future.
+
+Where I disagree is the idea that they should have already been doing this; that they should have somehow (magically?) known that this would be necessary. 
+</li>
+</ol>
+
+
+<p>So there&#8217;s that. I&#8217;m not saying <strong>&#8220;Screw the users, let them figure it out! Survival of the fittest FTW&#8221;</strong>. Really, I&#8217;m really not. Yes, absolutely, let&#8217;s make changes based on user behavior. Let&#8217;s make things easier to use when we find out they are not easy to use. Let&#8217;s do all those things.</p>
+
+<p>But let&#8217;s also say:</p>
+
+<p>It is okay to expect your users to have a basic understanding of the core functionality of your application. In the case of Google, this is not asking very much of the user.</p>
+
+<p><strong>Google:</strong> Okay, here&#8217;s how it works. You type something in the box.
+<strong>User:</strong> Okay, I&#8217;m typing.
+<strong>Google:</strong> &#8230; and I&#8217;ll try to find anything on the whole entire internet that seems to match what you&#8217;re searching for, and I&#8217;ll give you a list.
+<strong>User:</strong> Great, so you&#8217;ll find exactly what I&#8217;m looking for.
+<strong>Google:</strong> .Well, not exactly&#8230;. I&#8217;m going to find everything that <em>seems</em> to match, and I&#8217;m going to give you a list, and here&#8217;s the thing, it might be a humongous list&#8230;
+<strong>User:</strong> Awesome, so you will find exactly what I&#8217;m looking for.
+<strong>Google:</strong> &#8230; well, I&#8217;ll tell you what, I&#8217;m going to put what I <em>think</em> are the most relevant results near to the top of the list, okay, so chances are, hopefully&#8230;
+<strong>User:</strong> Hey, that&#8217;s just what I was looking for. Thanks Google!
+<strong>Google:</strong> Yes, well. That did work out pretty nicely. Actually, I hope it works that well every time, but you should understand that I&#8217;m just giving you a list of what I <em>think</em> will be the most relevant results, based on your query, and it might&#8230; hello? Hello?</p>
+
+<p><a href="http://www.overcompensating.com/posts/20100216.html"><img src="http://philcrissman.com/images/posts/oc20100216.png" alt="" title="oc20100216" width="440"  /></a>
+<small>I used to have to log on to the internet uphill, both ways.</small></p>
+
+<p>Listen, I understand that it&#8217;s challenging. I don&#8217;t actually think &#8220;non-technical&#8221; people are &#8220;stupid,&#8221; any more than a tailor would think a programmer was &#8220;stupid&#8221; for being bewildered when sat down in front of a state of the art sewing machine. But if I&#8217;m going to insist on using the sewing machine, the tailor will try to tell me how to use it. If I continue to try to use it incorrectly, the tailor will eventually want to give up on me, unless I&#8217;m able to grasp <em>at least</em> the basic principles of how the thing works.</p>
+
+<p><strong>The Tailor:</strong> <em>Look, it&#8217;s a sewing machine. See, here&#8217;s the bobbin&#8230;</em>
+<strong>Me:</strong> <em>I don&#8217;t really want a bobbin, I want thread. Or the needle. I think.</em>
+<strong>The Tailor:</strong> <em>The thread is on the bobbin&#8230; and it goes through the needle here&#8230;</em>
+<strong>Me:</strong> <em>And I push this pedal now?</em>
+<strong>The Tailor:</strong> <em>No, no, not now! Ok, so here is where you set the sort of stitch you want &mdash;</em>
+<strong>Me:</strong> <em>I just want to sew these two pieces together. Won&#8217;t it just know what sort of stitch I want?</em>
+<strong>The Tailor:</strong> <em>It&#8217;s just a machine, it doesn&#8217;t know anything. So we want this stitch here&#8230;</em>
+<strong>Me:</strong> <em>How would I know that? That&#8217;s easy for <u>you</u> to do. Why does this have to be so hard?</em>
+<strong>The Tailor:</strong> <em>If you&#8217;d just stop for a minute and learn to use it, it wouldn&#8217;t be that hard&#8230;</em>
+<strong>Me:</strong> <em>This all strange and unknown and mysterious and frightening and frustrating. Sewing sucks! The designers of this machine are stupid!</em>
+<em>(The Tailor gives up on me and goes to get a beer. I proceed to sew my index finger onto my jeans.)</em></p>
+
+<p>Funkatron, <a href="http://funkatron.com/site/comments/were-the-stupid-ones-facebook-google-and-our-failure-as-developers/">whose post</a> on this contributed to inspiring the original rant, added some points to the end of his post in response; and since he&#8217;s a smart guy, he <em>completely understands</em> the point I was actually making (or attempting to make):</p>
+
+<blockquote>I certainly don’t think that the computer can become (anytime soon) a magic box that determines our whims, nor do I think that people shouldn’t have to learn some things.</blockquote>
+
+
+<p>This is the point exactly. If we really expect that Google should &#8220;just know&#8221; what we want, we are expecting it to be magical. We are asking for something that belongs to the realm of unicorns and rainbows with pots of gold at the end.</p>
+
+<p><img src="http://philcrissman.com/images/posts/unicorn.jpg" alt="" title="unicorn" width="259" height="300" style="margin:0px auto" /><br />
+<small>Magic Google Power!</small></p>
+
+<p>At the risk of sounding like an asshole again, <span style="font-size:1.5em;">it&#8217;s called a <strong>search engine</strong>, not a <strong>finding engine</strong>. It cannot read your mind. If you expect it to be able to read your mind, you are stepping outside the bounds of what can reasonably be expected from a machine. The famous button is &#8220;I&#8217;m <strong>feeling lucky</strong>,&#8221; not &#8221;<strong>Take me to exactly the page I&#8217;m thinking about in my brain</strong>.&#8221;</span></p>
+
+<object width="425" height="344"><param name="movie" value="http://www.youtube.com/v/pQHX-SjgQvQ&hl=en_US&fs=1&rel=0"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/pQHX-SjgQvQ&hl=en_US&fs=1&rel=0" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="425" height="344"></embed></object>
+
+
+
+
+<h3>Neither You, Nor Me, Nor Google, Can Read Minds</h3>
+
+
+<p>I&#8217;m married. Inevitably, my wife will say things or ask things, and lo and behold, <em>the thing that she really wants or means is not exactly the same thing as what she says</em>. Ideally, I would &#8220;just know&#8221; what she <strong>intends</strong> me to get from her comment or question. And while, over time (we&#8217;ve been married 8 1/2 great years), I can become a better guesser, <strong style="font-size:1.3em;">I will never be 100% able to do this because</strong> (surprise) <strong style="font-size:1.3em;">I cannot read minds.</strong></p>
+
+<p>Here&#8217;s the real point: <strong style="font-size:1.5em;">if I view myself as a failure because of my inability to read minds, I am setting myself up for misery. It is not reasonable to set <em>impossible tasks</em> as<em> criteria for success</em>.</strong></p>
+
+<p>Really, if that one thing is not communicated in these most recent two posts, then I&#8217;m just not going to be able to communicate it. Expecting Google (or any software) to &#8220;know,&#8221; with certainty, my intentions, is completely absurd. And with that in mind, there is no way to call this a failure on the part of Google.</p>
+
+<p>Ed goes on to say:</p>
+
+<blockquote>What I do think is that the current interface modern OSes on computers provide is simply overwhelming for most users, to the point that it’s very challenging to learn how to accomplish tasks without a very significant investment of time.</blockquote>
+
+
+<p>Look, here I agree completely. I have agreed with this the whole time. I&#8217;m a huge supporter of user testing, of good UX design, and of changing things based on user feedback.</p>
+
+<p>In fact, I&#8217;m probably just being a bit pedantic to be stuck on this one, single atom of disagreement, that is, the idea that Google or developers generally have &#8220;failed.&#8221;</p>
+
+<p>Here&#8217;s another example. When you go to a gas station to fill up your car (here in the US, at least), you can usually use a credit card at the pump to pay for your gas. A credit card has a magnetic stripe on one edge of one side of the card. So because I can flip a credit card upside down or front to back, there are four ways I can put the card into the slot, and only one way that the machine can read the magnetic stripe. Now, there is (almost) always a handy diagram showing you how you&#8217;re supposed to put the card into the machine. But people do it wrong all the time. Because the part of the card reader that reads the stripe is usually clear, there are normally only two obvious ways to insert the card: stripe up facing left, or stripe up facing right.</p>
+
+<p>Now, at some point, some wonderful person who designs these machines said, <em>You know what? People are always putting their card in the wrong way. It would be really trivial to just put a magnetic stripe reader on both sides, and then as long as the stripe is at the top, it is impossible to insert the card incorrectly.</em> And they implemented it, and it seems to be standard on most new gas pumps.</p>
+
+<p>Is the new design, where it is (almost) impossible to run your card incorrectly, better? Absolutely it is. It&#8217;s improved.</p>
+
+<p><img src="http://philcrissman.com/images/posts/credit_card_swipe.jpg" alt="" title="credit_card_swipe" width="455" height="350" /><br />
+<small>Hey, now that&#8217;s pretty handy.</small></p>
+
+<p>Was the old design wrong? Was it a failure on the part of the gas pump card reader designers? I&#8217;m going to say <strong>no</strong>. It wasn&#8217;t wrong. It did what it was supposed to do, and asked only that the user glance at the diagram to know which way to put the stripe in to the card reader. There was room for improvement, and it was indeed improved, but it was not &#8220;wrong.&#8221;</p>
+
+<p>Steve Krug&#8217;s disciples might now be saying, <em>The old design <strong>requires</strong> you to think, so it <strong>is</strong> failing! Don&#8217;t make people think!&#8221;</em></p>
+
+<p>Steve Krug&#8217;s work is great, and I agree completely with the &#8221;<a href="http://www.amazon.com/gp/product/0321344758?ie=UTF8&tag=idepermin-20&linkCode=as2&camp=1789&creative=390957&creativeASIN=0321344758">Don&#8217;t Make Me Think</a><img src="http://www.assoc-amazon.com/e/ir?t=idepermin-20&l=as2&o=1&a=0321344758" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" />&#8221; mantra. But there comes a point, with anything, at which people must make a decision, and <strong>we have to assume that people will demonstrate some common sense</strong>.</p>
+
+<div style="width: 435px;">
+<object width="425" height="344"><param name="movie" value="http://www.youtube.com/v/H3Byf8U1btI&hl=en_US&fs=1&rel=0"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/H3Byf8U1btI&hl=en_US&fs=1&rel=0" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="425" height="344"></embed></object>
+<p class="wp-caption-text">The machine knows where it is going!</p>
+</div>
+
+
+<p><small><a href="http://www.wired.com/gadgetlab/2008/07/gps-causes-3000/">Wired claims that 300,000 accidents</a> in the UK have been caused by people following their GPS systems</small></p>
+
+<p>So you can only take that so far.</p>
+
+<p>If I want to sew, I can argue all day that sewing machines should be easier to use, and hey &mdash; maybe we can still come up with ways to improve their usability. But sooner or later, I need to accept that <strong>I must learn to use a sewing machine in order to get the results that I want</strong>. The responsibility is mine. It is not the sewing machine&#8217;s fault if I can&#8217;t stitch two things together.</p>
+
+<p>And if I blame the sewing machine, <strong>I&#8217;m wrong</strong>.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/02/16/no-were-not-the-stupid-ones/">No, We&#8217;re Not the Stupid Ones</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-02-16T00:00:00-06:00" pubdate data-updated="true">Feb 16<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Update: follow up post on <a href="/2010/02/17/why-its-not-a-google-failure">why it&#8217;s not a Google failure</a>.</p>
+
+<p><img src="http://philcrissman.com/images/posts/wrong-mike.jpg" alt="From http://icanhascheezburger.com/2007/04/28/youre-doing-it-wrong-2/" title="doing-it-wrong" width="440" class="center size-full wp-image-2094" /></p>
+
+<p>If you follow the same flow of information I do, you probably saw the article <a href="http://www.lastpodcast.net/2010/02/10/facebook-login-is-hard-welcome-to-idiocracy/">Facebook login is hard</a>, or are at least aware of the confusion it&#8217;s talking about. Just in case, for context: last week <a href="http://www.readwriteweb.com/archives/facebook_wants_to_be_your_one_true_login.php">a ReadWriteWeb article</a> became the top-listed result on Google for &#8220;Facebook Login&#8221;, and several hundred (just going off the number of comments) Facebook users wound up at ReadWriteWeb trying unsuccessfully to log in to facebook, eventually leaving comments venting their frustration. <em>(Aside: my favorite was the one who found the &#8220;right&#8221; way to get to facebook, now: search for it on Bing instead&#8230;)</em></p>
+
+<p>But I&#8217;ve started seeing comments and blog posts to the effect that <strong>this is actually a failure on the developers part</strong>; that bad UI or bad software/UX design is somehow <em>responsible</em> for this.</p>
+
+<p>To which I say, <span style="font-size:3.5em;font-weight:bold;">bullshit.</span></p>
+
+<p>I&#8217;m a big fan of making things that have great user experience, intuitive UI, well developed information architecture, etc, etc. So I empathize with that line of thinking, to a point; yes, if there&#8217;s a city intersection that gets 500% more traffic accidents than every other intersection, maybe we should look at the urban planners and suggest they might have screwed it up and should now fix it. I don&#8217;t find this analogous to that, though.</p>
+
+<p>Not (for example) with this:</p>
+
+<blockquote>Isn&#8217;t this really a failure of Google? (From <a href="http://funkatron.com/site/comments/were-the-stupid-ones-facebook-google-and-our-failure-as-developers/">We&#8217;re the stupid ones</a>)</blockquote>
+
+
+<p><img src="http://philcrissman.com/images/posts/bush_doing_it_wrong.jpg" alt="" title="bush_doing_it_wrong" width="150" height="150" align="right" style="margin-left: 5px;"  />No. <em><strong>It&#8217;s not a failure of Google</strong></em>. <strong>RWW wrote an article about Facebook Connect &mdash; about logging in with Facebook &mdash; and said article became a top result for the phrase &#8220;Facebook login&#8221; on Google.</strong> That is an example of Google <em>working as it is intended to work</em>.</p>
+
+<p>I think it&#8217;s fine if people use a search engine field as a sort of web-based CLI; heck I use it for that, if I&#8217;m looking for a site and don&#8217;t remember if it&#8217;s <em>.com</em> or <em>.net</em> or <em>.info</em>, or if it&#8217;s <em>somethingapp.com</em> or <em>somethinghq.com</em> or <em>getsomething.com</em>, and hey, if I <strong>know</strong> that it&#8217;ll come up if I simply search for it, then yes: why not. Search is quicker than having to try even one extra URL because the first one you used the wrong TLD. So using a search engine to find your website: fine, go for it. I&#8217;m not arguing that this should be discouraged. <em>(That said, I believe there have been studies showing that people actually also search for fully qualified URLs, like &#8220;myspace.com,&#8221; and really, it does seem like someone should tell those folks about the address bar&#8230; but I digress.)</em></p>
+
+<p>Facebook evidently has somewhere in the neighborhood of a bazillion users, now. I don&#8217;t want to stop and look it up, so lets just say it&#8217;s one bazillion, where <code>100 million &lt; 1 bazillion &lt; infinity</code>; in that neighborhood somewhere. So the several hundred confused and frustrated users were something along the lines of a fraction of a rounding error on a percentage point of Facebook&#8217;s entire user base. Not what I would call a UI catastrophe.</p>
+
+<p>This is not to say that these people are not important, only that it is okay to expect them to learn how to use the internet. <span style="font-size:1.5em;font-weight:bold;">It is okay to expect people to invest a little time to learn how stuff works and to retain an adequate portion of that education.</span></p>
+
+<p><small>Just because it&#8217;s photoshopped doesn&#8217;t mean it&#8217;s not funny.</small><img src="http://philcrissman.com/images/posts/elephants-larger-than-the-moon.jpg" alt="" title="elephants-larger-than-the-moon" width="440" class="aligncenter size-full wp-image-2101" /></p>
+
+<p>Take ReadWriteWeb. I don&#8217;t know if they&#8217;d win an <em>award</em> for UI or UX, but they don&#8217;t suck. I think that it&#8217;s fairly clear that ReadWriteWeb is a distinct website named <em>ReadWriteWeb</em>. I don&#8217;t think we should have expected them to introduce a flashing banner warning visitors: ATTENTION &#8211; THIS SITE IS NOT ACTUALLY FACEBOOK. They wrote an article, that article got some google juice. All in all, they&#8217;re doing what they set out to do, writing stuff that is findable to the people who are looking for it.</p>
+
+<p>Taking an event like this one and suggesting that it is somehow the fault of the designers of Google and/or developers generally, is absurd. It just <em>isn&#8217;t</em>. I empathize with some of what folks are saying (Funkatron, linked above, for example). If they just want to say <em>maybe we&#8217;re being too hard on people</em>, I could grant a <em>well maybe</em>, but overall, look:</p>
+
+<p><span style="font-size: 1.5em;font-weight:bold;">If I search for &#8220;basecamp&#8221; in Google and wind up at a mountain climbing equipment supply store instead of the 37signals product I wanted, <u>it is not <em>Google</em>&#8217;s fault</u> (or 37signals&#8217;, or the camping store&#8217;s) if I start banging my head against the screen and asking &#8220;Wheerre are my prooooojectsssss?????&#8221;</span></p>
+
+<p>It just isn&#8217;t.</p>
+
+<p>Update: follow up post on <a href="/2010/02/17/why-its-not-a-google-failure">why it&#8217;s not a Google failure</a>.</p>
+</div>
+  
+  
+
+
+    </article>
+  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/5/">&larr; Older</a>
@@ -840,7 +859,7 @@ end
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2011/10/12/how-to-quit-your-job/">How To Quit Your Job</a>
+        <a href="/blog/2011/10/12/how-to-quit-your-job/">How to quit your job</a>
       </li>
     
       <li class="post">
@@ -848,15 +867,15 @@ end
       </li>
     
       <li class="post">
-        <a href="/blog/2011/07/12/aside-00/">Aside 00</a>
-      </li>
-    
-      <li class="post">
         <a href="/blog/2011/07/06/too-clever-to-debug/">Too Clever To Debug</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2011/06/28/aside-01/">Aside 01</a>
+        <a href="/blog/2011/03/10/current-desktop/">Current Desktop</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/02/21/test-first-as-a-productivity-hack/">Test First As A Productivity Hack</a>
       </li>
     
   </ul>

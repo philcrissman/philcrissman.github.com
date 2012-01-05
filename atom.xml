@@ -4,7 +4,7 @@
   <title><![CDATA[Automagical Thinking]]></title>
   <link href="http://philcrissman.github.com/atom.xml" rel="self"/>
   <link href="http://philcrissman.github.com/"/>
-  <updated>2012-01-05T10:52:28-06:00</updated>
+  <updated>2012-01-05T11:15:52-06:00</updated>
   <id>http://philcrissman.github.com/</id>
   <author>
     <name><![CDATA[Your Name]]></name>
@@ -14,16 +14,11 @@
 
   
   <entry>
-    <title type="html"><![CDATA[How To Quit Your Job]]></title>
+    <title type="html"><![CDATA[How to quit your job]]></title>
     <link href="http://philcrissman.github.com/blog/2011/10/12/how-to-quit-your-job/"/>
     <updated>2011-10-12T00:00:00-05:00</updated>
     <id>http://philcrissman.github.com/blog/2011/10/12/how-to-quit-your-job</id>
-    <content type="html"><![CDATA[<hr />
-
-<p>title: How to quit your job
-date: 12/10/2011</p>
-
-<p>So you want to quit your job. Welcome to the club. Membership is free,
+    <content type="html"><![CDATA[<p>So you want to quit your job. Welcome to the club. Membership is free,
 we don&#8217;t have meetings or rules, but we also don&#8217;t give you a t-shirt or
 a name-tag on a colorful lanyard. So, yeah. Pros and cons.</p>
 
@@ -142,12 +137,7 @@ getting yourself into, and &#8230; good luck.</p>
     <link href="http://philcrissman.github.com/blog/2011/10/10/how-to-read-web-analytics/"/>
     <updated>2011-10-10T00:00:00-05:00</updated>
     <id>http://philcrissman.github.com/blog/2011/10/10/how-to-read-web-analytics</id>
-    <content type="html"><![CDATA[<hr />
-
-<p>title: How To Read Web Analytics
-date: 10/10/2011</p>
-
-<p>The CEO of BigCorp just got the company&#8217;s web analytics report and is
+    <content type="html"><![CDATA[<p>The CEO of BigCorp just got the company&#8217;s web analytics report and is
 trying to make sense of it. He calls in his lead developer and asks him
 what the analytics report says.</p>
 
@@ -174,31 +164,11 @@ say?&#8221;</p>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Aside 00]]></title>
-    <link href="http://philcrissman.github.com/blog/2011/07/12/aside-00/"/>
-    <updated>2011-07-12T00:00:00-05:00</updated>
-    <id>http://philcrissman.github.com/blog/2011/07/12/aside-00</id>
-    <content type="html"><![CDATA[<hr />
-
-<p>title: aside-00
-date: 12/07/2011
-aside: true</p>
-
-<p><img src="http://philcrissman.github.com/images/posts/php.jpg" /></p>
-]]></content>
-  </entry>
-  
-  <entry>
     <title type="html"><![CDATA[Too Clever To Debug]]></title>
     <link href="http://philcrissman.github.com/blog/2011/07/06/too-clever-to-debug/"/>
     <updated>2011-07-06T00:00:00-05:00</updated>
     <id>http://philcrissman.github.com/blog/2011/07/06/too-clever-to-debug</id>
-    <content type="html"><![CDATA[<hr />
-
-<p>title: Too Clever To Debug
-date: 06/07/2011</p>
-
-<p><a href="http://www.flickr.com/photos/themadlolscientist/2538226772/sizes/z/in/photostream/"><img src="http://philcrissman.github.com/images/posts/math_fail.jpg" width="440" /></a></p>
+    <content type="html"><![CDATA[<p><a href="http://www.flickr.com/photos/themadlolscientist/2538226772/sizes/z/in/photostream/"><img src="http://philcrissman.github.com/images/posts/math_fail.jpg" width="440" /></a></p>
 
 <blockquote><p>&#8220;Debugging is twice as hard as writing the code in the first place.  Therefore, if you write the code as cleverly as possible, you are, by definition, not smart enough to debug it.&#8221;
 &#8211;Brian Kernighan</p></blockquote>
@@ -265,110 +235,11 @@ date: 06/07/2011</p>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Aside 01]]></title>
-    <link href="http://philcrissman.github.com/blog/2011/06/28/aside-01/"/>
-    <updated>2011-06-28T00:00:00-05:00</updated>
-    <id>http://philcrissman.github.com/blog/2011/06/28/aside-01</id>
-    <content type="html"><![CDATA[<hr />
-
-<p>title: aside-01
-date: 28/06/2011
-aside: true</p>
-
-<p>HER: We should just go out to eat.</p>
-
-<p>HIM: Okay. Where do you want to go?</p>
-
-<p>HER: Anywhere. Just pick a place.</p>
-
-<p>HIM: How about [place x]?</p>
-
-<p>HER: Hm. No, not that place.</p>
-
-<p>HIM: Okay, ah&#8230; [place y]?</p>
-
-<p>HER: &#8230;. yeah, you know, not [place y], you remember last time we were there.</p>
-
-<p>HIM: Oh? Oh. Okay, well. How about&#8230; how about [place z]?</p>
-
-<p>HER: No, I don&#8217;t feel like [place z] cuisine tonight.</p>
-
-<p>HIM: Well, where do you want to go?</p>
-
-<p>HER: Anywhere! Can&#8217;t you just pick a place?</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Aside 00]]></title>
-    <link href="http://philcrissman.github.com/blog/2011/06/28/aside-00/"/>
-    <updated>2011-06-28T00:00:00-05:00</updated>
-    <id>http://philcrissman.github.com/blog/2011/06/28/aside-00</id>
-    <content type="html"><![CDATA[<hr />
-
-<p>title: aside-00
-date: 28/06/2011
-aside: true</p>
-
-<p>Over the last month or so, started watching LOST. We&#8217;re up to Season 4, episode 4, which means we&#8217;ve watched approximately 57 hours of television, after work, in our spare time, in roughly a month.</p>
-
-<p>And I say I don&#8217;t have enough time to do things.</p>
-
-<p>Also. A smoke monster? Really? wtf LOST.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Pretending To Be Productive]]></title>
-    <link href="http://philcrissman.github.com/blog/2011/04/14/pretending-to-be-productive/"/>
-    <updated>2011-04-14T00:00:00-05:00</updated>
-    <id>http://philcrissman.github.com/blog/2011/04/14/pretending-to-be-productive</id>
-    <content type="html"><![CDATA[<hr />
-
-<p>title: Pretending to be Productive
-date: 14/04/2011</p>
-
-<p>I&#8217;m noticing recently that I use a few of things that make me feel more productive, when I&#8217;m not <em>necessarily</em> any more productive by using them. Maybe.</p>
-
-<h1>Focusbooster</h1>
-
-<p>I really like <a href="http://www.focusboosterapp.com/">focusbooster</a>. It&#8217;s a cool little app. It&#8217;s a basic <a href="http://www.pomodorotechnique.com/">Pomodoro</a> timer made in Adobe Air, so it&#8217;s shiny and easy to install. You start it, and it times you for 25 minutes (during which time you are to be <em>hard at work</em>), and then starts counting down a 5 minute break (during which I guess you&#8217;re supposed to look at twitter or hacker news or pictures of Bettie Page (hi, <a href="http://www.kungfugrippe.com/">Merlin</a>)).</p>
-
-<p>Maybe focusbooster works for some people, but I find it doesn&#8217;t really work <em>that</em> much for me. I qualify it only because, sure, it serves as a subtle reminder: while the 25-minute timer is running, I&#8217;m working. I&#8217;m not doing <em>whatever</em>. That said, it&#8217;s easy to ignore. Especially if you&#8217;re like me and habitually ignore the break. I guess the 5 minute break is supposed to be the carrot on the stick that keeps you hard at work for the prior 25 minutes, but for me, I usually am halfway through writing or testing some method or class for an application, and I&#8217;m not going to stop and take a break, I keep working right through my &#8220;break&#8221;. Which leads to basically running focusbooster all day and generally ignoring it.</p>
-
-<p>Which is fine, I guess, if only for those handful of times where the fact that there&#8217;s a little timer running on your desktop reminds you that you&#8217;re working. So I do like it, even though I feel like a lot of the imagined productivity I feel from a day of using it might be illusory.</p>
-
-<p>Maybe if it was going to cut one of my kid&#8217;s fingers off whenever I visited Facebook it would be more effective, but I think that sort of thing is frowned on.</p>
-
-<h1>RescueTime</h1>
-
-<p>So, <a href="http://www.rescuetime.com/">RescueTime</a> is neat. It&#8217;s an app that lives on your desktop and records what you&#8217;re doing and then sort of tells you what you&#8217;ve been up to, and how productive or distracted you&#8217;ve been. You can teach it which of your activities you consider &#8220;productive&#8221; or &#8220;distracting&#8221;. You can delete some of your activities, if desired.</p>
-
-<p><img src="http://philcrissman.github.com/images/posts/rescue_time.png" width="440" /><br/></p>
-
-<p>So, again, I sort of like it. But at the same time, I&#8217;m a little obsessive when I see a chart like the one on the RescueTime dashboard. I want to be at the far right end, in the &#8220;productive&#8221; zone. Trouble is, it&#8217;s very very easy to start &#8220;tweaking&#8221; your activities to make your overall day look more productive. &#8220;That 12 minutes on twitter? No, no, that was when I just left my browser open to that page and walked away for a bit. I can delete that. Hm, 5 minutes visiting <a href="http://www.leancrew.com/all-this/">leancrew.com</a>? That&#8217;s not -2 Distracting, we&#8217;ll call that +1 Productive.&#8221; You can also game it in other ways. Leave your computer open to your text editor or the terminal when you walk away, and it&#8217;s recording all that idle time as &#8220;Productive.&#8221;</p>
-
-<p>&#8220;But you&#8217;re cheating,&#8221; you may say. &#8220;You&#8217;re like, you&#8217;re like the guy who reshuffles the cards while playing solitaire. Bad developer. Bad.&#8221; Mmm. Maybe. I don&#8217;t know. Regardless, even though I feel like some of the &#8220;productivity&#8221; it&#8217;s showing me is <em>not necessarily real</em>, it still helps just to know that it&#8217;s on. It&#8217;s one of those reminders, &#8220;Hm, this is going to show up as &#8216;distracting&#8217; on RescueTime; I should bookmark it and look at it later.&#8221; And that&#8217;s basically good.</p>
-
-<h1>And all that means is</h1>
-
-<p>I don&#8217;t know. I started out talking about &#8220;pretend productivity&#8221; and in each case I essentially just argued that I am actually still being helped, at least a little, to be more productive by running apps like these. Maybe. I&#8217;m not actually sure.</p>
-
-<p>So, what gives you the false sense of security that you&#8217;ve been productive today?</p>
-]]></content>
-  </entry>
-  
-  <entry>
     <title type="html"><![CDATA[Current Desktop]]></title>
     <link href="http://philcrissman.github.com/blog/2011/03/10/current-desktop/"/>
     <updated>2011-03-10T00:00:00-06:00</updated>
     <id>http://philcrissman.github.com/blog/2011/03/10/current-desktop</id>
-    <content type="html"><![CDATA[<hr />
-
-<p>title: Current Desktop
-date: 10/03/2011</p>
-
-<p><a href="http://philcrissman.com/images/posts/theDesktop3-10-11.png"><img src="http://philcrissman.com/images/posts/theDesktop3-10-11-sm.png" width="440" /></a></p>
+    <content type="html"><![CDATA[<p><a href="http://philcrissman.com/images/posts/theDesktop3-10-11.png"><img src="http://philcrissman.com/images/posts/theDesktop3-10-11-sm.png" width="440" /></a></p>
 
 <p>I&#8217;m a sucker for a nice desktop. Currently using <a href="http://mutablecode.com/apps/nerdtool">NerdTool</a> (thanks, <a href="http://www.leancrew.com/all-this/">drdrang</a> and <a href="http://brettterpstra.com/">Brett Terpstra</a>) and <a href="http://wallsaverapp.com/">WallSaver</a>.</p>
 
@@ -403,12 +274,7 @@ date: 10/03/2011</p>
     <link href="http://philcrissman.github.com/blog/2011/02/21/test-first-as-a-productivity-hack/"/>
     <updated>2011-02-21T00:00:00-06:00</updated>
     <id>http://philcrissman.github.com/blog/2011/02/21/test-first-as-a-productivity-hack</id>
-    <content type="html"><![CDATA[<hr />
-
-<p>title: Test First As A Productivity Hack
-date: 21/02/2011</p>
-
-<p><a href="http://philcrissman.github.com/images/posts/focus.jpg"><img src="http://philcrissman.github.com/images/posts/focus.jpg" width="440" /></a></p>
+    <content type="html"><![CDATA[<p><a href="http://philcrissman.github.com/images/posts/focus.jpg"><img src="http://philcrissman.github.com/images/posts/focus.jpg" width="440" /></a></p>
 
 <p>If you&#8217;re like me, and live primarily online, you have countless distractions in the form of blogs, news sites, photo sites, chat applications, twitter/facebook, web comics, etc. It&#8217;s really easy to sit down at your computer, and if you&#8217;re not focused, simply call up <a href="http://thisisnthappiness.com">TIH</a> or <a href="http://news.ycombinator.com">HN</a> or <a href="http://bestofwikipedia.tumblr.com">bestofwikipedia</a> and soon find the first hour of your day has been completely sucked up just <em>looking at stuff</em>.</p>
 
@@ -438,16 +304,11 @@ Photo credit: <a href="http://www.flickr.com/photos/ihtatho/627226315/sizes/m/in
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Ujs In Rails 3 Slides]]></title>
+    <title type="html"><![CDATA[UJS in Rails 3 Slides]]></title>
     <link href="http://philcrissman.github.com/blog/2011/02/01/ujs-in-rails-3-slides/"/>
     <updated>2011-02-01T00:00:00-06:00</updated>
     <id>http://philcrissman.github.com/blog/2011/02/01/ujs-in-rails-3-slides</id>
-    <content type="html"><![CDATA[<hr />
-
-<p>title: UJS in Rails 3 Slides
-date: 01/02/2011</p>
-
-<p>So, here&#8217;s those slides from the other night.</p>
+    <content type="html"><![CDATA[<p>So, here&#8217;s those slides from the other night.</p>
 
 <div style="width:425px" id="__ss_6775992"><strong style="display:block;margin:12px 0 4px"><a href="http://www.slideshare.net/philcrissman/ujs-in-rails-3-6775992" title="UJS in Rails 3">UJS in Rails 3</a></strong><object id="__sse6775992" width="425" height="355"><param name="movie" value="http://static.slidesharecdn.com/swf/ssplayer2.swf?doc=ujs-110201093325-phpapp02&stripped_title=ujs-in-rails-3-6775992&userName=philcrissman" /><param name="allowFullScreen" value="true"/><param name="allowScriptAccess" value="always"/><embed name="__sse6775992" src="http://static.slidesharecdn.com/swf/ssplayer2.swf?doc=ujs-110201093325-phpapp02&stripped_title=ujs-in-rails-3-6775992&userName=philcrissman" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="425" height="355"></embed></object><div style="padding:5px 0 12px">View more <a href="http://www.slideshare.net/">presentations</a> from <a href="http://www.slideshare.net/philcrissman">philcrissman</a>.</div></div>
 
@@ -457,133 +318,51 @@ date: 01/02/2011</p>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Ujs In Rails 3 Tonight At Rum]]></title>
+    <title type="html"><![CDATA[UJS in Rails 3 tonight at RUM]]></title>
     <link href="http://philcrissman.github.com/blog/2011/01/31/ujs-in-rails-3-tonight-at-rum/"/>
     <updated>2011-01-31T00:00:00-06:00</updated>
     <id>http://philcrissman.github.com/blog/2011/01/31/ujs-in-rails-3-tonight-at-rum</id>
-    <content type="html"><![CDATA[<hr />
-
-<p>title: UJS in Rails 3 tonight at RUM
-date: 31/01/2011</p>
-
-<p>UJS in Rails 3, tonight at RUM</p>
+    <content type="html"><![CDATA[<p>UJS in Rails 3, tonight at RUM</p>
 
 <p>I&#8217;ll be speaking tonight on UJS and Rails 3 at <a href="http://ruby.mn/">RUM</a>. Slides will be posted somewhere later this week, and I may follow up with a post that summarizes the content, if the slides don&#8217;t seem complete enough to cover the topic on their own.</p>
 ]]></content>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Looselyjoinednet]]></title>
+    <title type="html"><![CDATA[looselyjoined.net]]></title>
     <link href="http://philcrissman.github.com/blog/2011/01/14/looselyjoinednet/"/>
     <updated>2011-01-14T00:00:00-06:00</updated>
     <id>http://philcrissman.github.com/blog/2011/01/14/looselyjoinednet</id>
-    <content type="html"><![CDATA[<hr />
-
-<p>title: looselyjoined.net
-date: 14/01/2011</p>
-
-<p>I&#8217;ve been piling a lot of links, images, and whatnot up on a <a href="http://posterous.com">posterous.com</a> website: see <a href="http://looselyjoined.net">looselyjoined.net</a>. Enjoy, if you are so inclined.</p>
+    <content type="html"><![CDATA[<p>I&#8217;ve been piling a lot of links, images, and whatnot up on a <a href="http://posterous.com">posterous.com</a> website: see <a href="http://looselyjoined.net">looselyjoined.net</a>. Enjoy, if you are so inclined.</p>
 ]]></content>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Rockers]]></title>
-    <link href="http://philcrissman.github.com/blog/2010/12/11/rockers/"/>
-    <updated>2010-12-11T00:00:00-06:00</updated>
-    <id>http://philcrissman.github.com/blog/2010/12/11/rockers</id>
-    <content type="html"><![CDATA[<hr />
-
-<p>title: Rockers
-date: 11/12/2010</p>
-
-<p><img src="http://philcrissman.github.com/images/posts/rockers.jpg" /></p>
-
-<p>My sister made this out of an old photo of us. Being rockers. I don&#8217;t think it&#8217;s dated, but I&#8217;m guessing we&#8217;re around 4 and 2, respectively.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Gratuitious Web Bling]]></title>
-    <link href="http://philcrissman.github.com/blog/2010/11/21/gratuitious-web-bling/"/>
-    <updated>2010-11-21T00:00:00-06:00</updated>
-    <id>http://philcrissman.github.com/blog/2010/11/21/gratuitious-web-bling</id>
-    <content type="html"><![CDATA[<hr />
-
-<p>title: Gratuitious web bling
-date: 21/11/2010</p>
-
-<h3>or, <em>Just Because We Can Doesn&#8217;t Mean We Should</em></h3>
-
-<p><a href="http://www.20thingsilearned.com/home">20 things</a> is a site setup by Google which talks about the technologies behind and within web browsers.</p>
-
-<p><img src="http://philcrissman.github.com/images/posts/20things.jpg" width="440" alt="image of page turning in a web page made to look like a book" /></p>
-
-<p>Color me impressed, absolutely. It&#8217;s a pretty website, and a nice feat of html + JS + html5 technologies to make a &#8220;book-like&#8221; experience within a web page. It works and it&#8217;s a smooth effect, not to mention content that seems to make the ideas around the web and web browsers accessible to a non-technical audience. Well done.</p>
-
-<p>The only thing is, by the time I got to about the fourth page, I was wishing I could view it as a normal web page, and just scroll down, rather than having to &#8220;turn the page&#8221; each time. I wound up downloading the PDF version, which I will probably use to read the rest of it, as I just don&#8217;t want to deal with &#8220;reading&#8221; the virtual book any more.</p>
-
-<p>Making a website that acts like a book is marvelous. But <em>why</em> would we want to do that?</p>
-
-<div class="side-text">
-At least, provide a link to an alternate version for, you know&#8230; people who use web browsers.
-</div>
-
-
-<p>It strikes me as a little like trying to figure out a way to get a paper book to simulate clay or stone tablets. Maybe make the pages an inch thick and have them weigh a few pounds each. Neat if you can manage it, but <em>why</em>?</p>
-
-<p>That&#8217;s all. I don&#8217;t want to be a hater, I think the effect was executed wonderfully.</p>
-
-<p>But there&#8217;s no way I could read the whole thing in that format. If you want me to read it as a a book, publish it as one and put it on a shelf. If it&#8217;s going to be in a web page, let it act like a web page.</p>
-
-<p>At <em>least</em>, provide a link to an alternate one-long-page-we-can-scroll-down version for, you know&#8230; people who use web browsers.</p>
-
-<p>&#8211;</p>
-
-<p><strong>Please Comment:</strong> I&#8217;m curious: what did you think? Did you read the whole <em>20 things</em> &#8220;book&#8221;, or stop a few pages into it? If there had been an alternate &#8216;regular web page&#8217; version of the content, would you have read that version instead?</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Lets Roll]]></title>
+    <title type="html"><![CDATA[Let's roll]]></title>
     <link href="http://philcrissman.github.com/blog/2010/11/11/lets-roll/"/>
     <updated>2010-11-11T00:00:00-06:00</updated>
     <id>http://philcrissman.github.com/blog/2010/11/11/lets-roll</id>
-    <content type="html"><![CDATA[<hr />
-
-<p>title: Let&#8217;s roll
-date: 11/11/2010</p>
-
-<p><a href="http://philcrissman.github.com/images/posts/d20-iwojima.jpg"><img src="http://philcrissman.github.com/images/posts/d20-iwojima.jpg" width="440" /></a></p>
+    <content type="html"><![CDATA[<p><a href="http://philcrissman.github.com/images/posts/d20-iwojima.jpg"><img src="http://philcrissman.github.com/images/posts/d20-iwojima.jpg" width="440" /></a></p>
 ]]></content>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Anti Gravity]]></title>
+    <title type="html"><![CDATA[Anti-Gravity]]></title>
     <link href="http://philcrissman.github.com/blog/2010/11/09/anti-gravity/"/>
     <updated>2010-11-09T00:00:00-06:00</updated>
     <id>http://philcrissman.github.com/blog/2010/11/09/anti-gravity</id>
-    <content type="html"><![CDATA[<hr />
-
-<p>title: Anti-Gravity
-date: 09/11/2010</p>
-
-<p><img src="http://philcrissman.github.com/images/posts/antigravbook.jpg" alt="Anti-Gravity" /></p>
+    <content type="html"><![CDATA[<p><img src="http://philcrissman.github.com/images/posts/antigravbook.jpg" alt="Anti-Gravity" /></p>
 
 <p><a href="http://comixed.memebase.com/2010/10/26/4-koma-comic-strip-a-real-page-turner/">link</a></p>
 ]]></content>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[How To Read Error Messages For Ruby On Rails]]></title>
+    <title type="html"><![CDATA[How To Read Error Messages for Ruby on Rails]]></title>
     <link href="http://philcrissman.github.com/blog/2010/11/08/how-to-read-error-messages-for-ruby-on-rails/"/>
     <updated>2010-11-08T00:00:00-06:00</updated>
     <id>http://philcrissman.github.com/blog/2010/11/08/how-to-read-error-messages-for-ruby-on-rails</id>
-    <content type="html"><![CDATA[<hr />
-
-<p>title: How To Read Error Messages for Ruby on Rails
-date: 08/11/2010</p>
-
-<p><img src="http://philcrissman.github.com/images/posts/stack.jpg" alt="stack" /></p>
+    <content type="html"><![CDATA[<p><img src="http://philcrissman.github.com/images/posts/stack.jpg" alt="stack" /></p>
 
 <p>Off and on (more off than on, recently) I lurk in the #rubyonrails IRC channel and try to be helpful. It&#8217;s sad to say, but it&#8217;s really common that people have questions &#8211; something isn&#8217;t working &#8211; and when they post the error message that they&#8217;re getting, their problem (and its implicit solution) is written in plain English in the first few lines of the error message. Not every time of course, but more often than not, error messages are trying to tell you something, and you should listen to what they&#8217;re telling you.</p>
 
@@ -646,26 +425,16 @@ date: 08/11/2010</p>
     <link href="http://philcrissman.github.com/blog/2010/10/22/one-does-not-simply-walk-into-mordor/"/>
     <updated>2010-10-22T00:00:00-05:00</updated>
     <id>http://philcrissman.github.com/blog/2010/10/22/one-does-not-simply-walk-into-mordor</id>
-    <content type="html"><![CDATA[<hr />
-
-<p>title: One Does Not Simply Walk Into Mordor
-date: 22/10/2010</p>
-
-<p><img src="http://philcrissman.com/images/posts/walksintomordor.jpg" width="440" /></p>
+    <content type="html"><![CDATA[<p><img src="http://philcrissman.com/images/posts/walksintomordor.jpg" width="440" /></p>
 ]]></content>
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[By Land And By Sea And By Reference]]></title>
+    <title type="html"><![CDATA[By Land and By Sea and By Reference]]></title>
     <link href="http://philcrissman.github.com/blog/2010/10/06/by-land-and-by-sea-and-by-reference/"/>
     <updated>2010-10-06T00:00:00-05:00</updated>
     <id>http://philcrissman.github.com/blog/2010/10/06/by-land-and-by-sea-and-by-reference</id>
-    <content type="html"><![CDATA[<hr />
-
-<p>title: By Land and By Sea and By Reference
-date: 06/10/2010</p>
-
-<p><img src="http://philcrissman.github.com/images/posts/travel_land_sea_air.jpg" width="440" />
+    <content type="html"><![CDATA[<p><img src="http://philcrissman.github.com/images/posts/travel_land_sea_air.jpg" width="440" />
 <span style="font-size:0.8em"><a href="http://www.flickr.com/photos/hitchster/4118220915/">Photo source</a></span></p>
 
 <p>I recently attempted to fit the quicksort algorithm into under 140 characters of Ruby. It looks like:</p>
@@ -810,16 +579,11 @@ end
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Why I Dont Like Location Based Services]]></title>
+    <title type="html"><![CDATA[Why I don't like location based services]]></title>
     <link href="http://philcrissman.github.com/blog/2010/09/14/why-i-dont-like-location-based-services/"/>
     <updated>2010-09-14T00:00:00-05:00</updated>
     <id>http://philcrissman.github.com/blog/2010/09/14/why-i-dont-like-location-based-services</id>
-    <content type="html"><![CDATA[<hr />
-
-<p>title: Why I don&#8217;t like location based services
-date: 14/09/2010</p>
-
-<p>So, I&#8217;ve resisted being involved in <a href="http://foursquare.com">foursquare</a>, <a href="http://gowalla.com">gowalla</a>, yelp check-in, Facebook places, even geo-tagging twitter entries, et al.: all the &#8220;location&#8221; based check-in type services out there. There was always something I just didn&#8217;t care for about them.</p>
+    <content type="html"><![CDATA[<p>So, I&#8217;ve resisted being involved in <a href="http://foursquare.com">foursquare</a>, <a href="http://gowalla.com">gowalla</a>, yelp check-in, Facebook places, even geo-tagging twitter entries, et al.: all the &#8220;location&#8221; based check-in type services out there. There was always something I just didn&#8217;t care for about them.</p>
 
 <p>Until recently, I&#8217;ve never really tried to say exactly <em>what</em> it is that I dislike about them. It isn&#8217;t simply the notion of saying where you are: I say where I am on twitter frequently. Am I a hypocrite? I don&#8217;t think so. But <em>why not</em>? What, you may ask, O Wise Phil Crissman, is the difference between saying where you are in a tweet, and in &#8216;checking in&#8217; with one of the afore-mentioned services?</p>
 
@@ -867,6 +631,191 @@ date: 14/09/2010</p>
 
 <object width="439" height="272"><param name="movie" value="http://www.youtube.com/v/R6Mj1Us13Yk?fs=1&amp;hl=en_US&amp;color1=0x006699&amp;color2=0x54abd6"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/R6Mj1Us13Yk?fs=1&amp;hl=en_US&amp;color1=0x006699&amp;color2=0x54abd6" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="439" height="272"></embed></object>
 
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Fun With The Major Scale]]></title>
+    <link href="http://philcrissman.github.com/blog/2010/08/11/fun-with-the-major-scale/"/>
+    <updated>2010-08-11T00:00:00-05:00</updated>
+    <id>http://philcrissman.github.com/blog/2010/08/11/fun-with-the-major-scale</id>
+    <content type="html"><![CDATA[<p>Got to chatting with Nate <a href="http://twitter.com/fowlduck">(@fowlduck)</a> about musical notation last night. He was pointing out that bits of the notation seem arbitrary and probably archaic, likening it to legacy code of a sort. For example, why no whole tone between B and C, E and F? This post is NOT meant to be a defense of music notation, a &#8220;setting straight&#8221; of anything, or even a definitive description of musical theory (at which I&#8217;m a rank amateur). It just got me thinking about the major scale and the circle of fourths &amp; fifths, which led to some playing around on the command line, which led to this. Enjoy.</p>
+
+<p>The thing that makes it seem so strange is, at least in part, the major scale. The octave consists of twelve semi-tones, in which the major scale is set in this pattern: whole tone, whole tone, semitone, whole tone, whole tone, whole tone, whole tone, semi-tone. Like so:</p>
+
+<pre>
+  1   2   3   4   5   6   7   8   9   10  11  12  13
+| C |   | D |   | E | F |   | G |   | A |   | B | C | ... (etc) 
+</pre>
+
+
+<p>The next root note (13th semi-tone, above) is only a semi-tone off from the last note of the scale. And so on. The semi-tone before or after any given note is a flat or a sharp respectively, giving rise to the B# == C, Cb == B, E# == F, Fb == E identities. So, let&#8217;s just accept the scale as a given; that this pattern of whole tones and semi-tones sounds pleasing to the ear.</p>
+
+<p>So why is it C that has all natural notes (no sharps or flats)? Good question. That part, to me at least, does seem arbitrary, but effectively it doesn&#8217;t matter. Given the above system, the major scale in one key and one key only will have no sharps or flats. But still, why structure the notes this way? It still doesn&#8217;t necessarily seem to make sense.</p>
+
+<p>There are a few reasons. For one, we want to be able to express every scale by naming off the notes, and we&#8217;d like each note to be a different letter. So we need 7 letters.</p>
+
+<p>Where it gets really interesting is the circle of fourths and fifths.</p>
+
+<p><img src="http://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Circle_of_fifths_deluxe_4.svg/400px-Circle_of_fifths_deluxe_4.svg.png" /></p>
+
+<p>So, if you go around clockwise, you&#8217;re counting by fifths (G is the fifth note of the C major scale, D is the fifth note of the G major scale, etc) and if you go around counter-clockwise you&#8217;re counting by fourths (F is the fourth note of C, Bb is the fourth note of F, etc). If you go around clockwise, each scale has one additional sharped note until you get to 180 degrees around, then it has n-1 flat notes, and loses one flat each fifth till you get back to C (no sharps or flats); vis versa the other direction. This is actually really cool; each scale, in addition to being unique in that, well, it has a different root note, is unique in that it is the only scale to have its specific number of sharps or flats. If a scale has 3 sharps, it&#8217;s A. Period. There isn&#8217;t another choice. Neat!</p>
+
+<p>So for fun, we can explore the circle of fifths in the command line. First lets set it up:</p>
+
+<pre>
+<code class="ruby">
+> circle = (0..11).map{|n| n*7%12 }
+ => [0, 7, 2, 9, 4, 11, 6, 1, 8, 3, 10, 5] 
+</code>
+</pre>
+
+
+<p>Well. That doesn&#8217;t mean a whole lot. How can we map it to notes? Let&#8217;s just construct a reference array really quick. (I&#8217;m making it an instance variable so I can use it in a method later; this was all done in irb.)</p>
+
+<pre>
+<code class="ruby">
+> @notes = ["C", "C#/Db", "D", "D#/Eb", "E", "E#/F", "F#/Gb", "G", "G#/Ab", "A", "A#/Bb", "B/Cb"]
+ => ["C", "C#/Db", "D", "D#/Eb", "E", "E#/F", "F#/Gb", "G", "G#/Ab", "A", "A#/Bb", "B/Cb"]
+</code>
+</pre>
+
+
+<p>So, to read our circle, we&#8217;d do:</p>
+
+<pre>
+<code class="ruby">
+> circle.map{|n| @notes[n]}
+ => ["C", "G", "D", "A", "E", "B/Cb", "F#/Gb", "C#/Db", "G#/Ab", "D#/Eb", "A#/Bb", "E#/F"]
+</code>
+</pre>
+
+
+<p>Hooray. The circle of fifths. Now, so what? Well, let&#8217;s make a little method to construct a major scale from the <code>@notes</code> variable. We&#8217;ll take a root note as an argument, so we can construct any major scale we like.</p>
+
+<pre>
+<code class="ruby">
+> def major(root=0)
+?>  offset = (0..11).map{|n| @notes[(n+root)%12]}
+?>  [offset[0], offset[2], offset[4], offset[5], offset[7], offset[9], offset[11]].join(" ")
+?>  end
+ => nil
+</code>
+</pre>
+
+
+<p>So, just calling <code>major</code> with no arguments should give us the C major scale; calling with, say, 5 should give us F major (5 in this case is the index of F in @notes; but you were already following that, I know):</p>
+
+<pre>
+<code class="ruby">
+> major
+ => "C D E E#/F G A B/Cb" 
+> major(5)
+ => "E#/F G A A#/Bb C D E" 
+
+</code>
+</pre>
+
+
+<p>So we said that the circle of fifths added a sharp each increment, and then flipped to flats and removed on each increment. Let&#8217;s watch it happen:</p>
+
+<pre>
+<code class="">
+>> circle.each{|n| puts major(n) }
+C D E F G A B
+G A B C D E F#/Gb
+D E F#/Gb G A B C#/Db
+A B C#/Db D E F#/Gb G#/Ab
+E F#/Gb G#/Ab A B C#/Db D#/Eb
+B C#/Db D#/Eb E F#/Gb G#/Ab A#/Bb
+F#/Gb G#/Ab A#/Bb B C#/Db D#/Eb F
+C#/Db D#/Eb F F#/Gb G#/Ab A#/Bb C
+G#/Ab A#/Bb C C#/Db D#/Eb F G
+D#/Eb F G G#/Ab A#/Bb C D
+A#/Bb C D D#/Eb F G A
+F G A A#/Bb C D E
+</code>
+</pre>
+
+
+<p>Not as neat as it could look since I put the #/b both in the original notes array; the note you&#8217;d read would be the one with a consecutive letter after the previous note. So in G, the note following E is F#. In Eb, the note following G is Ab&#8230; and so on. The same note <em>letter</em> only appears once in any given scale. A sharp or flat is added or removed each increment you go around the circle.</p>
+
+<p>I don&#8217;t have any startling conclusions to close this off with. Just that music is pretty cool, and that a few of the things that <em>seem</em> arbitrary just have to be that way &#8211; assuming we&#8217;re going to base the system around 12 equally tempered semitones (see <a href="http://en.wikipedia.org/wiki/Equal_temperament">Equal Temperment</a>, or even <a href="http://en.wikipedia.org/wiki/The_Well-Tempered_Clavier">Bach&#8217;s Well-Tempered Clavier</a> (evidently there&#8217;s some dispute over whether or not Bach&#8217;s intended tuning was equal or, uh, &#8220;well&#8221; tempered; I was not aware of this!)) and a 7 note major scale &#8211; neither of which are absolutely necessary, of course, and there are other ways to do it. See <a href="http://en.wikipedia.org/wiki/Mathematics_of_musical_scales#Mathematics_of_musical_scales">Mathematics of musical scales</a> and <a href="http://en.wikipedia.org/wiki/Musical_tuning#Tuning_systems">tuning systems</a> for more.</p>
+
+<p>Happy musicking.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Push it somewhere else]]></title>
+    <link href="http://philcrissman.github.com/blog/2010/08/06/push-it-somewhere-else/"/>
+    <updated>2010-08-06T00:00:00-05:00</updated>
+    <id>http://philcrissman.github.com/blog/2010/08/06/push-it-somewhere-else</id>
+    <content type="html"><![CDATA[<p><img src="http://philcrissman.com/images/posts/patrick-make-a-gist.jpg" width="440" /></p>
+
+<p>For all the folks in #rubyonrails, and beyond.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[graffiti on a train]]></title>
+    <link href="http://philcrissman.github.com/blog/2010/08/04/graffiti-on-a-train/"/>
+    <updated>2010-08-04T00:00:00-05:00</updated>
+    <id>http://philcrissman.github.com/blog/2010/08/04/graffiti-on-a-train</id>
+    <content type="html"><![CDATA[<p><img src="http://philcrissman.com/images/posts/hbak_graffiti.jpg" width="440" /></p>
+
+<p>Pic taken along the trail on the way from Minneapolis to Hopkins.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[RVM]]></title>
+    <link href="http://philcrissman.github.com/blog/2010/07/29/rvm/"/>
+    <updated>2010-07-29T00:00:00-05:00</updated>
+    <id>http://philcrissman.github.com/blog/2010/07/29/rvm</id>
+    <content type="html"><![CDATA[<p><img src="http://philcrissman.com/images/posts/rvm_image.png" width="440" /></p>
+
+<p>I gave a short presentation on <a href="http://rvm.beginrescueend.com">RVM</a> on Monday at <a href="http://ruby.mn">RUM</a>.</p>
+
+<p>The slides can be found at <a href="http://rubymn-rvm.heroku.com">rubymn-rvm.heroku.com</a>.</p>
+
+<p>Enjoy!</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Faith]]></title>
+    <link href="http://philcrissman.github.com/blog/2010/07/28/faith/"/>
+    <updated>2010-07-28T00:00:00-05:00</updated>
+    <id>http://philcrissman.github.com/blog/2010/07/28/faith</id>
+    <content type="html"><![CDATA[<p><img src="http://philcrissman.com/images/posts/vader_faith.jpg" width="440" /></p>
+
+<p>I know, I know, the faux motivational poster is an old and tired <a href="http://en.wikipedia.org/wiki/Meme">meme</a>. Sorry.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[I Write Like]]></title>
+    <link href="http://philcrissman.github.com/blog/2010/07/27/i-write-like/"/>
+    <updated>2010-07-27T00:00:00-05:00</updated>
+    <id>http://philcrissman.github.com/blog/2010/07/27/i-write-like</id>
+    <content type="html"><![CDATA[<p>I&#8217;ve seen the <a href="http://iwl.me/">I write like</a> links show up on facebook and twitter a few times, so I decided I&#8217;d take a look. Not content to simply feed it one sample, I fed it the text from several of the posts from the archive. Here were the results:</p>
+
+<ul>
+<li><a href="http://philcrissman.com/2009/01/14/i-hold-strong-opinions-about-the-placement-of-curly-braces">I Hold Strong Opinions About The Placement Of Curly Braces</a></li>
+<li><p>=> I write like: <strong>H.P. Lovecraft</strong>. <em>Really? Wait&#8230; what?</em></p></li>
+<li><p><a href="http://philcrissman.com/2010/02/16/no-were-not-the-stupid-ones">No, We&#8217;re Not The Stupid Ones</a></p></li>
+<li><a href="http://philcrissman.com/2009/01/16/in-which-i-am-no-longer-a-very-good-bachelor">In Which I Am No Longer A Very Good Bachelor</a></li>
+<li><a href="http://philcrissman.com/2010/04/01/oracle-to-acquire-oracle">Oracle To Acquire Oracle</a></li>
+<li><p>=> I write like: <strong>Cory Doctorow</strong>. <em>Huh. You think? Well, okay. Thanks!</em></p></li>
+<li><p><a href="http://philcrissman.com/2006/09/22/the-emperors-new-web">The Emperor&#8217;s New Web</a></p></li>
+<li>=> I write like: <strong>Jonathan Swift</strong>. <em>[blushing] No, no&#8230; you&#8217;re too kind.</em></li>
+</ul>
+
+
+<p>Not sure how they are analyzing the text and reaching their conclusions, but there&#8217;s at least a <em>little</em> bit of smarts in there; that last one, the one which was compared to Swift, is indeed a satire, though I&#8217;m not going to claim it&#8217;s in the calibre of Swift&#8217;s satire, but still; their algorithm picked something out of it which prompted the comparison. Not bad.</p>
+
+<p>So, evidently, according to their analyses, I write most often like Cory Doctorow. I&#8217;ve only read <em>Down And Out In The Magic Kingdom</em>, and several of his blog posts/essays, but enough to consider it a compliment, though I&#8217;m not certain it&#8217;s deserved. Regardless, there we have it.</p>
 ]]></content>
   </entry>
   

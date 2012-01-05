@@ -9,8 +9,7 @@
   <meta name="author" content="Your Name">
 
   
-  <meta name="description" content="title: Fun With The Major Scale
-date: 11/08/2010 Got to chatting with Nate (@fowlduck) about musical notation last night. He was pointing out that &hellip;">
+  <meta name="description" content="The second chapter of Introduction To Algorithms by Cormen, Leiserson, et al., describes the algorithms for Insertion Sort and Merge Sort in &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -71,432 +70,6 @@ date: 11/08/2010 Got to chatting with Nate (@fowlduck) about musical notation la
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2010/08/11/fun-with-the-major-scale/">Fun With the Major Scale</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-08-11T00:00:00-05:00" pubdate data-updated="true">Aug 11<span>th</span>, 2010</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><hr />
-
-<p>title: Fun With The Major Scale
-date: 11/08/2010</p>
-
-<p>Got to chatting with Nate <a href="http://twitter.com/fowlduck">(@fowlduck)</a> about musical notation last night. He was pointing out that bits of the notation seem arbitrary and probably archaic, likening it to legacy code of a sort. For example, why no whole tone between B and C, E and F? This post is NOT meant to be a defense of music notation, a &#8220;setting straight&#8221; of anything, or even a definitive description of musical theory (at which I&#8217;m a rank amateur). It just got me thinking about the major scale and the circle of fourths &amp; fifths, which led to some playing around on the command line, which led to this. Enjoy.</p>
-
-<p>The thing that makes it seem so strange is, at least in part, the major scale. The octave consists of twelve semi-tones, in which the major scale is set in this pattern: whole tone, whole tone, semitone, whole tone, whole tone, whole tone, whole tone, semi-tone. Like so:</p>
-
-<pre>
-  1   2   3   4   5   6   7   8   9   10  11  12  13
-| C |   | D |   | E | F |   | G |   | A |   | B | C | ... (etc) 
-</pre>
-
-
-<p>The next root note (13th semi-tone, above) is only a semi-tone off from the last note of the scale. And so on. The semi-tone before or after any given note is a flat or a sharp respectively, giving rise to the B# == C, Cb == B, E# == F, Fb == E identities. So, let&#8217;s just accept the scale as a given; that this pattern of whole tones and semi-tones sounds pleasing to the ear.</p>
-
-<p>So why is it C that has all natural notes (no sharps or flats)? Good question. That part, to me at least, does seem arbitrary, but effectively it doesn&#8217;t matter. Given the above system, the major scale in one key and one key only will have no sharps or flats. But still, why structure the notes this way? It still doesn&#8217;t necessarily seem to make sense.</p>
-
-<p>There are a few reasons. For one, we want to be able to express every scale by naming off the notes, and we&#8217;d like each note to be a different letter. So we need 7 letters.</p>
-
-<p>Where it gets really interesting is the circle of fourths and fifths.</p>
-
-<p><img src="http://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Circle_of_fifths_deluxe_4.svg/400px-Circle_of_fifths_deluxe_4.svg.png" /></p>
-
-<p>So, if you go around clockwise, you&#8217;re counting by fifths (G is the fifth note of the C major scale, D is the fifth note of the G major scale, etc) and if you go around counter-clockwise you&#8217;re counting by fourths (F is the fourth note of C, Bb is the fourth note of F, etc). If you go around clockwise, each scale has one additional sharped note until you get to 180 degrees around, then it has n-1 flat notes, and loses one flat each fifth till you get back to C (no sharps or flats); vis versa the other direction. This is actually really cool; each scale, in addition to being unique in that, well, it has a different root note, is unique in that it is the only scale to have its specific number of sharps or flats. If a scale has 3 sharps, it&#8217;s A. Period. There isn&#8217;t another choice. Neat!</p>
-
-<p>So for fun, we can explore the circle of fifths in the command line. First lets set it up:</p>
-
-<pre>
-<code class="ruby">
-> circle = (0..11).map{|n| n*7%12 }
- => [0, 7, 2, 9, 4, 11, 6, 1, 8, 3, 10, 5] 
-</code>
-</pre>
-
-
-<p>Well. That doesn&#8217;t mean a whole lot. How can we map it to notes? Let&#8217;s just construct a reference array really quick. (I&#8217;m making it an instance variable so I can use it in a method later; this was all done in irb.)</p>
-
-<pre>
-<code class="ruby">
-> @notes = ["C", "C#/Db", "D", "D#/Eb", "E", "E#/F", "F#/Gb", "G", "G#/Ab", "A", "A#/Bb", "B/Cb"]
- => ["C", "C#/Db", "D", "D#/Eb", "E", "E#/F", "F#/Gb", "G", "G#/Ab", "A", "A#/Bb", "B/Cb"]
-</code>
-</pre>
-
-
-<p>So, to read our circle, we&#8217;d do:</p>
-
-<pre>
-<code class="ruby">
-> circle.map{|n| @notes[n]}
- => ["C", "G", "D", "A", "E", "B/Cb", "F#/Gb", "C#/Db", "G#/Ab", "D#/Eb", "A#/Bb", "E#/F"]
-</code>
-</pre>
-
-
-<p>Hooray. The circle of fifths. Now, so what? Well, let&#8217;s make a little method to construct a major scale from the <code>@notes</code> variable. We&#8217;ll take a root note as an argument, so we can construct any major scale we like.</p>
-
-<pre>
-<code class="ruby">
-> def major(root=0)
-?>  offset = (0..11).map{|n| @notes[(n+root)%12]}
-?>  [offset[0], offset[2], offset[4], offset[5], offset[7], offset[9], offset[11]].join(" ")
-?>  end
- => nil
-</code>
-</pre>
-
-
-<p>So, just calling <code>major</code> with no arguments should give us the C major scale; calling with, say, 5 should give us F major (5 in this case is the index of F in @notes; but you were already following that, I know):</p>
-
-<pre>
-<code class="ruby">
-> major
- => "C D E E#/F G A B/Cb" 
-> major(5)
- => "E#/F G A A#/Bb C D E" 
-
-</code>
-</pre>
-
-
-<p>So we said that the circle of fifths added a sharp each increment, and then flipped to flats and removed on each increment. Let&#8217;s watch it happen:</p>
-
-<pre>
-<code class="">
->> circle.each{|n| puts major(n) }
-C D E F G A B
-G A B C D E F#/Gb
-D E F#/Gb G A B C#/Db
-A B C#/Db D E F#/Gb G#/Ab
-E F#/Gb G#/Ab A B C#/Db D#/Eb
-B C#/Db D#/Eb E F#/Gb G#/Ab A#/Bb
-F#/Gb G#/Ab A#/Bb B C#/Db D#/Eb F
-C#/Db D#/Eb F F#/Gb G#/Ab A#/Bb C
-G#/Ab A#/Bb C C#/Db D#/Eb F G
-D#/Eb F G G#/Ab A#/Bb C D
-A#/Bb C D D#/Eb F G A
-F G A A#/Bb C D E
-</code>
-</pre>
-
-
-<p>Not as neat as it could look since I put the #/b both in the original notes array; the note you&#8217;d read would be the one with a consecutive letter after the previous note. So in G, the note following E is F#. In Eb, the note following G is Ab&#8230; and so on. The same note <em>letter</em> only appears once in any given scale. A sharp or flat is added or removed each increment you go around the circle.</p>
-
-<p>I don&#8217;t have any startling conclusions to close this off with. Just that music is pretty cool, and that a few of the things that <em>seem</em> arbitrary just have to be that way &#8211; assuming we&#8217;re going to base the system around 12 equally tempered semitones (see <a href="http://en.wikipedia.org/wiki/Equal_temperament">Equal Temperment</a>, or even <a href="http://en.wikipedia.org/wiki/The_Well-Tempered_Clavier">Bach&#8217;s Well-Tempered Clavier</a> (evidently there&#8217;s some dispute over whether or not Bach&#8217;s intended tuning was equal or, uh, &#8220;well&#8221; tempered; I was not aware of this!)) and a 7 note major scale &#8211; neither of which are absolutely necessary, of course, and there are other ways to do it. See <a href="http://en.wikipedia.org/wiki/Mathematics_of_musical_scales#Mathematics_of_musical_scales">Mathematics of musical scales</a> and <a href="http://en.wikipedia.org/wiki/Musical_tuning#Tuning_systems">tuning systems</a> for more.</p>
-
-<p>Happy musicking.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2010/08/06/push-it-somewhere-else/">Push It Somewhere Else</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-08-06T00:00:00-05:00" pubdate data-updated="true">Aug 6<span>th</span>, 2010</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><hr />
-
-<p>title: Push it somewhere else
-date: 06/08/2010</p>
-
-<p><img src="http://philcrissman.com/images/posts/patrick-make-a-gist.jpg" width="440" /></p>
-
-<p>For all the folks in #rubyonrails, and beyond.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2010/08/04/graffiti-on-a-train/">Graffiti on a Train</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-08-04T00:00:00-05:00" pubdate data-updated="true">Aug 4<span>th</span>, 2010</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><hr />
-
-<p>title: graffiti on a train
-date: 04/08/2010</p>
-
-<p><img src="http://philcrissman.com/images/posts/hbak_graffiti.jpg" width="440" /></p>
-
-<p>Pic taken along the trail on the way from Minneapolis to Hopkins.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2010/08/03/there-will-be-no-newsletter/">There Will Be No Newsletter</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-08-03T00:00:00-05:00" pubdate data-updated="true">Aug 3<span>rd</span>, 2010</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><hr />
-
-<p>title: There Will Be No Newsletter
-date: 03/08/2010</p>
-
-<p>So, a few weeks ago I saw <a href="http://letter.ly">letter.ly</a> and I thought, hey, there&#8217;s an idea, so I created an account and thought to myself, <em>what could I send out a newsletter about? I know, how about time management? I have to manage my own time, I get stuff done. That&#8217;s useful, right?</em> And so I wrote a couple posts, debated on actually getting started. Yesterday I went ahead and pulled the trigger, send out the first one and also publicized it on twitter (to no real response, which is more or less as I expected).</p>
-
-<p>I started to reconsider almost right away. While I like writing, I&#8217;m not certain I want to make a job of it. And while I like time management, and I think I&#8217;m decent at it, it doesn&#8217;t really drive me to fits of enthusiasm as a topic. I&#8217;d probably be better off taking my top few time management ideas and making blog posts out of them than I would attempting to come up with something new every single week.</p>
-
-<p>The for-profit newsletter does seem like a good idea, but I think I&#8217;m going to stick with one channel of writing, for now. The blog has a couple ads on it, which I don&#8217;t apologize for (nor do I really care if you block ads; your prerogative), so I guess if whatever I write gets immense attention (not likely, but it&#8217;s happened a few times), some reward will trickle back.</p>
-
-<p>Now, an e-book of some sort does seem like a better idea, and I have several ideas (one of which might well have to do with time management) that I might try to eventually work on in that direction. But a newsletter; I don&#8217;t really think I want to pour my efforts into that, right now. I think they&#8217;re better placed elsewhere.</p>
-
-<p>So if you saw yesterday&#8217;s tweet about the experiment, and followed the link over to <a href="http://letter.ly">letter.ly</a>, yeah. That&#8217;s the backstory, and that&#8217;s why if you look for it now, you&#8217;ll see it has a message saying it&#8217;s <em>ceased</em>. (UX note: could not find a way to actually <em>delete</em> a newsletter. Seems like that would be a handy function.)</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2010/07/29/rvm/">Rvm</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-07-29T00:00:00-05:00" pubdate data-updated="true">Jul 29<span>th</span>, 2010</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><hr />
-
-<p>title: RVM
-date: 29/07/2010</p>
-
-<p><img src="http://philcrissman.com/images/posts/rvm_image.png" width="440" /></p>
-
-<p>I gave a short presentation on <a href="http://rvm.beginrescueend.com">RVM</a> on Monday at <a href="http://ruby.mn">RUM</a>.</p>
-
-<p>The slides can be found at <a href="http://rubymn-rvm.heroku.com">rubymn-rvm.heroku.com</a>.</p>
-
-<p>Enjoy!</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2010/07/28/faith/">Faith</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-07-28T00:00:00-05:00" pubdate data-updated="true">Jul 28<span>th</span>, 2010</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><hr />
-
-<p>title: Faith
-date: 28/07/2010</p>
-
-<p><img src="http://philcrissman.com/images/posts/vader_faith.jpg" width="440" /></p>
-
-<p>I know, I know, the faux motivational poster is an old and tired <a href="http://en.wikipedia.org/wiki/Meme">meme</a>. Sorry.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2010/07/27/i-write-like/">I Write Like</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-07-27T00:00:00-05:00" pubdate data-updated="true">Jul 27<span>th</span>, 2010</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><hr />
-
-<p>title: I Write Like
-date: 27/07/2010</p>
-
-<p>I&#8217;ve seen the <a href="http://iwl.me/">I write like</a> links show up on facebook and twitter a few times, so I decided I&#8217;d take a look. Not content to simply feed it one sample, I fed it the text from several of the posts from the archive. Here were the results:</p>
-
-<ul>
-<li><a href="http://philcrissman.com/2009/01/14/i-hold-strong-opinions-about-the-placement-of-curly-braces">I Hold Strong Opinions About The Placement Of Curly Braces</a></li>
-<li><p>=> I write like: <strong>H.P. Lovecraft</strong>. <em>Really? Wait&#8230; what?</em></p></li>
-<li><p><a href="http://philcrissman.com/2010/02/16/no-were-not-the-stupid-ones">No, We&#8217;re Not The Stupid Ones</a></p></li>
-<li><a href="http://philcrissman.com/2009/01/16/in-which-i-am-no-longer-a-very-good-bachelor">In Which I Am No Longer A Very Good Bachelor</a></li>
-<li><a href="http://philcrissman.com/2010/04/01/oracle-to-acquire-oracle">Oracle To Acquire Oracle</a></li>
-<li><p>=> I write like: <strong>Cory Doctorow</strong>. <em>Huh. You think? Well, okay. Thanks!</em></p></li>
-<li><p><a href="http://philcrissman.com/2006/09/22/the-emperors-new-web">The Emperor&#8217;s New Web</a></p></li>
-<li>=> I write like: <strong>Jonathan Swift</strong>. <em>[blushing] No, no&#8230; you&#8217;re too kind.</em></li>
-</ul>
-
-
-<p>Not sure how they are analyzing the text and reaching their conclusions, but there&#8217;s at least a <em>little</em> bit of smarts in there; that last one, the one which was compared to Swift, is indeed a satire, though I&#8217;m not going to claim it&#8217;s in the calibre of Swift&#8217;s satire, but still; their algorithm picked something out of it which prompted the comparison. Not bad.</p>
-
-<p>So, evidently, according to their analyses, I write most often like Cory Doctorow. I&#8217;ve only read <em>Down And Out In The Magic Kingdom</em>, and several of his blog posts/essays, but enough to consider it a compliment, though I&#8217;m not certain it&#8217;s deserved. Regardless, there we have it.</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
       <h1 class="entry-title"><a href="/blog/2010/07/18/how-not-to-write-sorting-algorithms-in-ruby/">How Not to Write Sorting Algorithms in Ruby</a></h1>
     
     
@@ -520,12 +93,7 @@ date: 27/07/2010</p>
   </header>
 
 
-  <div class="entry-content"><hr />
-
-<p>title: How Not To Write Sorting Algorithms in Ruby
-date: 18/07/2010</p>
-
-<p>The second chapter of <a href="http://www.amazon.com/gp/product/0262033844?ie=UTF8&amp;tag=idepermin-20&amp;linkCode=as2&amp;camp=1789&amp;creative=390957&amp;creativeASIN=0262033844"><em>Introduction To Algorithms</em></a> by Cormen, Leiserson, et al., describes the algorithms for Insertion Sort and Merge Sort in pseudocode, and compares their relative efficiency (or lack thereof). I decided to write them out in Ruby and run some simple benchmarks, just for fun.</p>
+  <div class="entry-content"><p>The second chapter of <a href="http://www.amazon.com/gp/product/0262033844?ie=UTF8&amp;tag=idepermin-20&amp;linkCode=as2&amp;camp=1789&amp;creative=390957&amp;creativeASIN=0262033844"><em>Introduction To Algorithms</em></a> by Cormen, Leiserson, et al., describes the algorithms for Insertion Sort and Merge Sort in pseudocode, and compares their relative efficiency (or lack thereof). I decided to write them out in Ruby and run some simple benchmarks, just for fun.</p>
 
 <h2>Insertion Sort</h2>
 
@@ -750,7 +318,7 @@ ruby Array::sort (huge_array):
       
   <header>
     
-      <h1 class="entry-title"><a href="/blog/2010/07/08/relative-primes-revisited/">Relative Primes Revisited</a></h1>
+      <h1 class="entry-title"><a href="/blog/2010/07/08/relative-primes-revisited/">Relative Primes, Revisited</a></h1>
     
     
       <p class="meta">
@@ -773,12 +341,7 @@ ruby Array::sort (huge_array):
   </header>
 
 
-  <div class="entry-content"><hr />
-
-<p>title: Relative Primes, Revisited
-date: 08/07/2010</p>
-
-<p>As I thought; there&#8217;s always a better way to do it. <a href="http://twitter.com/jmchilton">@jmchilton</a>, who was a TA when I took Structure of Computer Programming I (or whatever it was called; the Scheme class) at the U of M, supplied this alternative solution to the relative prime problem:</p>
+  <div class="entry-content"><p>As I thought; there&#8217;s always a better way to do it. <a href="http://twitter.com/jmchilton">@jmchilton</a>, who was a TA when I took Structure of Computer Programming I (or whatever it was called; the Scheme class) at the U of M, supplied this alternative solution to the relative prime problem:</p>
 
 <pre>
 <code class="ruby">
@@ -840,12 +403,7 @@ end
   </header>
 
 
-  <div class="entry-content"><hr />
-
-<p>title: Relative Primes
-date: 07/07/2010</p>
-
-<p>I didn&#8217;t expect to do a &#8220;code kata&#8221;-type post again so quickly, but here it is anyways.</p>
+  <div class="entry-content"><p>I didn&#8217;t expect to do a &#8220;code kata&#8221;-type post again so quickly, but here it is anyways.</p>
 
 <p>I was reading Randall Hyde&#8217;s excellent <a href="http://www.amazon.com/gp/product/1593270038?ie=UTF8&amp;tag=idepermin-20&amp;linkCode=as2&amp;camp=1789&amp;creative=390957&amp;creativeASIN=1593270038">Writing Great Code: Volume 1</a> and came across the concept of relative primes.</p>
 
@@ -1020,6 +578,413 @@ end
 
     </article>
   
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/07/06/various-fizzbuzzes/">Various Fizzbuzzes</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-07-06T00:00:00-05:00" pubdate data-updated="true">Jul 6<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Every so often I remember reading posts like <a href="http://www.codinghorror.com/blog/2007/02/why-cant-programmers-program.html">Why can&#8217;t programmers&#8230; program?</a>, or <a href="http://reprog.wordpress.com/2010/04/19/are-you-one-of-the-10-percent/">Are you one of the 10% of programmers who can implement a binary search?</a>, or even various things about the idea of <a href="http://duckduckgo.com/?q=code+kata&amp;v=">code kata</a>, and that makes me want to just spend a little time practicing, rather than just working. Very often while working, we&#8217;re resolving a problem we (and/or others) have solve dozens of times before, and it&#8217;s really not very challenging or stretching.</p>
+
+<p>Since I was thinking about it, I decided to just start with the FizzBuzz example, from <a href="http://weblog.raganwald.com/2007/01/dont-overthink-fizzbuzz.html">Reginald Braithwaite</a> via Jeff Atwood.</p>
+
+<p>First solution:</p>
+
+<pre>
+<code class="ruby">
+(1..100).each do |k|
+  print k % 3 == 0 ? "Fizz" : ""
+  print k % 5 == 0 ? "Buzz" : ""
+  print k unless (k % 3 == 0 || k % 5 == 0)
+  print " "
+end
+</code>
+</pre>
+
+
+<p>So, that&#8217;s simple enough. I thought maybe it could be a little more compact, but essentially unchanged, here was the next version:</p>
+
+<pre>
+<code class="ruby">
+(1..100).each do |k|
+  print k%3==0 ? "Fizz" : "", k%5==0 ? "Buzz" : "", (k%3==0 || k%5==0) ? "" : k,  " "
+end
+</code>
+</pre>
+
+
+<p>That&#8217;s nice and all, but I&#8217;m now trying to think if I can find other ways to do it. Preferably shorter and/or more elegant. Maybe. <code>003.rb</code> was next.</p>
+
+<pre>
+<code class="ruby">
+(1..100).each do |k|
+  word = ''
+  word << "Fizz" if k%3==0
+  word << "Buzz" if k%5==0
+  print word.empty? ? k : word, " "
+end
+</code>
+</pre>
+
+
+<p>Not really shorter or elegant, but a slightly different approach, filling a placeholder variable with &#8220;Fizz&#8221;, &#8220;Buzz&#8221; (or both), and then deciding which one to display based on whether or not the placeholder was <code>empty?</code> (If you aren&#8217;t familiar with Ruby, <code>"".empty? == true &amp;&amp; "anything".empty? == false</code>.)</p>
+
+<p>Again, I tried to pare that down a little.</p>
+
+<pre>
+<code class="ruby">
+puts (1..100).map {|k| w='';w<<"Fizz"if k%3==0;w<<"Buzz"if k%5==0;w.empty? ? k : w }.join(" ")
+</code>
+</pre>
+
+
+<p>Well, I don&#8217;t know if it&#8217;s readable, or anything resembling elegant, but it&#8217;s, um&#8230; more compact.</p>
+
+<p>At that point I glanced back at my first solution, and something was bugging me about it; oh, yeah. The ternary expressions that returned &#8220;&#8221; for the false case. That seemed unnecessary. 005.rb tries to fix it.</p>
+
+<pre>
+<code class="ruby">
+(1..100).each do |k|
+  print "Fizz" if k % 3 == 0
+  print "Buzz" if k % 5 == 0
+  print k unless (k % 3 == 0 || k % 5 == 0)
+  print " "
+end
+</code>
+</pre>
+
+
+<p>Essentially unchanged. I&#8217;m not even sure it&#8217;s any more efficient but it <em>feels</em> less like there&#8217;s wasted code in there, so I like it a little better. Now, it&#8217;s not really <em>changing</em> much, but what if we extract the logic into it&#8217;s own method?</p>
+
+<pre>
+<code class="ruby">
+def fizzbuzz(k)
+  w = ''
+  w << "Fizz" if k%3==0
+  w << "Buzz" if k%5==0
+  w.empty? ? k : w
+end
+
+(1..100).each {|k| print fizzbuzz(k), " " }
+</code>
+</pre>
+
+
+<p>Hey, that&#8217;s&#8230; well, it&#8217;s essentially the same, but the lesser rites of refactoring have been appeased by pulling that code into it&#8217;s own little method.</p>
+
+<p>Hey. That makes me think we could just:</p>
+
+<pre>
+<code class="ruby">
+class Integer
+  def fizzbuzz
+    w=''<<(self%3==0 ? "Fizz" : "")<<(self%5==0 ? "Buzz" : "")
+    w.empty? ? self : w
+  end
+end
+
+puts (1..100).map{|k| k.fizzbuzz }.join(" ")
+</code>
+</pre>
+
+
+<p>So, a couple different things here. We open up <code>Integer</code> and add a fizzbuzz method to it. The idea of a place holder with either &#8220;Fizz&#8221;, &#8220;Buzz&#8221;, or both added to it is streamlined slightly by adding the concatenation lines right into the variable assignment. To make that work, we have to go back to using the ternary operator (can you see why? If we just did <code>w &lt;&lt; "Fizz" if k%3==0</code>, it would try to append <code>nil</code> to the String, and you&#8217;d get a horrible &#8220;Unable to convert nil to String&#8221; error anytime a non-multiple of 3 or 5 came up).</p>
+
+<p>So, that&#8217;s that. I know this is simple, maybe trivial, but hey, who wants to be the guy who couldn&#8217;t program a FizzBuzz solution in the interview?</p>
+
+<p>This was a fun exercise, so I&#8217;ll probably try to do some more like it. I&#8217;ll likely start by mining Code Kata, implementing some algorithms, or something. Feel free to leave problem suggestions in the comments.</p>
+
+<p>Thanks!</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/06/28/introducing-henry-a-theme-for-toto/">Introducing Henry, a Theme for Toto</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-06-28T00:00:00-05:00" pubdate data-updated="true">Jun 28<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>As a response to no demand whatsoever, I nevertheless extracted my theme for this blog into it&#8217;s own standalone theme for <a href="http://cloudhead.io/toto">toto</a> that you could use just like <a href="http://github.com/cloudhead/dorothy">dorothy</a></p>
+
+<p>Keeping with the Oz names, I called it <a href="http://github.com/philcrissman/henry">henry</a>.</p>
+
+<p>Installation is pretty much identical as you would to for toto and dorothy:</p>
+
+<pre>
+<code class="bash">
+gem install toto
+git clone git://github.com/philcrissman/henry.git myblog
+cd myblog
+heroku create myblog
+git push heroku master
+</code>
+</pre>
+
+
+<p>Now, I pretty much completely disregarded IE support when I designed the blog, so as a result I don&#8217;t think henry will look like anything much in IE. You&#8217;re on your own. I will probably eventually feel like I should update this or address it somehow, but I&#8217;m not making any guarantees as to when that would be.</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/06/25/rails-links-001/">Rails Links 001</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-06-25T00:00:00-05:00" pubdate data-updated="true">Jun 25<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>As an experiment, I&#8217;m going to start making a link-post every so often. Maybe weekly? We&#8217;ll see.</p>
+
+<ul>
+<li>Eric Davis provides a big <a href="http://theadmin.org/articles/2010/06/24/capistrano-variables/">list of Capistrano variables</a> (via <a href="http://larkware.com/shots">larkgroup</a>)</li>
+<li>Fabio Akita took the opportunity to <a href="http://www.rubyinside.com/quality-interviews-with-10-rubyists-and-bob-martin-3458.html">interview</a> a bunch of folks at RailsConf (via <a href="http://rubyinside.com">RubyInside</a>)</li>
+<li>You still have time to take Hampton Catlin&#8217;s 2010 <a href="http://survey.hamptoncatlin.com/">Ruby Survey</a></li>
+<li>Some thoughts on <a href="http://ducktypo.blogspot.com/2010/06/new-ruby-ecosystem.html">the new Ruby ecosystem</a> from Paolo Perrotta (via <a href="http://coder.io">coder.io</a>)</li>
+</ul>
+
+
+<p>Also, feedback appreciated. Is this sort of post useful, informative, handy? Or overdone, redundant, irrelevant? Somewhere in between?</p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/06/23/its-unanimous/">It&#8217;s Unanimous</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-06-23T00:00:00-05:00" pubdate data-updated="true">Jun 23<span>rd</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><img src="/images/posts/bones-nod-kirk-nod.gif" /></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/06/18/whinyrendering/">WhinyRendering</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-06-18T00:00:00-05:00" pubdate data-updated="true">Jun 18<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Quite often I&#8217;ll come into a Rails project with a good portion of the code already written. Depending on style the developers were using, this sometimes means that I may not be able to easily tell, when looking at a given view, how the view is being generated. The URL may <em>say</em> /pages/1, but for all I know, the routes file has instructions to use the ArmpitsController when it sees a route for pages/*; the URL might say /user/login, but for all we know, that may map to SessionController::sign_in. In other words, it&#8217;s not always clear.</p>
+
+<p>And that&#8217;s not even getting into the cases where there are multiple partials being used, some of which might be in app/views/shared, or who knows where.</p>
+
+<p>We&#8217;ve talked in the office a few times about a mythical plugin that could provide a little output stating exactly what controller, action, and template are being rendered, as well as any and all partials. Thus the idea for WhinyRendering was born.</p>
+
+<p>If any of the preceding scenario sounds familiar, I hope it&#8217;s helpful.</p>
+
+<p><a href="http://github.com/philcrissman/whiny_rendering">WhinyRendering</a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/06/17/all-your-webs/">All Your Webs</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-06-17T00:00:00-05:00" pubdate data-updated="true">Jun 17<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Taptaptap made an extension that <a href="http://taptaptap.com/blog/speaking-of-comments/">adds comments</a> to <a href="http://daringfireball.net">Daring Fireball</a>, and, as you can see in the comments, sparked a little debate on whether or not this was A Good Thing.</p>
+
+<p>It&#8217;s fine. I mean, I don&#8217;t really care if I can comment on DF or not, but if someone wants to, and if people use this and like it, great. It&#8217;s the web. You can&#8217;t control how people view your page. They could view it on any browser, with any extension, greasemonkey script, or other shenanigans inbetween, and there is absolutely nothing you or I can do about it.</p>
+
+<p>They can <a href="https://addons.mozilla.org/en-US/firefox/addon/1865/">block</a> <a href="https://chrome.google.com/extensions/detail/gighmmpiobklfepjocnamgkkbiglidom">your</a> <a href="http://safariadblock.com/">ads</a>. And that&#8217;s fine, because it&#8217;s their computer, and they can do that if they want to. Period.</p>
+
+<p>They can implement their own stylesheets for your site (yes! they can!) and they will never again see the letter-spacing and line-height choices you painstakingly tested and implemented the last time you redesigned your blog. They can view your articles through <a href="http://lab.arc90.com/experiments/readability/">Readability</a> or something like it.</p>
+
+<p>It just is. That&#8217;s just how the web is set up to work. And it&#8217;s a good thing. <em>It doesn&#8217;t matter</em>.</p>
+
+<p><a href="http://icanhascheezburger.com/2008/01/28/funny-pictures-all-your-bass/"><img src="http://icanhascheezburger.wordpress.com/files/2008/01/funny-pictures-cat-sound-studio.jpg" alt="funny pictures" /></a><br />see more <a href="http://icanhascheezburger.com">Lolcats and funny pictures</a></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/06/07/you-should-really-consider-parking-somewhere-else/">You Should Really Consider Parking Somewhere Else</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-06-07T00:00:00-05:00" pubdate data-updated="true">Jun 7<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p><img src="/images/posts/never_ever_park_here.jpg" width="440" /></p>
+</div>
+  
+  
+
+
+    </article>
+  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/4/">&larr; Older</a>
@@ -1037,7 +1002,7 @@ end
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2011/10/12/how-to-quit-your-job/">How To Quit Your Job</a>
+        <a href="/blog/2011/10/12/how-to-quit-your-job/">How to quit your job</a>
       </li>
     
       <li class="post">
@@ -1045,15 +1010,15 @@ end
       </li>
     
       <li class="post">
-        <a href="/blog/2011/07/12/aside-00/">Aside 00</a>
-      </li>
-    
-      <li class="post">
         <a href="/blog/2011/07/06/too-clever-to-debug/">Too Clever To Debug</a>
       </li>
     
       <li class="post">
-        <a href="/blog/2011/06/28/aside-01/">Aside 01</a>
+        <a href="/blog/2011/03/10/current-desktop/">Current Desktop</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/02/21/test-first-as-a-productivity-hack/">Test First As A Productivity Hack</a>
       </li>
     
   </ul>

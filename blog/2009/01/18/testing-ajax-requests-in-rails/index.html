@@ -1,8 +1,3 @@
-<hr />
-
-<p>title: Testing Ajax Requests In Rails
-date: 18/01/2009</p>
-
 <p>Just figured out a test on which I spent far too long wondering why it wasn&#8217;t working. I kept coming back to it and trying something else, and it kept not working.</p>
 
 <p>We have a form which submits to a create action by a remote_form_for; so, an Ajax request, in other words. The controller action just uses <code>render :update</code> and replaces some HTML instead of redirecting. But in every other respect, it&#8217;s a POST to the controller, and is going to call :create. Easy, right?</p>
