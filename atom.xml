@@ -4,7 +4,7 @@
   <title><![CDATA[Automagical Thinking]]></title>
   <link href="http://philcrissman.github.com/atom.xml" rel="self"/>
   <link href="http://philcrissman.github.com/"/>
-  <updated>2012-01-05T11:18:57-06:00</updated>
+  <updated>2012-01-05T11:38:45-06:00</updated>
   <id>http://philcrissman.github.com/</id>
   <author>
     <name><![CDATA[Your Name]]></name>
@@ -239,7 +239,7 @@ say?&#8221;</p>
     <link href="http://philcrissman.github.com/blog/2011/03/10/current-desktop/"/>
     <updated>2011-03-10T00:00:00-06:00</updated>
     <id>http://philcrissman.github.com/blog/2011/03/10/current-desktop</id>
-    <content type="html"><![CDATA[<p><a href="http://philcrissman.com/images/posts/theDesktop3-10-11.png"><img src="http://philcrissman.com/images/posts/theDesktop3-10-11-sm.png" width="440" /></a></p>
+    <content type="html"><![CDATA[<p><a href="http://philcrissman.github.com/images/posts/theDesktop3-10-11.png"><img src="http://philcrissman.github.com/images/posts/theDesktop3-10-11-sm.png" width="440" /></a></p>
 
 <p>I&#8217;m a sucker for a nice desktop. Currently using <a href="http://mutablecode.com/apps/nerdtool">NerdTool</a> (thanks, <a href="http://www.leancrew.com/all-this/">drdrang</a> and <a href="http://brettterpstra.com/">Brett Terpstra</a>) and <a href="http://wallsaverapp.com/">WallSaver</a>.</p>
 
@@ -425,7 +425,7 @@ Photo credit: <a href="http://www.flickr.com/photos/ihtatho/627226315/sizes/m/in
     <link href="http://philcrissman.github.com/blog/2010/10/22/one-does-not-simply-walk-into-mordor/"/>
     <updated>2010-10-22T00:00:00-05:00</updated>
     <id>http://philcrissman.github.com/blog/2010/10/22/one-does-not-simply-walk-into-mordor</id>
-    <content type="html"><![CDATA[<p><img src="http://philcrissman.com/images/posts/walksintomordor.jpg" width="440" /></p>
+    <content type="html"><![CDATA[<p><img src="http://philcrissman.github.com/images/posts/walksintomordor.jpg" width="440" /></p>
 ]]></content>
   </entry>
   
@@ -751,7 +751,7 @@ F G A A#/Bb C D E
     <link href="http://philcrissman.github.com/blog/2010/08/06/push-it-somewhere-else/"/>
     <updated>2010-08-06T00:00:00-05:00</updated>
     <id>http://philcrissman.github.com/blog/2010/08/06/push-it-somewhere-else</id>
-    <content type="html"><![CDATA[<p><img src="http://philcrissman.com/images/posts/patrick-make-a-gist.jpg" width="440" /></p>
+    <content type="html"><![CDATA[<p><img src="http://philcrissman.github.com/images/posts/patrick-make-a-gist.jpg" width="440" /></p>
 
 <p>For all the folks in #rubyonrails, and beyond.</p>
 ]]></content>
@@ -762,7 +762,7 @@ F G A A#/Bb C D E
     <link href="http://philcrissman.github.com/blog/2010/08/04/graffiti-on-a-train/"/>
     <updated>2010-08-04T00:00:00-05:00</updated>
     <id>http://philcrissman.github.com/blog/2010/08/04/graffiti-on-a-train</id>
-    <content type="html"><![CDATA[<p><img src="http://philcrissman.com/images/posts/hbak_graffiti.jpg" width="440" /></p>
+    <content type="html"><![CDATA[<p><img src="http://philcrissman.github.com/images/posts/hbak_graffiti.jpg" width="440" /></p>
 
 <p>Pic taken along the trail on the way from Minneapolis to Hopkins.</p>
 ]]></content>
