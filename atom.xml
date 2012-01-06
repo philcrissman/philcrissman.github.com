@@ -4,7 +4,7 @@
   <title><![CDATA[Automagical Thinking]]></title>
   <link href="http://philcrissman.github.com/atom.xml" rel="self"/>
   <link href="http://philcrissman.github.com/"/>
-  <updated>2012-01-05T11:44:38-06:00</updated>
+  <updated>2012-01-06T09:50:47-06:00</updated>
   <id>http://philcrissman.github.com/</id>
   <author>
     <name><![CDATA[Your Name]]></name>
@@ -12,125 +12,6 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
-  
-  <entry>
-    <title type="html"><![CDATA[How to quit your job]]></title>
-    <link href="http://philcrissman.github.com/blog/2011/10/12/how-to-quit-your-job/"/>
-    <updated>2011-10-12T00:00:00-05:00</updated>
-    <id>http://philcrissman.github.com/blog/2011/10/12/how-to-quit-your-job</id>
-    <content type="html"><![CDATA[<p>So you want to quit your job. Welcome to the club. Membership is free,
-we don&#8217;t have meetings or rules, but we also don&#8217;t give you a t-shirt or
-a name-tag on a colorful lanyard. So, yeah. Pros and cons.</p>
-
-<p>You may or may not have, or have had, a job you dislike. That&#8217;s not
-really the issue. Maybe your job is great. That can sometimes make it
-harder. Regardless, you want to quit; not to go get another job, but to
-go off on your own and do&#8230; well, whatever it is you do.</p>
-
-<p>So, now what? Well, the title of this post oversells a bit. I don&#8217;t have
-a clue how, or even <em>if</em>, you should quit your job. I can tell you what
-I did. Twice.</p>
-
-<p>Roll back to 2008. I worked for Oracle Corporation in a support role.
-The people I worked with were top notch, but I had been in tech support
-for about 5 years at that point, and I was completely burnt out on
-counseling people with what to do about exceeding their inbox quota. I
-wanted to move into development, something I was going to school for and
-would play around with in my spare time. I had developed small
-Coldfusion and PHP apps, and some academic apps with Java, and wayyyyy
-back in high school (that would be, in the late 80s) some BASIC and
-Pascal. I was just starting to learn Ruby on Rails, but at that point
-&#8220;learning&#8221; meant only, scaffolding and mucking about with a very basic
-app. I was toying with the idea of quitting and going into freelance
-web-development. With a little bit of networking, I had wound up with 2
-possible full-time contracts right at the same time. Both would require
-me to quit my job to go full-time on the contract. One was a PHP
-application. The other was a Ruby on Rails job. After not very much
-deliberation, I chose to go with the Ruby contract.</p>
-
-<p>The Ruby contract was in essence an internship. My rate was very low,
-but I was just learning. It wound up being a fantastic opportunity for a
-new-to-rails developer; I was able to work with Jon Dahl and Luke Francl
-(both of <a href="http://railspikes.com">RailSpikes</a>, among other things) on a startup called
-<a href="http://tumblon.com">tumblon</a>.
-I&#8217;m going to be honest; some of the code I wrote was probably awful. But
-it mostly worked, and when it didn&#8217;t, I figured out why and changed it
-so it did work. I also had the benefit of working on a codebase which
-had already been around for 8-10 months, so when there were things that
-I didn&#8217;t know how to do, I could look to see what Jon and Luke had
-already done in other parts of the app. I&#8217;m pretty sure I learned better
-habits by doing that than I would if I had been forced to teach myself
-Rails all on my own.</p>
-
-<h2>If at all possible, work with people who are smarter/more experienced</h2>
-
-<p>than you, and read all their code.</p>
-
-<p>So, that was helpful. Tumblon eventually ran low on funding, so I moved
-on to work with some other local folks, like Matt Bauer (currently
-founder of <a href="http://pedalbrain.com">Pedalbrain</a>) and Todd Emmel
-(<a href="http://slantwiselabs.com">Slantwise Labs</a>) for the next
-couple years.</p>
-
-<p>During this time, I continued to learn a lot, frequently by doing things
-wrong and needing to figure out how to do them right. I continued to
-raise my rates as I learned more about what I was doing.</p>
-
-<p>Early this year, 2011, the work at Slantwise Labs ran dry. A couple
-contracts finished up, and I was left without any work for a few weeks.
-At first I wasn&#8217;t concerned, but when there continued to be no new work
-for a couple more weeks, I started to look a little harder. Also, we had
-a newborn by this time, so the pressure was a little higher than in
-times past. So, I took a full-time job.</p>
-
-<p>The job I took was doing Ruby on Rails for a local <a href="http://ackmanndickenson.com">web development
-shop</a>
-&#8211; a great company with a great team, by the way. I was hoping that it
-would work out; I planned to stay there for at least a year, if not two.
-I figured the stability of a full-time gig, the benefits, the vacation
-days, would balance out and compensate for the things I missed from
-contracting.</p>
-
-<p>It turns out I was not correct in that assumption. I really started to
-miss the freedom, and marginally higher income, of contracting. After
-debating internally for weeks, I finally decided I had to go back to
-freelance work. I decided ahead of time to finish the project I was
-working on, gave them plenty of notice, and made sure I had something
-lined up for the following month.</p>
-
-<h2>Always make sure you have something else lined up.</h2>
-
-<p>This is the problem I made earlier this year. I had grown a little
-complacent that I could always find a new project without really trying
-all that hard. Actually, I was probably just lucky. In any case, going
-forward, I knew I would need (and will need) to keep my eyes on when a
-project or contract is going to end, and make sure that there is another
-project or contract lined up soon after the current one finishes.</p>
-
-<h2>Do the best work you can possibly do. Totally own it. If you write</h2>
-
-<p>something that sucks, own that too. If possible, of course, fix it
-yourself.</p>
-
-<p>A huge benefit I&#8217;ve had is that I&#8217;m pretty sure anyone I&#8217;ve worked for
-in the past three years, I could work for again. I&#8217;ve learned a ton, and
-I continue to push myself to learn more. Realize that you don&#8217;t
-necessarily need to find clients directly &#8211; I&#8217;ve done almost 100%
-contracting for other development shops, which means I do very little
-client interaction. There are pros and cons to that, but it has worked
-well for me so far.</p>
-
-<p>Of course, the end of this little story about how I twice quit a full
-time job to go do freelance development is that if at all possible, I&#8217;d
-like now go on to bootstrap a small or not-so-small startup or product
-company, and never do consulting again. But consulting is still the best
-thing I&#8217;ve ever done for my career.</p>
-
-<p>If that resonates with you &#8211; do
-your homework, have things lined up, make sure you know what you&#8217;re
-getting yourself into, and &#8230; good luck.</p>
-]]></content>
-  </entry>
   
   <entry>
     <title type="html"><![CDATA[How To Read Web Analytics]]></title>
@@ -579,62 +460,6 @@ end
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Why I don't like location based services]]></title>
-    <link href="http://philcrissman.github.com/blog/2010/09/14/why-i-dont-like-location-based-services/"/>
-    <updated>2010-09-14T00:00:00-05:00</updated>
-    <id>http://philcrissman.github.com/blog/2010/09/14/why-i-dont-like-location-based-services</id>
-    <content type="html"><![CDATA[<p>So, I&#8217;ve resisted being involved in <a href="http://foursquare.com">foursquare</a>, <a href="http://gowalla.com">gowalla</a>, yelp check-in, Facebook places, even geo-tagging twitter entries, et al.: all the &#8220;location&#8221; based check-in type services out there. There was always something I just didn&#8217;t care for about them.</p>
-
-<p>Until recently, I&#8217;ve never really tried to say exactly <em>what</em> it is that I dislike about them. It isn&#8217;t simply the notion of saying where you are: I say where I am on twitter frequently. Am I a hypocrite? I don&#8217;t think so. But <em>why not</em>? What, you may ask, O Wise Phil Crissman, is the difference between saying where you are in a tweet, and in &#8216;checking in&#8217; with one of the afore-mentioned services?</p>
-
-<p>What indeed.</p>
-
-<h2>1. It can be really annoying. By frequency.</h2>
-
-
-<p>Well, there is the frequency. By making it &#8220;easier&#8221; to broadcast your location, it&#8217;s not hard to see that this will increase the frequency with which a user does this. While I will probably only tweet my location at times where it is in some way, to my mind, significant, a user of the above services can easily broadcast their presence at the gas station, the library, the street corner, the adult bookstore, the bathroom, and the local dumpster. Just the fact of making it <em>easier</em> to do increases the amount of times users will do it, and therefore increases the level of <em>noise</em> in a given feed.</p>
-
-<p><em>Why is it noise?</em> you may ask. <em>People care where I am. Besides, you already said you tweet your location sometimes. Is <strong>that</strong> noise?</em></p>
-
-<p>If people think it&#8217;s noise, they can always unfollow me. But since I tweet my location <em>less frequently</em>, it&#8217;s also more likely to be a significant (to me, at least) location: I&#8217;m at <a href="http://www.loumalnatis.com/">Lou Malnati&#8217;s</a>. I&#8217;m at <a href="http://minnebar.org">minnebar</a>. I&#8217;m at <a href="http://cornerchurch.tv">Corner Church</a>. Whatever. The very fact that I don&#8217;t say <em>every single place I ever visit</em> makes the ones that I do mention&#8230; well, if nothing else, a better indicator of the things that I find important.</p>
-
-<h2>2. It can be really annoying. By advertisement.</h2>
-
-
-<p>There&#8217;s a good reason a lot of social media &amp; marketing types love these; because for brick and mortar businesses, they&#8217;re a marketers wet dream.</p>
-
-<p>&#8220;What? Every single time a person goes to a <em>WHATEVER Coffee</em> they are willing to announce it to everyone who might happen to know them? &#8230; Wow! Free word of mouth advertising!&#8221;</p>
-
-<p>There&#8217;s even built-in <em>incentive</em> to check-in to these places (thereby advertising them) more frequently. <em>You can be the mayor. Of Snowbutts Coffee. Isn&#8217;t that great? They might even give you 50% off a biscotti, which you wouldn&#8217;t have ordered otherwise, but hey, it&#8217;s a deal, right?</em></p>
-
-<p>The next step from this, to my mind, is a service that lets you broadcast everytime you consume a TastyBeverage Cola (&#8220;I just had a TastyBeverage Cola, shared via Consumatron3000!&#8221;). They could even automate it; put an RFID on, well, basically everything, and just have your mobile device read it.</p>
-
-<p><em>Oh boy. I just can&#8217;t wait for that to catch on, how about you?</em> :-(</p>
-
-<p>Now, some of you might protest. You don&#8217;t <em>mind</em> advertising for some places. You <em>love</em> your Snowbutts coffee, and you think everyone else should be constantly reminded of how great it is. Not too much, though, or you might not be mayor anymore. But regardless. It&#8217;s <em>opt in</em>, you may say, and therefore valid and legit word of mouth.</p>
-
-<p>Sure, okay. I get that. And you can do that. I just don&#8217;t feel like giving permission for my twitter feed to become a billboard for every <em>brandname</em> outlet I walk into. You go right ahead.</p>
-
-<h2>3. It can be really annoying. Period.</h2>
-
-
-<p>I know for sure of at least two, probably more, times where I&#8217;ve seen folks rhapsodizing about location-based services, and seen the sentiment that those of us who refuse to use them just don&#8217;t &#8220;get it&#8221;.</p>
-
-<p>Well, aside from that marginally offending my geek pride (until I stop and consider the source), I think that idea is just plain wrong. I think people who refuse to participate in 4sq, et al. &#8220;get&#8221; the idea just fine. The very fact that they &#8220;get&#8221; what these services are about is the reason they refuse to use them. (I&#8217;m just hypothesizing, here, but you&#8217;ve read this far, just humor me.)</p>
-
-<p>Look, I&#8217;m just as susceptible as anyone else in this western consumer society to &#8220;love&#8221; a brand or a commodity. I might tweet or talk about my favorite restaurants, tv shows, movies, or coffee brand. Sure; there are things I like, things I find worthwhile enough to be a willing word-of-mouth participant in their organic marketing. I just don&#8217;t want to automate it to the point where I fill my twitter (or other) feed with these things, increasing their frequency because of the subtle (or not so subtle) psychological/material rewards of being &#8220;mayor&#8221; or getting a free doodad from WhizBangDoodad store.</p>
-
-<h2>In conclusion</h2>
-
-
-<p>Once again, Mr. Horse put it best:</p>
-
-<object width="439" height="272"><param name="movie" value="http://www.youtube.com/v/R6Mj1Us13Yk?fs=1&amp;hl=en_US&amp;color1=0x006699&amp;color2=0x54abd6"></param><param name="allowFullScreen" value="true"></param><param name="allowscriptaccess" value="always"></param><embed src="http://www.youtube.com/v/R6Mj1Us13Yk?fs=1&amp;hl=en_US&amp;color1=0x006699&amp;color2=0x54abd6" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="439" height="272"></embed></object>
-
-]]></content>
-  </entry>
-  
-  <entry>
     <title type="html"><![CDATA[Fun With The Major Scale]]></title>
     <link href="http://philcrissman.github.com/blog/2010/08/11/fun-with-the-major-scale/"/>
     <updated>2010-08-11T00:00:00-05:00</updated>
@@ -816,6 +641,262 @@ F G A A#/Bb C D E
 <p>Not sure how they are analyzing the text and reaching their conclusions, but there&#8217;s at least a <em>little</em> bit of smarts in there; that last one, the one which was compared to Swift, is indeed a satire, though I&#8217;m not going to claim it&#8217;s in the calibre of Swift&#8217;s satire, but still; their algorithm picked something out of it which prompted the comparison. Not bad.</p>
 
 <p>So, evidently, according to their analyses, I write most often like Cory Doctorow. I&#8217;ve only read <em>Down And Out In The Magic Kingdom</em>, and several of his blog posts/essays, but enough to consider it a compliment, though I&#8217;m not certain it&#8217;s deserved. Regardless, there we have it.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[How Not To Write Sorting Algorithms in Ruby]]></title>
+    <link href="http://philcrissman.github.com/blog/2010/07/18/how-not-to-write-sorting-algorithms-in-ruby/"/>
+    <updated>2010-07-18T00:00:00-05:00</updated>
+    <id>http://philcrissman.github.com/blog/2010/07/18/how-not-to-write-sorting-algorithms-in-ruby</id>
+    <content type="html"><![CDATA[<p>The second chapter of <a href="http://www.amazon.com/gp/product/0262033844?ie=UTF8&amp;tag=idepermin-20&amp;linkCode=as2&amp;camp=1789&amp;creative=390957&amp;creativeASIN=0262033844"><em>Introduction To Algorithms</em></a> by Cormen, Leiserson, et al., describes the algorithms for Insertion Sort and Merge Sort in pseudocode, and compares their relative efficiency (or lack thereof). I decided to write them out in Ruby and run some simple benchmarks, just for fun.</p>
+
+<h2>Insertion Sort</h2>
+
+
+<p>There are a variety of ways one could write the insertion sort in Ruby; this is more or less an literal translation of the <em>Intro to Algorithms</em> pseudocode to ruby &#8211; it could perhaps be made a little more ruby-ish, but here&#8217;s my version:</p>
+
+<pre>
+<code class="ruby">
+def insertion_sort(sequence)
+  sequence[1..sequence.size].each_with_index do |j, index|
+    i = index
+    sequence[0..i].reverse.each do |k|
+      break unless k > j
+      sequence[i + 1] = k
+      i = i - 1
+    end
+    sequence[i+1] = j
+  end
+end
+</code>
+</pre>
+
+
+<p>In a nutshell:</p>
+
+<ol>
+<li>Start with the second element (index 1).</li>
+<li>Save the index in a local variable, because we&#8217;re going to use it to figure out which array element to swap the current element into.</li>
+<li>Take the sub-array 0..i (where <em>i</em> is the current index being looked at), and go backwards until the element in your inner loop is less than the current element from the outer loop, also decrementing <em>i</em> each iteration.</li>
+<li>Copy the element in index [i] to index [i + 1]</li>
+<li>Outside the inner loop, we&#8217;ll put the current element at [i + 1].</li>
+</ol>
+
+
+<p>In case this is a little unclear, it would go something like this:</p>
+
+<p>Starting array: [5,2,3,1,4,0]</p>
+
+<p>First pass: [<strong>2</strong>,<em>5</em>,3,1,4,0]</p>
+
+<p>Second pass: [2,<strong>3</strong>,<em>5</em>,1,4,0]</p>
+
+<p>Third pass: [<strong>1</strong>,<em>2</em>,<em>3</em>,<em>5</em>,4,0]</p>
+
+<p>Fourth pass: [1,2,3,<strong>4</strong>,<em>5</em>,0]</p>
+
+<p>Fifth pass: [<strong>0</strong>,<em>1</em>,<em>2</em>,<em>3</em>,<em>4</em>,<em>5</em>]</p>
+
+<p>(<strong>Bold elements</strong> are the ones which were the &#8220;current&#8221; element moved back, <em>italic elements</em> are the ones that had to be shifted forward in this step.)</p>
+
+<h2>Merge Sort</h2>
+
+
+<p>The merge sort is split into two parts; a <code>merge</code> method that acts as a helper, and the actual <code>merge_sort</code> which calls itself recursively, also calling <code>merge</code> when needed.</p>
+
+<p>Here&#8217;s a version modeled after the pseudocode in <em>Intro to Algorithms</em>:</p>
+
+<pre>
+<code class="ruby">
+def merge_sort(sequence, first, last)
+  if first < last
+    mid = (first + last) / 2
+    merge_sort(sequence, first, mid)
+    merge_sort(sequence, mid + 1, last)
+    merge(sequence, first, mid + 1, last)
+  end
+end
+
+def merge(sequence, first, mid, last)
+  left = sequence[first..mid - 1]
+  right = sequence[mid..last]
+  left.push(Float::MAX)
+  right.push(Float::MAX)
+  i = 0
+  j = 0
+  (first..last).each do |n|
+    if left[i] <= right[j]
+      sequence[n] = left[i]
+      i = i + 1
+    else
+      sequence[n] = right[j]
+      j = j + 1
+    end
+  end
+end
+</code>
+</pre>
+
+
+<p>A few notes: You&#8217;ll notice that in the <code>merge</code> method, when the sequence is split into two parts, the value Float::MAX is pushed onto each as the final element. <em>Intro to Algorithms</em> uses the idea that &#8220;infinity&#8221; is set to the last element. Hopefully I can explain why in the description of the algorithm.</p>
+
+<p>First, the merge method. The merge method assumes that the left half and the right half of the section of the array it&#8217;s looking at are <em>already sorted</em>. Having made this assumption, it loops through the range it&#8217;s considering (<code>first..last</code>), and puts either the first element of the left side, or the first element of the right side, whichever it least. It increments each subarray as it goes; when it gets past the last element of either array, Float::MAX will <em>always</em> be higher (or so we assume, for the sake of this implementation) than whatever is in the other array. So merge finishes up, basically (ahem) <em>merging</em> the two halves together in place, with the whole first..last range sorted.</p>
+
+<p>Now, the actual merge_sort method. It first checks to see if first &lt; last; if this were <em>false</em>, then the range would be an array of size 1, and an array of size 1 is already sorted. So assuming the range first..last is > 1, it calculates a midpoint; integer division works fine for this, using <code>(first + last) / 2</code>. Then it calls itself recursively on each subarray; these in turn will continue splitting each subarray into two parts until it gets to the point where it&#8217;s just two subarrays of one element each; which are then fed to <code>merge</code> and sorted. As the method returns from each level of recursion, each &#8220;half&#8221; of the subarray under consideration has been sorted, until it gets all the way back to the first call to <code>merge_sort</code>, and executes <code>merge</code> on each (sorted) half of the full array.</p>
+
+<p>Phew. I&#8217;m going to attempt to show another example, in case that&#8217;s helpful. Let&#8217;s say we started with the same starting array as the insertion_sort example. This time, to show what the recursion is actually doing, I&#8217;ll write out what each nested call to merge_sort( and/or merge) would actually look like:</p>
+
+<p>Starting array: [5,2,3,1,4,0]</p>
+
+<pre style="font-size:0.8em !important;">
+merge_sort([5,2,3,1,4,0], 0, 5):
+  mid <- 2
+  merge_sort([5,2,3], 0, 2):
+    mid <- 1
+    merge_sort([5,2], 0, 1):
+      mid <- 0
+      merge_sort([5], 0, 0):
+      merge_sort([2], 1, 1):
+      merge([5,2],0, 1, 1):
+        left <- [5,&infin;]
+        right <- [2,&infin;]
+        loop(0..1):
+          [2,5] # just showing the result in this step; the two elements are sorted.
+    merge_sort([3], 2, 2):
+    merge([2,5,3], 0, 2, 2):
+      left <- [2,5,&infin;]
+      right <- [3,&infin;]
+      loop(0..2):
+        [2,3,5]
+  merge_sort([1,4,0], 3, 5):
+    mid <- 4
+    merge_sort([1,4], 3, 4):
+      mid <- 3
+      merge_sort([1], 3, 3):
+      merge_sort([4], 4, 4):
+      merge([1,4], 3, 4, 4):
+        left <- [1,&infin;]
+        right <- [4,&infin;]
+        loop(3..4):
+          [1,4]
+    merge_sort([0], 5, 5):
+    merge([1,4,0], 3, 5, 5):
+      left <- [1,4,&infin;]
+      right <- [0,&infin;]
+      loop(3..5):
+        [0,1,4]
+  merge([2,3,5,0,1,4], 0, 3, 5):
+    left <- [2,3,5,&infin;]
+    right <- [0,1,4,&infin;]
+    loop(0..5):
+      [0,1,2,3,4,5]
+</pre>
+
+
+<p>Uhm, hopefully that&#8217;s clear. If you&#8217;re bothering to read this and it still isn&#8217;t clear, just run the sort locally and add some <code>print</code> or <code>puts</code> statements liberally so you can see what&#8217;s going on. Note: I did take a liberty in the above listing of what&#8217;s happening; in actuality the entire array is passed each time; I made it look as though just the subarray were being passed in each case, because that is the only part that is being looked at in each nested section. Again, if you&#8217;re interested enough in the topic that you&#8217;re still working out this algorithm, fire up irb and just try it out, it will make more sense as you do so.</p>
+
+<h2>Wait, why is this called &#8220;how <em>not</em> to write sorting algorithms&#8230;?&#8221;</h2>
+
+
+<p>Aha. I thought you&#8217;d never ask. Well, the main reason is that both of these methods are significantly slower than good old Array::sort, which is built in to Ruby (and which, as far as I know, is implemented using the <a href="http://en.wikipedia.org/wiki/Quicksort">quicksort</a> algorithm).</p>
+
+<p>So, just for fun, I wrote a little script to make some benchmarks of these various methods on arrays of various sizes. Here were the results:</p>
+
+<pre style="font-size:0.8em !important;">
+      user     system      total        real
+
+ small_array has 100 elements in it...
+Insertion Sort (small_array): 
+  0.000000   0.000000   0.000000 (  0.002122)
+Merge sort (small_array): 
+  0.000000   0.000000   0.000000 (  0.001499)
+Ruby Array::sort (small_array): 
+  0.000000   0.000000   0.000000 (  0.000016)
+
+ bigger_array has 1000 elements in it...
+Insertion sort (bigger_array): 
+  0.240000   0.000000   0.240000 (  0.238994)
+Merge sort (bigger array): 
+  0.030000   0.010000   0.040000 (  0.027746)
+Ruby Array::sort (bigger_array): 
+  0.000000   0.000000   0.000000 (  0.000161)
+
+ medium_array has 10,000 elements in it...
+Insertion sort (medium_array): 
+ 23.960000   0.010000  23.970000 ( 24.096455)
+Merge sort (medium_array): 
+  0.720000   0.020000   0.740000 (  0.726312)
+Ruby Array::sort (medium_array): 
+  0.000000   0.000000   0.000000 (  0.001637)
+
+ huge_array has 100,000 elements in it...
+Sorry, the insertion_sort was taking too long! Skipped it.
+Merge sort (huge_array): 
+ 61.710000  11.990000  73.700000 ( 74.332743)
+ruby Array::sort (huge_array): 
+  0.020000   0.000000   0.020000 (  0.020800)
+
+
+</pre>
+
+
+<p>The interesting column is the last one: <em>real</em>, as in &#8220;real time&#8221; (more or less, taking into the account that we&#8217;re just benchmarking).</p>
+
+<p>The small array is pretty fast for all three methods, but even still, we can see that merge_sort is a <em>little</em> faster, and the built in .sort! (using quicksort) is <em>way</em> faster: only 0.000016 seconds.</p>
+
+<p>The next bigger, bigger_array, the differences stand out a little more. Insertion takes 0.24 seconds, merge takes 0.028, and sort! (again), way faster, only 0.00016 seconds.</p>
+
+<p>A ten thousand element array starts to show the difference even more dramatically: insertion_sort now takes 24.1 seconds, close to half a minute, while the merge_sort still runs in under a second. sort!, once again, is blowing them away at only 0.0016 seconds.</p>
+
+<p>Finally, a hundred thousand element array; sorry for the lack of stats, but I was too impatient to let insertion_sort finish. Let&#8217;s just say it would take awhile. Now even the merge_sort shows its limits, taking over a minute, about 74.3 seconds. And finally, good old sort! clocking in at only 0.02 seconds.</p>
+
+<p>So the reason this is how <em>not</em> to write sorting algorithms in ruby is simply that, you really probably don&#8217;t need to, unless you need something faster than a quicksort written in C. The reason, hopefully, to be playing around writing algorithms in Ruby or in <em>whatever</em> your favorite language happens to be, is just to understand them better.</p>
+
+<p>And it&#8217;s fun.</p>
+
+<p>See also:</p>
+
+<p><a href="http://en.wikipedia.org/wiki/Insertion_sort">Insertion Sort</a></p>
+
+<p><a href="http://en.wikipedia.org/wiki/Merge_sort">Merge Sort</a></p>
+
+<p><a href="http://github.com/kanwei/algorithms">Ruby Algorithm library</a> &lt;&#8211; some pretty interesting stuff in here. I didn&#8217;t look at this until after I&#8217;d already written my versions of the insertion sort and the merge sort; their version of insertion_sort is nearly the same, but their merge sort is somewhat more succinct, and looks worth playing around with.)</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Relative Primes, Revisited]]></title>
+    <link href="http://philcrissman.github.com/blog/2010/07/08/relative-primes-revisited/"/>
+    <updated>2010-07-08T00:00:00-05:00</updated>
+    <id>http://philcrissman.github.com/blog/2010/07/08/relative-primes-revisited</id>
+    <content type="html"><![CDATA[<p>As I thought; there&#8217;s always a better way to do it. <a href="http://twitter.com/jmchilton">@jmchilton</a>, who was a TA when I took Structure of Computer Programming I (or whatever it was called; the Scheme class) at the U of M, supplied this alternative solution to the relative prime problem:</p>
+
+<pre>
+<code class="ruby">
+def gcd(a, b); b == 0 ? a : gcd(b, a % b); end; def rp(a, b); gcd(a, b) == 1; end
+</code>
+</pre>
+
+
+<p>Or, indented:</p>
+
+<pre>
+<code class="ruby">
+def gcd(a, b)
+  b == 0 ? a : gcd(b, a % b)
+end
+
+def rp(a, b)
+  gcd(a, b) == 1
+end
+</code>
+</pre>
+
+
+<p>In other words, it pays to know your math. <code>gcd</code> is a recursive function, basically Euclid&#8217;s algorithm for finding the greatest common denominator. <code>rp</code>, then, simply returns true if the GCD of a and b is 1; otherwise false.</p>
+
+<p>Very nice. I wish I&#8217;d thought to do it that way, but I&#8217;ll certainly remember it.</p>
 ]]></content>
   </entry>
   

@@ -9,7 +9,7 @@
   <meta name="author" content="Your Name">
 
   
-  <meta name="description" content="The second chapter of Introduction To Algorithms by Cormen, Leiserson, et al., describes the algorithms for Insertion Sort and Merge Sort in &hellip;">
+  <meta name="description" content="I didn&#8217;t expect to do a &#8220;code kata&#8221;-type post again so quickly, but here it is anyways. I was reading Randall Hyde&#8217;s &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -64,316 +64,6 @@
     <div id="content">
       <div class="blog-index">
   
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2010/07/18/how-not-to-write-sorting-algorithms-in-ruby/">How Not to Write Sorting Algorithms in Ruby</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-07-18T00:00:00-05:00" pubdate data-updated="true">Jul 18<span>th</span>, 2010</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>The second chapter of <a href="http://www.amazon.com/gp/product/0262033844?ie=UTF8&amp;tag=idepermin-20&amp;linkCode=as2&amp;camp=1789&amp;creative=390957&amp;creativeASIN=0262033844"><em>Introduction To Algorithms</em></a> by Cormen, Leiserson, et al., describes the algorithms for Insertion Sort and Merge Sort in pseudocode, and compares their relative efficiency (or lack thereof). I decided to write them out in Ruby and run some simple benchmarks, just for fun.</p>
-
-<h2>Insertion Sort</h2>
-
-
-<p>There are a variety of ways one could write the insertion sort in Ruby; this is more or less an literal translation of the <em>Intro to Algorithms</em> pseudocode to ruby &#8211; it could perhaps be made a little more ruby-ish, but here&#8217;s my version:</p>
-
-<pre>
-<code class="ruby">
-def insertion_sort(sequence)
-  sequence[1..sequence.size].each_with_index do |j, index|
-    i = index
-    sequence[0..i].reverse.each do |k|
-      break unless k > j
-      sequence[i + 1] = k
-      i = i - 1
-    end
-    sequence[i+1] = j
-  end
-end
-</code>
-</pre>
-
-
-<p>In a nutshell:</p>
-
-<ol>
-<li>Start with the second element (index 1).</li>
-<li>Save the index in a local variable, because we&#8217;re going to use it to figure out which array element to swap the current element into.</li>
-<li>Take the sub-array 0..i (where <em>i</em> is the current index being looked at), and go backwards until the element in your inner loop is less than the current element from the outer loop, also decrementing <em>i</em> each iteration.</li>
-<li>Copy the element in index [i] to index [i + 1]</li>
-<li>Outside the inner loop, we&#8217;ll put the current element at [i + 1].</li>
-</ol>
-
-
-<p>In case this is a little unclear, it would go something like this:</p>
-
-<p>Starting array: [5,2,3,1,4,0]</p>
-
-<p>First pass: [<strong>2</strong>,<em>5</em>,3,1,4,0]</p>
-
-<p>Second pass: [2,<strong>3</strong>,<em>5</em>,1,4,0]</p>
-
-<p>Third pass: [<strong>1</strong>,<em>2</em>,<em>3</em>,<em>5</em>,4,0]</p>
-
-<p>Fourth pass: [1,2,3,<strong>4</strong>,<em>5</em>,0]</p>
-
-<p>Fifth pass: [<strong>0</strong>,<em>1</em>,<em>2</em>,<em>3</em>,<em>4</em>,<em>5</em>]</p>
-
-<p>(<strong>Bold elements</strong> are the ones which were the &#8220;current&#8221; element moved back, <em>italic elements</em> are the ones that had to be shifted forward in this step.)</p>
-
-<h2>Merge Sort</h2>
-
-
-<p>The merge sort is split into two parts; a <code>merge</code> method that acts as a helper, and the actual <code>merge_sort</code> which calls itself recursively, also calling <code>merge</code> when needed.</p>
-
-<p>Here&#8217;s a version modeled after the pseudocode in <em>Intro to Algorithms</em>:</p>
-
-<pre>
-<code class="ruby">
-def merge_sort(sequence, first, last)
-  if first < last
-    mid = (first + last) / 2
-    merge_sort(sequence, first, mid)
-    merge_sort(sequence, mid + 1, last)
-    merge(sequence, first, mid + 1, last)
-  end
-end
-
-def merge(sequence, first, mid, last)
-  left = sequence[first..mid - 1]
-  right = sequence[mid..last]
-  left.push(Float::MAX)
-  right.push(Float::MAX)
-  i = 0
-  j = 0
-  (first..last).each do |n|
-    if left[i] <= right[j]
-      sequence[n] = left[i]
-      i = i + 1
-    else
-      sequence[n] = right[j]
-      j = j + 1
-    end
-  end
-end
-</code>
-</pre>
-
-
-<p>A few notes: You&#8217;ll notice that in the <code>merge</code> method, when the sequence is split into two parts, the value Float::MAX is pushed onto each as the final element. <em>Intro to Algorithms</em> uses the idea that &#8220;infinity&#8221; is set to the last element. Hopefully I can explain why in the description of the algorithm.</p>
-
-<p>First, the merge method. The merge method assumes that the left half and the right half of the section of the array it&#8217;s looking at are <em>already sorted</em>. Having made this assumption, it loops through the range it&#8217;s considering (<code>first..last</code>), and puts either the first element of the left side, or the first element of the right side, whichever it least. It increments each subarray as it goes; when it gets past the last element of either array, Float::MAX will <em>always</em> be higher (or so we assume, for the sake of this implementation) than whatever is in the other array. So merge finishes up, basically (ahem) <em>merging</em> the two halves together in place, with the whole first..last range sorted.</p>
-
-<p>Now, the actual merge_sort method. It first checks to see if first &lt; last; if this were <em>false</em>, then the range would be an array of size 1, and an array of size 1 is already sorted. So assuming the range first..last is > 1, it calculates a midpoint; integer division works fine for this, using <code>(first + last) / 2</code>. Then it calls itself recursively on each subarray; these in turn will continue splitting each subarray into two parts until it gets to the point where it&#8217;s just two subarrays of one element each; which are then fed to <code>merge</code> and sorted. As the method returns from each level of recursion, each &#8220;half&#8221; of the subarray under consideration has been sorted, until it gets all the way back to the first call to <code>merge_sort</code>, and executes <code>merge</code> on each (sorted) half of the full array.</p>
-
-<p>Phew. I&#8217;m going to attempt to show another example, in case that&#8217;s helpful. Let&#8217;s say we started with the same starting array as the insertion_sort example. This time, to show what the recursion is actually doing, I&#8217;ll write out what each nested call to merge_sort( and/or merge) would actually look like:</p>
-
-<p>Starting array: [5,2,3,1,4,0]</p>
-
-<pre style="font-size:0.8em !important;">
-merge_sort([5,2,3,1,4,0], 0, 5):
-  mid <- 2
-  merge_sort([5,2,3], 0, 2):
-    mid <- 1
-    merge_sort([5,2], 0, 1):
-      mid <- 0
-      merge_sort([5], 0, 0):
-      merge_sort([2], 1, 1):
-      merge([5,2],0, 1, 1):
-        left <- [5,&infin;]
-        right <- [2,&infin;]
-        loop(0..1):
-          [2,5] # just showing the result in this step; the two elements are sorted.
-    merge_sort([3], 2, 2):
-    merge([2,5,3], 0, 2, 2):
-      left <- [2,5,&infin;]
-      right <- [3,&infin;]
-      loop(0..2):
-        [2,3,5]
-  merge_sort([1,4,0], 3, 5):
-    mid <- 4
-    merge_sort([1,4], 3, 4):
-      mid <- 3
-      merge_sort([1], 3, 3):
-      merge_sort([4], 4, 4):
-      merge([1,4], 3, 4, 4):
-        left <- [1,&infin;]
-        right <- [4,&infin;]
-        loop(3..4):
-          [1,4]
-    merge_sort([0], 5, 5):
-    merge([1,4,0], 3, 5, 5):
-      left <- [1,4,&infin;]
-      right <- [0,&infin;]
-      loop(3..5):
-        [0,1,4]
-  merge([2,3,5,0,1,4], 0, 3, 5):
-    left <- [2,3,5,&infin;]
-    right <- [0,1,4,&infin;]
-    loop(0..5):
-      [0,1,2,3,4,5]
-</pre>
-
-
-<p>Uhm, hopefully that&#8217;s clear. If you&#8217;re bothering to read this and it still isn&#8217;t clear, just run the sort locally and add some <code>print</code> or <code>puts</code> statements liberally so you can see what&#8217;s going on. Note: I did take a liberty in the above listing of what&#8217;s happening; in actuality the entire array is passed each time; I made it look as though just the subarray were being passed in each case, because that is the only part that is being looked at in each nested section. Again, if you&#8217;re interested enough in the topic that you&#8217;re still working out this algorithm, fire up irb and just try it out, it will make more sense as you do so.</p>
-
-<h2>Wait, why is this called &#8220;how <em>not</em> to write sorting algorithms&#8230;?&#8221;</h2>
-
-
-<p>Aha. I thought you&#8217;d never ask. Well, the main reason is that both of these methods are significantly slower than good old Array::sort, which is built in to Ruby (and which, as far as I know, is implemented using the <a href="http://en.wikipedia.org/wiki/Quicksort">quicksort</a> algorithm).</p>
-
-<p>So, just for fun, I wrote a little script to make some benchmarks of these various methods on arrays of various sizes. Here were the results:</p>
-
-<pre style="font-size:0.8em !important;">
-      user     system      total        real
-
- small_array has 100 elements in it...
-Insertion Sort (small_array): 
-  0.000000   0.000000   0.000000 (  0.002122)
-Merge sort (small_array): 
-  0.000000   0.000000   0.000000 (  0.001499)
-Ruby Array::sort (small_array): 
-  0.000000   0.000000   0.000000 (  0.000016)
-
- bigger_array has 1000 elements in it...
-Insertion sort (bigger_array): 
-  0.240000   0.000000   0.240000 (  0.238994)
-Merge sort (bigger array): 
-  0.030000   0.010000   0.040000 (  0.027746)
-Ruby Array::sort (bigger_array): 
-  0.000000   0.000000   0.000000 (  0.000161)
-
- medium_array has 10,000 elements in it...
-Insertion sort (medium_array): 
- 23.960000   0.010000  23.970000 ( 24.096455)
-Merge sort (medium_array): 
-  0.720000   0.020000   0.740000 (  0.726312)
-Ruby Array::sort (medium_array): 
-  0.000000   0.000000   0.000000 (  0.001637)
-
- huge_array has 100,000 elements in it...
-Sorry, the insertion_sort was taking too long! Skipped it.
-Merge sort (huge_array): 
- 61.710000  11.990000  73.700000 ( 74.332743)
-ruby Array::sort (huge_array): 
-  0.020000   0.000000   0.020000 (  0.020800)
-
-
-</pre>
-
-
-<p>The interesting column is the last one: <em>real</em>, as in &#8220;real time&#8221; (more or less, taking into the account that we&#8217;re just benchmarking).</p>
-
-<p>The small array is pretty fast for all three methods, but even still, we can see that merge_sort is a <em>little</em> faster, and the built in .sort! (using quicksort) is <em>way</em> faster: only 0.000016 seconds.</p>
-
-<p>The next bigger, bigger_array, the differences stand out a little more. Insertion takes 0.24 seconds, merge takes 0.028, and sort! (again), way faster, only 0.00016 seconds.</p>
-
-<p>A ten thousand element array starts to show the difference even more dramatically: insertion_sort now takes 24.1 seconds, close to half a minute, while the merge_sort still runs in under a second. sort!, once again, is blowing them away at only 0.0016 seconds.</p>
-
-<p>Finally, a hundred thousand element array; sorry for the lack of stats, but I was too impatient to let insertion_sort finish. Let&#8217;s just say it would take awhile. Now even the merge_sort shows its limits, taking over a minute, about 74.3 seconds. And finally, good old sort! clocking in at only 0.02 seconds.</p>
-
-<p>So the reason this is how <em>not</em> to write sorting algorithms in ruby is simply that, you really probably don&#8217;t need to, unless you need something faster than a quicksort written in C. The reason, hopefully, to be playing around writing algorithms in Ruby or in <em>whatever</em> your favorite language happens to be, is just to understand them better.</p>
-
-<p>And it&#8217;s fun.</p>
-
-<p>See also:</p>
-
-<p><a href="http://en.wikipedia.org/wiki/Insertion_sort">Insertion Sort</a></p>
-
-<p><a href="http://en.wikipedia.org/wiki/Merge_sort">Merge Sort</a></p>
-
-<p><a href="http://github.com/kanwei/algorithms">Ruby Algorithm library</a> &lt;&#8211; some pretty interesting stuff in here. I didn&#8217;t look at this until after I&#8217;d already written my versions of the insertion sort and the merge sort; their version of insertion_sort is nearly the same, but their merge sort is somewhat more succinct, and looks worth playing around with.)</p>
-</div>
-  
-  
-
-
-    </article>
-  
-  
-    <article>
-      
-  <header>
-    
-      <h1 class="entry-title"><a href="/blog/2010/07/08/relative-primes-revisited/">Relative Primes, Revisited</a></h1>
-    
-    
-      <p class="meta">
-        
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-07-08T00:00:00-05:00" pubdate data-updated="true">Jul 8<span>th</span>, 2010</time>
-        
-      </p>
-    
-  </header>
-
-
-  <div class="entry-content"><p>As I thought; there&#8217;s always a better way to do it. <a href="http://twitter.com/jmchilton">@jmchilton</a>, who was a TA when I took Structure of Computer Programming I (or whatever it was called; the Scheme class) at the U of M, supplied this alternative solution to the relative prime problem:</p>
-
-<pre>
-<code class="ruby">
-def gcd(a, b); b == 0 ? a : gcd(b, a % b); end; def rp(a, b); gcd(a, b) == 1; end
-</code>
-</pre>
-
-
-<p>Or, indented:</p>
-
-<pre>
-<code class="ruby">
-def gcd(a, b)
-  b == 0 ? a : gcd(b, a % b)
-end
-
-def rp(a, b)
-  gcd(a, b) == 1
-end
-</code>
-</pre>
-
-
-<p>In other words, it pays to know your math. <code>gcd</code> is a recursive function, basically Euclid&#8217;s algorithm for finding the greatest common denominator. <code>rp</code>, then, simply returns true if the GCD of a and b is 1; otherwise false.</p>
-
-<p>Very nice. I wish I&#8217;d thought to do it that way, but I&#8217;ll certainly remember it.</p>
-</div>
-  
-  
-
-
-    </article>
   
   
     <article>
@@ -985,6 +675,201 @@ git push heroku master
 
     </article>
   
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/06/01/design-is-a-wicked-problem/">Design Is a Wicked Problem</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-06-01T00:00:00-05:00" pubdate data-updated="true">Jun 1<span>st</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><blockquote>
+[Wittel and Webber] defined a &#8220;wicked&#8221; problem as one that could be clearly defined only by solving it&#8230;
+</blockquote>
+
+
+<blockquote>&#8230; One of the main differences between programs you develop in school and those you develop as a professional is that the design problems solved by school programs are rarely, if ever, wicked. &#8230; You&#8217;d probably want to tar and feather a teacher who gave you a programming assignment, then changed the assignment as soon as you finished the design, and then changed it again just as you were about to turn in the completed program. But that very process is an everyday reality in professional programming.</blockquote>
+
+
+<p>&#8211; Steve McConnell, <a href="http://www.amazon.com/gp/product/0735619670?ie=UTF8&tag=idepermin-20&linkCode=as2&camp=1789&creative=390957&creativeASIN=0735619670"><em>Code Complete: A Practical Handbook of Software Construction</em></a><img src="http://www.assoc-amazon.com/e/ir?t=idepermin-20&l=as2&o=1&a=0735619670" width="1" height="1" border="0" alt="" style="border:none !important; margin:0px !important;" /></p>
+</div>
+  
+  
+
+
+    </article>
+  
+  
+    <article>
+      
+  <header>
+    
+      <h1 class="entry-title"><a href="/blog/2010/05/01/roll-your-own-computer-science-masters-program/">Roll Your Own Computer Science Masters Program</a></h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-05-01T00:00:00-05:00" pubdate data-updated="true">May 1<span>st</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+  <div class="entry-content"><p>Struck by some sort of errant whim to get more edumacated, I started googling Computer Science Master&#8217;s Degree programs today. Actually, I did one google search and then jumped straight to the <a href="http://www.stthomas.edu/gradsoftware/programs/ms/default.html">University of St. Thomas</a> page on graduate programs in software. Did a little back of the envelope thinking, noted that St. Thomas wants $762.50 per credit, and decided against a Masters degree at this point in time.</p>
+
+<p>But it did get me thinking. Why would I <em>want</em> a Masters Degree, anyways? All the reasons I could think of boiled down to these two:</p>
+
+<ol>
+<li>I want to go into a role, career, or position that <em>requires</em> a Masters Degree.</li>
+<li>I want to go into a role, career, or position that requires the <em>knowledge</em> presumably attained from a Masters Degree.</li>
+</ol>
+
+
+<p>This is a pretty important distinction. Some roles might simply have a Masters as a <em>requirement</em>. Doesn&#8217;t actually mean they care if you <em>know</em> anything. Yes, of course, they assume that you do, and that your Masters actually means something, but really, for this type of thing, all that&#8217;s important is the piece of paper.</p>
+
+<p>And the truth is, I&#8217;m not really interested in any of those roles. Off the top of my head, all I could come up with in that category would be roles in a Fortune 500 or similarly credential-obsessed enterprise, or a role at a University, neither of which is something I want to pursue.</p>
+
+<p>On the other hand, maybe I just want to <em>know</em> the information I might learn in a Masters program. Or maybe I have my sights on a career that really requires the <em>knowledge</em>, but doesn&#8217;t necessarily care if I have the piece of paper or not. That sort of role might include (again, off the top of my head), the technical founder or lead in a startup, a writer or speaker about tech topics, or simply a kick-ass software developer who knows more this year than he did last year. Now <em>those</em> sorts of things are interesting.</p>
+
+<p>All of which means it doesn&#8217;t really matter if I go to a University.</p>
+
+<p>Continuing on with this line of thought, I started mulling over the knowledge I&#8217;ve accumulated so far. How much would I attribute to college education, and how much did I teach myself? It&#8217;s a little hard to quantify, because there&#8217;s a lot of overlap, but even allowing some margin of error, the topics which I&#8217;ve taught myself have been far more useful/valuable than those I learned in my undergraduate degree (which was in Computer Science).</p>
+
+<p>More importantly, and maybe more telling, I have a far better grasp on the things that I&#8217;ve taught myself than I do on many of the things I &#8220;had&#8221; to learn in college. I know Ruby and Rails far better than I know Java, and I&#8217;ve had <em>at least</em> four or five college courses dedicated to Java (most of which, <em>even the 4th year course in Operating Systems</em>, assumed we didn&#8217;t know anything about Java or OOP and re-taught it all over again).</p>
+
+<p>I&#8217;m going to make a suggestion as to why this might be. I&#8217;m going to suggest that when we&#8217;re teaching something to ourselves, we hold ourselves to a higher standard than the average college course holds us.</p>
+
+<p>In an average college class, all that really matters is:</p>
+
+<ol>
+<li>Attendance (as crazy as it sounds, evidently they actually still care if you attend class, for reasons unfathomable to me).</li>
+<li>Making an average effort to skim the material.</li>
+<li>Making an average effort to complete assignments (often can combine with #2, as usually the only material you ever need to read is whatever is pertinent to the assignment).</li>
+<li>Remembering <em>just enough</em> information for <em>just long enough</em> to have an adequate number of correct answers on your exams.</li>
+</ol>
+
+
+<p>(Aside: the possible exception to this is Calculus and other advanced math classes, unless you are one of those people who absorb that with a minimum of effort; you either understand Calculus (et. al.), or you don&#8217;t, you can&#8217;t really just push your way through those one. YMMV.)</p>
+
+<p>When you&#8217;re teaching <em>yourself</em>, on the other hand:</p>
+
+<ol>
+<li>While you <em>are</em> working at your own pace, chances are you actually want to <em>use</em> the information or ideas that you&#8217;re learning, so you don&#8217;t want it to take forever. You may or may not have a fixed deadline in mind, but regardless, you are motivated to make progress for it&#8217;s own sake, not simply to get to the end of a semester.</li>
+<li>You can&#8217;t fake yourself out. You can&#8217;t tell yourself that you know something when you know you don&#8217;t. You won&#8217;t fool yourself into thinking that you understand lambdas, or ruby blocks, or closures, or monads, or red-black trees, or any data structure or algorithm, if you <em>know</em> that you don&#8217;t. So if it matters to you that you learn it, you just have to keep going back until you get it.</li>
+<li>Again, you have some reason that you actually <em>want to use</em> this information. It&#8217;s not solely to check of a list (e.g., Okay, I have memorized a bunch of ideas about Design Patterns, check), but it&#8217;s because you want to <em>do</em> something with the knowledge once you have it (e.g., Okay, I&#8217;ve learned some design patterns. Am I using any of these in my software side projects? If I did use one, would it improve my application? Can I identify these patterns if I see them in the wild? Etc.)</li>
+<li>Not only can you not fake yourself out, you probably underestimate yourself. When you&#8217;re teaching yourself, your often painfully aware of how much you still <em>don&#8217;t</em> know, how much you still have left to learn, and it frequently blinds you to how much you&#8217;ve actually learned so far. Why is this good? Well, eventually you do need to recognize your progress and give yourself a pat or two on the back, but in general I think it&#8217;s good because it means you&#8217;ll push yourself harder to learn more. A good way to gauge your progress is to join a forum, a StackOverflow-type site, or an IRC chat room in the area you&#8217;re studying, and look at the questions people are asking. Chances are you&#8217;re going to find that a lot of people are asking questions that you (gasp) already know the answers to (now would be a nice time to help them, if you have time). That&#8217;s a good sign.</li>
+</ol>
+
+
+<p>Now, self-discipline, which I didn&#8217;t mention, may or may not be an issue. An oft-mentioned advantage of college or course-work in general is that it pushes you to learn faster because of the built in deadlines, exams and assignments. The problem is, as I argued above, that yes, it may push you to accomplish specific milestones, but all too often this means you are <em>pushed to accomplish the bare minimum with the least effort at the last minute</em>.</p>
+
+<p>And don&#8217;t tell me that means I&#8217;m just &#8220;not a very good student&#8221;, then. Sure, if you can combine powerful self-motivation with college coursework, you can get more than the &#8220;minimum&#8221; amount of education from a class, and some students do. So have I, in some courses.</p>
+
+<p>But for better or worse, I&#8217;ve found that in many courses the combination of arbitrary requirements (i.e., the need to be present in class), <em>horrible</em> textbooks, frequently unenthusiastic professors (sorry guys; to be <em>interesting</em> you have to <em>be interested</em> in what you&#8217;re talking about), and a highly subjective qualification for success (complete these <em>n</em> assignments and learn these <em>n</em> concepts well enough to pass an exam or two), means that the very structure and implementation of a college class encourages you to do <em>just enough to get by and no more</em>, period.</p>
+
+<p>(Aside: on horrible textbooks: the only textbooks I&#8217;ve wanted to keep from my entire time obtaining a computer science degree have been Sipser&#8217;s <cite><a href="http://www.amazon.com/gp/product/0534950973?ie=UTF8&amp;tag=idepermin-20&amp;linkCode=as2&amp;camp=1789&amp;creative=390957&amp;creativeASIN=0534950973">Introduction to the Theory of Computation</a></cite> and Larman&#8217;s <cite><a href="http://www.amazon.com/gp/product/0131489062?ie=UTF8&amp;tag=idepermin-20&amp;linkCode=as2&amp;camp=1789&amp;creative=390957&amp;creativeASIN=0131489062">Applying UML and Patterns</a></cite>; and of those, I gotta say, the Larman book is pretty boring (sorry, Craig, maybe we can blame your editors), but there&#8217;s some good material in there.)</p>
+
+<p>So, enough complaining about colleges. I don&#8217;t really have any suggestions for how to fix the education system, if indeed it is broken &#8211; I&#8217;ll leave it to others to debate and solve that problem. But since I&#8217;m convinced that self-learning is more productive and more effective, then if I&#8217;m interested in the information that I might learn in a Masters Program in Computer Science, it seems reasonable that I&#8217;d be better off concocting my own program and just starting to plug away.</p>
+
+<p>At the top of this article I put a link to the University of St. Thomas&#8217; graduate program in Software Engineering. Suppose we take that as a model and make a plan.</p>
+
+<p>Required courses we have:</p>
+
+<ol>
+<li><p>Foundations of Software Development. It&#8217;s waivable with experience, and if you&#8217;re even reading or contemplating doing something remotely like this, I&#8217;m going to guess you and I can waive this one. We&#8217;re assuming you can already code your way out of a paper bag, people. If you can&#8217;t do the <a href="http://www.codinghorror.com/blog/2007/02/why-cant-programmers-program.html">FizzBuzz problem</a> or <a href="http://reprog.wordpress.com/2010/04/19/are-you-one-of-the-10-percent/">write a binary search given the description</a>, then you can&#8217;t waive this. Get up to speed, folks.</p></li>
+<li><p>Technical Communication. Writing and speaking. I can see it being useful, but you&#8217;re going to have to decide if it something you want to be good at it. If it is:</p>
+
+<ul>
+<li>Write a technical blog. Force yourself to do it semi-regularly. Explain a concept, how you solved a problem, why something is the way it is, etc. You&#8217;re not doing it to become a ProBloggerSuperStar, you&#8217;re doing it to improve your written communication skills.</li>
+<li>Find &amp; join a local users group in your field of interest (say, Ruby, Java, Cocoa, whatever) and give a presentation. At least one, to start. In anything. If this is something you want to be a lot better at, try to think of several presentations you could give; then volunteer to give them.</li>
+</ul>
+</li>
+<li><p>Software Engineering. Read (or re-read) <cite><a href="http://www.amazon.com/gp/product/0735619670?ie=UTF8&amp;tag=idepermin-20&amp;linkCode=as2&amp;camp=1789&amp;creative=390957&amp;creativeASIN=0735619670">Code Complete</a></cite>. The St. Thomas course description also includes the idea of estimating, so Mike Cohn&#8217;s <cite><a href="http://www.amazon.com/gp/product/0131479415?ie=UTF8&amp;tag=idepermin-20&amp;linkCode=as2&amp;camp=1789&amp;creative=390957&amp;creativeASIN=0131479415">Agile Estimating And Planning</a></cite> might also be apropos. If you&#8217;ve read both of those, then scan them to make sure you&#8217;re still up to speed and either a) give yourself a pass, you&#8217;ve got this one, or b) re-read or pick an alternate/more advanced tome on the subject and plow through it.</p></li>
+<li><p>Database Management Systems And Design. I&#8217;m assuming you already know and use regularly at least one or more DB system; probably MySQL, but possibly sqlite, Postgres, or even MS SQL Server or Oracle. Great. Maybe you even know CouchDB or MongoDB or some other NoSQL system. Well, this is a Masters program. That&#8217;s Not Good Enough.</p>
+
+<ul>
+<li>Give yourself a refresher in DB design, SQL, maybe relational algebra if you like that sort of thing. <em><a href="http://www.amazon.com/gp/product/0596100124?ie=UTF8&amp;tag=idepermin-20&amp;linkCode=as2&amp;camp=1789&amp;creative=390957&amp;creativeASIN=0596100124">Database in Depth</a></em> is a good book. You might know others.</li>
+<li>Learn another system, whatever seems most useful to what you are doing (remember a HUGE key in making this work is that it must be something you really want to know about; follow what interests you): maybe a NoSQL db, or maybe Postgres. Learn what makes this DB different from others, from what you know already, and why. Try to figure out real reasons and/or scenarios you&#8217;d want to use one or the other.</li>
+</ul>
+</li>
+<li><p>OOAAD (Object Oriented Application Analysis and Design). Well you could read or re-read <a href="http://www.amazon.com/gp/product/0131489062?ie=UTF8&amp;tag=idepermin-20&amp;linkCode=as2&amp;camp=1789&amp;creative=390957&amp;creativeASIN=0131489062">Larman</a> or <a href="http://www.amazon.com/gp/product/020189551X?ie=UTF8&amp;tag=idepermin-20&amp;linkCode=as2&amp;camp=1789&amp;creative=390957&amp;creativeASIN=020189551X">Booch</a>, and that&#8217;s probably not a bad idea. Try to make it applicable to things you want to work on, as always.</p></li>
+<li><p>Software Project Management. This is an area I could probably stand to improve in; I&#8217;m not certain, but I think I&#8217;d start with one or more of Scott Berkun&#8217;s books (<a href="http://www.amazon.com/gp/product/0596007868?ie=UTF8&amp;tag=idepermin-20&amp;linkCode=as2&amp;camp=1789&amp;creative=390957&amp;creativeASIN=0596007868">The Art of Project Management</a>, <a href="http://www.amazon.com/gp/product/0596517718?ie=UTF8&amp;tag=idepermin-20&amp;linkCode=as2&amp;camp=1789&amp;creative=390957&amp;creativeASIN=0596517718">Making Things Happen</a>) on the topic, which seem to have attained a sort of Gold Standard status. If you&#8217;re certification-minded you might reach for a PMP-based book. I&#8217;m not gung-ho on certifications, but maybe you think it will be good to have; and honestly, of all the certs out there, this one seems the most useful. If you have experience with PMP pro or con that you&#8217;d like to leave in the comments, please do, but remember that the whole point of this plan is to be more interested in <em>results</em> than <em>whether or not my certification can get me a job with SAP</em>.</p></li>
+<li><p>Software Quality Assurance. This would be the ideal place to learn even more about software testing. Aside from that, I would have to look for some specific material pertinent to Software QA; suggestions welcome.</p></li>
+<li><p>Operating Systems. Yeah, I guess it&#8217;s useful. And maybe it&#8217;s super-interesting to you; at the moment it&#8217;s not an area of intense interest to me, but I can see its applicability. I&#8217;d probably start by identifying the areas in which this sort of knowledge will help the most; probably in the areas of processes, threads, memory management and related themes. Might want to brush out the old C programming toolset and pick up a book on the Linux kernel; I don&#8217;t know. Again, if the only point is to check another item off the checklist, it probably will be hell to learn and you might not even bother. So find a way to make it interesting. Maybe just spend awhile really learning or re-learning multi-threaded application programming.</p></li>
+<li><p>Computer and Network Communications. Again, I&#8217;m guessing we have the foundations of <em>at least</em> some or much of this down. So find an area of interest to you and push your knowledge further. Learn <a href="http://nodejs.org">Node.js</a> and write a server. Find an Open Source server/networking project and attempt to contribute something to it (even if it&#8217;s just documentation; come to think of it, contributing to a related OSS project would be a fantastic progress gauge for every area on this list.)</p></li>
+<li><p>5+ electives. There&#8217;s always more to learn; what are you most interested in?</p>
+
+<ul>
+<li>Applied Statistics/Machine Learning/Analysis</li>
+<li>Other Maths? Go nuts.</li>
+<li>Another programming language. Lisp, Erlang, Python, Ruby, C(++/#), Objective-C/Cocoa, Javascript&#8230; pick something that you don&#8217;t know that you&#8217;d <em>like</em> to know, and start knowing it. Since one of the major hurdles in learning a new language is the &#8220;what the heck should I write in this language?&#8221; problem, a good tactic might be to apply your new language to one of the above subject areas; do your DB, Networking, or QA/testing explorations in a language other than the ones you already know.</li>
+<li>Security. Big topic.</li>
+<li>Cryptography. Related to security, but also a big topic all on its own.</li>
+<li>Algorithms and Data Structures. We all probably have some exposure to these, but if it&#8217;s an area of interest to you, I&#8217;m betting you&#8217;ll always learn something from a refresher course.</li>
+<li>Data Warehousing/Mining/etc.</li>
+<li>Distributed Databases or servers.</li>
+<li>Real Time systems/concepts.</li>
+<li>Artificial Intelligence, related research.</li>
+<li>&#8230;. ? I don&#8217;t know, you pick something you&#8217;re interested in.</li>
+</ul>
+</li>
+</ol>
+
+
+<p>There&#8217;s some of the above I feel like I have a decent grasp of, there&#8217;s some that I don&#8217;t. There&#8217;s some things that interest me, and that applies directly to the ways I pay the bills each month, so obviously those are the things I&#8217;d probably gravitate towards learning first.</p>
+
+<p>I&#8217;m not going to &#8220;log my progress&#8221; on following this or any similar plan, but my point is:</p>
+
+<ul>
+<li>It&#8217;s doable.</li>
+<li>It&#8217;s valuable in and of itself.</li>
+<li>You don&#8217;t need to spend 20K+ at a university to do it.</li>
+<li>If/when you really have a grasp of all (or even MOST) of the above, you&#8217;re a software engineer who really knows his/her stuff, and especially if you can show the Open Source or other projects that you&#8217;ve contributed to along the way&#8230; you really don&#8217;t need the piece of paper from the university.</li>
+</ul>
+
+
+<p>If you don&#8217;t like my list, or the books/ideas I&#8217;ve listed, make your own. Or, you know, whatever. I think most really good developers plan to keep learning continuously anyways, and are probably already doing so; this just happens to be a little more structured list based off a given Masters program description. Part of my whole theory here is that you&#8217;re going to be more successful if you&#8217;re trying to learn things that really interest you, or that you really want to use, so if you don&#8217;t <em>care</em> about project management, or networking, or databases, then by all means, just <em>skip it</em>. Focus on what you want to know. Maybe you&#8217;d rather jump straight in to statistics and machine learning. Go download <em><a href="http://www.r-project.org/">R</a></em> and have a ball.</p>
+
+<p>Comments, suggestions, hate mail, fan fiction, can be submitted below. Thanks for reading.</p>
+</div>
+  
+  
+
+
+    </article>
+  
   <div class="pagination">
     
       <a class="prev" href="/blog/page/4/">&larr; Older</a>
@@ -1002,10 +887,6 @@ git push heroku master
   <ul id="recent_posts">
     
       <li class="post">
-        <a href="/blog/2011/10/12/how-to-quit-your-job/">How to quit your job</a>
-      </li>
-    
-      <li class="post">
         <a href="/blog/2011/10/10/how-to-read-web-analytics/">How To Read Web Analytics</a>
       </li>
     
@@ -1019,6 +900,10 @@ git push heroku master
     
       <li class="post">
         <a href="/blog/2011/02/21/test-first-as-a-productivity-hack/">Test First As A Productivity Hack</a>
+      </li>
+    
+      <li class="post">
+        <a href="/blog/2011/02/01/ujs-in-rails-3-slides/">UJS in Rails 3 Slides</a>
       </li>
     
   </ul>
