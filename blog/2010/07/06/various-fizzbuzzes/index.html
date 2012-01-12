@@ -32,6 +32,18 @@
 <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 
   
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-77047-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
 
 </head>
 
@@ -98,102 +110,119 @@
 
 <p>First solution:</p>
 
-<pre>
-<code class="ruby">
-(1..100).each do |k|
-  print k % 3 == 0 ? "Fizz" : ""
-  print k % 5 == 0 ? "Buzz" : ""
-  print k unless (k % 3 == 0 || k % 5 == 0)
-  print " "
-end
-</code>
-</pre>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="p">(</span><span class="mi">1</span><span class="o">.</span><span class="n">.</span><span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">k</span><span class="o">|</span>
+</span><span class='line'>  <span class="nb">print</span> <span class="n">k</span> <span class="o">%</span> <span class="mi">3</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">?</span> <span class="s2">&quot;Fizz&quot;</span> <span class="p">:</span> <span class="s2">&quot;&quot;</span>
+</span><span class='line'>  <span class="nb">print</span> <span class="n">k</span> <span class="o">%</span> <span class="mi">5</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">?</span> <span class="s2">&quot;Buzz&quot;</span> <span class="p">:</span> <span class="s2">&quot;&quot;</span>
+</span><span class='line'>  <span class="nb">print</span> <span class="n">k</span> <span class="k">unless</span> <span class="p">(</span><span class="n">k</span> <span class="o">%</span> <span class="mi">3</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">k</span> <span class="o">%</span> <span class="mi">5</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+</span><span class='line'>  <span class="nb">print</span> <span class="s2">&quot; &quot;</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>So, that&#8217;s simple enough. I thought maybe it could be a little more compact, but essentially unchanged, here was the next version:</p>
 
-<pre>
-<code class="ruby">
-(1..100).each do |k|
-  print k%3==0 ? "Fizz" : "", k%5==0 ? "Buzz" : "", (k%3==0 || k%5==0) ? "" : k,  " "
-end
-</code>
-</pre>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="p">(</span><span class="mi">1</span><span class="o">.</span><span class="n">.</span><span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">k</span><span class="o">|</span>
+</span><span class='line'>  <span class="nb">print</span> <span class="n">k</span><span class="o">%</span><span class="mi">3</span><span class="o">==</span><span class="mi">0</span> <span class="o">?</span> <span class="s2">&quot;Fizz&quot;</span> <span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">k</span><span class="o">%</span><span class="mi">5</span><span class="o">==</span><span class="mi">0</span> <span class="o">?</span> <span class="s2">&quot;Buzz&quot;</span> <span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">k</span><span class="o">%</span><span class="mi">3</span><span class="o">==</span><span class="mi">0</span> <span class="o">||</span> <span class="n">k</span><span class="o">%</span><span class="mi">5</span><span class="o">==</span><span class="mi">0</span><span class="p">)</span> <span class="p">?</span> <span class="s2">&quot;&quot;</span> <span class="p">:</span> <span class="n">k</span><span class="p">,</span>  <span class="s2">&quot; &quot;</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>That&#8217;s nice and all, but I&#8217;m now trying to think if I can find other ways to do it. Preferably shorter and/or more elegant. Maybe. <code>003.rb</code> was next.</p>
 
-<pre>
-<code class="ruby">
-(1..100).each do |k|
-  word = ''
-  word << "Fizz" if k%3==0
-  word << "Buzz" if k%5==0
-  print word.empty? ? k : word, " "
-end
-</code>
-</pre>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="p">(</span><span class="mi">1</span><span class="o">.</span><span class="n">.</span><span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">k</span><span class="o">|</span>
+</span><span class='line'>  <span class="n">word</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+</span><span class='line'>  <span class="n">word</span> <span class="o">&lt;&lt;</span> <span class="s2">&quot;Fizz&quot;</span> <span class="k">if</span> <span class="n">k</span><span class="o">%</span><span class="mi">3</span><span class="o">==</span><span class="mi">0</span>
+</span><span class='line'>  <span class="n">word</span> <span class="o">&lt;&lt;</span> <span class="s2">&quot;Buzz&quot;</span> <span class="k">if</span> <span class="n">k</span><span class="o">%</span><span class="mi">5</span><span class="o">==</span><span class="mi">0</span>
+</span><span class='line'>  <span class="nb">print</span> <span class="n">word</span><span class="o">.</span><span class="n">empty?</span> <span class="p">?</span> <span class="n">k</span> <span class="p">:</span> <span class="n">word</span><span class="p">,</span> <span class="s2">&quot; &quot;</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Not really shorter or elegant, but a slightly different approach, filling a placeholder variable with &#8220;Fizz&#8221;, &#8220;Buzz&#8221; (or both), and then deciding which one to display based on whether or not the placeholder was <code>empty?</code> (If you aren&#8217;t familiar with Ruby, <code>"".empty? == true &amp;&amp; "anything".empty? == false</code>.)</p>
 
 <p>Again, I tried to pare that down a little.</p>
 
-<pre>
-<code class="ruby">
-puts (1..100).map {|k| w='';w<<"Fizz"if k%3==0;w<<"Buzz"if k%5==0;w.empty? ? k : w }.join(" ")
-</code>
-</pre>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">puts</span> <span class="p">(</span><span class="mi">1</span><span class="o">.</span><span class="n">.</span><span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">map</span> <span class="p">{</span><span class="o">|</span><span class="n">k</span><span class="o">|</span> <span class="n">w</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">;</span><span class="n">w</span><span class="o">&lt;&lt;</span><span class="s2">&quot;Fizz&quot;</span><span class="k">if</span> <span class="n">k</span><span class="o">%</span><span class="mi">3</span><span class="o">==</span><span class="mi">0</span><span class="p">;</span><span class="n">w</span><span class="o">&lt;&lt;</span><span class="s2">&quot;Buzz&quot;</span><span class="k">if</span> <span class="n">k</span><span class="o">%</span><span class="mi">5</span><span class="o">==</span><span class="mi">0</span><span class="p">;</span><span class="n">w</span><span class="o">.</span><span class="n">empty?</span> <span class="p">?</span> <span class="n">k</span> <span class="p">:</span> <span class="n">w</span> <span class="p">}</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Well, I don&#8217;t know if it&#8217;s readable, or anything resembling elegant, but it&#8217;s, um&#8230; more compact.</p>
 
 <p>At that point I glanced back at my first solution, and something was bugging me about it; oh, yeah. The ternary expressions that returned &#8220;&#8221; for the false case. That seemed unnecessary. 005.rb tries to fix it.</p>
 
-<pre>
-<code class="ruby">
-(1..100).each do |k|
-  print "Fizz" if k % 3 == 0
-  print "Buzz" if k % 5 == 0
-  print k unless (k % 3 == 0 || k % 5 == 0)
-  print " "
-end
-</code>
-</pre>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="p">(</span><span class="mi">1</span><span class="o">.</span><span class="n">.</span><span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">k</span><span class="o">|</span>
+</span><span class='line'>  <span class="nb">print</span> <span class="s2">&quot;Fizz&quot;</span> <span class="k">if</span> <span class="n">k</span> <span class="o">%</span> <span class="mi">3</span> <span class="o">==</span> <span class="mi">0</span>
+</span><span class='line'>  <span class="nb">print</span> <span class="s2">&quot;Buzz&quot;</span> <span class="k">if</span> <span class="n">k</span> <span class="o">%</span> <span class="mi">5</span> <span class="o">==</span> <span class="mi">0</span>
+</span><span class='line'>  <span class="nb">print</span> <span class="n">k</span> <span class="k">unless</span> <span class="p">(</span><span class="n">k</span> <span class="o">%</span> <span class="mi">3</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">k</span> <span class="o">%</span> <span class="mi">5</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+</span><span class='line'>  <span class="nb">print</span> <span class="s2">&quot; &quot;</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Essentially unchanged. I&#8217;m not even sure it&#8217;s any more efficient but it <em>feels</em> less like there&#8217;s wasted code in there, so I like it a little better. Now, it&#8217;s not really <em>changing</em> much, but what if we extract the logic into it&#8217;s own method?</p>
 
-<pre>
-<code class="ruby">
-def fizzbuzz(k)
-  w = ''
-  w << "Fizz" if k%3==0
-  w << "Buzz" if k%5==0
-  w.empty? ? k : w
-end
-
-(1..100).each {|k| print fizzbuzz(k), " " }
-</code>
-</pre>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">fizzbuzz</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+</span><span class='line'>  <span class="n">w</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
+</span><span class='line'>  <span class="n">w</span> <span class="o">&lt;&lt;</span> <span class="s2">&quot;Fizz&quot;</span> <span class="k">if</span> <span class="n">k</span><span class="o">%</span><span class="mi">3</span><span class="o">==</span><span class="mi">0</span>
+</span><span class='line'>  <span class="n">w</span> <span class="o">&lt;&lt;</span> <span class="s2">&quot;Buzz&quot;</span> <span class="k">if</span> <span class="n">k</span><span class="o">%</span><span class="mi">5</span><span class="o">==</span><span class="mi">0</span>
+</span><span class='line'>  <span class="n">w</span><span class="o">.</span><span class="n">empty?</span> <span class="p">?</span> <span class="n">k</span> <span class="p">:</span> <span class="n">w</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="p">(</span><span class="mi">1</span><span class="o">.</span><span class="n">.</span><span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">each</span> <span class="p">{</span><span class="o">|</span><span class="n">k</span><span class="o">|</span> <span class="nb">print</span> <span class="n">fizzbuzz</span><span class="p">(</span><span class="n">k</span><span class="p">),</span> <span class="s2">&quot; &quot;</span> <span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Hey, that&#8217;s&#8230; well, it&#8217;s essentially the same, but the lesser rites of refactoring have been appeased by pulling that code into it&#8217;s own little method.</p>
 
 <p>Hey. That makes me think we could just:</p>
 
-<pre>
-<code class="ruby">
-class Integer
-  def fizzbuzz
-    w=''<<(self%3==0 ? "Fizz" : "")<<(self%5==0 ? "Buzz" : "")
-    w.empty? ? self : w
-  end
-end
-
-puts (1..100).map{|k| k.fizzbuzz }.join(" ")
-</code>
-</pre>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">Integer</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">fizzbuzz</span>
+</span><span class='line'>    <span class="n">w</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="nb">self</span><span class="o">%</span><span class="mi">3</span><span class="o">==</span><span class="mi">0</span> <span class="o">?</span> <span class="s2">&quot;Fizz&quot;</span> <span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="nb">self</span><span class="o">%</span><span class="mi">5</span><span class="o">==</span><span class="mi">0</span> <span class="o">?</span> <span class="s2">&quot;Buzz&quot;</span> <span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">w</span><span class="o">.</span><span class="n">empty?</span> <span class="p">?</span> <span class="nb">self</span> <span class="p">:</span> <span class="n">w</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="nb">puts</span> <span class="p">(</span><span class="mi">1</span><span class="o">.</span><span class="n">.</span><span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">{</span><span class="o">|</span><span class="n">k</span><span class="o">|</span> <span class="n">k</span><span class="o">.</span><span class="n">fizzbuzz</span> <span class="p">}</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>So, a couple different things here. We open up <code>Integer</code> and add a fizzbuzz method to it. The idea of a place holder with either &#8220;Fizz&#8221;, &#8220;Buzz&#8221;, or both added to it is streamlined slightly by adding the concatenation lines right into the variable assignment. To make that work, we have to go back to using the ternary operator (can you see why? If we just did <code>w &lt;&lt; "Fizz" if k%3==0</code>, it would try to append <code>nil</code> to the String, and you&#8217;d get a horrible &#8220;Unable to convert nil to String&#8221; error anytime a non-multiple of 3 or 5 came up).</p>
@@ -347,6 +376,15 @@ puts (1..100).map{|k| k.fizzbuzz }.join(" ")
   })();
 </script>
 
+
+<section class="googleplus">
+  <h1>
+    <a href="https://plus.google.com/115225600632800161143?rel=author">
+      <img src="http://www.google.com/images/icons/ui/gprofile_button-32.png" width="32" height="32">
+      Google+
+    </a>
+  </h1>
+</section>
 
 
 

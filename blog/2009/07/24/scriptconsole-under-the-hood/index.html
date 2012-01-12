@@ -32,6 +32,18 @@
 <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 
   
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-77047-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
 
 </head>
 
@@ -101,13 +113,14 @@ Photo by <a href="http://www.flickr.com/photos/steffe/">Steffe</a></p>
 
 <p>If we look at just the console script, we&#8217;ll find just these three lines:</p>
 
-<pre>
-<code class="ruby">
-#!/usr/bin/env ruby
-require File.dirname(__FILE__) + '/../config/boot'
-require 'commands/plugin'
-</code>
-</pre>
+<figure class='code'><figcaption><span>script/console  </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1">#!/usr/bin/env ruby</span>
+</span><span class='line'><span class="nb">require</span> <span class="no">File</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="bp">__FILE__</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;/../config/boot&#39;</span>
+</span><span class='line'><span class="nb">require</span> <span class="s1">&#39;commands/plugin&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>The first line is simply the shebang line that lets the file be an executable ruby script. The second line requires the file config/boot. This file is a little over a hundred lines by default, so we won&#8217;t reproduce it here; you can read it quickly (if you want to) in one of your own rails projects. It basically sets some load paths and some constants, and ends by booting rails with <code>Rails.boot!</code>.</p>
@@ -121,55 +134,98 @@ require 'commands/plugin'
 
 <p><code>console.rb</code> looks like this:</p>
 
-<pre>
-<code class="ruby">
-irb = RUBY_PLATFORM =~ /(:?mswin|mingw)/ ? 'irb.bat' : 'irb'
-
-require 'optparse'
-
-options = { :sandbox => false, :irb => irb }
-OptionParser.new do |opt|
-  opt.banner = "Usage: console [environment] [options]"
-  opt.on('-s', '--sandbox', 'Rollback database modifications on exit.') { |v| options[:sandbox] = v }
-  opt.on("--irb=[#{irb}]", 'Invoke a different irb.') { |v| options[:irb] = v }
-  opt.on("--debugger", 'Enable ruby-debugging for the console.') { |v| options[:debugger] = v }
-  opt.parse!(ARGV)
-end
-
-libs =  " -r irb/completion"
-libs < < %( -r "#{RAILS_ROOT}/config/environment")
-libs << " -r console_app"
-libs << " -r console_sandbox" if options[:sandbox]
-libs << " -r console_with_helpers"
-
-if options[:debugger]
-  begin
-    require 'ruby-debug'
-    libs << " -r ruby-debug"
-    puts "=> Debugger enabled"
-  rescue Exception
-    puts "You need to install ruby-debug to run the console in debugging mode. With gems, use 'gem install ruby-debug'"
-    exit
-  end
-end
-
-ENV['RAILS_ENV'] = case ARGV.first
-  when "p"; "production"
-  when "d"; "development"
-  when "t"; "test"
-  else
-    ARGV.first || ENV['RAILS_ENV'] || 'development'
-end
-
-if options[:sandbox]
-  puts "Loading #{ENV['RAILS_ENV']} environment in sandbox (Rails #{Rails.version})"
-  puts "Any modifications you make will be rolled back on exit"
-else
-  puts "Loading #{ENV['RAILS_ENV']} environment (Rails #{Rails.version})"
-end
-exec "#{options[:irb]} #{libs} --simple-prompt"
-</code>
-</pre>
+<figure class='code'><figcaption><span>console.rb </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+</pre></td><td class='code'><pre><code class='rb'><span class='line'><span class="n">irb</span> <span class="o">=</span> <span class="no">RUBY_PLATFORM</span> <span class="o">=~</span> <span class="sr">/(:?mswin|mingw)/</span> <span class="p">?</span> <span class="s1">&#39;irb.bat&#39;</span> <span class="p">:</span> <span class="s1">&#39;irb&#39;</span>
+</span><span class='line'>
+</span><span class='line'><span class="nb">require</span> <span class="s1">&#39;optparse&#39;</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">options</span> <span class="o">=</span> <span class="p">{</span> <span class="ss">:sandbox</span> <span class="o">=&gt;</span> <span class="kp">false</span><span class="p">,</span> <span class="ss">:irb</span> <span class="o">=&gt;</span> <span class="n">irb</span> <span class="p">}</span>
+</span><span class='line'><span class="no">OptionParser</span><span class="o">.</span><span class="n">new</span> <span class="k">do</span> <span class="o">|</span><span class="n">opt</span><span class="o">|</span>
+</span><span class='line'>  <span class="n">opt</span><span class="o">.</span><span class="n">banner</span> <span class="o">=</span> <span class="s2">&quot;Usage: console [environment] [options]&quot;</span>
+</span><span class='line'>  <span class="n">opt</span><span class="o">.</span><span class="n">on</span><span class="p">(</span><span class="s1">&#39;-s&#39;</span><span class="p">,</span> <span class="s1">&#39;--sandbox&#39;</span><span class="p">,</span> <span class="s1">&#39;Rollback database modifications on exit.&#39;</span><span class="p">)</span> <span class="p">{</span> <span class="o">|</span><span class="n">v</span><span class="o">|</span> <span class="n">options</span><span class="o">[</span><span class="ss">:sandbox</span><span class="o">]</span> <span class="o">=</span> <span class="n">v</span> <span class="p">}</span>
+</span><span class='line'>  <span class="n">opt</span><span class="o">.</span><span class="n">on</span><span class="p">(</span><span class="s2">&quot;--irb=[</span><span class="si">#{</span><span class="n">irb</span><span class="si">}</span><span class="s2">]&quot;</span><span class="p">,</span> <span class="s1">&#39;Invoke a different irb.&#39;</span><span class="p">)</span> <span class="p">{</span> <span class="o">|</span><span class="n">v</span><span class="o">|</span> <span class="n">options</span><span class="o">[</span><span class="ss">:irb</span><span class="o">]</span> <span class="o">=</span> <span class="n">v</span> <span class="p">}</span>
+</span><span class='line'>  <span class="n">opt</span><span class="o">.</span><span class="n">on</span><span class="p">(</span><span class="s2">&quot;--debugger&quot;</span><span class="p">,</span> <span class="s1">&#39;Enable ruby-debugging for the console.&#39;</span><span class="p">)</span> <span class="p">{</span> <span class="o">|</span><span class="n">v</span><span class="o">|</span> <span class="n">options</span><span class="o">[</span><span class="ss">:debugger</span><span class="o">]</span> <span class="o">=</span> <span class="n">v</span> <span class="p">}</span>
+</span><span class='line'>  <span class="n">opt</span><span class="o">.</span><span class="n">parse!</span><span class="p">(</span><span class="no">ARGV</span><span class="p">)</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">libs</span> <span class="o">=</span>  <span class="s2">&quot; -r irb/completion&quot;</span>
+</span><span class='line'><span class="n">libs</span> <span class="o">&lt;</span> <span class="o">&lt;</span> <span class="sx">%( -r &quot;</span><span class="si">#{</span><span class="no">RAILS_ROOT</span><span class="si">}</span><span class="sx">/config/environment&quot;)</span>
+</span><span class='line'><span class="n">libs</span> <span class="o">&lt;&lt;</span> <span class="s2">&quot; -r console_app&quot;</span>
+</span><span class='line'><span class="n">libs</span> <span class="o">&lt;&lt;</span> <span class="s2">&quot; -r console_sandbox&quot;</span> <span class="k">if</span> <span class="n">options</span><span class="o">[</span><span class="ss">:sandbox</span><span class="o">]</span>
+</span><span class='line'><span class="n">libs</span> <span class="o">&lt;&lt;</span> <span class="s2">&quot; -r console_with_helpers&quot;</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">if</span> <span class="n">options</span><span class="o">[</span><span class="ss">:debugger</span><span class="o">]</span>
+</span><span class='line'>  <span class="k">begin</span>
+</span><span class='line'>    <span class="nb">require</span> <span class="s1">&#39;ruby-debug&#39;</span>
+</span><span class='line'>    <span class="n">libs</span> <span class="o">&lt;&lt;</span> <span class="s2">&quot; -r ruby-debug&quot;</span>
+</span><span class='line'>    <span class="nb">puts</span> <span class="s2">&quot;=&gt; Debugger enabled&quot;</span>
+</span><span class='line'>  <span class="k">rescue</span> <span class="no">Exception</span>
+</span><span class='line'>    <span class="nb">puts</span> <span class="s2">&quot;You need to install ruby-debug to run the console in debugging mode. With gems, use &#39;gem install ruby-debug&#39;&quot;</span>
+</span><span class='line'>    <span class="nb">exit</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="no">ENV</span><span class="o">[</span><span class="s1">&#39;RAILS_ENV&#39;</span><span class="o">]</span> <span class="o">=</span> <span class="k">case</span> <span class="no">ARGV</span><span class="o">.</span><span class="n">first</span>
+</span><span class='line'>  <span class="k">when</span> <span class="s2">&quot;p&quot;</span><span class="p">;</span> <span class="s2">&quot;production&quot;</span>
+</span><span class='line'>  <span class="k">when</span> <span class="s2">&quot;d&quot;</span><span class="p">;</span> <span class="s2">&quot;development&quot;</span>
+</span><span class='line'>  <span class="k">when</span> <span class="s2">&quot;t&quot;</span><span class="p">;</span> <span class="s2">&quot;test&quot;</span>
+</span><span class='line'>  <span class="k">else</span>
+</span><span class='line'>    <span class="no">ARGV</span><span class="o">.</span><span class="n">first</span> <span class="o">||</span> <span class="no">ENV</span><span class="o">[</span><span class="s1">&#39;RAILS_ENV&#39;</span><span class="o">]</span> <span class="o">||</span> <span class="s1">&#39;development&#39;</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">if</span> <span class="n">options</span><span class="o">[</span><span class="ss">:sandbox</span><span class="o">]</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="s2">&quot;Loading </span><span class="si">#{</span><span class="no">ENV</span><span class="o">[</span><span class="s1">&#39;RAILS_ENV&#39;</span><span class="o">]</span><span class="si">}</span><span class="s2"> environment in sandbox (Rails </span><span class="si">#{</span><span class="no">Rails</span><span class="o">.</span><span class="n">version</span><span class="si">}</span><span class="s2">)&quot;</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="s2">&quot;Any modifications you make will be rolled back on exit&quot;</span>
+</span><span class='line'><span class="k">else</span>
+</span><span class='line'>  <span class="nb">puts</span> <span class="s2">&quot;Loading </span><span class="si">#{</span><span class="no">ENV</span><span class="o">[</span><span class="s1">&#39;RAILS_ENV&#39;</span><span class="o">]</span><span class="si">}</span><span class="s2"> environment (Rails </span><span class="si">#{</span><span class="no">Rails</span><span class="o">.</span><span class="n">version</span><span class="si">}</span><span class="s2">)&quot;</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'><span class="nb">exec</span> <span class="s2">&quot;</span><span class="si">#{</span><span class="n">options</span><span class="o">[</span><span class="ss">:irb</span><span class="o">]</span><span class="si">}</span><span class="s2"> </span><span class="si">#{</span><span class="n">libs</span><span class="si">}</span><span class="s2"> --simple-prompt&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>There&#8217;s a fair bit in there, so let&#8217;s look at what it&#8217;s doing in detail.</p>
@@ -204,11 +260,9 @@ exec "#{options[:irb]} #{libs} --simple-prompt"
 
 <p>There&#8217;s only one line left: an <code>exec</code> expression. exec is going to execute the string you pass to it on the command line. So a plain vanilla run of script/console is actually running:</p>
 
-<pre>
-<code  class="ruby">
-irb -r irb/completion -r ~/your_rails_project_path/config/environment -r console_app -r console_with_helpers --simple_prompt
-</code>
-</pre>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='sh'><span class='line'>irb -r irb/completion -r ~/your_rails_project_path/config/environment -r console_app -r console_with_helpers --simple_prompt
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>If you really want to, you could just type all that every time you want to use the console, but I&#8217;m guessing you&#8217;ll stick with script/console.</p>
@@ -358,6 +412,15 @@ irb -r irb/completion -r ~/your_rails_project_path/config/environment -r console
   })();
 </script>
 
+
+<section class="googleplus">
+  <h1>
+    <a href="https://plus.google.com/115225600632800161143?rel=author">
+      <img src="http://www.google.com/images/icons/ui/gprofile_button-32.png" width="32" height="32">
+      Google+
+    </a>
+  </h1>
+</section>
 
 
 

@@ -4,7 +4,7 @@
         <loc>
             http://philcrissman.github.com/blog/2006/07/25/howto-add-your-xscreensavers-to-gnome-screensaver/
         </loc>
-        <lastmod>2012-01-05T10:48:47-06:00</lastmod>
+        <lastmod>2012-01-12T10:05:06-06:00</lastmod>
     </url>
     <url>
         <loc>http://philcrissman.github.com/blog/2006/09/22/the-emperors-new-web/</loc>
@@ -20,11 +20,11 @@
         <loc>
             http://philcrissman.github.com/blog/2008/05/09/clearing-form-fields-with-jquery/
         </loc>
-        <lastmod>2012-01-05T11:24:43-06:00</lastmod>
+        <lastmod>2012-01-12T10:09:16-06:00</lastmod>
     </url>
     <url>
         <loc>http://philcrissman.github.com/blog/2008/08/27/some-ruby-and-rails-tricks/</loc>
-        <lastmod>2012-01-05T11:25:09-06:00</lastmod>
+        <lastmod>2012-01-12T10:11:38-06:00</lastmod>
     </url>
     <url>
         <loc>
@@ -40,23 +40,23 @@
     </url>
     <url>
         <loc>http://philcrissman.github.com/blog/2009/01/18/testing-ajax-requests-in-rails/</loc>
-        <lastmod>2012-01-05T11:26:07-06:00</lastmod>
+        <lastmod>2012-01-12T10:13:37-06:00</lastmod>
     </url>
     <url>
         <loc>
             http://philcrissman.github.com/blog/2009/04/17/rails-testing-your-floating-point-numbers/
         </loc>
-        <lastmod>2012-01-05T11:26:18-06:00</lastmod>
+        <lastmod>2012-01-12T10:14:48-06:00</lastmod>
     </url>
     <url>
         <loc>
             http://philcrissman.github.com/blog/2009/06/26/rubys-objectsend-can-call-private-and-protected-methods/
         </loc>
-        <lastmod>2012-01-05T11:26:35-06:00</lastmod>
+        <lastmod>2012-01-12T10:17:07-06:00</lastmod>
     </url>
     <url>
         <loc>http://philcrissman.github.com/blog/2009/07/24/scriptconsole-under-the-hood/</loc>
-        <lastmod>2012-01-05T11:26:50-06:00</lastmod>
+        <lastmod>2012-01-12T10:20:52-06:00</lastmod>
     </url>
     <url>
         <loc>http://philcrissman.github.com/blog/2009/08/20/a-fledgling-freelance-professor/</loc>
@@ -96,7 +96,7 @@
         <loc>
             http://philcrissman.github.com/blog/2010/04/12/validating-nested-attributes-on-update/
         </loc>
-        <lastmod>2012-01-05T11:28:49-06:00</lastmod>
+        <lastmod>2012-01-12T10:22:42-06:00</lastmod>
     </url>
     <url>
         <loc>
@@ -138,11 +138,11 @@
     </url>
     <url>
         <loc>http://philcrissman.github.com/blog/2010/07/06/various-fizzbuzzes/</loc>
-        <lastmod>2012-01-05T11:31:25-06:00</lastmod>
+        <lastmod>2012-01-12T10:26:06-06:00</lastmod>
     </url>
     <url>
         <loc>http://philcrissman.github.com/blog/2010/07/07/relative-primes/</loc>
-        <lastmod>2012-01-05T11:31:35-06:00</lastmod>
+        <lastmod>2012-01-12T11:56:48-06:00</lastmod>
     </url>
     <url>
         <loc>http://philcrissman.github.com/blog/2010/07/08/relative-primes-revisited/</loc>
@@ -236,10 +236,10 @@
     </url>
     <url>
         <loc>http://philcrissman.github.com/blog/archives/</loc>
-        <lastmod>2012-01-05T11:43:42-06:00</lastmod>
+        <lastmod>2012-01-12T11:56:48-06:00</lastmod>
     </url>
     <url>
         <loc>http://philcrissman.github.com/</loc>
-        <lastmod>2012-01-05T11:43:42-06:00</lastmod>
+        <lastmod>2012-01-12T11:56:48-06:00</lastmod>
     </url>
 </urlset>

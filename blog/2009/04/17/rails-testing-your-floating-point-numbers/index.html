@@ -9,7 +9,8 @@
   <meta name="author" content="Your Name">
 
   
-  <meta name="description" content="You&#8217;re being a Good Software developer and diligently testing all your code, and lo and behold, you get this result to one of your tests: 1) &hellip;">
+  <meta name="description" content="You&#8217;re being a Good Software developer and diligently testing all your code, and lo and behold, you get this result to one of your tests: 1
+1) &hellip;">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -32,6 +33,18 @@
 <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 
   
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-77047-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
 
 </head>
 
@@ -94,31 +107,25 @@
 
 <div class="entry-content"><p>You&#8217;re being a Good Software developer and diligently testing all your code, and lo and behold, you get this result to one of your tests:</p>
 
-<pre>
-<code class="ruby">
-1) Failure: ... &lt;1.0&gt; expected but was &lt;1.0&gt;
-</code>
-</pre>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="mi">1</span><span class="p">)</span> <span class="no">Failure</span><span class="p">:</span> <span class="o">.</span><span class="n">.</span><span class="o">.</span> <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="mi">1</span><span class="o">.</span><span class="mi">0</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="n">expected</span> <span class="n">but</span> <span class="n">was</span> <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="mi">1</span><span class="o">.</span><span class="mi">0</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>An annoying problem with floats that might look and for all practical purposes be equal, but internally as stored by the computer are not <em>precisely</em> equal.</p>
 
 <p>You&#8217;re probably using:</p>
 
-<pre>
-<code class="ruby">
-assert_equal 1.0, a_value_expected_to_be_1.0
-</code>
-</pre>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">assert_equal</span> <span class="mi">1</span><span class="o">.</span><span class="mi">0</span><span class="p">,</span> <span class="n">a_value_expected_to_be_1</span><span class="o">.</span><span class="mi">0</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Instead, use:</p>
 
-<pre>
-<code class="ruby">
-assert_in_delta 1.0, a_value_expected_to_be_1.0, 0.000001
-</code>
-</pre>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">assert_in_delta</span> <span class="mi">1</span><span class="o">.</span><span class="mi">0</span><span class="p">,</span> <span class="n">a_value_expected_to_be_1</span><span class="o">.</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="o">.</span><span class="mo">000001</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Though, you may also want to ask yourself if you really need to be using floating point numbers; but assuming that you <em>do</em> need them, <code>assert_in_delta</code> will compensate for the annoying fact that floating point numbers might not actually be precisely what you expect them to be.</p>
@@ -266,6 +273,15 @@ assert_in_delta 1.0, a_value_expected_to_be_1.0, 0.000001
   })();
 </script>
 
+
+<section class="googleplus">
+  <h1>
+    <a href="https://plus.google.com/115225600632800161143?rel=author">
+      <img src="http://www.google.com/images/icons/ui/gprofile_button-32.png" width="32" height="32">
+      Google+
+    </a>
+  </h1>
+</section>
 
 
 

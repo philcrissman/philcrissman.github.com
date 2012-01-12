@@ -32,6 +32,18 @@
 <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 
   
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-77047-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
 
 </head>
 
@@ -102,46 +114,58 @@
 
 <p>I guess there are a few posts floating around about it, but I discovered it by accident playing around in irb this evening. I was reading David A. Black&#8217;s The Well Grounded Rubyist, where he mentions that you could send a message to a class either within the class definition itself, or by simply sending it to the class object like you&#8217;d send any other message:</p>
 
-<pre>
-<code class="ruby">
-# The normal way to do it
-class Thing
-  message :whatever
-end
-
-# you could also do this
-Thing.message(:whatever)
-</code>
-</pre>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># The normal way to do it</span>
+</span><span class='line'><span class="k">class</span> <span class="nc">Thing</span>
+</span><span class='line'>  <span class="n">message</span> <span class="ss">:whatever</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># you could also do this</span>
+</span><span class='line'><span class="no">Thing</span><span class="o">.</span><span class="n">message</span><span class="p">(</span><span class="ss">:whatever</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>David mention&#8217;s attr_accessor in this context, so I thought I&#8217;d try that. Open <code>irb</code>:</p>
 
-<pre lang="ruby">
->> class Thing
-?> end
->> Thing.attr_accessor :name
-NoMethodError: private method 'attr_accessor' called for Thing:Class
-</pre>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="o">&gt;&gt;</span> <span class="k">class</span> <span class="nc">Thing</span>
+</span><span class='line'><span class="sc">?&gt;</span> <span class="k">end</span>
+</span><span class='line'><span class="o">&gt;&gt;</span> <span class="no">Thing</span><span class="o">.</span><span class="n">attr_accessor</span> <span class="ss">:name</span>
+</span><span class='line'><span class="no">NoMethodError</span><span class="p">:</span> <span class="kp">private</span> <span class="nb">method</span> <span class="s1">&#39;attr_accessor&#39;</span> <span class="n">called</span> <span class="k">for</span> <span class="no">Thing</span><span class="ss">:Class</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Oh. So much for that, then. But, knowing of the existence of the send method, I thought I&#8217;d try that.</p>
 
-<pre lang="ruby">
-Thing.send(:attr_accessor, :name)
-=> nil
-</pre>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">Thing</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="ss">:attr_accessor</span><span class="p">,</span> <span class="ss">:name</span><span class="p">)</span>
+</span><span class='line'><span class="o">=&gt;</span> <span class="kp">nil</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>For the non-<code>irb</code> user, that <code>nil</code> that was returned, and the fact that no error message was returned, indicated that our experiment worked. Now <code>Thing</code>&#8217;s have a name attribute.</p>
 
-<pre lang="ruby">
->> t = Thing.new
->> t.name = "Larry"
-=> "Larry"
->> t.name
-=> "Larry"
-</pre>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="o">&gt;&gt;</span> <span class="n">t</span> <span class="o">=</span> <span class="no">Thing</span><span class="o">.</span><span class="n">new</span>
+</span><span class='line'><span class="o">&gt;&gt;</span> <span class="n">t</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Larry&quot;</span>
+</span><span class='line'><span class="o">=&gt;</span> <span class="s2">&quot;Larry&quot;</span>
+</span><span class='line'><span class="o">&gt;&gt;</span> <span class="n">t</span><span class="o">.</span><span class="n">name</span>
+</span><span class='line'><span class="o">=&gt;</span> <span class="s2">&quot;Larry&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>What&#8217;s interesting about all this is that <code>attr_accessor</code> is a private method on <code>Class</code>. Yet we just called it.</p>
@@ -150,26 +174,43 @@ Thing.send(:attr_accessor, :name)
 
 <p>To make it clear what you could do here:</p>
 
-<pre lang="ruby">
->> class Thing
-?>    def hello
-?>     puts "Hello, world!"
-?>   end
-?>   private
-?>     def private_hello
-?>       puts "Hello, privately."
-?>     end
-?> end
->> t = Thing.new
->> t.hello
-Hello, world!
-=> nil
->> t.private_hello
-NoMethodError: private method 'private_hello' called for ...
->> t.send(:private_hello)
-Hello, privately.
-=> nil
-</pre>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="o">&gt;&gt;</span> <span class="k">class</span> <span class="nc">Thing</span>
+</span><span class='line'><span class="sc">?&gt;</span>    <span class="k">def</span> <span class="nf">hello</span>
+</span><span class='line'><span class="sc">?&gt;</span>     <span class="nb">puts</span> <span class="s2">&quot;Hello, world!&quot;</span>
+</span><span class='line'><span class="sc">?&gt;</span>   <span class="k">end</span>
+</span><span class='line'><span class="sc">?&gt;</span>   <span class="kp">private</span>
+</span><span class='line'><span class="sc">?&gt;</span>     <span class="k">def</span> <span class="nf">private_hello</span>
+</span><span class='line'><span class="sc">?&gt;</span>       <span class="nb">puts</span> <span class="s2">&quot;Hello, privately.&quot;</span>
+</span><span class='line'><span class="sc">?&gt;</span>     <span class="k">end</span>
+</span><span class='line'><span class="sc">?&gt;</span> <span class="k">end</span>
+</span><span class='line'><span class="o">&gt;&gt;</span> <span class="n">t</span> <span class="o">=</span> <span class="no">Thing</span><span class="o">.</span><span class="n">new</span>
+</span><span class='line'><span class="o">&gt;&gt;</span> <span class="n">t</span><span class="o">.</span><span class="n">hello</span>
+</span><span class='line'><span class="no">Hello</span><span class="p">,</span> <span class="n">world!</span>
+</span><span class='line'><span class="o">=&gt;</span> <span class="kp">nil</span>
+</span><span class='line'><span class="o">&gt;&gt;</span> <span class="n">t</span><span class="o">.</span><span class="n">private_hello</span>
+</span><span class='line'><span class="no">NoMethodError</span><span class="p">:</span> <span class="kp">private</span> <span class="nb">method</span> <span class="s1">&#39;private_hello&#39;</span> <span class="n">called</span> <span class="k">for</span> <span class="o">.</span><span class="n">.</span><span class="o">.</span>
+</span><span class='line'><span class="o">&gt;&gt;</span> <span class="n">t</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="ss">:private_hello</span><span class="p">)</span>
+</span><span class='line'><span class="no">Hello</span><span class="p">,</span> <span class="n">privately</span><span class="o">.</span>
+</span><span class='line'><span class="o">=&gt;</span> <span class="kp">nil</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>So, yes. You can do this, if you so choose. Please use your powers for good, and not for evil.</p>
@@ -214,31 +255,25 @@ Hello, privately.
 
   <div class="entry-content"><p>You&#8217;re being a Good Software developer and diligently testing all your code, and lo and behold, you get this result to one of your tests:</p>
 
-<pre>
-<code class="ruby">
-1) Failure: ... &lt;1.0&gt; expected but was &lt;1.0&gt;
-</code>
-</pre>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="mi">1</span><span class="p">)</span> <span class="no">Failure</span><span class="p">:</span> <span class="o">.</span><span class="n">.</span><span class="o">.</span> <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="mi">1</span><span class="o">.</span><span class="mi">0</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span> <span class="n">expected</span> <span class="n">but</span> <span class="n">was</span> <span class="o">&amp;</span><span class="n">lt</span><span class="p">;</span><span class="mi">1</span><span class="o">.</span><span class="mi">0</span><span class="o">&amp;</span><span class="n">gt</span><span class="p">;</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>An annoying problem with floats that might look and for all practical purposes be equal, but internally as stored by the computer are not <em>precisely</em> equal.</p>
 
 <p>You&#8217;re probably using:</p>
 
-<pre>
-<code class="ruby">
-assert_equal 1.0, a_value_expected_to_be_1.0
-</code>
-</pre>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">assert_equal</span> <span class="mi">1</span><span class="o">.</span><span class="mi">0</span><span class="p">,</span> <span class="n">a_value_expected_to_be_1</span><span class="o">.</span><span class="mi">0</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Instead, use:</p>
 
-<pre>
-<code class="ruby">
-assert_in_delta 1.0, a_value_expected_to_be_1.0, 0.000001
-</code>
-</pre>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">assert_in_delta</span> <span class="mi">1</span><span class="o">.</span><span class="mi">0</span><span class="p">,</span> <span class="n">a_value_expected_to_be_1</span><span class="o">.</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="o">.</span><span class="mo">000001</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Though, you may also want to ask yourself if you really need to be using floating point numbers; but assuming that you <em>do</em> need them, <code>assert_in_delta</code> will compensate for the annoying fact that floating point numbers might not actually be precisely what you expect them to be.</p>
@@ -289,13 +324,13 @@ assert_in_delta 1.0, a_value_expected_to_be_1.0, 0.000001
 
 <p>What I should have been writing, all along, was:</p>
 
-<pre>
-<code class="ruby">
-xhr :post, :create, 
-  :whatever_id => @thing.id, 
-  :our_model => {:stuff => "stuff"}
-</code>
-</pre>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='rb'><span class='line'><span class="n">xhr</span> <span class="ss">:post</span><span class="p">,</span> <span class="ss">:create</span><span class="p">,</span>
+</span><span class='line'>  <span class="ss">:whatever_id</span> <span class="o">=&gt;</span> <span class="vi">@thing</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>
+</span><span class='line'>  <span class="ss">:our_model</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="ss">:stuff</span> <span class="o">=&gt;</span> <span class="s2">&quot;stuff&quot;</span><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>It&#8217;s always the little things.</p>
@@ -467,20 +502,16 @@ xhr :post, :create,
 
 <p>Lets say you&#8217;re passing a collection to a partial, but that somewhere in that partial you are interested in knowing which index you&#8217;re at. Do you need to implement a counter? Nope; there already is one. A collection passed to a partial implicitly creates a counter called <code>[partial_name]_counter</code>. So, if you called with</p>
 
-<pre>
-<code class="ruby">
-< %= render :partial => 'thing', :collection => @a_few_of_my_favorite_things %>
-</code>
-</pre>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='rb'><span class='line'><span class="o">&lt;</span> <span class="sx">%= render :partial =</span><span class="o">&gt;</span> <span class="s1">&#39;thing&#39;</span><span class="p">,</span> <span class="ss">:collection</span> <span class="o">=&gt;</span> <span class="vi">@a_few_of_my_favorite_things</span> <span class="o">%&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>then in your partial, you could use:</p>
 
-<pre>
-<code class="ruby">
-< %= thing_counter %>
-</code>
-</pre>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="o">&lt;</span> <span class="o">%=</span> <span class="n">thing_counter</span> <span class="o">%&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>to return the index as you plow through the collection. Life is good. Rails is looking out for you. (Hat tip to <a href="http://gmarik.blogspot.com/2007/09/rails-collection-index-within-partial.html">GMarik</a>, which is where I saw this one.)</p>
@@ -490,12 +521,11 @@ xhr :post, :create,
 
 <p>Today I found myself wanting to take a string, let&#8217;s say <code>"Thing"</code>, and use it as a class name, <code>Thing</code>. Again, it turns out this can be done. In Ruby, class names are constants, so you can do</p>
 
-<pre>
-<code class="ruby">
-str = "Thing" #=> "Thing"
-Kernel.const_get(str) #=> Thing
-</code>
-</pre>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">str</span> <span class="o">=</span> <span class="s2">&quot;Thing&quot;</span> <span class="c1">#=&gt; &quot;Thing&quot;</span>
+</span><span class='line'><span class="no">Kernel</span><span class="o">.</span><span class="n">const_get</span><span class="p">(</span><span class="n">str</span><span class="p">)</span> <span class="c1">#=&gt; Thing</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Hooray!</p>
@@ -507,31 +537,27 @@ Kernel.const_get(str) #=> Thing
 
 <p>Perhaps in your code&#8230; maybe even in a view&#8230; maybe you want to find all <code>Things</code> that don&#8217;t belong to the current use, and which are flagged with some property, and you&#8217;re temped to write something like:</p>
 
-<pre>
-<code class="ruby">
-Thing.find(:all, :conditions => ["user != ? and flag = true", current_user])
-</code>
-</pre>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">Thing</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="ss">:all</span><span class="p">,</span> <span class="ss">:conditions</span> <span class="o">=&gt;</span> <span class="o">[</span><span class="s2">&quot;user != ? and flag = true&quot;</span><span class="p">,</span> <span class="n">current_user</span><span class="o">]</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>What we could do is put some <code>has_finder</code>s in the Thing model, something like</p>
 
-<pre>
-<code class="ruby">
-class Thing < ActiveRecord::Base
-has_finder :exclude_user, lambda {|user| {:conditions => "things.user_id != #{user.id}"}
-has_finder :with_flag, :conditions => "things.flag = true"
-</code>
-</pre>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">Thing</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
+</span><span class='line'><span class="n">has_finder</span> <span class="ss">:exclude_user</span><span class="p">,</span> <span class="nb">lambda</span> <span class="p">{</span><span class="o">|</span><span class="n">user</span><span class="o">|</span> <span class="p">{</span><span class="ss">:conditions</span> <span class="o">=&gt;</span> <span class="s2">&quot;things.user_id != </span><span class="si">#{</span><span class="n">user</span><span class="o">.</span><span class="n">id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">}</span>
+</span><span class='line'><span class="n">has_finder</span> <span class="ss">:with_flag</span><span class="p">,</span> <span class="ss">:conditions</span> <span class="o">=&gt;</span> <span class="s2">&quot;things.flag = true&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Having done that, you could now replace that first bit with:</p>
 
-<pre>
-<code class="ruby">
-Thing.find(:all).with_flag.exclude_user(current_user)
-</code>
-</pre>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">Thing</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="ss">:all</span><span class="p">)</span><span class="o">.</span><span class="n">with_flag</span><span class="o">.</span><span class="n">exclude_user</span><span class="p">(</span><span class="n">current_user</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>It&#8217;s a little shorter, sure, but more importantly, when you read it, it just makes more sense. A completely new person coming to look at this line would have a good idea what it was doing without even looking in the model to see what the <code>has_finder</code>s were doing.</p>
@@ -583,15 +609,17 @@ Thing.find(:all).with_flag.exclude_user(current_user)
 
 <p>It turns out that with jQuery, this is simple enough; let&#8217;s assume your field has the class &#8220;clearme&#8221;:</p>
 
-<pre>
-<code class="javascript" line="1">
-$(document).ready(function () {
-  $('.clearme').focus(function() {
-    $(this).val("");
-  });
-});
-</code>
-</pre>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;.clearme&#39;</span><span class="p">).</span><span class="nx">focus</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">val</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">);</span>
+</span><span class='line'>  <span class="p">});</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>If you&#8217;re familiar with jQuery, you know that the wrapper <code>$(document).ready()</code> simply waits until the page is finished loading, then executes the function you&#8217;ve passed to it. In this case, the function passed looks for an item of the class &#8220;clearme&#8221; and waits for that element to receive focus. When it does, it changes the value to &#8220;&#8221;.</p>
@@ -600,13 +628,13 @@ $(document).ready(function () {
 
 <p>There may be multiple ways; but jQuery has a handy method called &#8220;one&#8221; which will execute an event <em>one time only</em>, which sounds like just what we want. So we&#8217;d change the body of that inner function to look like:</p>
 
-<pre>
-<code class="javascript" line="1">
-$('.clearme').one("focus", function() {
-  $(this).val("");
-});
-</code>
-</pre>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;.clearme&#39;</span><span class="p">).</span><span class="nx">one</span><span class="p">(</span><span class="s2">&quot;focus&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">val</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">);</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 
@@ -848,11 +876,9 @@ www.WorldOfWarcraft.com
 
 <p>Moving the screensavers is the easy part; all you&#8217;d need to do is:</p>
 
-<pre>
-<code>
-cp -i /usr/lib/xscreensaver/* /opt/gnome/lib/gnome-screensaver/gnome-screensaver/
-</code>
-</pre>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>cp -i /usr/lib/xscreensaver/* /opt/gnome/lib/gnome-screensaver/gnome-screensaver/
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Yes, technically this code <em>copies</em> the screensavers, not moves them&#8230; but that&#8217;s okay. The -i switch is to make the process interactive; if any other the new screensavers has the same name as an existing one, it will as if you want to overwrite it, rather than just deciding for you. There should be only one such anomaly: popsquares. I chose not to overwrite it, as it works fine already and is probably exactly the same.</p>
@@ -869,20 +895,18 @@ cp -i /usr/lib/xscreensaver/* /opt/gnome/lib/gnome-screensaver/gnome-screensaver
 
 <p>You&#8217;ll need to make migrate-xscreensaver-config.sh executable (it should go without saying, but you&#8217;ll need to execute the following command from whatever directory you put the files in):</p>
 
-<pre>
-<code class="code2">
-# chmod +x migrate-xscreensaver-config.sh
-</code>
-</pre>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c"># chmod +x migrate-xscreensaver-config.sh</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>That being done, all you&#8217;ll have left is:</p>
 
-<pre>
-<code># cd /opt/gnome/share/gnome-screensaver/themes/
-# /opt/gnome/lib/gnome-screensaver/migrate-xscreensaver-config.sh /etc/xscreensaver/*.xml
-</code>
-</pre>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c"># cd /opt/gnome/share/gnome-screensaver/themes/</span>
+</span><span class='line'><span class="c"># /opt/gnome/lib/gnome-screensaver/migrate-xscreensaver-config.sh /etc/xscreensaver/*.xml</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>That&#8217;s that. You will find (at least on SLED 10) that you need to restart X &#8211; just logging out of Gnome and back in should do it.</p>
@@ -997,6 +1021,15 @@ cp -i /usr/lib/xscreensaver/* /opt/gnome/lib/gnome-screensaver/gnome-screensaver
   })();
 </script>
 
+
+<section class="googleplus">
+  <h1>
+    <a href="https://plus.google.com/115225600632800161143?rel=author">
+      <img src="http://www.google.com/images/icons/ui/gprofile_button-32.png" width="32" height="32">
+      Google+
+    </a>
+  </h1>
+</section>
 
 
 

@@ -32,6 +32,18 @@
 <script type="text/javascript">try{Typekit.load();}catch(e){}</script>
 
   
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-77047-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
 
 </head>
 
@@ -99,46 +111,58 @@
 
 <p>I guess there are a few posts floating around about it, but I discovered it by accident playing around in irb this evening. I was reading David A. Black&#8217;s The Well Grounded Rubyist, where he mentions that you could send a message to a class either within the class definition itself, or by simply sending it to the class object like you&#8217;d send any other message:</p>
 
-<pre>
-<code class="ruby">
-# The normal way to do it
-class Thing
-  message :whatever
-end
-
-# you could also do this
-Thing.message(:whatever)
-</code>
-</pre>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># The normal way to do it</span>
+</span><span class='line'><span class="k">class</span> <span class="nc">Thing</span>
+</span><span class='line'>  <span class="n">message</span> <span class="ss">:whatever</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># you could also do this</span>
+</span><span class='line'><span class="no">Thing</span><span class="o">.</span><span class="n">message</span><span class="p">(</span><span class="ss">:whatever</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>David mention&#8217;s attr_accessor in this context, so I thought I&#8217;d try that. Open <code>irb</code>:</p>
 
-<pre lang="ruby">
->> class Thing
-?> end
->> Thing.attr_accessor :name
-NoMethodError: private method 'attr_accessor' called for Thing:Class
-</pre>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="o">&gt;&gt;</span> <span class="k">class</span> <span class="nc">Thing</span>
+</span><span class='line'><span class="sc">?&gt;</span> <span class="k">end</span>
+</span><span class='line'><span class="o">&gt;&gt;</span> <span class="no">Thing</span><span class="o">.</span><span class="n">attr_accessor</span> <span class="ss">:name</span>
+</span><span class='line'><span class="no">NoMethodError</span><span class="p">:</span> <span class="kp">private</span> <span class="nb">method</span> <span class="s1">&#39;attr_accessor&#39;</span> <span class="n">called</span> <span class="k">for</span> <span class="no">Thing</span><span class="ss">:Class</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>Oh. So much for that, then. But, knowing of the existence of the send method, I thought I&#8217;d try that.</p>
 
-<pre lang="ruby">
-Thing.send(:attr_accessor, :name)
-=> nil
-</pre>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">Thing</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="ss">:attr_accessor</span><span class="p">,</span> <span class="ss">:name</span><span class="p">)</span>
+</span><span class='line'><span class="o">=&gt;</span> <span class="kp">nil</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>For the non-<code>irb</code> user, that <code>nil</code> that was returned, and the fact that no error message was returned, indicated that our experiment worked. Now <code>Thing</code>&#8217;s have a name attribute.</p>
 
-<pre lang="ruby">
->> t = Thing.new
->> t.name = "Larry"
-=> "Larry"
->> t.name
-=> "Larry"
-</pre>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="o">&gt;&gt;</span> <span class="n">t</span> <span class="o">=</span> <span class="no">Thing</span><span class="o">.</span><span class="n">new</span>
+</span><span class='line'><span class="o">&gt;&gt;</span> <span class="n">t</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Larry&quot;</span>
+</span><span class='line'><span class="o">=&gt;</span> <span class="s2">&quot;Larry&quot;</span>
+</span><span class='line'><span class="o">&gt;&gt;</span> <span class="n">t</span><span class="o">.</span><span class="n">name</span>
+</span><span class='line'><span class="o">=&gt;</span> <span class="s2">&quot;Larry&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>What&#8217;s interesting about all this is that <code>attr_accessor</code> is a private method on <code>Class</code>. Yet we just called it.</p>
@@ -147,26 +171,43 @@ Thing.send(:attr_accessor, :name)
 
 <p>To make it clear what you could do here:</p>
 
-<pre lang="ruby">
->> class Thing
-?>    def hello
-?>     puts "Hello, world!"
-?>   end
-?>   private
-?>     def private_hello
-?>       puts "Hello, privately."
-?>     end
-?> end
->> t = Thing.new
->> t.hello
-Hello, world!
-=> nil
->> t.private_hello
-NoMethodError: private method 'private_hello' called for ...
->> t.send(:private_hello)
-Hello, privately.
-=> nil
-</pre>
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="o">&gt;&gt;</span> <span class="k">class</span> <span class="nc">Thing</span>
+</span><span class='line'><span class="sc">?&gt;</span>    <span class="k">def</span> <span class="nf">hello</span>
+</span><span class='line'><span class="sc">?&gt;</span>     <span class="nb">puts</span> <span class="s2">&quot;Hello, world!&quot;</span>
+</span><span class='line'><span class="sc">?&gt;</span>   <span class="k">end</span>
+</span><span class='line'><span class="sc">?&gt;</span>   <span class="kp">private</span>
+</span><span class='line'><span class="sc">?&gt;</span>     <span class="k">def</span> <span class="nf">private_hello</span>
+</span><span class='line'><span class="sc">?&gt;</span>       <span class="nb">puts</span> <span class="s2">&quot;Hello, privately.&quot;</span>
+</span><span class='line'><span class="sc">?&gt;</span>     <span class="k">end</span>
+</span><span class='line'><span class="sc">?&gt;</span> <span class="k">end</span>
+</span><span class='line'><span class="o">&gt;&gt;</span> <span class="n">t</span> <span class="o">=</span> <span class="no">Thing</span><span class="o">.</span><span class="n">new</span>
+</span><span class='line'><span class="o">&gt;&gt;</span> <span class="n">t</span><span class="o">.</span><span class="n">hello</span>
+</span><span class='line'><span class="no">Hello</span><span class="p">,</span> <span class="n">world!</span>
+</span><span class='line'><span class="o">=&gt;</span> <span class="kp">nil</span>
+</span><span class='line'><span class="o">&gt;&gt;</span> <span class="n">t</span><span class="o">.</span><span class="n">private_hello</span>
+</span><span class='line'><span class="no">NoMethodError</span><span class="p">:</span> <span class="kp">private</span> <span class="nb">method</span> <span class="s1">&#39;private_hello&#39;</span> <span class="n">called</span> <span class="k">for</span> <span class="o">.</span><span class="n">.</span><span class="o">.</span>
+</span><span class='line'><span class="o">&gt;&gt;</span> <span class="n">t</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="ss">:private_hello</span><span class="p">)</span>
+</span><span class='line'><span class="no">Hello</span><span class="p">,</span> <span class="n">privately</span><span class="o">.</span>
+</span><span class='line'><span class="o">=&gt;</span> <span class="kp">nil</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>So, yes. You can do this, if you so choose. Please use your powers for good, and not for evil.</p>
@@ -318,6 +359,15 @@ Hello, privately.
   })();
 </script>
 
+
+<section class="googleplus">
+  <h1>
+    <a href="https://plus.google.com/115225600632800161143?rel=author">
+      <img src="http://www.google.com/images/icons/ui/gprofile_button-32.png" width="32" height="32">
+      Google+
+    </a>
+  </h1>
+</section>
 
 
 
