@@ -1,0 +1,439 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>By Land and By Sea and By Reference - Automagical Thinking</title>
+  <meta name="author" content="Your Name">
+
+  
+  <meta name="description" content="Photo source I recently attempted to fit the quicksort algorithm into under 140 characters of Ruby. It looks like: def q(s);t=s.dup;t.size<=1 ? t :( &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://philcrissman.github.com/2010/10/06/by-land-and-by-sea-and-by-reference">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Automagical Thinking" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="http://use.typekit.com/kqo6vdf.js"></script>
+<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-77047-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Automagical Thinking</a></h1>
+  
+    <h2>I forgot what I was going to say here.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:philcrissman.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">By Land and by Sea and by Reference</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-10-06T00:00:00-05:00" pubdate data-updated="true">Oct 6<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p><img src="/images/posts/travel_land_sea_air.jpg" width="440" />
+<span style="font-size:0.8em"><a href="http://www.flickr.com/photos/hitchster/4118220915/">Photo source</a></span></p>
+
+<p>I recently attempted to fit the quicksort algorithm into under 140 characters of Ruby. It looks like:</p>
+
+<pre>
+<code class="ruby">
+
+def q(s);t=s.dup;t.size<=1 ? t :(p=t[i=t.size/2];t.delete_at(i);x,y=[],[];t.each{|e|e&lt;p ? x&lt;&lt;e : y&lt;&lt;e};n=q(x);m=q(y);n+[p]+m)end
+
+</code>
+</pre>
+
+
+<p></p>
+
+<p>That&#8217;s a little hard to read, so here&#8217;s the first working version I wrote before attempting to squeeze it into twitterable form:</p>
+
+<pre>
+<code class="ruby">
+def quicksort(sequence)
+  tmp = sequence.clone
+  if tmp.count <= 1 
+    return tmp
+  else
+    pivot_index = (tmp.count / 2)
+    pivot = tmp[pivot_index]
+    # pull the pivot out of the array.
+    tmp.delete_at(pivot_index)
+    
+    # create 2 sub-sequences, one < pivot, one >= pivot
+    sub_sequence_a = []
+    sub_sequence_b = []
+    tmp.each do |element|
+      if element < pivot
+        sub_sequence_a << element
+      elsif element >= pivot
+        sub_sequence_b << element
+      end
+    end
+
+    # quicksort sub-sequence 1
+    new_sub_sequence_a = quicksort(sub_sequence_a)
+    
+    # quicksort sub-sequence 2
+    new_sub_sequence_b = quicksort(sub_sequence_b)
+    
+    # return sub1 plus pivot plus sub2
+    new_sub_sequence_a + [pivot] + new_sub_sequence_b
+  end
+end
+</code>
+</pre>
+
+
+<p>A key step in this implementation is pulling the pivot <em>out</em> of the array (see around line 9). In my first naive attempt at quicksort I just deleted the pivot right from <code>sequence</code>, the array object that is passed in to be sorted.</p>
+
+<p>Anyone see the problem there?</p>
+
+<p>At first, I sure didn&#8217;t. After all, I put the pivot back in the return value, right? (Second to last line.)</p>
+
+<p>That does indeed ensure that the <em>returned</em>, <em>sorted</em> array has all the same elements as the original array. But the original array that I passed in would now have one less item. It would (did) lose an element every time I&#8217;d run my naive (read: incorrect) implementation of quicksort on it.</p>
+
+<h3>WTF?</h3>
+
+
+<p>Enter passing objects by reference. In Ruby, everything is passed by reference.(1) It can be easy to forget this, though, especially if you&#8217;re used to changing objects with the assignment (&#8220;=&#8221;) operator.</p>
+
+<blockquote style="font-size:0.85em">
+1 Just in case that&#8217;s not a familiar phrase, &#8220;by reference&#8221; refers to the idea that a reference to the <strong>actual object</strong> (like a pointer, if you will) is being passed, not just a copy of the object, or just the value of the object (which is called passing &#8220;by value&#8221;). (And no, by &#8220;pointer&#8221; I&#8217;m not talking about pointers in C/C++, I&#8217;m just trying to say that a reference <strong>refers to</strong> or in a sense, <strong>points to</strong>, the actual original object.)
+</blockquote>
+
+
+<p>For example:</p>
+
+<pre>
+<code class="ruby">
+def reassign(obj)
+  obj = "Not the same!"
+end
+
+#irb
+> greeting = "Hello!"
+=> "Hello!"
+> reassign(greeting)
+=> "Not the same!"
+> puts greeting
+Hello!
+=> nil
+</code>
+</pre>
+
+
+<p>So, assignment inside a method doesn&#8217;t change our object. Ruby must not <em>really</em> be passing a referece, right? Wrong, it sure is.</p>
+
+<pre>
+<code class="ruby">
+def shiftit(obj)
+  obj.shift
+end
+
+#irb
+> h = {:foo => "bar", :bar => "baz", :baz => "qux"}
+=> {:foo=>"bar",:bar =>"baz",:baz=>"qux"}
+> a = [1,2,3,4,5,6]
+=> [1,2,3,4,5,6]
+> shiftit(h)
+=> {:bar =>"baz",:baz=>"qux"}
+> shiftit(a)
+=> [2,3,4,5,6]
+> # BUT WAIT
+> h
+=> {:bar =>"baz",:baz=>"qux"}
+> a
+=> [2,3,4,5,6]
+</code>
+</pre>
+
+
+<p>Huh. How about that. Our original objects were changed when they were modified inside the method.</p>
+
+<p>You&#8217;ll find that any method of modifying an object inside another method with actually change (even delete, if you go that far) the original object that you passed in. Ruby quite definitely, always, passed objects by reference.</p>
+
+<h3>Then How come <em>assignment</em> in a method doesn&#8217;t change an object?</h3>
+
+
+<p>That&#8217;s a good question. I was stumped on this one myself for a bit. The answer comes down to the idea of <em>bindings</em> and <em>scope</em>. When I tell Ruby that <code>foo = "bar"</code>, Ruby binds the local variable named <em>foo</em> to a String object, &#8220;bar&#8221;. foo is a String object, and when I pass it to my <code>reassign</code> method, I am passing a reference to the real object, <code>foo</code>.</p>
+
+<p>However, inside the method, I&#8217;m in a new scope. When I type <code>foo = "Some new value"</code> inside the method scope, trying to reassign <code>foo</code>, Ruby sees that I&#8217;m binding foo to a new value; but from inside method scope, Ruby is not going to let me change the binding from another scope. So instead, Ruby figures that I want a local variable that is <em>also</em> named <code>foo</code>, inside my method scope, and it assigns my new value to the local <code>foo</code>, not the original <code>foo</code>.</p>
+
+<p>I could alter it, still: if I changed the <code>reassign</code> method so that it did <code>obj.replace("Some new value!")</code> inside the method body, the original object would be changed, just like <code>shiftit</code> did to the array and the hash.</p>
+
+<h3>I think I&#8217;m a clone, now</h3>
+
+
+<p>Back to the quicksort implementation I started with: the way to get around this is to use .clone or .dup to get a <em>copy</em> of the object. That way you aren&#8217;t actually modifying the original object. Even when I realized this was happening, I still made the mistake of just doing <code>tmp = sequence</code> on my first try. No good; same exact problem. <code>tmp</code> is now just a reference straight to <code>sequence</code>, so altering <code>tmp</code> modifies <code>sequence</code> as well. Need to use <code>tmp = sequence.clone</code>, or something like it.</p>
+
+<h3>That&#8217;s all I have to say about that</h3>
+
+
+<p>Say it with me now: &#8220;Ruby passes objects by reference. <em>Ruby passes objects by reference.</em> Every time. <em>All the time.</em> <strong>By reference.</strong>&#8221;</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Your Name</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-10-06T00:00:00-05:00" pubdate data-updated="true">Oct 6<span>th</span>, 2010</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://philcrissman.github.com/2010/10/06/by-land-and-by-sea-and-by-reference/" data-via="philcrissman" data-counturl="http://philcrissman.github.com/2010/10/06/by-land-and-by-sea-and-by-reference/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/2010/08/11/fun-with-the-major-scale/" title="Previous Post: Fun With The Major Scale">&laquo; Fun With The Major Scale</a>
+      
+      
+        <a class="basic-alignment right" href="/2010/10/22/one-does-not-simply-walk-into-mordor/" title="next Post: One Does Not Simply Walk Into Mordor">One Does Not Simply Walk Into Mordor &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2011/10/10/how-to-read-web-analytics/">How To Read Web Analytics</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2011/07/06/too-clever-to-debug/">Too Clever To Debug</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2011/03/10/current-desktop/">Current Desktop</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2011/02/21/test-first-as-a-productivity-hack/">Test First As A Productivity Hack</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2011/02/01/ujs-in-rails-3-slides/">UJS in Rails 3 Slides</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>Github Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/philcrissman">@philcrissman</a> on Github
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'philcrissman',
+            count: 4,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating...</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("philcrissman", 4, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/philcrissman" class="twitter-follow-button" data-show-count="false">Follow @philcrissman</a>
+  
+</section>
+
+
+<section>
+  <h1>My Pinboard</h1>
+  <ul id="pinboard_linkroll">Fetching linkroll...</ul>
+  <p><a href="http://pinboard.in/u:philcrissman">My Pinboard Bookmarks &raquo;</a></p>
+</section>
+<script type="text/javascript">
+  var linkroll = 'pinboard_linkroll'; //id target for pinboard list
+  var pinboard_user = "philcrissman"; //id target for pinboard list
+  var pinboard_count = 3; //id target for pinboard list
+  (function(){
+    var pinboardInit = document.createElement('script');
+    pinboardInit.type = 'text/javascript';
+    pinboardInit.async = true;
+    pinboardInit.src = '/javascripts/pinboard.js';
+    document.getElementsByTagName('head')[0].appendChild(pinboardInit);
+  })();
+</script>
+
+
+<section class="googleplus">
+  <h1>
+    <a href="https://plus.google.com/115225600632800161143?rel=author">
+      <img src="http://www.google.com/images/icons/ui/gprofile_button-32.png" width="32" height="32">
+      Google+
+    </a>
+  </h1>
+</section>
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - Your Name -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

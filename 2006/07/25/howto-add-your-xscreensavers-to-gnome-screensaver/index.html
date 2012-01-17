@@ -1,0 +1,342 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Howto Add Your Xscreensavers To Gnome Screensaver - Automagical Thinking</title>
+  <meta name="author" content="Your Name">
+
+  
+  <meta name="description" content="The fully qualified directories in this particular &#8220;howto&#8221; are specific to SLED 10, and will undoubtedly be different on a different &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://philcrissman.github.com/2006/07/25/howto-add-your-xscreensavers-to-gnome-screensaver">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Automagical Thinking" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="http://use.typekit.com/kqo6vdf.js"></script>
+<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-77047-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Automagical Thinking</a></h1>
+  
+    <h2>I forgot what I was going to say here.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:philcrissman.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Howto Add Your Xscreensavers to Gnome Screensaver</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2006-07-25T00:00:00-05:00" pubdate data-updated="true">Jul 25<span>th</span>, 2006</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>The fully qualified directories in this particular &#8220;howto&#8221; are specific to SLED 10, and will undoubtedly be different on a different version of Linux.</p>
+
+<p>Something you might notice on installing SLED 10 is that, like most distros which feature Gnome 2.12 or 2.14, xscreensaver has been partially or fully replaced by gnome-screensaver. In the case of SLED 10, xscreensaver was <em>installed</em>, but none of its screensavers were available; gnome-screensaver listed only a scant five or six options.</p>
+
+<p>I spent some time tracking down how to make xscreensaver&#8217;s hacks available to gnome-screensaver, so here it is.</p>
+
+<p>Each screensaver, for both gnome-screensaver and xscreensaver, has a config file. So to move files from xscreensaver to gnome-screensaver, we need to move not only the screensaver programs themselves, but also the config files.</p>
+
+<p>Moving the screensavers is the easy part; all you&#8217;d need to do is:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>cp -i /usr/lib/xscreensaver/* /opt/gnome/lib/gnome-screensaver/gnome-screensaver/
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Yes, technically this code <em>copies</em> the screensavers, not moves them&#8230; but that&#8217;s okay. The -i switch is to make the process interactive; if any other the new screensavers has the same name as an existing one, it will as if you want to overwrite it, rather than just deciding for you. There should be only one such anomaly: popsquares. I chose not to overwrite it, as it works fine already and is probably exactly the same.</p>
+
+<p>Next, you need to move the config files. The only problem is, xscreensaver config files are .xml files, and gnome-screensaver files are .desktop files.</p>
+
+<p>It turns out that this is a problem with a ready made solution: our friends at Gnome have a script which will migrate our .xml files into .desktop files. For this to work, you&#8217;ll need 2 files:</p>
+
+<p><a href="http://cvs.gnome.org/viewcvs/gnome-screensaver/data/migrate-xscreensaver-config.sh?rev=1.1&view=log">migrate-xscreensaver-config.sh</a></p>
+
+<p><a href="http://cvs.gnome.org/viewcvs/gnome-screensaver/data/xscreensaver-config.xsl?rev=1.1&view=log">xscreensaver-config.xsl</a></p>
+
+<p>Just click the &#8220;download&#8221; links on the above two pages. I moved the two files to /opt/gnome/lib/gnome-screensaver/, but you can put them anywhere &#8211; they just need to be in the same place.</p>
+
+<p>You&#8217;ll need to make migrate-xscreensaver-config.sh executable (it should go without saying, but you&#8217;ll need to execute the following command from whatever directory you put the files in):</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c"># chmod +x migrate-xscreensaver-config.sh</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>That being done, all you&#8217;ll have left is:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c"># cd /opt/gnome/share/gnome-screensaver/themes/</span>
+</span><span class='line'><span class="c"># /opt/gnome/lib/gnome-screensaver/migrate-xscreensaver-config.sh /etc/xscreensaver/*.xml</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>That&#8217;s that. You will find (at least on SLED 10) that you need to restart X &#8211; just logging out of Gnome and back in should do it.</p>
+
+<p>If you&#8217;re attempting to use these steps on a different version of linux, you may need to use find or locate to figure out the proper file paths to use. Enjoy.</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Your Name</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2006-07-25T00:00:00-05:00" pubdate data-updated="true">Jul 25<span>th</span>, 2006</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://philcrissman.github.com/2006/07/25/howto-add-your-xscreensavers-to-gnome-screensaver/" data-via="philcrissman" data-counturl="http://philcrissman.github.com/2006/07/25/howto-add-your-xscreensavers-to-gnome-screensaver/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+      
+        <a class="basic-alignment right" href="/2006/09/22/the-emperors-new-web/" title="next Post: The Emperor's New Web">The Emperor's New Web &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2011/10/10/how-to-read-web-analytics/">How To Read Web Analytics</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2011/07/06/too-clever-to-debug/">Too Clever To Debug</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2011/03/10/current-desktop/">Current Desktop</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2011/02/21/test-first-as-a-productivity-hack/">Test First As A Productivity Hack</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2011/02/01/ujs-in-rails-3-slides/">UJS in Rails 3 Slides</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>Github Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/philcrissman">@philcrissman</a> on Github
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'philcrissman',
+            count: 4,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating...</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("philcrissman", 4, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/philcrissman" class="twitter-follow-button" data-show-count="false">Follow @philcrissman</a>
+  
+</section>
+
+
+<section>
+  <h1>My Pinboard</h1>
+  <ul id="pinboard_linkroll">Fetching linkroll...</ul>
+  <p><a href="http://pinboard.in/u:philcrissman">My Pinboard Bookmarks &raquo;</a></p>
+</section>
+<script type="text/javascript">
+  var linkroll = 'pinboard_linkroll'; //id target for pinboard list
+  var pinboard_user = "philcrissman"; //id target for pinboard list
+  var pinboard_count = 3; //id target for pinboard list
+  (function(){
+    var pinboardInit = document.createElement('script');
+    pinboardInit.type = 'text/javascript';
+    pinboardInit.async = true;
+    pinboardInit.src = '/javascripts/pinboard.js';
+    document.getElementsByTagName('head')[0].appendChild(pinboardInit);
+  })();
+</script>
+
+
+<section class="googleplus">
+  <h1>
+    <a href="https://plus.google.com/115225600632800161143?rel=author">
+      <img src="http://www.google.com/images/icons/ui/gprofile_button-32.png" width="32" height="32">
+      Google+
+    </a>
+  </h1>
+</section>
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - Your Name -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>

@@ -4,7 +4,7 @@
   <title><![CDATA[Automagical Thinking]]></title>
   <link href="http://philcrissman.github.com/atom.xml" rel="self"/>
   <link href="http://philcrissman.github.com/"/>
-  <updated>2012-01-12T12:05:15-06:00</updated>
+  <updated>2012-01-17T10:44:38-06:00</updated>
   <id>http://philcrissman.github.com/</id>
   <author>
     <name><![CDATA[Your Name]]></name>
@@ -15,9 +15,9 @@
   
   <entry>
     <title type="html"><![CDATA[How To Read Web Analytics]]></title>
-    <link href="http://philcrissman.github.com/blog/2011/10/10/how-to-read-web-analytics/"/>
+    <link href="http://philcrissman.github.com/2011/10/10/how-to-read-web-analytics/"/>
     <updated>2011-10-10T00:00:00-05:00</updated>
-    <id>http://philcrissman.github.com/blog/2011/10/10/how-to-read-web-analytics</id>
+    <id>http://philcrissman.github.com/2011/10/10/how-to-read-web-analytics</id>
     <content type="html"><![CDATA[<p>The CEO of BigCorp just got the company&#8217;s web analytics report and is
 trying to make sense of it. He calls in his lead developer and asks him
 what the analytics report says.</p>
@@ -46,9 +46,9 @@ say?&#8221;</p>
   
   <entry>
     <title type="html"><![CDATA[Too Clever To Debug]]></title>
-    <link href="http://philcrissman.github.com/blog/2011/07/06/too-clever-to-debug/"/>
+    <link href="http://philcrissman.github.com/2011/07/06/too-clever-to-debug/"/>
     <updated>2011-07-06T00:00:00-05:00</updated>
-    <id>http://philcrissman.github.com/blog/2011/07/06/too-clever-to-debug</id>
+    <id>http://philcrissman.github.com/2011/07/06/too-clever-to-debug</id>
     <content type="html"><![CDATA[<p><a href="http://www.flickr.com/photos/themadlolscientist/2538226772/sizes/z/in/photostream/"><img src="http://philcrissman.github.com/images/posts/math_fail.jpg" width="440" /></a></p>
 
 <blockquote><p>&#8220;Debugging is twice as hard as writing the code in the first place.  Therefore, if you write the code as cleverly as possible, you are, by definition, not smart enough to debug it.&#8221;
@@ -117,9 +117,9 @@ say?&#8221;</p>
   
   <entry>
     <title type="html"><![CDATA[Current Desktop]]></title>
-    <link href="http://philcrissman.github.com/blog/2011/03/10/current-desktop/"/>
+    <link href="http://philcrissman.github.com/2011/03/10/current-desktop/"/>
     <updated>2011-03-10T00:00:00-06:00</updated>
-    <id>http://philcrissman.github.com/blog/2011/03/10/current-desktop</id>
+    <id>http://philcrissman.github.com/2011/03/10/current-desktop</id>
     <content type="html"><![CDATA[<p><a href="http://philcrissman.github.com/images/posts/theDesktop3-10-11.png"><img src="http://philcrissman.github.com/images/posts/theDesktop3-10-11-sm.png" width="440" /></a></p>
 
 <p>I&#8217;m a sucker for a nice desktop. Currently using <a href="http://mutablecode.com/apps/nerdtool">NerdTool</a> (thanks, <a href="http://www.leancrew.com/all-this/">drdrang</a> and <a href="http://brettterpstra.com/">Brett Terpstra</a>) and <a href="http://wallsaverapp.com/">WallSaver</a>.</p>
@@ -152,9 +152,9 @@ say?&#8221;</p>
   
   <entry>
     <title type="html"><![CDATA[Test First As A Productivity Hack]]></title>
-    <link href="http://philcrissman.github.com/blog/2011/02/21/test-first-as-a-productivity-hack/"/>
+    <link href="http://philcrissman.github.com/2011/02/21/test-first-as-a-productivity-hack/"/>
     <updated>2011-02-21T00:00:00-06:00</updated>
-    <id>http://philcrissman.github.com/blog/2011/02/21/test-first-as-a-productivity-hack</id>
+    <id>http://philcrissman.github.com/2011/02/21/test-first-as-a-productivity-hack</id>
     <content type="html"><![CDATA[<p><a href="http://philcrissman.github.com/images/posts/focus.jpg"><img src="http://philcrissman.github.com/images/posts/focus.jpg" width="440" /></a></p>
 
 <p>If you&#8217;re like me, and live primarily online, you have countless distractions in the form of blogs, news sites, photo sites, chat applications, twitter/facebook, web comics, etc. It&#8217;s really easy to sit down at your computer, and if you&#8217;re not focused, simply call up <a href="http://thisisnthappiness.com">TIH</a> or <a href="http://news.ycombinator.com">HN</a> or <a href="http://bestofwikipedia.tumblr.com">bestofwikipedia</a> and soon find the first hour of your day has been completely sucked up just <em>looking at stuff</em>.</p>
@@ -186,9 +186,9 @@ Photo credit: <a href="http://www.flickr.com/photos/ihtatho/627226315/sizes/m/in
   
   <entry>
     <title type="html"><![CDATA[UJS in Rails 3 Slides]]></title>
-    <link href="http://philcrissman.github.com/blog/2011/02/01/ujs-in-rails-3-slides/"/>
+    <link href="http://philcrissman.github.com/2011/02/01/ujs-in-rails-3-slides/"/>
     <updated>2011-02-01T00:00:00-06:00</updated>
-    <id>http://philcrissman.github.com/blog/2011/02/01/ujs-in-rails-3-slides</id>
+    <id>http://philcrissman.github.com/2011/02/01/ujs-in-rails-3-slides</id>
     <content type="html"><![CDATA[<p>So, here&#8217;s those slides from the other night.</p>
 
 <div style="width:425px" id="__ss_6775992"><strong style="display:block;margin:12px 0 4px"><a href="http://www.slideshare.net/philcrissman/ujs-in-rails-3-6775992" title="UJS in Rails 3">UJS in Rails 3</a></strong><object id="__sse6775992" width="425" height="355"><param name="movie" value="http://static.slidesharecdn.com/swf/ssplayer2.swf?doc=ujs-110201093325-phpapp02&stripped_title=ujs-in-rails-3-6775992&userName=philcrissman" /><param name="allowFullScreen" value="true"/><param name="allowScriptAccess" value="always"/><embed name="__sse6775992" src="http://static.slidesharecdn.com/swf/ssplayer2.swf?doc=ujs-110201093325-phpapp02&stripped_title=ujs-in-rails-3-6775992&userName=philcrissman" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="425" height="355"></embed></object><div style="padding:5px 0 12px">View more <a href="http://www.slideshare.net/">presentations</a> from <a href="http://www.slideshare.net/philcrissman">philcrissman</a>.</div></div>
@@ -200,9 +200,9 @@ Photo credit: <a href="http://www.flickr.com/photos/ihtatho/627226315/sizes/m/in
   
   <entry>
     <title type="html"><![CDATA[UJS in Rails 3 tonight at RUM]]></title>
-    <link href="http://philcrissman.github.com/blog/2011/01/31/ujs-in-rails-3-tonight-at-rum/"/>
+    <link href="http://philcrissman.github.com/2011/01/31/ujs-in-rails-3-tonight-at-rum/"/>
     <updated>2011-01-31T00:00:00-06:00</updated>
-    <id>http://philcrissman.github.com/blog/2011/01/31/ujs-in-rails-3-tonight-at-rum</id>
+    <id>http://philcrissman.github.com/2011/01/31/ujs-in-rails-3-tonight-at-rum</id>
     <content type="html"><![CDATA[<p>UJS in Rails 3, tonight at RUM</p>
 
 <p>I&#8217;ll be speaking tonight on UJS and Rails 3 at <a href="http://ruby.mn/">RUM</a>. Slides will be posted somewhere later this week, and I may follow up with a post that summarizes the content, if the slides don&#8217;t seem complete enough to cover the topic on their own.</p>
@@ -211,27 +211,27 @@ Photo credit: <a href="http://www.flickr.com/photos/ihtatho/627226315/sizes/m/in
   
   <entry>
     <title type="html"><![CDATA[looselyjoined.net]]></title>
-    <link href="http://philcrissman.github.com/blog/2011/01/14/looselyjoinednet/"/>
+    <link href="http://philcrissman.github.com/2011/01/14/looselyjoinednet/"/>
     <updated>2011-01-14T00:00:00-06:00</updated>
-    <id>http://philcrissman.github.com/blog/2011/01/14/looselyjoinednet</id>
+    <id>http://philcrissman.github.com/2011/01/14/looselyjoinednet</id>
     <content type="html"><![CDATA[<p>I&#8217;ve been piling a lot of links, images, and whatnot up on a <a href="http://posterous.com">posterous.com</a> website: see <a href="http://looselyjoined.net">looselyjoined.net</a>. Enjoy, if you are so inclined.</p>
 ]]></content>
   </entry>
   
   <entry>
     <title type="html"><![CDATA[Let's roll]]></title>
-    <link href="http://philcrissman.github.com/blog/2010/11/11/lets-roll/"/>
+    <link href="http://philcrissman.github.com/2010/11/11/lets-roll/"/>
     <updated>2010-11-11T00:00:00-06:00</updated>
-    <id>http://philcrissman.github.com/blog/2010/11/11/lets-roll</id>
+    <id>http://philcrissman.github.com/2010/11/11/lets-roll</id>
     <content type="html"><![CDATA[<p><a href="http://philcrissman.github.com/images/posts/d20-iwojima.jpg"><img src="http://philcrissman.github.com/images/posts/d20-iwojima.jpg" width="440" /></a></p>
 ]]></content>
   </entry>
   
   <entry>
     <title type="html"><![CDATA[Anti-Gravity]]></title>
-    <link href="http://philcrissman.github.com/blog/2010/11/09/anti-gravity/"/>
+    <link href="http://philcrissman.github.com/2010/11/09/anti-gravity/"/>
     <updated>2010-11-09T00:00:00-06:00</updated>
-    <id>http://philcrissman.github.com/blog/2010/11/09/anti-gravity</id>
+    <id>http://philcrissman.github.com/2010/11/09/anti-gravity</id>
     <content type="html"><![CDATA[<p><img src="http://philcrissman.github.com/images/posts/antigravbook.jpg" alt="Anti-Gravity" /></p>
 
 <p><a href="http://comixed.memebase.com/2010/10/26/4-koma-comic-strip-a-real-page-turner/">link</a></p>
@@ -240,9 +240,9 @@ Photo credit: <a href="http://www.flickr.com/photos/ihtatho/627226315/sizes/m/in
   
   <entry>
     <title type="html"><![CDATA[How To Read Error Messages for Ruby on Rails]]></title>
-    <link href="http://philcrissman.github.com/blog/2010/11/08/how-to-read-error-messages-for-ruby-on-rails/"/>
+    <link href="http://philcrissman.github.com/2010/11/08/how-to-read-error-messages-for-ruby-on-rails/"/>
     <updated>2010-11-08T00:00:00-06:00</updated>
-    <id>http://philcrissman.github.com/blog/2010/11/08/how-to-read-error-messages-for-ruby-on-rails</id>
+    <id>http://philcrissman.github.com/2010/11/08/how-to-read-error-messages-for-ruby-on-rails</id>
     <content type="html"><![CDATA[<p><img src="http://philcrissman.github.com/images/posts/stack.jpg" alt="stack" /></p>
 
 <p>Off and on (more off than on, recently) I lurk in the #rubyonrails IRC channel and try to be helpful. It&#8217;s sad to say, but it&#8217;s really common that people have questions &#8211; something isn&#8217;t working &#8211; and when they post the error message that they&#8217;re getting, their problem (and its implicit solution) is written in plain English in the first few lines of the error message. Not every time of course, but more often than not, error messages are trying to tell you something, and you should listen to what they&#8217;re telling you.</p>
@@ -303,18 +303,18 @@ Photo credit: <a href="http://www.flickr.com/photos/ihtatho/627226315/sizes/m/in
   
   <entry>
     <title type="html"><![CDATA[One Does Not Simply Walk Into Mordor]]></title>
-    <link href="http://philcrissman.github.com/blog/2010/10/22/one-does-not-simply-walk-into-mordor/"/>
+    <link href="http://philcrissman.github.com/2010/10/22/one-does-not-simply-walk-into-mordor/"/>
     <updated>2010-10-22T00:00:00-05:00</updated>
-    <id>http://philcrissman.github.com/blog/2010/10/22/one-does-not-simply-walk-into-mordor</id>
+    <id>http://philcrissman.github.com/2010/10/22/one-does-not-simply-walk-into-mordor</id>
     <content type="html"><![CDATA[<p><img src="http://philcrissman.github.com/images/posts/walksintomordor.jpg" width="440" /></p>
 ]]></content>
   </entry>
   
   <entry>
     <title type="html"><![CDATA[By Land and By Sea and By Reference]]></title>
-    <link href="http://philcrissman.github.com/blog/2010/10/06/by-land-and-by-sea-and-by-reference/"/>
+    <link href="http://philcrissman.github.com/2010/10/06/by-land-and-by-sea-and-by-reference/"/>
     <updated>2010-10-06T00:00:00-05:00</updated>
-    <id>http://philcrissman.github.com/blog/2010/10/06/by-land-and-by-sea-and-by-reference</id>
+    <id>http://philcrissman.github.com/2010/10/06/by-land-and-by-sea-and-by-reference</id>
     <content type="html"><![CDATA[<p><img src="http://philcrissman.github.com/images/posts/travel_land_sea_air.jpg" width="440" />
 <span style="font-size:0.8em"><a href="http://www.flickr.com/photos/hitchster/4118220915/">Photo source</a></span></p>
 
@@ -461,9 +461,9 @@ end
   
   <entry>
     <title type="html"><![CDATA[Fun With The Major Scale]]></title>
-    <link href="http://philcrissman.github.com/blog/2010/08/11/fun-with-the-major-scale/"/>
+    <link href="http://philcrissman.github.com/2010/08/11/fun-with-the-major-scale/"/>
     <updated>2010-08-11T00:00:00-05:00</updated>
-    <id>http://philcrissman.github.com/blog/2010/08/11/fun-with-the-major-scale</id>
+    <id>http://philcrissman.github.com/2010/08/11/fun-with-the-major-scale</id>
     <content type="html"><![CDATA[<p>Got to chatting with Nate <a href="http://twitter.com/fowlduck">(@fowlduck)</a> about musical notation last night. He was pointing out that bits of the notation seem arbitrary and probably archaic, likening it to legacy code of a sort. For example, why no whole tone between B and C, E and F? This post is NOT meant to be a defense of music notation, a &#8220;setting straight&#8221; of anything, or even a definitive description of musical theory (at which I&#8217;m a rank amateur). It just got me thinking about the major scale and the circle of fourths &amp; fifths, which led to some playing around on the command line, which led to this. Enjoy.</p>
 
 <p>The thing that makes it seem so strange is, at least in part, the major scale. The octave consists of twelve semi-tones, in which the major scale is set in this pattern: whole tone, whole tone, semitone, whole tone, whole tone, whole tone, whole tone, semi-tone. Like so:</p>
@@ -573,9 +573,9 @@ F G A A#/Bb C D E
   
   <entry>
     <title type="html"><![CDATA[Push it somewhere else]]></title>
-    <link href="http://philcrissman.github.com/blog/2010/08/06/push-it-somewhere-else/"/>
+    <link href="http://philcrissman.github.com/2010/08/06/push-it-somewhere-else/"/>
     <updated>2010-08-06T00:00:00-05:00</updated>
-    <id>http://philcrissman.github.com/blog/2010/08/06/push-it-somewhere-else</id>
+    <id>http://philcrissman.github.com/2010/08/06/push-it-somewhere-else</id>
     <content type="html"><![CDATA[<p><img src="http://philcrissman.github.com/images/posts/patrick-make-a-gist.jpg" width="440" /></p>
 
 <p>For all the folks in #rubyonrails, and beyond.</p>
@@ -584,9 +584,9 @@ F G A A#/Bb C D E
   
   <entry>
     <title type="html"><![CDATA[graffiti on a train]]></title>
-    <link href="http://philcrissman.github.com/blog/2010/08/04/graffiti-on-a-train/"/>
+    <link href="http://philcrissman.github.com/2010/08/04/graffiti-on-a-train/"/>
     <updated>2010-08-04T00:00:00-05:00</updated>
-    <id>http://philcrissman.github.com/blog/2010/08/04/graffiti-on-a-train</id>
+    <id>http://philcrissman.github.com/2010/08/04/graffiti-on-a-train</id>
     <content type="html"><![CDATA[<p><img src="http://philcrissman.github.com/images/posts/hbak_graffiti.jpg" width="440" /></p>
 
 <p>Pic taken along the trail on the way from Minneapolis to Hopkins.</p>
@@ -595,9 +595,9 @@ F G A A#/Bb C D E
   
   <entry>
     <title type="html"><![CDATA[RVM]]></title>
-    <link href="http://philcrissman.github.com/blog/2010/07/29/rvm/"/>
+    <link href="http://philcrissman.github.com/2010/07/29/rvm/"/>
     <updated>2010-07-29T00:00:00-05:00</updated>
-    <id>http://philcrissman.github.com/blog/2010/07/29/rvm</id>
+    <id>http://philcrissman.github.com/2010/07/29/rvm</id>
     <content type="html"><![CDATA[<p><img src="http://philcrissman.com/images/posts/rvm_image.png" width="440" /></p>
 
 <p>I gave a short presentation on <a href="http://rvm.beginrescueend.com">RVM</a> on Monday at <a href="http://ruby.mn">RUM</a>.</p>
@@ -610,9 +610,9 @@ F G A A#/Bb C D E
   
   <entry>
     <title type="html"><![CDATA[Faith]]></title>
-    <link href="http://philcrissman.github.com/blog/2010/07/28/faith/"/>
+    <link href="http://philcrissman.github.com/2010/07/28/faith/"/>
     <updated>2010-07-28T00:00:00-05:00</updated>
-    <id>http://philcrissman.github.com/blog/2010/07/28/faith</id>
+    <id>http://philcrissman.github.com/2010/07/28/faith</id>
     <content type="html"><![CDATA[<p><img src="http://philcrissman.com/images/posts/vader_faith.jpg" width="440" /></p>
 
 <p>I know, I know, the faux motivational poster is an old and tired <a href="http://en.wikipedia.org/wiki/Meme">meme</a>. Sorry.</p>
@@ -621,9 +621,9 @@ F G A A#/Bb C D E
   
   <entry>
     <title type="html"><![CDATA[I Write Like]]></title>
-    <link href="http://philcrissman.github.com/blog/2010/07/27/i-write-like/"/>
+    <link href="http://philcrissman.github.com/2010/07/27/i-write-like/"/>
     <updated>2010-07-27T00:00:00-05:00</updated>
-    <id>http://philcrissman.github.com/blog/2010/07/27/i-write-like</id>
+    <id>http://philcrissman.github.com/2010/07/27/i-write-like</id>
     <content type="html"><![CDATA[<p>I&#8217;ve seen the <a href="http://iwl.me/">I write like</a> links show up on facebook and twitter a few times, so I decided I&#8217;d take a look. Not content to simply feed it one sample, I fed it the text from several of the posts from the archive. Here were the results:</p>
 
 <ul>
@@ -646,9 +646,9 @@ F G A A#/Bb C D E
   
   <entry>
     <title type="html"><![CDATA[How Not To Write Sorting Algorithms in Ruby]]></title>
-    <link href="http://philcrissman.github.com/blog/2010/07/18/how-not-to-write-sorting-algorithms-in-ruby/"/>
+    <link href="http://philcrissman.github.com/2010/07/18/how-not-to-write-sorting-algorithms-in-ruby/"/>
     <updated>2010-07-18T00:00:00-05:00</updated>
-    <id>http://philcrissman.github.com/blog/2010/07/18/how-not-to-write-sorting-algorithms-in-ruby</id>
+    <id>http://philcrissman.github.com/2010/07/18/how-not-to-write-sorting-algorithms-in-ruby</id>
     <content type="html"><![CDATA[<p>The second chapter of <a href="http://www.amazon.com/gp/product/0262033844?ie=UTF8&amp;tag=idepermin-20&amp;linkCode=as2&amp;camp=1789&amp;creative=390957&amp;creativeASIN=0262033844"><em>Introduction To Algorithms</em></a> by Cormen, Leiserson, et al., describes the algorithms for Insertion Sort and Merge Sort in pseudocode, and compares their relative efficiency (or lack thereof). I decided to write them out in Ruby and run some simple benchmarks, just for fun.</p>
 
 <h2>Insertion Sort</h2>
@@ -867,9 +867,9 @@ ruby Array::sort (huge_array):
   
   <entry>
     <title type="html"><![CDATA[Relative Primes, Revisited]]></title>
-    <link href="http://philcrissman.github.com/blog/2010/07/08/relative-primes-revisited/"/>
+    <link href="http://philcrissman.github.com/2010/07/08/relative-primes-revisited/"/>
     <updated>2010-07-08T00:00:00-05:00</updated>
-    <id>http://philcrissman.github.com/blog/2010/07/08/relative-primes-revisited</id>
+    <id>http://philcrissman.github.com/2010/07/08/relative-primes-revisited</id>
     <content type="html"><![CDATA[<p>As I thought; there&#8217;s always a better way to do it. <a href="http://twitter.com/jmchilton">@jmchilton</a>, who was a TA when I took Structure of Computer Programming I (or whatever it was called; the Scheme class) at the U of M, supplied this alternative solution to the relative prime problem:</p>
 
 <pre>

@@ -1,0 +1,511 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>How Not To Write Sorting Algorithms in Ruby - Automagical Thinking</title>
+  <meta name="author" content="Your Name">
+
+  
+  <meta name="description" content="The second chapter of Introduction To Algorithms by Cormen, Leiserson, et al., describes the algorithms for Insertion Sort and Merge Sort in &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://philcrissman.github.com/2010/07/18/how-not-to-write-sorting-algorithms-in-ruby">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="/javascripts/ender.js"></script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  <link href="/atom.xml" rel="alternate" title="Automagical Thinking" type="application/atom+xml">
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+<link href="http://fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<link href="http://fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="http://use.typekit.com/kqo6vdf.js"></script>
+<script type="text/javascript">try{Typekit.load();}catch(e){}</script>
+
+  
+  <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-77047-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+      var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+      ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+      var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+  </script>
+
+
+</head>
+
+<body   >
+  <header role="banner"><hgroup>
+  <h1><a href="/">Automagical Thinking</a></h1>
+  
+    <h2>I forgot what I was going to say here.</h2>
+  
+</hgroup>
+
+</header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input type="hidden" name="q" value="site:philcrissman.github.com" />
+    <input class="search" type="text" name="q" results="0" placeholder="Search"/>
+  </fieldset>
+</form>
+  
+<ul class="main-navigation">
+  <li><a href="/">Blog</a></li>
+  <li><a href="/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">How Not to Write Sorting Algorithms in Ruby</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-07-18T00:00:00-05:00" pubdate data-updated="true">Jul 18<span>th</span>, 2010</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>The second chapter of <a href="http://www.amazon.com/gp/product/0262033844?ie=UTF8&amp;tag=idepermin-20&amp;linkCode=as2&amp;camp=1789&amp;creative=390957&amp;creativeASIN=0262033844"><em>Introduction To Algorithms</em></a> by Cormen, Leiserson, et al., describes the algorithms for Insertion Sort and Merge Sort in pseudocode, and compares their relative efficiency (or lack thereof). I decided to write them out in Ruby and run some simple benchmarks, just for fun.</p>
+
+<h2>Insertion Sort</h2>
+
+
+<p>There are a variety of ways one could write the insertion sort in Ruby; this is more or less an literal translation of the <em>Intro to Algorithms</em> pseudocode to ruby &#8211; it could perhaps be made a little more ruby-ish, but here&#8217;s my version:</p>
+
+<pre>
+<code class="ruby">
+def insertion_sort(sequence)
+  sequence[1..sequence.size].each_with_index do |j, index|
+    i = index
+    sequence[0..i].reverse.each do |k|
+      break unless k > j
+      sequence[i + 1] = k
+      i = i - 1
+    end
+    sequence[i+1] = j
+  end
+end
+</code>
+</pre>
+
+
+<p>In a nutshell:</p>
+
+<ol>
+<li>Start with the second element (index 1).</li>
+<li>Save the index in a local variable, because we&#8217;re going to use it to figure out which array element to swap the current element into.</li>
+<li>Take the sub-array 0..i (where <em>i</em> is the current index being looked at), and go backwards until the element in your inner loop is less than the current element from the outer loop, also decrementing <em>i</em> each iteration.</li>
+<li>Copy the element in index [i] to index [i + 1]</li>
+<li>Outside the inner loop, we&#8217;ll put the current element at [i + 1].</li>
+</ol>
+
+
+<p>In case this is a little unclear, it would go something like this:</p>
+
+<p>Starting array: [5,2,3,1,4,0]</p>
+
+<p>First pass: [<strong>2</strong>,<em>5</em>,3,1,4,0]</p>
+
+<p>Second pass: [2,<strong>3</strong>,<em>5</em>,1,4,0]</p>
+
+<p>Third pass: [<strong>1</strong>,<em>2</em>,<em>3</em>,<em>5</em>,4,0]</p>
+
+<p>Fourth pass: [1,2,3,<strong>4</strong>,<em>5</em>,0]</p>
+
+<p>Fifth pass: [<strong>0</strong>,<em>1</em>,<em>2</em>,<em>3</em>,<em>4</em>,<em>5</em>]</p>
+
+<p>(<strong>Bold elements</strong> are the ones which were the &#8220;current&#8221; element moved back, <em>italic elements</em> are the ones that had to be shifted forward in this step.)</p>
+
+<h2>Merge Sort</h2>
+
+
+<p>The merge sort is split into two parts; a <code>merge</code> method that acts as a helper, and the actual <code>merge_sort</code> which calls itself recursively, also calling <code>merge</code> when needed.</p>
+
+<p>Here&#8217;s a version modeled after the pseudocode in <em>Intro to Algorithms</em>:</p>
+
+<pre>
+<code class="ruby">
+def merge_sort(sequence, first, last)
+  if first < last
+    mid = (first + last) / 2
+    merge_sort(sequence, first, mid)
+    merge_sort(sequence, mid + 1, last)
+    merge(sequence, first, mid + 1, last)
+  end
+end
+
+def merge(sequence, first, mid, last)
+  left = sequence[first..mid - 1]
+  right = sequence[mid..last]
+  left.push(Float::MAX)
+  right.push(Float::MAX)
+  i = 0
+  j = 0
+  (first..last).each do |n|
+    if left[i] <= right[j]
+      sequence[n] = left[i]
+      i = i + 1
+    else
+      sequence[n] = right[j]
+      j = j + 1
+    end
+  end
+end
+</code>
+</pre>
+
+
+<p>A few notes: You&#8217;ll notice that in the <code>merge</code> method, when the sequence is split into two parts, the value Float::MAX is pushed onto each as the final element. <em>Intro to Algorithms</em> uses the idea that &#8220;infinity&#8221; is set to the last element. Hopefully I can explain why in the description of the algorithm.</p>
+
+<p>First, the merge method. The merge method assumes that the left half and the right half of the section of the array it&#8217;s looking at are <em>already sorted</em>. Having made this assumption, it loops through the range it&#8217;s considering (<code>first..last</code>), and puts either the first element of the left side, or the first element of the right side, whichever it least. It increments each subarray as it goes; when it gets past the last element of either array, Float::MAX will <em>always</em> be higher (or so we assume, for the sake of this implementation) than whatever is in the other array. So merge finishes up, basically (ahem) <em>merging</em> the two halves together in place, with the whole first..last range sorted.</p>
+
+<p>Now, the actual merge_sort method. It first checks to see if first &lt; last; if this were <em>false</em>, then the range would be an array of size 1, and an array of size 1 is already sorted. So assuming the range first..last is > 1, it calculates a midpoint; integer division works fine for this, using <code>(first + last) / 2</code>. Then it calls itself recursively on each subarray; these in turn will continue splitting each subarray into two parts until it gets to the point where it&#8217;s just two subarrays of one element each; which are then fed to <code>merge</code> and sorted. As the method returns from each level of recursion, each &#8220;half&#8221; of the subarray under consideration has been sorted, until it gets all the way back to the first call to <code>merge_sort</code>, and executes <code>merge</code> on each (sorted) half of the full array.</p>
+
+<p>Phew. I&#8217;m going to attempt to show another example, in case that&#8217;s helpful. Let&#8217;s say we started with the same starting array as the insertion_sort example. This time, to show what the recursion is actually doing, I&#8217;ll write out what each nested call to merge_sort( and/or merge) would actually look like:</p>
+
+<p>Starting array: [5,2,3,1,4,0]</p>
+
+<pre style="font-size:0.8em !important;">
+merge_sort([5,2,3,1,4,0], 0, 5):
+  mid <- 2
+  merge_sort([5,2,3], 0, 2):
+    mid <- 1
+    merge_sort([5,2], 0, 1):
+      mid <- 0
+      merge_sort([5], 0, 0):
+      merge_sort([2], 1, 1):
+      merge([5,2],0, 1, 1):
+        left <- [5,&infin;]
+        right <- [2,&infin;]
+        loop(0..1):
+          [2,5] # just showing the result in this step; the two elements are sorted.
+    merge_sort([3], 2, 2):
+    merge([2,5,3], 0, 2, 2):
+      left <- [2,5,&infin;]
+      right <- [3,&infin;]
+      loop(0..2):
+        [2,3,5]
+  merge_sort([1,4,0], 3, 5):
+    mid <- 4
+    merge_sort([1,4], 3, 4):
+      mid <- 3
+      merge_sort([1], 3, 3):
+      merge_sort([4], 4, 4):
+      merge([1,4], 3, 4, 4):
+        left <- [1,&infin;]
+        right <- [4,&infin;]
+        loop(3..4):
+          [1,4]
+    merge_sort([0], 5, 5):
+    merge([1,4,0], 3, 5, 5):
+      left <- [1,4,&infin;]
+      right <- [0,&infin;]
+      loop(3..5):
+        [0,1,4]
+  merge([2,3,5,0,1,4], 0, 3, 5):
+    left <- [2,3,5,&infin;]
+    right <- [0,1,4,&infin;]
+    loop(0..5):
+      [0,1,2,3,4,5]
+</pre>
+
+
+<p>Uhm, hopefully that&#8217;s clear. If you&#8217;re bothering to read this and it still isn&#8217;t clear, just run the sort locally and add some <code>print</code> or <code>puts</code> statements liberally so you can see what&#8217;s going on. Note: I did take a liberty in the above listing of what&#8217;s happening; in actuality the entire array is passed each time; I made it look as though just the subarray were being passed in each case, because that is the only part that is being looked at in each nested section. Again, if you&#8217;re interested enough in the topic that you&#8217;re still working out this algorithm, fire up irb and just try it out, it will make more sense as you do so.</p>
+
+<h2>Wait, why is this called &#8220;how <em>not</em> to write sorting algorithms&#8230;?&#8221;</h2>
+
+
+<p>Aha. I thought you&#8217;d never ask. Well, the main reason is that both of these methods are significantly slower than good old Array::sort, which is built in to Ruby (and which, as far as I know, is implemented using the <a href="http://en.wikipedia.org/wiki/Quicksort">quicksort</a> algorithm).</p>
+
+<p>So, just for fun, I wrote a little script to make some benchmarks of these various methods on arrays of various sizes. Here were the results:</p>
+
+<pre style="font-size:0.8em !important;">
+      user     system      total        real
+
+ small_array has 100 elements in it...
+Insertion Sort (small_array): 
+  0.000000   0.000000   0.000000 (  0.002122)
+Merge sort (small_array): 
+  0.000000   0.000000   0.000000 (  0.001499)
+Ruby Array::sort (small_array): 
+  0.000000   0.000000   0.000000 (  0.000016)
+
+ bigger_array has 1000 elements in it...
+Insertion sort (bigger_array): 
+  0.240000   0.000000   0.240000 (  0.238994)
+Merge sort (bigger array): 
+  0.030000   0.010000   0.040000 (  0.027746)
+Ruby Array::sort (bigger_array): 
+  0.000000   0.000000   0.000000 (  0.000161)
+
+ medium_array has 10,000 elements in it...
+Insertion sort (medium_array): 
+ 23.960000   0.010000  23.970000 ( 24.096455)
+Merge sort (medium_array): 
+  0.720000   0.020000   0.740000 (  0.726312)
+Ruby Array::sort (medium_array): 
+  0.000000   0.000000   0.000000 (  0.001637)
+
+ huge_array has 100,000 elements in it...
+Sorry, the insertion_sort was taking too long! Skipped it.
+Merge sort (huge_array): 
+ 61.710000  11.990000  73.700000 ( 74.332743)
+ruby Array::sort (huge_array): 
+  0.020000   0.000000   0.020000 (  0.020800)
+
+
+</pre>
+
+
+<p>The interesting column is the last one: <em>real</em>, as in &#8220;real time&#8221; (more or less, taking into the account that we&#8217;re just benchmarking).</p>
+
+<p>The small array is pretty fast for all three methods, but even still, we can see that merge_sort is a <em>little</em> faster, and the built in .sort! (using quicksort) is <em>way</em> faster: only 0.000016 seconds.</p>
+
+<p>The next bigger, bigger_array, the differences stand out a little more. Insertion takes 0.24 seconds, merge takes 0.028, and sort! (again), way faster, only 0.00016 seconds.</p>
+
+<p>A ten thousand element array starts to show the difference even more dramatically: insertion_sort now takes 24.1 seconds, close to half a minute, while the merge_sort still runs in under a second. sort!, once again, is blowing them away at only 0.0016 seconds.</p>
+
+<p>Finally, a hundred thousand element array; sorry for the lack of stats, but I was too impatient to let insertion_sort finish. Let&#8217;s just say it would take awhile. Now even the merge_sort shows its limits, taking over a minute, about 74.3 seconds. And finally, good old sort! clocking in at only 0.02 seconds.</p>
+
+<p>So the reason this is how <em>not</em> to write sorting algorithms in ruby is simply that, you really probably don&#8217;t need to, unless you need something faster than a quicksort written in C. The reason, hopefully, to be playing around writing algorithms in Ruby or in <em>whatever</em> your favorite language happens to be, is just to understand them better.</p>
+
+<p>And it&#8217;s fun.</p>
+
+<p>See also:</p>
+
+<p><a href="http://en.wikipedia.org/wiki/Insertion_sort">Insertion Sort</a></p>
+
+<p><a href="http://en.wikipedia.org/wiki/Merge_sort">Merge Sort</a></p>
+
+<p><a href="http://github.com/kanwei/algorithms">Ruby Algorithm library</a> &lt;&#8211; some pretty interesting stuff in here. I didn&#8217;t look at this until after I&#8217;d already written my versions of the insertion sort and the merge sort; their version of insertion_sort is nearly the same, but their merge sort is somewhat more succinct, and looks worth playing around with.)</p>
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Your Name</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-07-18T00:00:00-05:00" pubdate data-updated="true">Jul 18<span>th</span>, 2010</time>
+      
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <a href="http://twitter.com/share" class="twitter-share-button" data-url="http://philcrissman.github.com/2010/07/18/how-not-to-write-sorting-algorithms-in-ruby/" data-via="philcrissman" data-counturl="http://philcrissman.github.com/2010/07/18/how-not-to-write-sorting-algorithms-in-ruby/" >Tweet</a>
+  
+  
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="/2010/07/08/relative-primes-revisited/" title="Previous Post: Relative Primes, Revisited">&laquo; Relative Primes, Revisited</a>
+      
+      
+        <a class="basic-alignment right" href="/2010/07/27/i-write-like/" title="next Post: I Write Like">I Write Like &raquo;</a>
+      
+    </p>
+  </footer>
+</article>
+
+</div>
+
+<aside class="sidebar">
+  
+    <section>
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts">
+    
+      <li class="post">
+        <a href="/2011/10/10/how-to-read-web-analytics/">How To Read Web Analytics</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2011/07/06/too-clever-to-debug/">Too Clever To Debug</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2011/03/10/current-desktop/">Current Desktop</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2011/02/21/test-first-as-a-productivity-hack/">Test First As A Productivity Hack</a>
+      </li>
+    
+      <li class="post">
+        <a href="/2011/02/01/ujs-in-rails-3-slides/">UJS in Rails 3 Slides</a>
+      </li>
+    
+  </ul>
+</section>
+
+<section>
+  <h1>Github Repos</h1>
+  <ul id="gh_repos">
+    <li class="loading">Status updating...</li>
+  </ul>
+  
+  <a href="https://github.com/philcrissman">@philcrissman</a> on Github
+  
+  <script type="text/javascript">
+    $.domReady(function(){
+        if (!window.jXHR){
+            var jxhr = document.createElement('script');
+            jxhr.type = 'text/javascript';
+            jxhr.src = '/javascripts/libs/jXHR.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(jxhr, s);
+        }
+
+        github.showRepos({
+            user: 'philcrissman',
+            count: 4,
+            skip_forks: true,
+            target: '#gh_repos'
+        });
+    });
+  </script>
+  <script src="/javascripts/github.js" type="text/javascript"> </script>
+</section>
+
+
+<section>
+  <h1>Latest Tweets</h1>
+  <ul id="tweets">
+    <li class="loading">Status updating...</li>
+  </ul>
+  <script type="text/javascript">
+    $.domReady(function(){
+      getTwitterFeed("philcrissman", 4, false);
+    });
+  </script>
+  <script src="/javascripts/twitter.js" type="text/javascript"> </script>
+  
+    <a href="http://twitter.com/philcrissman" class="twitter-follow-button" data-show-count="false">Follow @philcrissman</a>
+  
+</section>
+
+
+<section>
+  <h1>My Pinboard</h1>
+  <ul id="pinboard_linkroll">Fetching linkroll...</ul>
+  <p><a href="http://pinboard.in/u:philcrissman">My Pinboard Bookmarks &raquo;</a></p>
+</section>
+<script type="text/javascript">
+  var linkroll = 'pinboard_linkroll'; //id target for pinboard list
+  var pinboard_user = "philcrissman"; //id target for pinboard list
+  var pinboard_count = 3; //id target for pinboard list
+  (function(){
+    var pinboardInit = document.createElement('script');
+    pinboardInit.type = 'text/javascript';
+    pinboardInit.async = true;
+    pinboardInit.src = '/javascripts/pinboard.js';
+    document.getElementsByTagName('head')[0].appendChild(pinboardInit);
+  })();
+</script>
+
+
+<section class="googleplus">
+  <h1>
+    <a href="https://plus.google.com/115225600632800161143?rel=author">
+      <img src="http://www.google.com/images/icons/ui/gprofile_button-32.png" width="32" height="32">
+      Google+
+    </a>
+  </h1>
+</section>
+
+
+
+  
+</aside>
+
+
+    </div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright &copy; 2012 - Your Name -
+  <span class="credit">Powered by <a href="http://octopress.org">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+
+
+  <script type="text/javascript">
+    (function(){
+      var twitterWidgets = document.createElement('script');
+      twitterWidgets.type = 'text/javascript';
+      twitterWidgets.async = true;
+      twitterWidgets.src = 'http://platform.twitter.com/widgets.js';
+      document.getElementsByTagName('head')[0].appendChild(twitterWidgets);
+    })();
+  </script>
+
+
+
+
+
+</body>
+</html>
