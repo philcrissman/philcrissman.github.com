@@ -4,7 +4,7 @@
   <title><![CDATA[Automagical Thinking]]></title>
   <link href="http://philcrissman.github.com/atom.xml" rel="self"/>
   <link href="http://philcrissman.github.com/"/>
-  <updated>2012-02-21T20:05:55-06:00</updated>
+  <updated>2012-05-18T08:35:38-05:00</updated>
   <id>http://philcrissman.github.com/</id>
   <author>
     <name><![CDATA[Phil Crissman]]></name>
@@ -12,6 +12,16 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Code isn't swayed by logic]]></title>
+    <link href="http://philcrissman.github.com/2012/05/18/code-isnt-swayed-by-logic/"/>
+    <updated>2012-05-18T08:32:00-05:00</updated>
+    <id>http://philcrissman.github.com/2012/05/18/code-isnt-swayed-by-logic</id>
+    <content type="html"><![CDATA[<p>&#8220;What is it that we want to get out of code? The most important thing is learning. The way I learn is to have a thought, then test it out to see if it is a good thought. Code is the best way I know of to do this. Code isn&#8217;t swayed by the power and logic of rhetoric. Code isn&#8217;t impressed by college degrees or large salaries. Code just sits there, happily doing exactly what you told it to do. If that isn&#8217;t what you thought you told it to do, that&#8217;s your problem.&#8221;
+- Kent Beck, <a href="http://www.amazon.com/gp/product/0321278658/ref=as_li_ss_tl?ie=UTF8&amp;tag=idepermin-20&amp;linkCode=as2&amp;camp=1789&amp;creative=390957&amp;creativeASIN=0321278658">Extreme Programming Explained</a></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[How To Read Web Analytics]]></title>
@@ -862,41 +872,6 @@ ruby Array::sort (huge_array):
 <p><a href="http://en.wikipedia.org/wiki/Merge_sort">Merge Sort</a></p>
 
 <p><a href="http://github.com/kanwei/algorithms">Ruby Algorithm library</a> &lt;&#8211; some pretty interesting stuff in here. I didn&#8217;t look at this until after I&#8217;d already written my versions of the insertion sort and the merge sort; their version of insertion_sort is nearly the same, but their merge sort is somewhat more succinct, and looks worth playing around with.)</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Relative Primes, Revisited]]></title>
-    <link href="http://philcrissman.github.com/2010/07/08/relative-primes-revisited/"/>
-    <updated>2010-07-08T00:00:00-05:00</updated>
-    <id>http://philcrissman.github.com/2010/07/08/relative-primes-revisited</id>
-    <content type="html"><![CDATA[<p>As I thought; there&#8217;s always a better way to do it. <a href="http://twitter.com/jmchilton">@jmchilton</a>, who was a TA when I took Structure of Computer Programming I (or whatever it was called; the Scheme class) at the U of M, supplied this alternative solution to the relative prime problem:</p>
-
-<pre>
-<code class="ruby">
-def gcd(a, b); b == 0 ? a : gcd(b, a % b); end; def rp(a, b); gcd(a, b) == 1; end
-</code>
-</pre>
-
-
-<p>Or, indented:</p>
-
-<pre>
-<code class="ruby">
-def gcd(a, b)
-  b == 0 ? a : gcd(b, a % b)
-end
-
-def rp(a, b)
-  gcd(a, b) == 1
-end
-</code>
-</pre>
-
-
-<p>In other words, it pays to know your math. <code>gcd</code> is a recursive function, basically Euclid&#8217;s algorithm for finding the greatest common denominator. <code>rp</code>, then, simply returns true if the GCD of a and b is 1; otherwise false.</p>
-
-<p>Very nice. I wish I&#8217;d thought to do it that way, but I&#8217;ll certainly remember it.</p>
 ]]></content>
   </entry>
   
