@@ -4,7 +4,7 @@
   <title><![CDATA[Automagical Thinking]]></title>
   <link href="http://philcrissman.github.com/atom.xml" rel="self"/>
   <link href="http://philcrissman.github.com/"/>
-  <updated>2012-07-17T14:00:43-05:00</updated>
+  <updated>2012-07-17T14:17:06-05:00</updated>
   <id>http://philcrissman.github.com/</id>
   <author>
     <name><![CDATA[Phil Crissman]]></name>
@@ -12,6 +12,17 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Not far from the tree]]></title>
+    <link href="http://philcrissman.github.com/2012/07/17/not-far-from-the-tree/"/>
+    <updated>2012-07-17T14:08:00-05:00</updated>
+    <id>http://philcrissman.github.com/2012/07/17/not-far-from-the-tree</id>
+    <content type="html"><![CDATA[<p><a href="http://philcrissman.github.com/images/posts/sam-laptop.jpeg"><img src="http://philcrissman.github.com/images/posts/sam-laptop.jpeg" width="440" /></a></p>
+
+<p>Our son Samuel is almost 17 months old, now. He&#8217;s the coolest.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[What I Learned Selling Pizzas Door to Door]]></title>
@@ -669,31 +680,6 @@ F G A A#/Bb C D E
     <content type="html"><![CDATA[<p><img src="http://philcrissman.com/images/posts/vader_faith.jpg" width="440" /></p>
 
 <p>I know, I know, the faux motivational poster is an old and tired <a href="http://en.wikipedia.org/wiki/Meme">meme</a>. Sorry.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[I Write Like]]></title>
-    <link href="http://philcrissman.github.com/2010/07/27/i-write-like/"/>
-    <updated>2010-07-27T00:00:00-05:00</updated>
-    <id>http://philcrissman.github.com/2010/07/27/i-write-like</id>
-    <content type="html"><![CDATA[<p>I&#8217;ve seen the <a href="http://iwl.me/">I write like</a> links show up on facebook and twitter a few times, so I decided I&#8217;d take a look. Not content to simply feed it one sample, I fed it the text from several of the posts from the archive. Here were the results:</p>
-
-<ul>
-<li><a href="http://philcrissman.com/2009/01/14/i-hold-strong-opinions-about-the-placement-of-curly-braces">I Hold Strong Opinions About The Placement Of Curly Braces</a></li>
-<li><p>=> I write like: <strong>H.P. Lovecraft</strong>. <em>Really? Wait&#8230; what?</em></p></li>
-<li><p><a href="http://philcrissman.com/2010/02/16/no-were-not-the-stupid-ones">No, We&#8217;re Not The Stupid Ones</a></p></li>
-<li><a href="http://philcrissman.com/2009/01/16/in-which-i-am-no-longer-a-very-good-bachelor">In Which I Am No Longer A Very Good Bachelor</a></li>
-<li><a href="http://philcrissman.com/2010/04/01/oracle-to-acquire-oracle">Oracle To Acquire Oracle</a></li>
-<li><p>=> I write like: <strong>Cory Doctorow</strong>. <em>Huh. You think? Well, okay. Thanks!</em></p></li>
-<li><p><a href="http://philcrissman.com/2006/09/22/the-emperors-new-web">The Emperor&#8217;s New Web</a></p></li>
-<li>=> I write like: <strong>Jonathan Swift</strong>. <em>[blushing] No, no&#8230; you&#8217;re too kind.</em></li>
-</ul>
-
-
-<p>Not sure how they are analyzing the text and reaching their conclusions, but there&#8217;s at least a <em>little</em> bit of smarts in there; that last one, the one which was compared to Swift, is indeed a satire, though I&#8217;m not going to claim it&#8217;s in the calibre of Swift&#8217;s satire, but still; their algorithm picked something out of it which prompted the comparison. Not bad.</p>
-
-<p>So, evidently, according to their analyses, I write most often like Cory Doctorow. I&#8217;ve only read <em>Down And Out In The Magic Kingdom</em>, and several of his blog posts/essays, but enough to consider it a compliment, though I&#8217;m not certain it&#8217;s deserved. Regardless, there we have it.</p>
 ]]></content>
   </entry>
   
