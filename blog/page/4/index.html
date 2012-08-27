@@ -7,7 +7,7 @@
 	<meta name="author" content="Phil Crissman">
 
 	
-	<meta name="description" content="Taptaptap made an extension that adds comments to Daring Fireball, and, as you can see in the comments, sparked a little debate on whether or not &hellip;">
+	<meta name="description" content="Quite often I&#8217;ll come into a Rails project with a good portion of the code already written. Depending on style the developers were using, this &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -90,6 +90,45 @@
  -->
 	<!--  -->
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/2010/06/18/whinyrendering/">WhinyRendering</a></h1>
+	<div class="entry-content">
+		<p>Quite often I&#8217;ll come into a Rails project with a good portion of the code already written. Depending on style the developers were using, this sometimes means that I may not be able to easily tell, when looking at a given view, how the view is being generated. The URL may <em>say</em> /pages/1, but for all I know, the routes file has instructions to use the ArmpitsController when it sees a route for pages/*; the URL might say /user/login, but for all we know, that may map to SessionController::sign_in. In other words, it&#8217;s not always clear.</p>
+
+<p>And that&#8217;s not even getting into the cases where there are multiple partials being used, some of which might be in app/views/shared, or who knows where.</p>
+
+<p>We&#8217;ve talked in the office a few times about a mythical plugin that could provide a little output stating exactly what controller, action, and template are being rendered, as well as any and all partials. Thus the idea for WhinyRendering was born.</p>
+
+<p>If any of the preceding scenario sounds familiar, I hope it&#8217;s helpful.</p>
+
+<p><a href="http://github.com/philcrissman/whiny_rendering">WhinyRendering</a></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-06-18T00:00:00-05:00" pubdate data-updated="true">Jun 18<span>th</span>, 2010</time></div>
+	<div class="tags">
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -623,65 +662,6 @@
 
 
 <time datetime="2010-02-28T00:00:00-06:00" pubdate data-updated="true">Feb 28<span>th</span>, 2010</time></div>
-	<div class="tags">
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/2010/02/18/dumb-results-can-be-better-than-smart-results/">Dumb Results Can Be Better Than Smart Results</a></h1>
-	<div class="entry-content">
-		<p><img src="http://philcrissman.com/images/posts/find_x.jpg" alt="" title="find_x" width="394" /><br /></p>
-
-<p>The last couple posts have crossed over into a couple really big topics; one is web application usability, the other is the quality of results returned by an algorithm. They are not the same topic. Anything that can be made more usable should be. The quality of an algorithm&#8217;s results are not necessarily related to that. I started chatting with <a href="http://twitter.com/KuraFire">@Kurafire</a> about this, and he is making some great points&#8230; but I still don&#8217;t precisely agree.</p>
-
-<p>For example:</p>
-
-<blockquote><a href="http://twitter.com/KuraFire/status/9266841104">The problem with Google&#8217;s algorithm is that a &#8220;mere&#8221; blog could outweigh the second-most visited website on the planet.</a></blockquote>
-
-
-
-
-<blockquote><a href="http://twitter.com/KuraFire/status/9267865186">My point is that a site&#8217;s traffic rank should be weighed more heavily, certainly when the difference btwn the two is so huge.</a></blockquote>
-
-
-<p>Let&#8217;s forget the &#8220;Facebook login&#8221; going to ReadWriteWeb rather than Facebook itself, for a moment. Let&#8217;s generalize.</p>
-
-<p><strong style="font-size:1.5em;">Question: should an article <em>about</em> a company or entity <em>ever</em> get a higher search ranking than the website of the company or entity itself?</strong></p>
-
-<p>When you phrase it that way, I think the answer is clearly <strong>YES</strong>, there are situations where that could and should happen.</p>
-
-<p>In late 2001, it would make a lot of sense for a search for &#8220;ENRON quarterly earnings&#8221; to point to an article about the accounting scandal rather than simply going straight to an official PDF of their earnings.</p>
-
-<p>It&#8217;s reasonable that a search for &#8220;Amway&#8221; could return an article skeptical of MLMs as high or sometimes higher than the company&#8217;s own site.</p>
-
-<p>Not all the time, and not every time, but there are situations where an article about something could or should get a higher result than the thing itself.</p>
-
-<p>A human being organizing the results might never do that; or they would only do it after it became obvious. Algorithms are dumb. They will just spit out a result based on some sort of process. Sometimes, that&#8217;s better, since it removes our innate bias to how we think things should be ordered. If we try to weight an algorithm too much for the things we innately think should be on top, we could actually be detracting from the value of the algorithm.</p>
-
-<p>Just a thought. I&#8217;m by no means saying that the googorithm can do no wrong, or has no room for improvement. Just that it&#8217;s possible for dumb results to be better than &#8220;smart&#8221; results.</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-02-18T00:00:00-06:00" pubdate data-updated="true">Feb 18<span>th</span>, 2010</time></div>
 	<div class="tags">
 
 </div>

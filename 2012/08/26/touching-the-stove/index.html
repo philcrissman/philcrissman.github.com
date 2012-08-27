@@ -1,0 +1,219 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Touching the stove, broken glass, and other peoples mistakes - philcrissman.com</title>
+	<meta name="author" content="Phil Crissman">
+
+	
+	<meta name="description" content="We&#8217;re supposed to learn from other peoples mistakes. At least, this is what we&#8217;re told our whole lives. Those who fail to learn from &hellip;">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="philcrissman.com" type="application/atom+xml">
+	<link rel="canonical" href="">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	
+</head>
+
+<body>
+	<header id="header" class="inner"><h1><a href="/">philcrissman.com</a></h1>
+<nav id="main-nav"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+</ul>
+</nav>
+<nav id="mobile-nav">
+	<div class="alignleft menu">
+		<a class="button">Menu</a>
+		<div class="container"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+</ul>
+</div>
+	</div>
+	<div class="alignright search">
+		<a class="button"></a>
+		<div class="container">
+			<form action="http://google.com/search" method="get">
+				<input type="text" name="q" results="0">
+				<input type="hidden" name="q" value="site:philcrissman.com">
+			</form>
+		</div>
+	</div>
+</nav>
+<nav id="sub-nav" class="alignright">
+	<div class="social">
+		
+		
+		<a class="google" href="https://plus.google.com/115225600632800161143?rel=author" title="Google+">Google+</a>
+		
+		
+		<a class="twitter" href="http://twitter.com/philcrissman" title="Twitter">Twitter</a>
+		
+		
+		<a class="github" href="https://github.com/philcrissman" title="GitHub">GitHub</a>
+		
+		
+		
+		
+		
+		<a class="rss" href="/atom.xml" title="RSS">RSS</a>
+		
+	</div>
+	<form class="search" action="http://google.com/search" method="get">
+		<input class="alignright" type="text" name="q" results="0">
+		<input type="hidden" name="q" value="site:philcrissman.com">
+	</form>
+</nav>
+
+</header>
+	<!--  -->
+	<!-- 	
+<div id="banner" class="inner">
+	<div class="container">
+		<ul class="feed"></ul>
+	</div>
+	<small><a href="http://twitter.com/philcrissman">philcrissman</a> @ <a href="http://twitter.com">Twitter</a></small>
+	<div class="loading">Loading...</div>
+</div>
+<script src="/javascripts/twitter.js"></script>
+<script type="text/javascript">
+	(function($){
+		$('#banner').getTwitterFeed('philcrissman', 4, false);
+	})(jQuery);
+</script>
+ -->
+	<!--  -->
+	<div id="content" class="inner"><article class="post">
+	<h1 class="title">Touching the Stove, Broken Glass, and Other Peoples Mistakes</h1>
+	<div class="entry-content"><p>We&#8217;re supposed to learn from other peoples mistakes.</p>
+
+<p>At least, this is what we&#8217;re told our whole lives. Those who fail to learn from history, we&#8217;re told, are destined to repeat it (possibly next semester). Eleanor Roosevelt said, &#8220;Learn from the mistakes of others. You can&#8217;t live long enough to make them all yourself.&#8221; Sounds like good advice. Who wants to make mistakes when they can be avoided?</p>
+
+<p>But I distinctly remember having to touch the element on the top of the stove before I learned that I should have listened to my mom.</p>
+
+<p>We have a lot of literature in the field of Software Development which is basically &#8220;learning from the mistakes of others&#8221; wrapped in a bit of ceremony and jargon. Object oriented programming, design patterns, agile practices, XP, Scrum, code smells, refactorings, anti-patterns &#8211; all these things, at their core, are just one or more software developers saying to us: &#8220;Look. I&#8217;ve done this before. I&#8217;ve made mistakes. I&#8217;ve written large, unmaintainable systems, and I think we&#8217;ve found a way to avoid the mistakes we&#8217;ve made before &#8211; listen to this!&#8221;</p>
+
+<p>Thankfully, this shared wisdom usually (eventually) gains a lot of traction. Other developers look into the patterns, the agile practices, the refactorings, and they see some of the pitfalls they themselves have fallen into in the past &#8211; or, may even still be falling into. You start getting wide-spread buy in into these ideas. They spread, they&#8217;re taught, they grow. We write manifestos, or sign them, and start to feel like we&#8217;re making some progress, like we&#8217;re figuring something out.</p>
+
+<p>Somehow, though, once these things start to become entrenched, things get harder for the next generation coming in. The new programmers are handed a group of best practices, but they&#8217;ve never actually made or seen the mistakes that prompted the creation of these best practices in the first place. That makes some of these things seem silly, extraneous, or gratuitous. Why does this class &#8220;need&#8221; to be split into two classes? Cohesion? Who cares, really? Why should those methods be private, anyways? Why does my class need to be encapsulated?</p>
+
+<p>I remember having these questions my first year of computer science; learning Java and (apparently) OOP. Only, we didn&#8217;t really learn OOP at all. We learned to type <code>public static void main(String[] args)</code> a lot. We never learned <em>why</em>. I remember being told that keeping methods private meant that we could hide the implementation from other classes, but I was never told why I would want this.</p>
+
+<p>We usually do wind up seeing the wisdom, eventually, but we need to write some pretty bad code first. And even then, we may only see our mistakes if we&#8217;re lucky enough to recognize our mistake as something we&#8217;ve been warned about in the past, or if we&#8217;re fortunate enough to have a mentor who can point out where we went wrong, and what we might have done to avoid our mistake.</p>
+
+<p>We need to actually make some of these mistakes, in order to learn from them. In order to see how much wisdom there is in some of this classic Software Development literature, we&#8217;re going to have to write some truly awful code.</p>
+
+<p>I wish I could see a way around this; I&#8217;d love to think that we can just warn each successive generation of new software developers about the traps and snares and regions where there be dragonnes, but my experience and my gut tells me that this just isn&#8217;t going to work, compeletely. It&#8217;s good &#8211; I&#8217;m not saying we stop doing this. But I had to make some mistakes before I started to see how much smarts there was in the OOP model; before I started to realize the value of some design patterns. I had to write some bad code in order to see that certain things were, in fact, &#8220;bad&#8221;.</p>
+
+<p>Even worse; some of these mistakes can only be made in large programs or systems. You can&#8217;t necessarily learn these things by writing a program to convert Celsius to Fahrenheit, and back. You need to amass some technical debt in a system which is actually supposed to go into production.</p>
+
+<p>I want there to be another way, but I don&#8217;t think there is.</p>
+
+<p>So, what then? Are we cursed with always having bodies of horrible code, perpetrated by each new generation of software devs as they stumble toward making better sofware?</p>
+
+<p>Well. Probably. But hopefully, maybe, we can minimize it.</p>
+
+<p>Just because we need to make <em>some</em> mistakes, doesn&#8217;t need we need to make <em>all</em> the mistakes over again each time.</p>
+
+<p>If I&#8217;ve been told about patterns, about refactorings, about technical debt &#8211; then hopefully I&#8217;ll have a better chance of recognizing my mistakes the <em>first</em> time I make them (or at least, the second, or third) &#8211; rather than the fifth, or eighth, or tenth time I make them.</p>
+
+<p>Now, that&#8217;s just the thing, about touching the red hot element on the top of the stove: I actually learned <em>two</em> things, there. First, yes, I learned that the stove was actually hot. But second, I learned that when my mom told me not to touch something, she wasn&#8217;t just making up arbitrary rules. Suddenly, it&#8217;s a lot more likely that I&#8217;ll listen to <em>other</em> things that she says. Why? Do I need to be hit by a car before I learn not to play in the street? Thankfully, no. I learned that she was telling the truth about the stove. Even as a five-year-old, this makes me think that hey, maybe mom knows a thing or two. Maybe I shouldn&#8217;t have touched the stove. Maybe I shouldn&#8217;t play in traffic, either.</p>
+
+<p>Hopefully, if we combine reiterating these concepts about OOP, about patterns, about good software design, about Test Driven Development, then when we make mistakes, we not only recognize them faster, but all the rest of the advice we&#8217;ve been ignoring suddenly seems a little more important.</p>
+
+<p>If I realize that my horrible unmaintainable mess of code was caused by violating principle <em>X</em>, maybe I&#8217;ll also take another look at principles <em>Y</em> and <em>Z</em>.</p>
+
+<p>In the first edition of Obie Fernandez&#8217; <em>The Rails Way</em>, one of the technical reviewers made a comment in the section that was discussing the :include option for one of ActiveRecord&#8217;s class methods. Wilson said:</p>
+
+<blockquote><p>Let people learn eager loading by crawling across broken glass, like we did. It builds character!</p></blockquote>
+
+<p>The part of your brain that has always been told to &#8220;learn from the mistakes of others&#8221; rebels at a statement like this. But that little sidebar has stuck in my mind since I first read it, years ago.</p>
+
+<p>Maybe there are some mistakes you <em>have</em> to make yourself.</p>
+
+<p>Then the best thing we can hope for is that we have enough latent sofware development wisdom, somewhere in our heads, which we were taught (but ignored), that we can recognize we&#8217;ve made a mistake that many others have made before. A mistake that could have been avoided.</p>
+
+<p>Maybe, rather than trying to set up new software developers so that they never need to make any mistakes, ever, we should set them up to make as many mistakes as possible, as soon as possible, and give them the tools to identify these mistakes so that they don&#8217;t need to make them again.</p>
+
+<p>Maybe we can start to get better.</p>
+</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-08-26T21:21:00-05:00" pubdate data-updated="true">Aug 26<span>th</span>, 2012</time></div>
+	<div class="tags">
+
+</div>
+	
+</div></article>
+
+	<div class="share">
+	<div class="addthis_toolbox addthis_default_style ">
+	
+	
+	<a class="addthis_button_tweet"></a>
+	
+	
+	<a class="addthis_counter addthis_pill_style"></a>
+	</div>
+  <script type="text/javascript" src="http://s7.addthis.com/js/250/addthis_widget.js#pubid="></script>
+</div>
+
+
+</div>
+  <footer id="footer" class="inner">
+    <section class="footer-ad" style="margin: 10px;">
+      <a href="http://f8bcccmpuo2bfj2ig7z-ical87.hop.clickbank.net/?tid=PCDOTC" alt="Create Your Own Programming Language"><img src="/images/big-cpl.jpg" /></a>
+    </section>
+    Copyright &copy; 2012
+
+    Phil Crissman
+
+
+  </footer>
+
+	<script src="/javascripts/slash.js"></script>
+<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script> <!-- Delete or comment this line to disable Fancybox -->
+
+
+
+
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-77047-1']);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
+
+
+
+</body>
+</html>
