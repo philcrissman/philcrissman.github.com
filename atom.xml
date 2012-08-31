@@ -4,7 +4,7 @@
   <title><![CDATA[philcrissman.com]]></title>
   <link href="http://philcrissman.com/atom.xml" rel="self"/>
   <link href="http://philcrissman.com/"/>
-  <updated>2012-08-26T21:25:01-05:00</updated>
+  <updated>2012-08-30T22:49:06-05:00</updated>
   <id>http://philcrissman.com/</id>
   <author>
     <name><![CDATA[Phil Crissman]]></name>
@@ -12,6 +12,15 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[HTML Boilerplate 4.0]]></title>
+    <link href="http://philcrissman.com/2012/08/30/html-boilerplate-4-dot-0/"/>
+    <updated>2012-08-30T22:47:00-05:00</updated>
+    <id>http://philcrissman.com/2012/08/30/html-boilerplate-4-dot-0</id>
+    <content type="html"><![CDATA[<p>HTML5 Boilerplate releases verion 4.0. A great starter template for modern websites.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Touching the stove, broken glass, and other peoples mistakes]]></title>
@@ -733,17 +742,6 @@ F G A A#/Bb C D E
     <content type="html"><![CDATA[<p><img src="http://philcrissman.com/images/posts/patrick-make-a-gist.jpg" width="440" /></p>
 
 <p>For all the folks in #rubyonrails, and beyond.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[graffiti on a train]]></title>
-    <link href="http://philcrissman.com/2010/08/04/graffiti-on-a-train/"/>
-    <updated>2010-08-04T00:00:00-05:00</updated>
-    <id>http://philcrissman.com/2010/08/04/graffiti-on-a-train</id>
-    <content type="html"><![CDATA[<p><img src="http://philcrissman.com/images/posts/hbak_graffiti.jpg" width="440" /></p>
-
-<p>Pic taken along the trail on the way from Minneapolis to Hopkins.</p>
 ]]></content>
   </entry>
   
