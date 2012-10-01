@@ -7,7 +7,7 @@
 	<meta name="author" content="Phil Crissman">
 
 	
-	<meta name="description" content=" Nov 11th, 2010 ">
+	<meta name="description" content="I&#8217;ve been piling a lot of links, images, and whatnot up on a posterous.com website: see looselyjoined.net. Enjoy, if you are so inclined. Jan &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -98,6 +98,37 @@
 
 	
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/2011/01/14/looselyjoinednet/">looselyjoined.net</a></h1>
+	<div class="entry-content">
+		<p>I&#8217;ve been piling a lot of links, images, and whatnot up on a <a href="http://posterous.com">posterous.com</a> website: see <a href="http://looselyjoined.net">looselyjoined.net</a>. Enjoy, if you are so inclined.</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2011-01-14T00:00:00-06:00" pubdate data-updated="true">Jan 14<span>th</span>, 2011</time></div>
+	<div class="tags">
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -273,177 +304,6 @@
 
 
 <time datetime="2010-10-22T00:00:00-05:00" pubdate data-updated="true">Oct 22<span>nd</span>, 2010</time></div>
-	<div class="tags">
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/2010/10/06/by-land-and-by-sea-and-by-reference/">By Land and by Sea and by Reference</a></h1>
-	<div class="entry-content">
-		<p><img src="/images/posts/travel_land_sea_air.jpg" width="440" />
-<span style="font-size:0.8em"><a href="http://www.flickr.com/photos/hitchster/4118220915/">Photo source</a></span></p>
-
-<p>I recently attempted to fit the quicksort algorithm into under 140 characters of Ruby. It looks like:</p>
-
-<pre>
-<code class="ruby">
-
-def q(s);t=s.dup;t.size<=1 ? t :(p=t[i=t.size/2];t.delete_at(i);x,y=[],[];t.each{|e|e&lt;p ? x&lt;&lt;e : y&lt;&lt;e};n=q(x);m=q(y);n+[p]+m)end
-
-</code>
-</pre>
-
-
-<p></p>
-
-<p>That&#8217;s a little hard to read, so here&#8217;s the first working version I wrote before attempting to squeeze it into twitterable form:</p>
-
-<pre>
-<code class="ruby">
-def quicksort(sequence)
-  tmp = sequence.clone
-  if tmp.count <= 1 
-    return tmp
-  else
-    pivot_index = (tmp.count / 2)
-    pivot = tmp[pivot_index]
-    # pull the pivot out of the array.
-    tmp.delete_at(pivot_index)
-    
-    # create 2 sub-sequences, one < pivot, one >= pivot
-    sub_sequence_a = []
-    sub_sequence_b = []
-    tmp.each do |element|
-      if element < pivot
-        sub_sequence_a << element
-      elsif element >= pivot
-        sub_sequence_b << element
-      end
-    end
-
-    # quicksort sub-sequence 1
-    new_sub_sequence_a = quicksort(sub_sequence_a)
-    
-    # quicksort sub-sequence 2
-    new_sub_sequence_b = quicksort(sub_sequence_b)
-    
-    # return sub1 plus pivot plus sub2
-    new_sub_sequence_a + [pivot] + new_sub_sequence_b
-  end
-end
-</code>
-</pre>
-
-
-<p>A key step in this implementation is pulling the pivot <em>out</em> of the array (see around line 9). In my first naive attempt at quicksort I just deleted the pivot right from <code>sequence</code>, the array object that is passed in to be sorted.</p>
-
-<p>Anyone see the problem there?</p>
-
-<p>At first, I sure didn&#8217;t. After all, I put the pivot back in the return value, right? (Second to last line.)</p>
-
-<p>That does indeed ensure that the <em>returned</em>, <em>sorted</em> array has all the same elements as the original array. But the original array that I passed in would now have one less item. It would (did) lose an element every time I&#8217;d run my naive (read: incorrect) implementation of quicksort on it.</p>
-
-<h3>WTF?</h3>
-
-
-<p>Enter passing objects by reference. In Ruby, everything is passed by reference.(1) It can be easy to forget this, though, especially if you&#8217;re used to changing objects with the assignment (&#8220;=&#8221;) operator.</p>
-
-<blockquote style="font-size:0.85em">
-1 Just in case that&#8217;s not a familiar phrase, &#8220;by reference&#8221; refers to the idea that a reference to the <strong>actual object</strong> (like a pointer, if you will) is being passed, not just a copy of the object, or just the value of the object (which is called passing &#8220;by value&#8221;). (And no, by &#8220;pointer&#8221; I&#8217;m not talking about pointers in C/C++, I&#8217;m just trying to say that a reference <strong>refers to</strong> or in a sense, <strong>points to</strong>, the actual original object.)
-</blockquote>
-
-
-<p>For example:</p>
-
-<pre>
-<code class="ruby">
-def reassign(obj)
-  obj = "Not the same!"
-end
-
-#irb
-> greeting = "Hello!"
-=> "Hello!"
-> reassign(greeting)
-=> "Not the same!"
-> puts greeting
-Hello!
-=> nil
-</code>
-</pre>
-
-
-<p>So, assignment inside a method doesn&#8217;t change our object. Ruby must not <em>really</em> be passing a referece, right? Wrong, it sure is.</p>
-
-<pre>
-<code class="ruby">
-def shiftit(obj)
-  obj.shift
-end
-
-#irb
-> h = {:foo => "bar", :bar => "baz", :baz => "qux"}
-=> {:foo=>"bar",:bar =>"baz",:baz=>"qux"}
-> a = [1,2,3,4,5,6]
-=> [1,2,3,4,5,6]
-> shiftit(h)
-=> {:bar =>"baz",:baz=>"qux"}
-> shiftit(a)
-=> [2,3,4,5,6]
-> # BUT WAIT
-> h
-=> {:bar =>"baz",:baz=>"qux"}
-> a
-=> [2,3,4,5,6]
-</code>
-</pre>
-
-
-<p>Huh. How about that. Our original objects were changed when they were modified inside the method.</p>
-
-<p>You&#8217;ll find that any method of modifying an object inside another method with actually change (even delete, if you go that far) the original object that you passed in. Ruby quite definitely, always, passed objects by reference.</p>
-
-<h3>Then How come <em>assignment</em> in a method doesn&#8217;t change an object?</h3>
-
-
-<p>That&#8217;s a good question. I was stumped on this one myself for a bit. The answer comes down to the idea of <em>bindings</em> and <em>scope</em>. When I tell Ruby that <code>foo = "bar"</code>, Ruby binds the local variable named <em>foo</em> to a String object, &#8220;bar&#8221;. foo is a String object, and when I pass it to my <code>reassign</code> method, I am passing a reference to the real object, <code>foo</code>.</p>
-
-<p>However, inside the method, I&#8217;m in a new scope. When I type <code>foo = "Some new value"</code> inside the method scope, trying to reassign <code>foo</code>, Ruby sees that I&#8217;m binding foo to a new value; but from inside method scope, Ruby is not going to let me change the binding from another scope. So instead, Ruby figures that I want a local variable that is <em>also</em> named <code>foo</code>, inside my method scope, and it assigns my new value to the local <code>foo</code>, not the original <code>foo</code>.</p>
-
-<p>I could alter it, still: if I changed the <code>reassign</code> method so that it did <code>obj.replace("Some new value!")</code> inside the method body, the original object would be changed, just like <code>shiftit</code> did to the array and the hash.</p>
-
-<h3>I think I&#8217;m a clone, now</h3>
-
-
-<p>Back to the quicksort implementation I started with: the way to get around this is to use .clone or .dup to get a <em>copy</em> of the object. That way you aren&#8217;t actually modifying the original object. Even when I realized this was happening, I still made the mistake of just doing <code>tmp = sequence</code> on my first try. No good; same exact problem. <code>tmp</code> is now just a reference straight to <code>sequence</code>, so altering <code>tmp</code> modifies <code>sequence</code> as well. Need to use <code>tmp = sequence.clone</code>, or something like it.</p>
-
-<h3>That&#8217;s all I have to say about that</h3>
-
-
-<p>Say it with me now: &#8220;Ruby passes objects by reference. <em>Ruby passes objects by reference.</em> Every time. <em>All the time.</em> <strong>By reference.</strong>&#8221;</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-10-06T00:00:00-05:00" pubdate data-updated="true">Oct 6<span>th</span>, 2010</time></div>
 	<div class="tags">
 
 </div>
