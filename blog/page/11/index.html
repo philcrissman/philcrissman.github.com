@@ -1,0 +1,493 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>philcrissman.com</title>
+	<meta name="author" content="Phil Crissman">
+
+	
+	<meta name="description" content="Just figured out a test on which I spent far too long wondering why it wasn&#8217;t working. I kept coming back to it and trying something else, and &hellip;">
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+	<link href="/atom.xml" rel="alternate" title="philcrissman.com" type="application/atom+xml">
+	<link rel="canonical" href="">
+	<link href="/favicon.png" rel="shortcut icon">
+	<link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+	<!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	
+</head>
+
+<body>
+	<header id="header" class="inner"><h1><a href="/">philcrissman.com</a></h1>
+<nav id="main-nav"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/about">About</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+</ul>
+</nav>
+<nav id="mobile-nav">
+	<div class="alignleft menu">
+		<a class="button">Menu</a>
+		<div class="container"><ul class="main">
+	<li><a href="/">Blog</a></li>
+	<li><a href="/about">About</a></li>
+	<li><a href="/blog/archives">Archives</a></li>
+</ul>
+</div>
+	</div>
+	<div class="alignright search">
+		<a class="button"></a>
+		<div class="container">
+			<form action="http://google.com/search" method="get">
+				<input type="text" name="q" results="0">
+				<input type="hidden" name="q" value="site:philcrissman.com">
+			</form>
+		</div>
+	</div>
+</nav>
+<nav id="sub-nav" class="alignright">
+	<div class="social">
+    
+		<a class="appdotnet" href="http://alpha.app.net/philcrissman" title="App.net">App.net</a>
+    
+		
+		
+		<a class="google" href="https://plus.google.com/115225600632800161143?rel=author" title="Google+">Google+</a>
+		
+		
+		<a class="twitter" href="http://twitter.com/philcrissman" title="Twitter">Twitter</a>
+		
+		
+		<a class="github" href="https://github.com/philcrissman" title="GitHub">GitHub</a>
+		
+		
+		
+		
+		
+		<a class="rss" href="/atom.xml" title="RSS">RSS</a>
+		
+	</div>
+	<form class="search" action="http://google.com/search" method="get">
+		<input class="alignright" type="text" name="q" results="0">
+		<input type="hidden" name="q" value="site:philcrissman.com">
+	</form>
+</nav>
+
+</header>
+	
+		<!-- ad -->
+
+
+<!-- <div id="banner" class="inner"> -->
+	<!-- <div class="container"> -->
+	<!-- 	<ul class="feed"></ul> -->
+	<!-- </div> -->
+	<!-- <small><a href="http://twitter.com/philcrissman">philcrissman</a> @ <a href="http://twitter.com">Twitter</a></small> -->
+	<!-- <div class="loading">Loading...</div> -->
+<!-- </div> -->
+<!-- <script src="/javascripts/twitter.js"></script> -->
+<!-- <script type="text/javascript"> -->
+<!-- 	(function($){ -->
+<!-- 		$('#banner').getTwitterFeed('philcrissman', 4, false); -->
+<!-- 	})(jQuery); -->
+<!-- </script> -->
+
+
+	
+	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/2009/01/18/testing-ajax-requests-in-rails/">Testing Ajax Requests in Rails</a></h1>
+	<div class="entry-content">
+		<p>Just figured out a test on which I spent far too long wondering why it wasn&#8217;t working. I kept coming back to it and trying something else, and it kept not working.</p>
+
+<p>We have a form which submits to a create action by a remote_form_for; so, an Ajax request, in other words. The controller action just uses <code>render :update</code> and replaces some HTML instead of redirecting. But in every other respect, it&#8217;s a POST to the controller, and is going to call :create. Easy, right?</p>
+
+<p>We&#8217;re using shoulda, and despite having a perfectly reasonable <code>post :create, :whatever_id => @thing.id, :our_model => { :stuff => "stuff" }</code> in the setup, it wasn&#8217;t actually creating the item; shoulda&#8217;s handy <code>should_change "Thing.count", :by => 1</code> kept failing.</p>
+
+<p>I finally just started flipping through The Literature (in this case, the Rails Way&#8217;s chapter on testing), and happened to notice an off-hand remark that, in addition to methods for POST, PUT, GET, etc, there was an <code>xhr</code> method, to simulate an XMHHttpRequest.</p>
+
+<p>Well.</p>
+
+<p>What I should have been writing, all along, was:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='rb'><span class='line'><span class="n">xhr</span> <span class="ss">:post</span><span class="p">,</span> <span class="ss">:create</span><span class="p">,</span>
+</span><span class='line'>  <span class="ss">:whatever_id</span> <span class="o">=&gt;</span> <span class="vi">@thing</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>
+</span><span class='line'>  <span class="ss">:our_model</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="ss">:stuff</span> <span class="o">=&gt;</span> <span class="s2">&quot;stuff&quot;</span><span class="p">}</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>It&#8217;s always the little things.</p>
+
+<p>Remember to read the literature.</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-01-18T00:00:00-06:00" pubdate data-updated="true">Jan 18<span>th</span>, 2009</time></div>
+	<div class="tags">
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/2009/01/16/in-which-i-am-no-longer-a-very-good-bachelor/">In Which I Am No Longer a Very Good Bachelor</a></h1>
+	<div class="entry-content">
+		<p>My wife has gone to Thailand for two weeks. So I&#8217;m on my own.</p>
+
+<p>I am, as they say, &#8220;batching it&#8221; for a couple weeks. This is usually understood to mean that I will wear the same underwear for two weeks, eat nothing but junk food, abandon cleaning the house, and play video games all night.</p>
+
+<p>This isn&#8217;t working out so well.</p>
+
+<p>The video game thing isn&#8217;t happening. I look at my X-box (old one, not a 360) and think, <em>I could sit and play something for&#8230; for, well for hours.</em> But then I think, <em>But I&#8217;ve finished all the games I own. And I don&#8217;t really feel like replaying them yet, and I could go get a new used game, but I can&#8217;t think of anything I&#8217;d want to own, and really, is that responsible?</em></p>
+
+<p>I tried to leave the dishes in the sink. Normally this is no problem. This week I keep looking at them and thinking, <em>Sheesh, it&#8217;s only going to take five more seconds to put it in the dishwasher.</em> And the next thing I know, it&#8217;s in the dishwasher.</p>
+
+<p>I bought a huge bag of potato chips when I went grocery shopping. They are still sitting unopened on the kitchen table. Every time I look at them, I think, <em>Those sound good, but I should really eat some real food. Those aren&#8217;t very good for me.</em></p>
+
+<p>I have a strange compulsion to vacuum the rug. I can&#8217;t explain it, it&#8217;s just there.</p>
+
+<p>I&#8217;ve tried leaving my clothes on the floor when I change, but it just throws the whole room off. I have to put them in the hamper.</p>
+
+<p>I&#8217;m beginning to think that I am no longer a very good bachelor.</p>
+
+<p>Oh, I can talk the talk. I can say I&#8217;ll eat cereal two meals a day, shower &#8220;later,&#8221; and stay up till 3am. Except that there are some leftovers to eat, and that sounds a little better. Or maybe pasta. Or a roast. With some potatoes and broccoli. And I will feel a lot better if I have a shower, and 3am&#8230; man, I need to get up early, I can&#8217;t do that.</p>
+
+<p>So far, I have not shaved my face. I am counting that as a point for the &#8220;batching it&#8221; score.</p>
+
+<p>But for now, I should get back to work. And if I&#8217;m not going to open those potato chips, I think I should really take them off the kitchen table and put them in the pantry.</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-01-16T00:00:00-06:00" pubdate data-updated="true">Jan 16<span>th</span>, 2009</time></div>
+	<div class="tags">
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/2009/01/14/i-hold-strong-opinions-about-the-placement-of-curly-braces/">I Hold Strong Opinions About the Placement of Curly Braces</a></h1>
+	<div class="entry-content">
+		<p>I hold strong opinions about the placement of curly braces.</p>
+
+<p>I don&#8217;t care where K &amp; R put them, I&#8217;ll put them wherever I want to put them. And don&#8217;t even start with the CSS files with the closing curly brace indented inline with the rules. Where did that come from?</p>
+
+<p>It appears that I also hold strong opinions about indentation. Also, on whether or not a space should be left on the inside of opening and closing delimiters before the argument(s) they contain, where such delimiters are optional, whether or not they should be used, and whether or not text should wrap in the source listing, .</p>
+
+<p>I have strong opinions about choices of languages to use for programming. Although I will concede, probably grudgingly, that there are other languages which may be faster, more elegant, more efficient, or more popular than my favorite language(s), this will not alter my preference, and if pressed I will defend my language regardless of its perceived shortcomings. If nothing else, I will claim that my language is more fun, or some other reason for its superiority which has nothing to do with programming languages <em>per se</em>. Furthermore, I will not accept the use of these same arguments if used to show that a different language is somehow superior to my favorite language or languages.</p>
+
+<p>I have a great respect for people who understand topics or concepts which I do not understand yet, but which I nevertheless place on a pedestal as pinnacles of programming wisdom.</p>
+
+<p>I have deeply held convictions about text editors. Really, it&#8217;s better not to talk about it. Just walk away.</p>
+
+<p>I am strongly attached to the frameworks and libraries which I approve of, and repulsed by the ones of which I do not approve. Large libraries which I like are <em>multifaceted</em>, while the ones which I do not like are <em>bloated</em>. Small libraries which I like are <em>elegant and efficient</em>, while those which I do not like are <em>incomplete or trivial</em>.</p>
+
+<p>I have strong opinions about Operating Systems. People who are not using my favorite Operating System would be far more productive if they would simply &#8220;wake up&#8221; and get &#8220;real computers&#8221;. Brilliant people whom I respect but who nevertheless use other Operating Systems are exempt.</p>
+
+<p>We should talk about indentation some more. I hold opinions on whether said indentations should use spaces or tabs, and how many spaces they should use. They are only opinions. However, if you do not share them, you are probably wrong.</p>
+
+<p>When there is more than one way to do something, I will have an opinion on which is the best way to do it. This opinion is correct, although I may tell you that your way of doing it is fine also. <em>I am just being nice. Your way is retarded, slow, inefficient, insufficiently clever, unmaintainable, obfuscated or deprecated, pick two.</em></p>
+
+<p>I have opinions about software development methodologies. These opinions cover project management styles, agile methodologies, artifacts, modeling languages, and best practices. Projects which fail to do well invariably failed because they neglected an area which I feel very strongly about, and will describe to you in great detail if you show a sign you are interested.</p>
+
+<p>I am deeply attached to my preferred tool for source control management, which is better than your preferred tool for source control management, unless you happen to prefer the same one, in which case you are correct.</p>
+
+<p>I have a favorite computer acronym, a favorite obsolete piece of hardware, a favorite programming anecdote, joke, historical event, and aphorism. I have a favorite algorithm, meme, binary operator, ascii character and UTF entity. I have a favorite NP Complete problem, which is more interesting than your favorite NP Complete problem, even though they can both be shown to be reducible to a common problem, or even to each other.</p>
+
+<p>Despite my not yet having designed or created a killer app, I am convinced that I know why other apps have failed, and will not hesitate to share this knowledge if prompted. Despite having not run a multi-million dollar technology company, I know exactly what is wrong with the companies which are out there, and how they could be fixed.</p>
+
+<p>Just don&#8217;t ask me about politics or religion, now; I prefer not to be argumentative on the internet.</p>
+
+<p><a href="http://xkcd.com/386/"><img src="http://imgs.xkcd.com/comics/duty_calls.png" /></a></p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-01-14T00:00:00-06:00" pubdate data-updated="true">Jan 14<span>th</span>, 2009</time></div>
+	<div class="tags">
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/2008/08/27/some-ruby-and-rails-tricks/">Some Ruby & Rails Tricks</a></h1>
+	<div class="entry-content">
+		<p>I certainly can&#8217;t claim to have <em>discovered</em> these tips; but they&#8217;ve been pretty helpful to me. Maybe this will just make them a little easier to find for whoever is looking for them next.</p>
+
+<h3>Getting A Collection&#8217;s Index From Within a Partial</h3>
+
+
+<p>Lets say you&#8217;re passing a collection to a partial, but that somewhere in that partial you are interested in knowing which index you&#8217;re at. Do you need to implement a counter? Nope; there already is one. A collection passed to a partial implicitly creates a counter called <code>[partial_name]_counter</code>. So, if you called with</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='rb'><span class='line'><span class="o">&lt;</span> <span class="sx">%= render :partial =</span><span class="o">&gt;</span> <span class="s1">&#39;thing&#39;</span><span class="p">,</span> <span class="ss">:collection</span> <span class="o">=&gt;</span> <span class="vi">@a_few_of_my_favorite_things</span> <span class="o">%&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>then in your partial, you could use:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="o">&lt;</span> <span class="o">%=</span> <span class="n">thing_counter</span> <span class="o">%&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>to return the index as you plow through the collection. Life is good. Rails is looking out for you. (Hat tip to <a href="http://gmarik.blogspot.com/2007/09/rails-collection-index-within-partial.html">GMarik</a>, which is where I saw this one.)</p>
+
+<h3>Obtaining a Class name From a String</h3>
+
+
+<p>Today I found myself wanting to take a string, let&#8217;s say <code>"Thing"</code>, and use it as a class name, <code>Thing</code>. Again, it turns out this can be done. In Ruby, class names are constants, so you can do</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">str</span> <span class="o">=</span> <span class="s2">&quot;Thing&quot;</span> <span class="c1">#=&gt; &quot;Thing&quot;</span>
+</span><span class='line'><span class="no">Kernel</span><span class="o">.</span><span class="n">const_get</span><span class="p">(</span><span class="n">str</span><span class="p">)</span> <span class="c1">#=&gt; Thing</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Hooray!</p>
+
+<h3>Make Finding Easier</h3>
+
+
+<p>Find yourself writing long, complicated find expressions in your code? There is a better way.</p>
+
+<p>Perhaps in your code&#8230; maybe even in a view&#8230; maybe you want to find all <code>Things</code> that don&#8217;t belong to the current use, and which are flagged with some property, and you&#8217;re temped to write something like:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">Thing</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="ss">:all</span><span class="p">,</span> <span class="ss">:conditions</span> <span class="o">=&gt;</span> <span class="o">[</span><span class="s2">&quot;user != ? and flag = true&quot;</span><span class="p">,</span> <span class="n">current_user</span><span class="o">]</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>What we could do is put some <code>has_finder</code>s in the Thing model, something like</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">Thing</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
+</span><span class='line'><span class="n">has_finder</span> <span class="ss">:exclude_user</span><span class="p">,</span> <span class="nb">lambda</span> <span class="p">{</span><span class="o">|</span><span class="n">user</span><span class="o">|</span> <span class="p">{</span><span class="ss">:conditions</span> <span class="o">=&gt;</span> <span class="s2">&quot;things.user_id != </span><span class="si">#{</span><span class="n">user</span><span class="o">.</span><span class="n">id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">}</span>
+</span><span class='line'><span class="n">has_finder</span> <span class="ss">:with_flag</span><span class="p">,</span> <span class="ss">:conditions</span> <span class="o">=&gt;</span> <span class="s2">&quot;things.flag = true&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Having done that, you could now replace that first bit with:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">Thing</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="ss">:all</span><span class="p">)</span><span class="o">.</span><span class="n">with_flag</span><span class="o">.</span><span class="n">exclude_user</span><span class="p">(</span><span class="n">current_user</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>It&#8217;s a little shorter, sure, but more importantly, when you read it, it just makes more sense. A completely new person coming to look at this line would have a good idea what it was doing without even looking in the model to see what the <code>has_finder</code>s were doing.</p>
+
+<h3>Okay then</h3>
+
+
+<p>If you&#8217;ve spent any amount of time using rails, these probably aren&#8217;t new to you. Everything&#8217;s new at least <em>once</em>, though, so hopefully these are helpful to someone.</p>
+
+<p>Other favorite ruby or rails tricks? Leave a comment! Heck, we&#8217;re not prejudiced, here, go ahead and comment with your favorite Python or Perl or [other language] tricks, too, if you like.</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-08-27T00:00:00-05:00" pubdate data-updated="true">Aug 27<span>th</span>, 2008</time></div>
+	<div class="tags">
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/2008/05/09/clearing-form-fields-with-jquery/">Clearing Form Fields With jQuery</a></h1>
+	<div class="entry-content">
+		<p>I used a little jQuery last night to clear some form fields. The basic idea was, there were a couple text inputs in the form for first and last name; rather than label the fields, I made the value of each form to be initially &#8220;First&#8221; and &#8220;Last&#8221; respectively.</p>
+
+<p>Then I was requested to make it so that when the field was clicked on, the word &#8220;First&#8221; or &#8220;Last&#8221; (respectively) would disappear, so that you could then proceed to enter a value without needing to highlight and delete the existing value of the text field.</p>
+
+<p>It turns out that with jQuery, this is simple enough; let&#8217;s assume your field has the class &#8220;clearme&#8221;:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;.clearme&#39;</span><span class="p">).</span><span class="nx">focus</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">val</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">);</span>
+</span><span class='line'>  <span class="p">});</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>If you&#8217;re familiar with jQuery, you know that the wrapper <code>$(document).ready()</code> simply waits until the page is finished loading, then executes the function you&#8217;ve passed to it. In this case, the function passed looks for an item of the class &#8220;clearme&#8221; and waits for that element to receive focus. When it does, it changes the value to &#8220;&#8221;.</p>
+
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-6000752616661499";
+/* clear-jquery */
+google_ad_slot = "4377662715";
+google_ad_width = 300;
+google_ad_height = 250;
+//-->
+</script>
+
+
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+
+
+<p>Simple enough&#8230; but wait! Now if the user types in &#8220;Beauregard Charles Maurice&#8221; as a first name, if he inadvertently clicks on the text box again, his name will disappear. <em>He would need to type that all over again.</em> What can be done?</p>
+
+<p>There may be multiple ways; but jQuery has a handy method called &#8220;one&#8221; which will execute an event <em>one time only</em>, which sounds like just what we want. So we&#8217;d change the body of that inner function to look like:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;.clearme&#39;</span><span class="p">).</span><span class="nx">one</span><span class="p">(</span><span class="s2">&quot;focus&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">val</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">);</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-05-09T00:00:00-05:00" pubdate data-updated="true">May 9<span>th</span>, 2008</time></div>
+	<div class="tags">
+
+</div>
+	
+</div></article>
+
+<nav id="pagenavi">
+    
+        <a href="/blog/page/10/" class="prev">Prev</a>
+    
+    
+        <a href="/blog/page/12/" class="next">Next</a>
+    
+    <div class="center"><a href="/blog/archives">Blog Archives</a></div>
+</nav></div>
+	<footer id="footer" class="inner">Copyright &copy; 2012
+
+    Phil Crissman
+
+</footer>
+	<script src="/javascripts/slash.js"></script>
+<script src="/javascripts/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+	$('.fancybox').fancybox();
+})(jQuery);
+</script> <!-- Delete or comment this line to disable Fancybox -->
+
+
+
+
+	<script type="text/javascript">
+		var _gaq = _gaq || [];
+		_gaq.push(['_setAccount', 'UA-77047-1']);
+		_gaq.push(['_trackPageview']);
+
+		(function() {
+			var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+			ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+			var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+		})();
+	</script>
+
+
+
+</body>
+</html>

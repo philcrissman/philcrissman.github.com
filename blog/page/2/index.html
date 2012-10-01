@@ -7,7 +7,7 @@
 	<meta name="author" content="Phil Crissman">
 
 	
-	<meta name="description" content="If you&#8217;re like me, and live primarily online, you have countless distractions in the form of blogs, news sites, photo sites, chat applications &hellip;">
+	<meta name="description" content=" Our son Samuel is almost 17 months old, now. He&#8217;s the coolest. Jul 17th, 2012 ">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -24,7 +24,7 @@
 	<header id="header" class="inner"><h1><a href="/">philcrissman.com</a></h1>
 <nav id="main-nav"><ul class="main">
 	<li><a href="/">Blog</a></li>
-  <li><a href="/about/">About</a></li>
+	<li><a href="/about">About</a></li>
 	<li><a href="/blog/archives">Archives</a></li>
 </ul>
 </nav>
@@ -33,7 +33,7 @@
 		<a class="button">Menu</a>
 		<div class="container"><ul class="main">
 	<li><a href="/">Blog</a></li>
-  <li><a href="/about/">About</a></li>
+	<li><a href="/about">About</a></li>
 	<li><a href="/blog/archives">Archives</a></li>
 </ul>
 </div>
@@ -51,7 +51,7 @@
 <nav id="sub-nav" class="alignright">
 	<div class="social">
     
-    <a class="appdotnet" href="http://alpha.app.net/philcrissman" title="app.net">AppDotNet</a>
+		<a class="appdotnet" href="http://alpha.app.net/philcrissman" title="App.net">App.net</a>
     
 		
 		
@@ -77,55 +77,35 @@
 </nav>
 
 </header>
-	<!--  -->
-	<!-- 	
-<div id="banner" class="inner">
-	<div class="container">
-		<ul class="feed"></ul>
-	</div>
-	<small><a href="http://twitter.com/philcrissman">philcrissman</a> @ <a href="http://twitter.com">Twitter</a></small>
-	<div class="loading">Loading...</div>
-</div>
-<script src="/javascripts/twitter.js"></script>
-<script type="text/javascript">
-	(function($){
-		$('#banner').getTwitterFeed('philcrissman', 4, false);
-	})(jQuery);
-</script>
- -->
-	<!--  -->
+	
+		<!-- ad -->
+
+
+<!-- <div id="banner" class="inner"> -->
+	<!-- <div class="container"> -->
+	<!-- 	<ul class="feed"></ul> -->
+	<!-- </div> -->
+	<!-- <small><a href="http://twitter.com/philcrissman">philcrissman</a> @ <a href="http://twitter.com">Twitter</a></small> -->
+	<!-- <div class="loading">Loading...</div> -->
+<!-- </div> -->
+<!-- <script src="/javascripts/twitter.js"></script> -->
+<!-- <script type="text/javascript"> -->
+<!-- 	(function($){ -->
+<!-- 		$('#banner').getTwitterFeed('philcrissman', 4, false); -->
+<!-- 	})(jQuery); -->
+<!-- </script> -->
+
+
+	
 	<div id="content" class="inner">
 
 
     <article class="post">
-	<h1 class="title"><a href="/2011/02/21/test-first-as-a-productivity-hack/">Test First as a Productivity Hack</a></h1>
+	<h1 class="title"><a href="/2012/07/17/not-far-from-the-tree/">Not Far From the Tree</a></h1>
 	<div class="entry-content">
-		<p><a href="/images/posts/focus.jpg"><img src="/images/posts/focus.jpg" width="440" /></a></p>
+		<p><a href="/images/posts/sam-laptop.jpeg"><img src="/images/posts/sam-laptop.jpeg" width="440" /></a></p>
 
-<p>If you&#8217;re like me, and live primarily online, you have countless distractions in the form of blogs, news sites, photo sites, chat applications, twitter/facebook, web comics, etc. It&#8217;s really easy to sit down at your computer, and if you&#8217;re not focused, simply call up <a href="http://thisisnthappiness.com">TIH</a> or <a href="http://news.ycombinator.com">HN</a> or <a href="http://bestofwikipedia.tumblr.com">bestofwikipedia</a> and soon find the first hour of your day has been completely sucked up just <em>looking at stuff</em>.</p>
-
-<p>Well, if you&#8217;re a contractor or freelancer, that may not be how you wanted to spend the first hour of your day. You just lost an hour of billable time; do that every day and you&#8217;re cheating yourself out of a lot of hours, especially if (guilty look) you&#8217;re prone to a similar web-surfing session after returning from lunch.</p>
-
-<p>Something I&#8217;ve started doing, that I&#8217;ve found to be a great help in avoiding losing focus like this, is to sit down and make the <em>my very first task</em> to be writing a test for the app that I&#8217;m currently working on.</p>
-
-<p>So, in this context, I&#8217;m not talking about &#8220;test first&#8221; in the TDD (Test Driven Development) sense, although I do practice that. I mean &#8220;test first&#8221; literally, as, <em>when my seat hits the chair, and my fingers touch the keyboard, write a test</em>.</p>
-
-<p>This accomplishes a few different things.</p>
-
-<ol>
-<li>An immediate thing to focus on. Part of the reason I get distracted by the web is that I may not have an <em>immediate</em> action to start on. Having an immediate, easy to start, first action makes a world of difference.</li>
-<li>It gets me in the &#8220;work&#8221; mindset and flow. It doesn&#8217;t matter what the test is. It might be as simple as a throw-away &#8220;when I go to this page, I should see the correct page title&#8221; test &#8211; the point isn&#8217;t that this test <em>needs</em> to be written for the health of the application&#8217;s test suite; it&#8217;s simply a hack to get you into work-mode. Once I look at the code, add a test, make sure it runs, by then I&#8217;ve only spent about 2-4 minutes, but I&#8217;ve avoided getting side-tracked, and I&#8217;m already into the codebase, so it&#8217;s very natural to look at what needs to be done next, and start doing it.</li>
-<li>Hey, if I choose wisely, some of this uber-simple tests I&#8217;m adding as a first action may actually be useful. If a test is <em>truly</em> trivial, you probably just want to delete it; but chances are you can find <em>something</em> simple to test that actually does need to be true in the finished app; all the better. You <em>have</em> actually improved your test suite, while simultaneously avoiding that &#8220;morning distraction&#8221; time, and getting yourself into the flow of <em>getting things done</em>.</li>
-</ol>
-
-
-<p>Your mileage may vary. But it&#8217;s been working for me. Adding something like the <a href="http://www.pomodorotechnique.com/">Pomodoro technique</a> to this means that I&#8217;ll still get a chance to catch up on my blogs/etc during the day, but without the trap of spending my first hour surfing mindlessly.</p>
-
-<p>What are your &#8220;get back to work&#8221; hacks?</p>
-
-<p><span style="font-size: 0.8em; color: #666;">
-Photo credit: <a href="http://www.flickr.com/photos/ihtatho/627226315/sizes/m/in/photostream/">flickr</a>
-</span></p>
+<p>Our son Samuel is almost 17 months old, now. He&#8217;s the coolest.</p>
 
 		
 		
@@ -145,7 +125,7 @@ Photo credit: <a href="http://www.flickr.com/photos/ihtatho/627226315/sizes/m/in
   
 
 
-<time datetime="2011-02-21T00:00:00-06:00" pubdate data-updated="true">Feb 21<span>st</span>, 2011</time></div>
+<time datetime="2012-07-17T14:08:00-05:00" pubdate data-updated="true">Jul 17<span>th</span>, 2012</time></div>
 	<div class="tags">
 
 </div>
@@ -154,14 +134,48 @@ Photo credit: <a href="http://www.flickr.com/photos/ihtatho/627226315/sizes/m/in
 
 
     <article class="post">
-	<h1 class="title"><a href="/2011/02/01/ujs-in-rails-3-slides/">UJS in Rails 3 Slides</a></h1>
+	<h1 class="title"><a href="/2012/06/22/what-i-learned-selling-pizzas-door-to-door/">What I Learned Selling Pizzas Door to Door</a></h1>
 	<div class="entry-content">
-		<p>So, here&#8217;s those slides from the other night.</p>
+		<p>In 1991 I had graduated from high school and was well on my way to being an unemployed drug addict. Well on my way, as in, I was an unemployed drug addict.</p>
 
-<div style="width:425px" id="__ss_6775992"><strong style="display:block;margin:12px 0 4px"><a href="http://www.slideshare.net/philcrissman/ujs-in-rails-3-6775992" title="UJS in Rails 3">UJS in Rails 3</a></strong><object id="__sse6775992" width="425" height="355"><param name="movie" value="http://static.slidesharecdn.com/swf/ssplayer2.swf?doc=ujs-110201093325-phpapp02&stripped_title=ujs-in-rails-3-6775992&userName=philcrissman" /><param name="allowFullScreen" value="true"/><param name="allowScriptAccess" value="always"/><embed name="__sse6775992" src="http://static.slidesharecdn.com/swf/ssplayer2.swf?doc=ujs-110201093325-phpapp02&stripped_title=ujs-in-rails-3-6775992&userName=philcrissman" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="425" height="355"></embed></object><div style="padding:5px 0 12px">View more <a href="http://www.slideshare.net/">presentations</a> from <a href="http://www.slideshare.net/philcrissman">philcrissman</a>.</div></div>
+<p>I&#8217;m not sure if you&#8217;ve ever been a drug addict, but it&#8217;s difficult to buy drugs when you&#8217;re broke. This one day there was one of those ads in the classifieds of some local paper, I can&#8217;t remember the content, but it sounded good so I went to check it out.</p>
+
+<p>It was pretty much a pyramid scheme. Here was the deal:</p>
+
+<p>You sold pizzas, door to door.</p>
+
+
+		
+		<a href="/2012/06/22/what-i-learned-selling-pizzas-door-to-door/" class="more-link">Continue reading</a>
+	</div>
+
+
+<div class="meta">
+	<div class="date">
 
 
 
+
+
+
+
+
+  
+
+
+<time datetime="2012-06-22T21:08:00-05:00" pubdate data-updated="true">Jun 22<span>nd</span>, 2012</time></div>
+	<div class="tags">
+
+</div>
+	
+</div></article>
+
+
+    <article class="post">
+	<h1 class="title"><a href="/2012/05/18/code-isnt-swayed-by-logic/">Code Isn&#8217;t Swayed by Logic</a></h1>
+	<div class="entry-content">
+		<p>&#8220;What is it that we want to get out of code? The most important thing is learning. The way I learn is to have a thought, then test it out to see if it is a good thought. Code is the best way I know of to do this. Code isn&#8217;t swayed by the power and logic of rhetoric. Code isn&#8217;t impressed by college degrees or large salaries. Code just sits there, happily doing exactly what you told it to do. If that isn&#8217;t what you thought you told it to do, that&#8217;s your problem.&#8221;
+- Kent Beck, <a href="http://www.amazon.com/gp/product/0321278658/ref=as_li_ss_tl?ie=UTF8&amp;tag=idepermin-20&amp;linkCode=as2&amp;camp=1789&amp;creative=390957&amp;creativeASIN=0321278658">Extreme Programming Explained</a></p>
 
 		
 		
@@ -181,7 +195,7 @@ Photo credit: <a href="http://www.flickr.com/photos/ihtatho/627226315/sizes/m/in
   
 
 
-<time datetime="2011-02-01T00:00:00-06:00" pubdate data-updated="true">Feb 1<span>st</span>, 2011</time></div>
+<time datetime="2012-05-18T08:32:00-05:00" pubdate data-updated="true">May 18<span>th</span>, 2012</time></div>
 	<div class="tags">
 
 </div>
@@ -190,11 +204,31 @@ Photo credit: <a href="http://www.flickr.com/photos/ihtatho/627226315/sizes/m/in
 
 
     <article class="post">
-	<h1 class="title"><a href="/2011/01/31/ujs-in-rails-3-tonight-at-rum/">UJS in Rails 3 Tonight at RUM</a></h1>
+	<h1 class="title"><a href="/2011/10/10/how-to-read-web-analytics/">How to Read Web Analytics</a></h1>
 	<div class="entry-content">
-		<p>UJS in Rails 3, tonight at RUM</p>
+		<p>The CEO of BigCorp just got the company&#8217;s web analytics report and is
+trying to make sense of it. He calls in his lead developer and asks him
+what the analytics report says.</p>
 
-<p>I&#8217;ll be speaking tonight on UJS and Rails 3 at <a href="http://ruby.mn/">RUM</a>. Slides will be posted somewhere later this week, and I may follow up with a post that summarizes the content, if the slides don&#8217;t seem complete enough to cover the topic on their own.</p>
+<p>&#8220;We&#8217;re doing great,&#8221; says the developer. &#8220;Look at all these hits and
+page views. We&#8217;re having no scaling issues. The report says everything
+is going well.&#8221;</p>
+
+<p>Happy but not satisfied, the CEO calls in his head of marketing and asks
+her what the analytics report says.</p>
+
+<p>&#8220;Not so good,&#8221; says the head of marketing. &#8220;We have a lot of page views,
+but no one is sticking around very long or drilling deeper into the
+site. We need to generate more content and revamp our web design.&#8221;</p>
+
+<p>A little nervous now, the CEO also calls in the SEO consultant who&#8217;s
+been working with the company, and asks the consultant what the
+analytics report says.</p>
+
+<p>The SEO consultant spends a few minutes reading the report. After
+looking around to make sure the door is closed and no one is listening,
+the SEO consultant leans forward and asks, &#8220;What would you like it to
+say?&#8221;</p>
 
 		
 		
@@ -214,7 +248,7 @@ Photo credit: <a href="http://www.flickr.com/photos/ihtatho/627226315/sizes/m/in
   
 
 
-<time datetime="2011-01-31T00:00:00-06:00" pubdate data-updated="true">Jan 31<span>st</span>, 2011</time></div>
+<time datetime="2011-10-10T00:00:00-05:00" pubdate data-updated="true">Oct 10<span>th</span>, 2011</time></div>
 	<div class="tags">
 
 </div>
@@ -223,360 +257,71 @@ Photo credit: <a href="http://www.flickr.com/photos/ihtatho/627226315/sizes/m/in
 
 
     <article class="post">
-	<h1 class="title"><a href="/2011/01/14/looselyjoinednet/">looselyjoined.net</a></h1>
+	<h1 class="title"><a href="/2011/07/06/too-clever-to-debug/">Too Clever to Debug</a></h1>
 	<div class="entry-content">
-		<p>I&#8217;ve been piling a lot of links, images, and whatnot up on a <a href="http://posterous.com">posterous.com</a> website: see <a href="http://looselyjoined.net">looselyjoined.net</a>. Enjoy, if you are so inclined.</p>
+		<p><a href="http://www.flickr.com/photos/themadlolscientist/2538226772/sizes/z/in/photostream/"><img src="/images/posts/math_fail.jpg" width="440" /></a></p>
 
-		
-		
-	</div>
+<blockquote><p>&#8220;Debugging is twice as hard as writing the code in the first place.  Therefore, if you write the code as cleverly as possible, you are, by definition, not smart enough to debug it.&#8221;
+&#8211;Brian Kernighan</p></blockquote>
 
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-01-14T00:00:00-06:00" pubdate data-updated="true">Jan 14<span>th</span>, 2011</time></div>
-	<div class="tags">
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/2010/11/11/lets-roll/">Let&#8217;s Roll</a></h1>
-	<div class="entry-content">
-		<p><a href="/images/posts/d20-iwojima.jpg"><img src="/images/posts/d20-iwojima.jpg" width="440" /></a></p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-11-11T00:00:00-06:00" pubdate data-updated="true">Nov 11<span>th</span>, 2010</time></div>
-	<div class="tags">
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/2010/11/09/anti-gravity/">Anti-Gravity</a></h1>
-	<div class="entry-content">
-		<p><img src="/images/posts/antigravbook.jpg" alt="Anti-Gravity" /></p>
-
-<p><a href="http://comixed.memebase.com/2010/10/26/4-koma-comic-strip-a-real-page-turner/">link</a></p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-11-09T00:00:00-06:00" pubdate data-updated="true">Nov 9<span>th</span>, 2010</time></div>
-	<div class="tags">
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/2010/11/08/how-to-read-error-messages-for-ruby-on-rails/">How to Read Error Messages for Ruby on Rails</a></h1>
-	<div class="entry-content">
-		<p><img src="/images/posts/stack.jpg" alt="stack" /></p>
-
-<p>Off and on (more off than on, recently) I lurk in the #rubyonrails IRC channel and try to be helpful. It&#8217;s sad to say, but it&#8217;s really common that people have questions &#8211; something isn&#8217;t working &#8211; and when they post the error message that they&#8217;re getting, their problem (and its implicit solution) is written in plain English in the first few lines of the error message. Not every time of course, but more often than not, error messages are trying to tell you something, and you should listen to what they&#8217;re telling you.</p>
-
-<p>The greatest possible help you can give someone who is having this sort of problem is to advise them to read the error messages and try to figure it out. It sounds a little harsh, shades of the RTFM-type of &#8220;help&#8221; that some communities are known for. But in the long run, it&#8217;s going to help the new developer a lot more to be able to read an error message than to simply ask you to read it for them.</p>
-
-<p>That said, here&#8217;s some things to look for in some fairly common Ruby and/or Rails error messages:</p>
-
-<h3>These are not the gems you&#8217;re looking for.</h3>
-
-<p><code>[gem] not found</code>, not present, etc. : so, you think you have installed a gem or plugin. Make sure.</p>
-
-<h3>You can&#8217;t <em>do</em> that with <em>this</em></h3>
-
-<p><code>no method error 'something' on SomeClass.</code> You&#8217;re trying to call a method on an object which does not actually have that method. Yes, I know, you think it does, but if it did, then your code would be working. So what is happening is that either you have a different object than you expected to have, or some Module which provides the method has not been included, or (if it&#8217;s an ActiveRecord object) the column or association you&#8217;re assuming is there is not actually there. Also, you may have spelled the method wrong, or it may be that the method you think is there doesn&#8217;t actually exist.</p>
-
-<p>A variation of this is when you have <code>no method 'whatever' for NilClass</code>&#8230; the issue here is that the object you&#8217;re looking for (almost certainly an ActiveRecord object) was not found; there was no record with a given id in the scope you were searching. So nil is what you were calling the method on, and NilClass has surprisingly few methods to call its own.</p>
-
-<p>A slight variation, somewhat related to the above case, is the error that you&#8217;re attempting to call the id for 4 which is nil, or some such confusing warning. Well, again, your object is nil. The id of nil is 4. Open up irb and check: the id (object_id, really) for nil is 4.</p>
-
-<p>Other things that can cause a nil error in a controller action and/or view are: not actually setting a value for an instance variable, forgetting to pass a local variable to a partial, and things of that nature.</p>
-
-<p>I thought I would be writing more, but most errors I can think of off the top of my head fall into one of these categories: a gem/library/plugin isn&#8217;t present, a no-method-error, and/or having an object be nil when you really expected it to be something else.</p>
-
-<p>Bottom line:</p>
-
-<p>Read the error messages.</p>
-
-<p>Read the error messages.</p>
-
-<p>Read the error messages.</p>
-
-<h3>But the error message isn&#8217;t helping!</h3>
-
-<p>Yeah, sometimes you just don&#8217;t know quite what the issue is. Or you can see what it is, but you aren&#8217;t sure <em>where</em> exactly it&#8217;s coming from. That&#8217;s where the stack trace comes it.</p>
-
-<p>Most error messages are accompanied by a stack trace which lists the method calls that led to the error that occurred. By going back down the stack trace, you can generally find the exact file, the exact method, and even the exact line number, which is ultimately responsible for causing the error.</p>
-
-<p>In Rails, most often (maybe not every time, but most often) the error will be in a file that you wrote, not one of the rails files. When I need to look through a stack trace for an error, I generally just start scanning down the list, skipping over any/all files that belong to a Rails core gem or library until I get to something in app/, config/, or lib/; basically, until I get to something that <em>I</em> wrote. Then I look for the line number, and most likely there I&#8217;ll find the reason the error was called.</p>
-
-<h3>I still can&#8217;t figure out what&#8217;s wrong.</h3>
-
-<p>Sometimes you just have to think about it for awhile. The key is, you have found the reason the error is being raised. You might <em>think</em> that your code is correct, but if an error is being raised, something isn&#8217;t right. It may be an assumption you&#8217;re using that isn&#8217;t really true, a typo, a logical error, a syntax error, but <em>somewhere</em>, there is a problem. If you get to your line of code which is responsible for the error and you still don&#8217;t know why it&#8217;s failing, (and a google search for the error and/or situation reveals nothing new), that might be a good time to ask for advice on IRC. You can also just start asking yourself: okay, I know this line of code is causing an error. Why would it be failing? What assumptions is this line of code making which may have turned out not be true? Would any of those assumptions cause this error?</p>
-
-<p>&#8230; and so forth.</p>
-
-<p>But again:</p>
+<p>This sounds nice, and can (maybe) be good advice in some cases. But it can&#8217;t possibly be true; in fact, it rests on a bit of a logically flawed syllogism:</p>
 
 <ul>
-<li><p>Read the error message.</p></li>
-<li><p>Read the stack trace.</p></li>
-<li><p>Read your code.</p></li>
-<li><p>Think about it.</p></li>
+<li>A: Debugging is twice as hard as writing code.</li>
+<li>B: Writing code is hard.</li>
+<li>C: Ergo, if you write the hardest code you possibly can, you are not smart enough to debug your own code.</li>
 </ul>
 
 
-		
-		
-	</div>
+<p>The problem sits in both in assumption A, and in an unspoken assumption about what it means for something to be &#8220;hard&#8221;.</p>
 
+<p>Regarding A, there&#8217;s no backing behind this &#8220;debugging is twice as hard&#8221; assumption; it&#8217;s simply stated. Regarding the idea of relative <em>hardness</em> of a problem; the conclusion to the above syllogism assumes that there is a ceiling of &#8220;hardness&#8221; which you are capable of comprehending. If your code is at that ceiling, it argues, then debugging it will be impossible for you, because debugging it will be harder than writing it, which was the limit of how &#8220;hard&#8221; a problem you can solve. I reality, I don&#8217;t believe this to be the case; something may be &#8220;harder&#8221; than anything I&#8217;ve yet worked through, but that only means it might take me more time and more effort to understand it; not that I cannot possibly comprehend it.</p>
 
-<div class="meta">
-	<div class="date">
+<p>Now, we all know that bugs can be hard to find and fix, so we tend to simply accept, even encourage, statements like this. But are they really true?</p>
 
+<p>Think back to your Algebra, Trig, or Calculus classes; if you took these in the same sort of classes, with the same sort of textbooks, that I did, you were routinely given assignments whose answers were in the back of the book. The idea was, you would work through the problems, and then check your answer to see how you did. If you had an incorrect answer, then you would look at the steps you took to solve the equation until you found the point at which you had made a mistake.</p>
 
+<p>This is, to my mind, completely analogous to programming. You write a piece of code to do a certain thing; then you either write a test, or you simply run it with some sample input, to ensure that it does what you think it does. If you test it thoroughly (note: this <em>is</em> actually hard, and is the reason that bugs often slip into production code), then you will either:</p>
 
+<ul>
+<li>a) discover that your code successfully does what you intended, or</li>
+<li>b) discover a case where your code returns an incorrect result; in other words, a bug, or a place where you made a mistake.</li>
+</ul>
 
 
+<p>In case b, you&#8217;ll do the same thing you used to do with your math homework; you&#8217;ll start going through it until you find the place where you made a mistake, and you&#8217;ll fix it, and (ideally), you&#8217;ll write a test that mocks this scenario, and be satisfied that this bug is squashed.</p>
 
+<p>Debugging is indeed hard; there are several things which make it harder than just solving a math equation. For one thing, in your programs, you may not have total control over what inputs (if applicable) are sent to your function. You might intend that factorial(num) always receives an integer as its argument. What if some malevolent person calls it and sends a String? An octal value? An object? An array? Do you care? Does your function try to detect this and either raise an error or return false? Is returning false or nil <em>really</em> what you want to do in that case? What if a number is sent that is larger than MAX_INT? Does it fail silently, interpret the number as whatever your programming language sees it, raise an error&#8230; ? In comparison, you can pretty much ensure that x, whatever it may be, in your Algebra exercise, is a number. It&#8217;s probably a Real number. And you can probably find it without too much trouble.</p>
 
+<p>Another thing that I like about this example is that it basically shows that the process of learning math is essentially the process of locating and fixing your mistakes. The instructor, the course, <em>assumes</em> that you will not always get the correct answer. That&#8217;s the whole reason there are answers in the back of the book, and that you are assigned those questions which actually have answers. The basic premise is that you will get some questions wrong, and that through the process of realizing you are wrong and going back to find where you are wrong (and fixing it), you are doing something which we call <em>learning math</em>.</p>
 
-  
+<p>Programming, I&#8217;d argue, works the same way. You learn to program, <em>not</em> by consistently writing correct programs, but by writing bugs. Then, once you realize you have written a bug, you locate it, attempt to understand <em>why</em> it&#8217;s a bug, why you erroneously believed that it would work, what you should do instead, and how to do that thing.</p>
 
+<p>We call this &#8220;learning to program&#8221;.</p>
 
-<time datetime="2010-11-08T00:00:00-06:00" pubdate data-updated="true">Nov 8<span>th</span>, 2010</time></div>
-	<div class="tags">
+<p>If you are not smart enough to find and fix bugs, you are actually not smart enough to learn to program. The good news is, you <em>are</em> smart enough to find and fix bugs, and you are smart enough to program.</p>
 
-</div>
-	
-</div></article>
+<p>The logical error comes in the assumption that <em>writing the hardest/most complex/most clever code that you can</em> is the theoretical limit of your intelligence, and that, since &#8220;debugging is harder than coding&#8221;, you are not clever enough to see the bugs in your own code.</p>
 
+<p>That&#8217;s similar to saying that if you are doing the hardest Calculus question you are currently capable (or barely capable) of doing, if you make a mistake, you are unable to find and fix that mistake, because finding the mistake is (somehow) harder than solving the problem.</p>
 
-    <article class="post">
-	<h1 class="title"><a href="/2010/10/22/one-does-not-simply-walk-into-mordor/">One Does Not Simply Walk Into Mordor</a></h1>
-	<div class="entry-content">
-		<p><img src="/images/posts/walksintomordor.jpg" width="440" /></p>
+<p>Put that way, it seems absurd. Of course finding your mistake isn&#8217;t &#8220;harder&#8221; than solving the problem; finding the mistake is <em>part of</em> the problem. In fact, since generally every step in solving an equation or working out an integral or a derivative involves smaller steps based on things you have <em>already learned and mastered</em> (again&#8230; theoretically), you almost definitely <em>can</em>, for sure, find your error if you go through each of your steps carefully, thinking about what you are doing and why you&#8217;re doing it.</p>
 
-		
-		
-	</div>
+<p>Sure, finding bugs is hard. That&#8217;s because if it was easy, you wouldn&#8217;t have written the bug in the first place. The bug represents that place in your algebra homework where you&#8217;d make that tiny arithmetic error, or forget to flip the sign when a number was/wasn&#8217;t negative, or where you&#8217;d mis-apply some other mathematical rule. Spotting where you made that error is simply the process of learning math.</p>
 
+<p>That&#8217;s not the same as it being <em>too hard</em> for you to accomplish. I would guess (though I can&#8217;t <em>know</em> this) that Mr. Kernighan intended his little aphorism to be taken with a rather liberal grain of salt, that it was actually a bit of the subtle humor engineers and geeks are so fond of. The fact that we&#8217;ve taken it at face value and treated it as though it were actually true is <em>our</em> fault, not Brian Kernighan&#8217;s.</p>
 
-<div class="meta">
-	<div class="date">
+<p>Now, the actual quote (according to <a href="http://en.wikiquote.org/wiki/Brian_Kernighan">wikiquote</a>) seems to be from Elements of Programming Style, and goes:</p>
 
+<blockquote><p>&#8220;Everyone knows that debugging is twice as hard as writing a program in the first place. So if you&#8217;re as clever as you can be when you write it, how will you ever debug it?&#8221;</p></blockquote>
 
+<p>This still has that logical leap embedded in it (&#8221;<em>Everyone knows</em> that debugging is twice as hard&#8221;, etc.), but it does have a good, valid point, <em>depending on how you define &#8220;as clever as you can be&#8221;</em>. (If <em>being clever</em> is actually <em>being smart</em>, then &#8220;as clever as you can be&#8221; would be to only write code which you are capable of debugging&#8230; but I digress.)</p>
 
+<p>What I think this really is <em>intended</em> to mean is: if you write code <em>that you do not completely understand</em>, you will (potentially) introduce bugs <em>which you are not capable of identifying or resolving</em>.</p>
 
+<p>The key is code that <em>you don&#8217;t understand</em>. The reason you won&#8217;t be able to find the bugs is that you don&#8217;t understand what your code is doing in the first place. If that&#8217;s true, then yes, of course you have written un-debuggable software (for <em>you</em>, at least; someone who understands what you wrote can certainly find your bugs). The other side of this coin is that, if you take the time and effort to understand the code that you wrote, you <em>can</em> find the bugs. And you can remove them.</p>
 
-
-
-
-  
-
-
-<time datetime="2010-10-22T00:00:00-05:00" pubdate data-updated="true">Oct 22<span>nd</span>, 2010</time></div>
-	<div class="tags">
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/2010/10/06/by-land-and-by-sea-and-by-reference/">By Land and by Sea and by Reference</a></h1>
-	<div class="entry-content">
-		<p><img src="/images/posts/travel_land_sea_air.jpg" width="440" />
-<span style="font-size:0.8em"><a href="http://www.flickr.com/photos/hitchster/4118220915/">Photo source</a></span></p>
-
-<p>I recently attempted to fit the quicksort algorithm into under 140 characters of Ruby. It looks like:</p>
-
-<pre>
-<code class="ruby">
-
-def q(s);t=s.dup;t.size<=1 ? t :(p=t[i=t.size/2];t.delete_at(i);x,y=[],[];t.each{|e|e&lt;p ? x&lt;&lt;e : y&lt;&lt;e};n=q(x);m=q(y);n+[p]+m)end
-
-</code>
-</pre>
-
-
-<p></p>
-
-<p>That&#8217;s a little hard to read, so here&#8217;s the first working version I wrote before attempting to squeeze it into twitterable form:</p>
-
-<pre>
-<code class="ruby">
-def quicksort(sequence)
-  tmp = sequence.clone
-  if tmp.count <= 1 
-    return tmp
-  else
-    pivot_index = (tmp.count / 2)
-    pivot = tmp[pivot_index]
-    # pull the pivot out of the array.
-    tmp.delete_at(pivot_index)
-    
-    # create 2 sub-sequences, one < pivot, one >= pivot
-    sub_sequence_a = []
-    sub_sequence_b = []
-    tmp.each do |element|
-      if element < pivot
-        sub_sequence_a << element
-      elsif element >= pivot
-        sub_sequence_b << element
-      end
-    end
-
-    # quicksort sub-sequence 1
-    new_sub_sequence_a = quicksort(sub_sequence_a)
-    
-    # quicksort sub-sequence 2
-    new_sub_sequence_b = quicksort(sub_sequence_b)
-    
-    # return sub1 plus pivot plus sub2
-    new_sub_sequence_a + [pivot] + new_sub_sequence_b
-  end
-end
-</code>
-</pre>
-
-
-<p>A key step in this implementation is pulling the pivot <em>out</em> of the array (see around line 9). In my first naive attempt at quicksort I just deleted the pivot right from <code>sequence</code>, the array object that is passed in to be sorted.</p>
-
-<p>Anyone see the problem there?</p>
-
-<p>At first, I sure didn&#8217;t. After all, I put the pivot back in the return value, right? (Second to last line.)</p>
-
-<p>That does indeed ensure that the <em>returned</em>, <em>sorted</em> array has all the same elements as the original array. But the original array that I passed in would now have one less item. It would (did) lose an element every time I&#8217;d run my naive (read: incorrect) implementation of quicksort on it.</p>
-
-<h3>WTF?</h3>
-
-
-<p>Enter passing objects by reference. In Ruby, everything is passed by reference.(1) It can be easy to forget this, though, especially if you&#8217;re used to changing objects with the assignment (&#8220;=&#8221;) operator.</p>
-
-<blockquote style="font-size:0.85em">
-1 Just in case that&#8217;s not a familiar phrase, &#8220;by reference&#8221; refers to the idea that a reference to the <strong>actual object</strong> (like a pointer, if you will) is being passed, not just a copy of the object, or just the value of the object (which is called passing &#8220;by value&#8221;). (And no, by &#8220;pointer&#8221; I&#8217;m not talking about pointers in C/C++, I&#8217;m just trying to say that a reference <strong>refers to</strong> or in a sense, <strong>points to</strong>, the actual original object.)
-</blockquote>
-
-
-<p>For example:</p>
-
-<pre>
-<code class="ruby">
-def reassign(obj)
-  obj = "Not the same!"
-end
-
-#irb
-> greeting = "Hello!"
-=> "Hello!"
-> reassign(greeting)
-=> "Not the same!"
-> puts greeting
-Hello!
-=> nil
-</code>
-</pre>
-
-
-<p>So, assignment inside a method doesn&#8217;t change our object. Ruby must not <em>really</em> be passing a referece, right? Wrong, it sure is.</p>
-
-<pre>
-<code class="ruby">
-def shiftit(obj)
-  obj.shift
-end
-
-#irb
-> h = {:foo => "bar", :bar => "baz", :baz => "qux"}
-=> {:foo=>"bar",:bar =>"baz",:baz=>"qux"}
-> a = [1,2,3,4,5,6]
-=> [1,2,3,4,5,6]
-> shiftit(h)
-=> {:bar =>"baz",:baz=>"qux"}
-> shiftit(a)
-=> [2,3,4,5,6]
-> # BUT WAIT
-> h
-=> {:bar =>"baz",:baz=>"qux"}
-> a
-=> [2,3,4,5,6]
-</code>
-</pre>
-
-
-<p>Huh. How about that. Our original objects were changed when they were modified inside the method.</p>
-
-<p>You&#8217;ll find that any method of modifying an object inside another method with actually change (even delete, if you go that far) the original object that you passed in. Ruby quite definitely, always, passed objects by reference.</p>
-
-<h3>Then How come <em>assignment</em> in a method doesn&#8217;t change an object?</h3>
-
-
-<p>That&#8217;s a good question. I was stumped on this one myself for a bit. The answer comes down to the idea of <em>bindings</em> and <em>scope</em>. When I tell Ruby that <code>foo = "bar"</code>, Ruby binds the local variable named <em>foo</em> to a String object, &#8220;bar&#8221;. foo is a String object, and when I pass it to my <code>reassign</code> method, I am passing a reference to the real object, <code>foo</code>.</p>
-
-<p>However, inside the method, I&#8217;m in a new scope. When I type <code>foo = "Some new value"</code> inside the method scope, trying to reassign <code>foo</code>, Ruby sees that I&#8217;m binding foo to a new value; but from inside method scope, Ruby is not going to let me change the binding from another scope. So instead, Ruby figures that I want a local variable that is <em>also</em> named <code>foo</code>, inside my method scope, and it assigns my new value to the local <code>foo</code>, not the original <code>foo</code>.</p>
-
-<p>I could alter it, still: if I changed the <code>reassign</code> method so that it did <code>obj.replace("Some new value!")</code> inside the method body, the original object would be changed, just like <code>shiftit</code> did to the array and the hash.</p>
-
-<h3>I think I&#8217;m a clone, now</h3>
-
-
-<p>Back to the quicksort implementation I started with: the way to get around this is to use .clone or .dup to get a <em>copy</em> of the object. That way you aren&#8217;t actually modifying the original object. Even when I realized this was happening, I still made the mistake of just doing <code>tmp = sequence</code> on my first try. No good; same exact problem. <code>tmp</code> is now just a reference straight to <code>sequence</code>, so altering <code>tmp</code> modifies <code>sequence</code> as well. Need to use <code>tmp = sequence.clone</code>, or something like it.</p>
-
-<h3>That&#8217;s all I have to say about that</h3>
-
-
-<p>Say it with me now: &#8220;Ruby passes objects by reference. <em>Ruby passes objects by reference.</em> Every time. <em>All the time.</em> <strong>By reference.</strong>&#8221;</p>
+<p>This is called <em>programming</em>. You&#8217;ve probably been doing it for a long time. The fact that we&#8217;re still creating and fixing bugs only means that we haven&#8217;t finished learning to do it yet.</p>
 
 		
 		
@@ -596,141 +341,7 @@ end
   
 
 
-<time datetime="2010-10-06T00:00:00-05:00" pubdate data-updated="true">Oct 6<span>th</span>, 2010</time></div>
-	<div class="tags">
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/2010/08/11/fun-with-the-major-scale/">Fun With the Major Scale</a></h1>
-	<div class="entry-content">
-		<p>Got to chatting with Nate <a href="http://twitter.com/fowlduck">(@fowlduck)</a> about musical notation last night. He was pointing out that bits of the notation seem arbitrary and probably archaic, likening it to legacy code of a sort. For example, why no whole tone between B and C, E and F? This post is NOT meant to be a defense of music notation, a &#8220;setting straight&#8221; of anything, or even a definitive description of musical theory (at which I&#8217;m a rank amateur). It just got me thinking about the major scale and the circle of fourths &amp; fifths, which led to some playing around on the command line, which led to this. Enjoy.</p>
-
-<p>The thing that makes it seem so strange is, at least in part, the major scale. The octave consists of twelve semi-tones, in which the major scale is set in this pattern: whole tone, whole tone, semitone, whole tone, whole tone, whole tone, whole tone, semi-tone. Like so:</p>
-
-<pre>
-  1   2   3   4   5   6   7   8   9   10  11  12  13
-| C |   | D |   | E | F |   | G |   | A |   | B | C | ... (etc) 
-</pre>
-
-
-<p>The next root note (13th semi-tone, above) is only a semi-tone off from the last note of the scale. And so on. The semi-tone before or after any given note is a flat or a sharp respectively, giving rise to the B# == C, Cb == B, E# == F, Fb == E identities. So, let&#8217;s just accept the scale as a given; that this pattern of whole tones and semi-tones sounds pleasing to the ear.</p>
-
-<p>So why is it C that has all natural notes (no sharps or flats)? Good question. That part, to me at least, does seem arbitrary, but effectively it doesn&#8217;t matter. Given the above system, the major scale in one key and one key only will have no sharps or flats. But still, why structure the notes this way? It still doesn&#8217;t necessarily seem to make sense.</p>
-
-<p>There are a few reasons. For one, we want to be able to express every scale by naming off the notes, and we&#8217;d like each note to be a different letter. So we need 7 letters.</p>
-
-<p>Where it gets really interesting is the circle of fourths and fifths.</p>
-
-<p><img src="http://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Circle_of_fifths_deluxe_4.svg/400px-Circle_of_fifths_deluxe_4.svg.png" /></p>
-
-<p>So, if you go around clockwise, you&#8217;re counting by fifths (G is the fifth note of the C major scale, D is the fifth note of the G major scale, etc) and if you go around counter-clockwise you&#8217;re counting by fourths (F is the fourth note of C, Bb is the fourth note of F, etc). If you go around clockwise, each scale has one additional sharped note until you get to 180 degrees around, then it has n-1 flat notes, and loses one flat each fifth till you get back to C (no sharps or flats); vis versa the other direction. This is actually really cool; each scale, in addition to being unique in that, well, it has a different root note, is unique in that it is the only scale to have its specific number of sharps or flats. If a scale has 3 sharps, it&#8217;s A. Period. There isn&#8217;t another choice. Neat!</p>
-
-<p>So for fun, we can explore the circle of fifths in the command line. First lets set it up:</p>
-
-<pre>
-<code class="ruby">
-> circle = (0..11).map{|n| n*7%12 }
- => [0, 7, 2, 9, 4, 11, 6, 1, 8, 3, 10, 5] 
-</code>
-</pre>
-
-
-<p>Well. That doesn&#8217;t mean a whole lot. How can we map it to notes? Let&#8217;s just construct a reference array really quick. (I&#8217;m making it an instance variable so I can use it in a method later; this was all done in irb.)</p>
-
-<pre>
-<code class="ruby">
-> @notes = ["C", "C#/Db", "D", "D#/Eb", "E", "E#/F", "F#/Gb", "G", "G#/Ab", "A", "A#/Bb", "B/Cb"]
- => ["C", "C#/Db", "D", "D#/Eb", "E", "E#/F", "F#/Gb", "G", "G#/Ab", "A", "A#/Bb", "B/Cb"]
-</code>
-</pre>
-
-
-<p>So, to read our circle, we&#8217;d do:</p>
-
-<pre>
-<code class="ruby">
-> circle.map{|n| @notes[n]}
- => ["C", "G", "D", "A", "E", "B/Cb", "F#/Gb", "C#/Db", "G#/Ab", "D#/Eb", "A#/Bb", "E#/F"]
-</code>
-</pre>
-
-
-<p>Hooray. The circle of fifths. Now, so what? Well, let&#8217;s make a little method to construct a major scale from the <code>@notes</code> variable. We&#8217;ll take a root note as an argument, so we can construct any major scale we like.</p>
-
-<pre>
-<code class="ruby">
-> def major(root=0)
-?>  offset = (0..11).map{|n| @notes[(n+root)%12]}
-?>  [offset[0], offset[2], offset[4], offset[5], offset[7], offset[9], offset[11]].join(" ")
-?>  end
- => nil
-</code>
-</pre>
-
-
-<p>So, just calling <code>major</code> with no arguments should give us the C major scale; calling with, say, 5 should give us F major (5 in this case is the index of F in @notes; but you were already following that, I know):</p>
-
-<pre>
-<code class="ruby">
-> major
- => "C D E E#/F G A B/Cb" 
-> major(5)
- => "E#/F G A A#/Bb C D E" 
-
-</code>
-</pre>
-
-
-<p>So we said that the circle of fifths added a sharp each increment, and then flipped to flats and removed on each increment. Let&#8217;s watch it happen:</p>
-
-<pre>
-<code class="">
->> circle.each{|n| puts major(n) }
-C D E F G A B
-G A B C D E F#/Gb
-D E F#/Gb G A B C#/Db
-A B C#/Db D E F#/Gb G#/Ab
-E F#/Gb G#/Ab A B C#/Db D#/Eb
-B C#/Db D#/Eb E F#/Gb G#/Ab A#/Bb
-F#/Gb G#/Ab A#/Bb B C#/Db D#/Eb F
-C#/Db D#/Eb F F#/Gb G#/Ab A#/Bb C
-G#/Ab A#/Bb C C#/Db D#/Eb F G
-D#/Eb F G G#/Ab A#/Bb C D
-A#/Bb C D D#/Eb F G A
-F G A A#/Bb C D E
-</code>
-</pre>
-
-
-<p>Not as neat as it could look since I put the #/b both in the original notes array; the note you&#8217;d read would be the one with a consecutive letter after the previous note. So in G, the note following E is F#. In Eb, the note following G is Ab&#8230; and so on. The same note <em>letter</em> only appears once in any given scale. A sharp or flat is added or removed each increment you go around the circle.</p>
-
-<p>I don&#8217;t have any startling conclusions to close this off with. Just that music is pretty cool, and that a few of the things that <em>seem</em> arbitrary just have to be that way &#8211; assuming we&#8217;re going to base the system around 12 equally tempered semitones (see <a href="http://en.wikipedia.org/wiki/Equal_temperament">Equal Temperment</a>, or even <a href="http://en.wikipedia.org/wiki/The_Well-Tempered_Clavier">Bach&#8217;s Well-Tempered Clavier</a> (evidently there&#8217;s some dispute over whether or not Bach&#8217;s intended tuning was equal or, uh, &#8220;well&#8221; tempered; I was not aware of this!)) and a 7 note major scale &#8211; neither of which are absolutely necessary, of course, and there are other ways to do it. See <a href="http://en.wikipedia.org/wiki/Mathematics_of_musical_scales#Mathematics_of_musical_scales">Mathematics of musical scales</a> and <a href="http://en.wikipedia.org/wiki/Musical_tuning#Tuning_systems">tuning systems</a> for more.</p>
-
-<p>Happy musicking.</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-08-11T00:00:00-05:00" pubdate data-updated="true">Aug 11<span>th</span>, 2010</time></div>
+<time datetime="2011-07-06T00:00:00-05:00" pubdate data-updated="true">Jul 6<span>th</span>, 2011</time></div>
 	<div class="tags">
 
 </div>
