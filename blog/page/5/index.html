@@ -7,7 +7,7 @@
 	<meta name="author" content="Phil Crissman">
 
 	
-	<meta name="description" content=" Oct 22nd, 2010 ">
+	<meta name="description" content="Off and on (more off than on, recently) I lurk in the #rubyonrails IRC channel and try to be helpful. It&#8217;s sad to say, but it&#8217;s really &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -98,6 +98,91 @@
 
 	
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/2010/11/08/how-to-read-error-messages-for-ruby-on-rails/">How to Read Error Messages for Ruby on Rails</a></h1>
+	<div class="entry-content">
+		<p><img src="/images/posts/stack.jpg" alt="stack" /></p>
+
+<p>Off and on (more off than on, recently) I lurk in the #rubyonrails IRC channel and try to be helpful. It&#8217;s sad to say, but it&#8217;s really common that people have questions &#8211; something isn&#8217;t working &#8211; and when they post the error message that they&#8217;re getting, their problem (and its implicit solution) is written in plain English in the first few lines of the error message. Not every time of course, but more often than not, error messages are trying to tell you something, and you should listen to what they&#8217;re telling you.</p>
+
+<p>The greatest possible help you can give someone who is having this sort of problem is to advise them to read the error messages and try to figure it out. It sounds a little harsh, shades of the RTFM-type of &#8220;help&#8221; that some communities are known for. But in the long run, it&#8217;s going to help the new developer a lot more to be able to read an error message than to simply ask you to read it for them.</p>
+
+<p>That said, here&#8217;s some things to look for in some fairly common Ruby and/or Rails error messages:</p>
+
+<h3>These are not the gems you&#8217;re looking for.</h3>
+
+<p><code>[gem] not found</code>, not present, etc. : so, you think you have installed a gem or plugin. Make sure.</p>
+
+<h3>You can&#8217;t <em>do</em> that with <em>this</em></h3>
+
+<p><code>no method error 'something' on SomeClass.</code> You&#8217;re trying to call a method on an object which does not actually have that method. Yes, I know, you think it does, but if it did, then your code would be working. So what is happening is that either you have a different object than you expected to have, or some Module which provides the method has not been included, or (if it&#8217;s an ActiveRecord object) the column or association you&#8217;re assuming is there is not actually there. Also, you may have spelled the method wrong, or it may be that the method you think is there doesn&#8217;t actually exist.</p>
+
+<p>A variation of this is when you have <code>no method 'whatever' for NilClass</code>&#8230; the issue here is that the object you&#8217;re looking for (almost certainly an ActiveRecord object) was not found; there was no record with a given id in the scope you were searching. So nil is what you were calling the method on, and NilClass has surprisingly few methods to call its own.</p>
+
+<p>A slight variation, somewhat related to the above case, is the error that you&#8217;re attempting to call the id for 4 which is nil, or some such confusing warning. Well, again, your object is nil. The id of nil is 4. Open up irb and check: the id (object_id, really) for nil is 4.</p>
+
+<p>Other things that can cause a nil error in a controller action and/or view are: not actually setting a value for an instance variable, forgetting to pass a local variable to a partial, and things of that nature.</p>
+
+<p>I thought I would be writing more, but most errors I can think of off the top of my head fall into one of these categories: a gem/library/plugin isn&#8217;t present, a no-method-error, and/or having an object be nil when you really expected it to be something else.</p>
+
+<p>Bottom line:</p>
+
+<p>Read the error messages.</p>
+
+<p>Read the error messages.</p>
+
+<p>Read the error messages.</p>
+
+<h3>But the error message isn&#8217;t helping!</h3>
+
+<p>Yeah, sometimes you just don&#8217;t know quite what the issue is. Or you can see what it is, but you aren&#8217;t sure <em>where</em> exactly it&#8217;s coming from. That&#8217;s where the stack trace comes it.</p>
+
+<p>Most error messages are accompanied by a stack trace which lists the method calls that led to the error that occurred. By going back down the stack trace, you can generally find the exact file, the exact method, and even the exact line number, which is ultimately responsible for causing the error.</p>
+
+<p>In Rails, most often (maybe not every time, but most often) the error will be in a file that you wrote, not one of the rails files. When I need to look through a stack trace for an error, I generally just start scanning down the list, skipping over any/all files that belong to a Rails core gem or library until I get to something in app/, config/, or lib/; basically, until I get to something that <em>I</em> wrote. Then I look for the line number, and most likely there I&#8217;ll find the reason the error was called.</p>
+
+<h3>I still can&#8217;t figure out what&#8217;s wrong.</h3>
+
+<p>Sometimes you just have to think about it for awhile. The key is, you have found the reason the error is being raised. You might <em>think</em> that your code is correct, but if an error is being raised, something isn&#8217;t right. It may be an assumption you&#8217;re using that isn&#8217;t really true, a typo, a logical error, a syntax error, but <em>somewhere</em>, there is a problem. If you get to your line of code which is responsible for the error and you still don&#8217;t know why it&#8217;s failing, (and a google search for the error and/or situation reveals nothing new), that might be a good time to ask for advice on IRC. You can also just start asking yourself: okay, I know this line of code is causing an error. Why would it be failing? What assumptions is this line of code making which may have turned out not be true? Would any of those assumptions cause this error?</p>
+
+<p>&#8230; and so forth.</p>
+
+<p>But again:</p>
+
+<ul>
+<li><p>Read the error message.</p></li>
+<li><p>Read the stack trace.</p></li>
+<li><p>Read your code.</p></li>
+<li><p>Think about it.</p></li>
+</ul>
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-11-08T00:00:00-06:00" pubdate data-updated="true">Nov 8<span>th</span>, 2010</time></div>
+	<div class="tags">
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -462,39 +547,6 @@ F G A A#/Bb C D E
 
 
 <time datetime="2010-08-06T00:00:00-05:00" pubdate data-updated="true">Aug 6<span>th</span>, 2010</time></div>
-	<div class="tags">
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/2010/08/04/graffiti-on-a-train/">Graffiti on a Train</a></h1>
-	<div class="entry-content">
-		<p><img src="/images/posts/hbak_graffiti.jpg" width="440" /></p>
-
-<p>Pic taken along the trail on the way from Minneapolis to Hopkins.</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-08-04T00:00:00-05:00" pubdate data-updated="true">Aug 4<span>th</span>, 2010</time></div>
 	<div class="tags">
 
 </div>
