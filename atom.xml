@@ -4,7 +4,7 @@
   <title><![CDATA[philcrissman.com]]></title>
   <link href="http://philcrissman.com/atom.xml" rel="self"/>
   <link href="http://philcrissman.com/"/>
-  <updated>2012-10-09T11:31:05-05:00</updated>
+  <updated>2012-10-10T14:04:34-05:00</updated>
   <id>http://philcrissman.com/</id>
   <author>
     <name><![CDATA[Phil Crissman]]></name>
@@ -12,6 +12,20 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Arnold's Blueprint]]></title>
+    <link href="http://philcrissman.com/2012/10/10/arnolds-blueprint/"/>
+    <updated>2012-10-10T13:58:00-05:00</updated>
+    <id>http://philcrissman.com/2012/10/10/arnolds-blueprint</id>
+    <content type="html"><![CDATA[<p>I saw this a week or two ago, and never even thought about posting it. But it&#8217;s really relevant to everything else I&#8217;ve been thinking and writing about, so I thought I&#8217;d add it here.</p>
+
+<div class="video-container">
+  <script src="http://player.espn.com/player.js?&playerBrandingId=4ef8000cbaf34c1687a7d9a26fe0e89e&pcode=1kNG061cgaoolOncv54OAO1ceO-I&width=576&height=324&externalId=espn:8420216&thruParam_espn-ui[autoPlay]=false&thruParam_espn-ui[playRelatedExternally]=true"></script>
+</div>
+
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Grit?]]></title>
@@ -673,15 +687,6 @@ Photo credit: <a href="http://www.flickr.com/photos/ihtatho/627226315/sizes/m/in
     <updated>2011-01-14T00:00:00-06:00</updated>
     <id>http://philcrissman.com/2011/01/14/looselyjoinednet</id>
     <content type="html"><![CDATA[<p>I&#8217;ve been piling a lot of links, images, and whatnot up on a <a href="http://posterous.com">posterous.com</a> website: see <a href="http://looselyjoined.net">looselyjoined.net</a>. Enjoy, if you are so inclined.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Let's roll]]></title>
-    <link href="http://philcrissman.com/2010/11/11/lets-roll/"/>
-    <updated>2010-11-11T00:00:00-06:00</updated>
-    <id>http://philcrissman.com/2010/11/11/lets-roll</id>
-    <content type="html"><![CDATA[<p><a href="http://philcrissman.com/images/posts/d20-iwojima.jpg"><img src="http://philcrissman.com/images/posts/d20-iwojima.jpg" width="440" /></a></p>
 ]]></content>
   </entry>
   

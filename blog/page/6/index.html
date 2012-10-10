@@ -7,7 +7,7 @@
 	<meta name="author" content="Phil Crissman">
 
 	
-	<meta name="description" content=" For all the folks in #rubyonrails, and beyond. Aug 6th, 2010 ">
+	<meta name="description" content="Got to chatting with Nate (@fowlduck) about musical notation last night. He was pointing out that bits of the notation seem arbitrary and probably &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -98,6 +98,140 @@
 
 	
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/2010/08/11/fun-with-the-major-scale/">Fun With the Major Scale</a></h1>
+	<div class="entry-content">
+		<p>Got to chatting with Nate <a href="http://twitter.com/fowlduck">(@fowlduck)</a> about musical notation last night. He was pointing out that bits of the notation seem arbitrary and probably archaic, likening it to legacy code of a sort. For example, why no whole tone between B and C, E and F? This post is NOT meant to be a defense of music notation, a &#8220;setting straight&#8221; of anything, or even a definitive description of musical theory (at which I&#8217;m a rank amateur). It just got me thinking about the major scale and the circle of fourths &amp; fifths, which led to some playing around on the command line, which led to this. Enjoy.</p>
+
+<p>The thing that makes it seem so strange is, at least in part, the major scale. The octave consists of twelve semi-tones, in which the major scale is set in this pattern: whole tone, whole tone, semitone, whole tone, whole tone, whole tone, whole tone, semi-tone. Like so:</p>
+
+<pre>
+  1   2   3   4   5   6   7   8   9   10  11  12  13
+| C |   | D |   | E | F |   | G |   | A |   | B | C | ... (etc) 
+</pre>
+
+
+<p>The next root note (13th semi-tone, above) is only a semi-tone off from the last note of the scale. And so on. The semi-tone before or after any given note is a flat or a sharp respectively, giving rise to the B# == C, Cb == B, E# == F, Fb == E identities. So, let&#8217;s just accept the scale as a given; that this pattern of whole tones and semi-tones sounds pleasing to the ear.</p>
+
+<p>So why is it C that has all natural notes (no sharps or flats)? Good question. That part, to me at least, does seem arbitrary, but effectively it doesn&#8217;t matter. Given the above system, the major scale in one key and one key only will have no sharps or flats. But still, why structure the notes this way? It still doesn&#8217;t necessarily seem to make sense.</p>
+
+<p>There are a few reasons. For one, we want to be able to express every scale by naming off the notes, and we&#8217;d like each note to be a different letter. So we need 7 letters.</p>
+
+<p>Where it gets really interesting is the circle of fourths and fifths.</p>
+
+<p><img src="http://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Circle_of_fifths_deluxe_4.svg/400px-Circle_of_fifths_deluxe_4.svg.png" /></p>
+
+<p>So, if you go around clockwise, you&#8217;re counting by fifths (G is the fifth note of the C major scale, D is the fifth note of the G major scale, etc) and if you go around counter-clockwise you&#8217;re counting by fourths (F is the fourth note of C, Bb is the fourth note of F, etc). If you go around clockwise, each scale has one additional sharped note until you get to 180 degrees around, then it has n-1 flat notes, and loses one flat each fifth till you get back to C (no sharps or flats); vis versa the other direction. This is actually really cool; each scale, in addition to being unique in that, well, it has a different root note, is unique in that it is the only scale to have its specific number of sharps or flats. If a scale has 3 sharps, it&#8217;s A. Period. There isn&#8217;t another choice. Neat!</p>
+
+<p>So for fun, we can explore the circle of fifths in the command line. First lets set it up:</p>
+
+<pre>
+<code class="ruby">
+> circle = (0..11).map{|n| n*7%12 }
+ => [0, 7, 2, 9, 4, 11, 6, 1, 8, 3, 10, 5] 
+</code>
+</pre>
+
+
+<p>Well. That doesn&#8217;t mean a whole lot. How can we map it to notes? Let&#8217;s just construct a reference array really quick. (I&#8217;m making it an instance variable so I can use it in a method later; this was all done in irb.)</p>
+
+<pre>
+<code class="ruby">
+> @notes = ["C", "C#/Db", "D", "D#/Eb", "E", "E#/F", "F#/Gb", "G", "G#/Ab", "A", "A#/Bb", "B/Cb"]
+ => ["C", "C#/Db", "D", "D#/Eb", "E", "E#/F", "F#/Gb", "G", "G#/Ab", "A", "A#/Bb", "B/Cb"]
+</code>
+</pre>
+
+
+<p>So, to read our circle, we&#8217;d do:</p>
+
+<pre>
+<code class="ruby">
+> circle.map{|n| @notes[n]}
+ => ["C", "G", "D", "A", "E", "B/Cb", "F#/Gb", "C#/Db", "G#/Ab", "D#/Eb", "A#/Bb", "E#/F"]
+</code>
+</pre>
+
+
+<p>Hooray. The circle of fifths. Now, so what? Well, let&#8217;s make a little method to construct a major scale from the <code>@notes</code> variable. We&#8217;ll take a root note as an argument, so we can construct any major scale we like.</p>
+
+<pre>
+<code class="ruby">
+> def major(root=0)
+?>  offset = (0..11).map{|n| @notes[(n+root)%12]}
+?>  [offset[0], offset[2], offset[4], offset[5], offset[7], offset[9], offset[11]].join(" ")
+?>  end
+ => nil
+</code>
+</pre>
+
+
+<p>So, just calling <code>major</code> with no arguments should give us the C major scale; calling with, say, 5 should give us F major (5 in this case is the index of F in @notes; but you were already following that, I know):</p>
+
+<pre>
+<code class="ruby">
+> major
+ => "C D E E#/F G A B/Cb" 
+> major(5)
+ => "E#/F G A A#/Bb C D E" 
+
+</code>
+</pre>
+
+
+<p>So we said that the circle of fifths added a sharp each increment, and then flipped to flats and removed on each increment. Let&#8217;s watch it happen:</p>
+
+<pre>
+<code class="">
+>> circle.each{|n| puts major(n) }
+C D E F G A B
+G A B C D E F#/Gb
+D E F#/Gb G A B C#/Db
+A B C#/Db D E F#/Gb G#/Ab
+E F#/Gb G#/Ab A B C#/Db D#/Eb
+B C#/Db D#/Eb E F#/Gb G#/Ab A#/Bb
+F#/Gb G#/Ab A#/Bb B C#/Db D#/Eb F
+C#/Db D#/Eb F F#/Gb G#/Ab A#/Bb C
+G#/Ab A#/Bb C C#/Db D#/Eb F G
+D#/Eb F G G#/Ab A#/Bb C D
+A#/Bb C D D#/Eb F G A
+F G A A#/Bb C D E
+</code>
+</pre>
+
+
+<p>Not as neat as it could look since I put the #/b both in the original notes array; the note you&#8217;d read would be the one with a consecutive letter after the previous note. So in G, the note following E is F#. In Eb, the note following G is Ab&#8230; and so on. The same note <em>letter</em> only appears once in any given scale. A sharp or flat is added or removed each increment you go around the circle.</p>
+
+<p>I don&#8217;t have any startling conclusions to close this off with. Just that music is pretty cool, and that a few of the things that <em>seem</em> arbitrary just have to be that way &#8211; assuming we&#8217;re going to base the system around 12 equally tempered semitones (see <a href="http://en.wikipedia.org/wiki/Equal_temperament">Equal Temperment</a>, or even <a href="http://en.wikipedia.org/wiki/The_Well-Tempered_Clavier">Bach&#8217;s Well-Tempered Clavier</a> (evidently there&#8217;s some dispute over whether or not Bach&#8217;s intended tuning was equal or, uh, &#8220;well&#8221; tempered; I was not aware of this!)) and a 7 note major scale &#8211; neither of which are absolutely necessary, of course, and there are other ways to do it. See <a href="http://en.wikipedia.org/wiki/Mathematics_of_musical_scales#Mathematics_of_musical_scales">Mathematics of musical scales</a> and <a href="http://en.wikipedia.org/wiki/Musical_tuning#Tuning_systems">tuning systems</a> for more.</p>
+
+<p>Happy musicking.</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-08-11T00:00:00-05:00" pubdate data-updated="true">Aug 11<span>th</span>, 2010</time></div>
+	<div class="tags">
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -229,53 +363,6 @@
 
 
 <time datetime="2010-07-28T00:00:00-05:00" pubdate data-updated="true">Jul 28<span>th</span>, 2010</time></div>
-	<div class="tags">
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/2010/07/27/i-write-like/">I Write Like</a></h1>
-	<div class="entry-content">
-		<p>I&#8217;ve seen the <a href="http://iwl.me/">I write like</a> links show up on facebook and twitter a few times, so I decided I&#8217;d take a look. Not content to simply feed it one sample, I fed it the text from several of the posts from the archive. Here were the results:</p>
-
-<ul>
-<li><a href="http://philcrissman.com/2009/01/14/i-hold-strong-opinions-about-the-placement-of-curly-braces">I Hold Strong Opinions About The Placement Of Curly Braces</a></li>
-<li><p>=> I write like: <strong>H.P. Lovecraft</strong>. <em>Really? Wait&#8230; what?</em></p></li>
-<li><p><a href="http://philcrissman.com/2010/02/16/no-were-not-the-stupid-ones">No, We&#8217;re Not The Stupid Ones</a></p></li>
-<li><a href="http://philcrissman.com/2009/01/16/in-which-i-am-no-longer-a-very-good-bachelor">In Which I Am No Longer A Very Good Bachelor</a></li>
-<li><a href="http://philcrissman.com/2010/04/01/oracle-to-acquire-oracle">Oracle To Acquire Oracle</a></li>
-<li><p>=> I write like: <strong>Cory Doctorow</strong>. <em>Huh. You think? Well, okay. Thanks!</em></p></li>
-<li><p><a href="http://philcrissman.com/2006/09/22/the-emperors-new-web">The Emperor&#8217;s New Web</a></p></li>
-<li>=> I write like: <strong>Jonathan Swift</strong>. <em>[blushing] No, no&#8230; you&#8217;re too kind.</em></li>
-</ul>
-
-
-<p>Not sure how they are analyzing the text and reaching their conclusions, but there&#8217;s at least a <em>little</em> bit of smarts in there; that last one, the one which was compared to Swift, is indeed a satire, though I&#8217;m not going to claim it&#8217;s in the calibre of Swift&#8217;s satire, but still; their algorithm picked something out of it which prompted the comparison. Not bad.</p>
-
-<p>So, evidently, according to their analyses, I write most often like Cory Doctorow. I&#8217;ve only read <em>Down And Out In The Magic Kingdom</em>, and several of his blog posts/essays, but enough to consider it a compliment, though I&#8217;m not certain it&#8217;s deserved. Regardless, there we have it.</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-07-27T00:00:00-05:00" pubdate data-updated="true">Jul 27<span>th</span>, 2010</time></div>
 	<div class="tags">
 
 </div>
