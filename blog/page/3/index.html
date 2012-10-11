@@ -7,7 +7,7 @@
 	<meta name="author" content="Phil Crissman">
 
 	
-	<meta name="description" content=" Our son Samuel is almost 17 months old, now. He&#8217;s the coolest. Jul 17th, 2012 ">
+	<meta name="description" content="Starters, Lift is a really nice app. It looks and acts great. It has a shiny checkbox that is large and round and easy to tap, and it has pretty &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -98,6 +98,40 @@
 
 	
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/2012/08/03/thinking-about-lift/">Thinking About Lift</a></h1>
+	<div class="entry-content">
+		<p><a href="/images/posts/lift-icon.png"><img src="/images/posts/lift-icon.png" width='320' /></a></p>
+
+<p>Starters, <a href="http://lift.do">Lift</a> is a really nice app. It looks and acts great. It has a shiny checkbox that is large and round and easy to tap, and it has pretty graphs that look a little like graphic equalizers from mid-90s stereos with digital interfaces. I can choose a whole list &#8216;habits&#8217; which are then listed and shared, and if I check a habit for the day, then I can see all the other people who recently also did this habit. I can also give these complete strangers who have also seen fit to track their performance in consistent multivitamin consumption &#8220;props&#8221;, and can (in turn) receive &#8220;props&#8221; from them for performance of the same.</p>
+
+
+		
+		<a href="/2012/08/03/thinking-about-lift/" class="more-link">Continue reading</a>
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-08-03T08:37:00-05:00" pubdate data-updated="true">Aug 3<span>rd</span>, 2012</time></div>
+	<div class="tags">
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -249,99 +283,6 @@ say?&#8221;</p>
 
 
 <time datetime="2011-10-10T00:00:00-05:00" pubdate data-updated="true">Oct 10<span>th</span>, 2011</time></div>
-	<div class="tags">
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/2011/07/06/too-clever-to-debug/">Too Clever to Debug</a></h1>
-	<div class="entry-content">
-		<p><a href="http://www.flickr.com/photos/themadlolscientist/2538226772/sizes/z/in/photostream/"><img src="/images/posts/math_fail.jpg" width="440" /></a></p>
-
-<blockquote><p>&#8220;Debugging is twice as hard as writing the code in the first place.  Therefore, if you write the code as cleverly as possible, you are, by definition, not smart enough to debug it.&#8221;
-&#8211;Brian Kernighan</p></blockquote>
-
-<p>This sounds nice, and can (maybe) be good advice in some cases. But it can&#8217;t possibly be true; in fact, it rests on a bit of a logically flawed syllogism:</p>
-
-<ul>
-<li>A: Debugging is twice as hard as writing code.</li>
-<li>B: Writing code is hard.</li>
-<li>C: Ergo, if you write the hardest code you possibly can, you are not smart enough to debug your own code.</li>
-</ul>
-
-
-<p>The problem sits in both in assumption A, and in an unspoken assumption about what it means for something to be &#8220;hard&#8221;.</p>
-
-<p>Regarding A, there&#8217;s no backing behind this &#8220;debugging is twice as hard&#8221; assumption; it&#8217;s simply stated. Regarding the idea of relative <em>hardness</em> of a problem; the conclusion to the above syllogism assumes that there is a ceiling of &#8220;hardness&#8221; which you are capable of comprehending. If your code is at that ceiling, it argues, then debugging it will be impossible for you, because debugging it will be harder than writing it, which was the limit of how &#8220;hard&#8221; a problem you can solve. I reality, I don&#8217;t believe this to be the case; something may be &#8220;harder&#8221; than anything I&#8217;ve yet worked through, but that only means it might take me more time and more effort to understand it; not that I cannot possibly comprehend it.</p>
-
-<p>Now, we all know that bugs can be hard to find and fix, so we tend to simply accept, even encourage, statements like this. But are they really true?</p>
-
-<p>Think back to your Algebra, Trig, or Calculus classes; if you took these in the same sort of classes, with the same sort of textbooks, that I did, you were routinely given assignments whose answers were in the back of the book. The idea was, you would work through the problems, and then check your answer to see how you did. If you had an incorrect answer, then you would look at the steps you took to solve the equation until you found the point at which you had made a mistake.</p>
-
-<p>This is, to my mind, completely analogous to programming. You write a piece of code to do a certain thing; then you either write a test, or you simply run it with some sample input, to ensure that it does what you think it does. If you test it thoroughly (note: this <em>is</em> actually hard, and is the reason that bugs often slip into production code), then you will either:</p>
-
-<ul>
-<li>a) discover that your code successfully does what you intended, or</li>
-<li>b) discover a case where your code returns an incorrect result; in other words, a bug, or a place where you made a mistake.</li>
-</ul>
-
-
-<p>In case b, you&#8217;ll do the same thing you used to do with your math homework; you&#8217;ll start going through it until you find the place where you made a mistake, and you&#8217;ll fix it, and (ideally), you&#8217;ll write a test that mocks this scenario, and be satisfied that this bug is squashed.</p>
-
-<p>Debugging is indeed hard; there are several things which make it harder than just solving a math equation. For one thing, in your programs, you may not have total control over what inputs (if applicable) are sent to your function. You might intend that factorial(num) always receives an integer as its argument. What if some malevolent person calls it and sends a String? An octal value? An object? An array? Do you care? Does your function try to detect this and either raise an error or return false? Is returning false or nil <em>really</em> what you want to do in that case? What if a number is sent that is larger than MAX_INT? Does it fail silently, interpret the number as whatever your programming language sees it, raise an error&#8230; ? In comparison, you can pretty much ensure that x, whatever it may be, in your Algebra exercise, is a number. It&#8217;s probably a Real number. And you can probably find it without too much trouble.</p>
-
-<p>Another thing that I like about this example is that it basically shows that the process of learning math is essentially the process of locating and fixing your mistakes. The instructor, the course, <em>assumes</em> that you will not always get the correct answer. That&#8217;s the whole reason there are answers in the back of the book, and that you are assigned those questions which actually have answers. The basic premise is that you will get some questions wrong, and that through the process of realizing you are wrong and going back to find where you are wrong (and fixing it), you are doing something which we call <em>learning math</em>.</p>
-
-<p>Programming, I&#8217;d argue, works the same way. You learn to program, <em>not</em> by consistently writing correct programs, but by writing bugs. Then, once you realize you have written a bug, you locate it, attempt to understand <em>why</em> it&#8217;s a bug, why you erroneously believed that it would work, what you should do instead, and how to do that thing.</p>
-
-<p>We call this &#8220;learning to program&#8221;.</p>
-
-<p>If you are not smart enough to find and fix bugs, you are actually not smart enough to learn to program. The good news is, you <em>are</em> smart enough to find and fix bugs, and you are smart enough to program.</p>
-
-<p>The logical error comes in the assumption that <em>writing the hardest/most complex/most clever code that you can</em> is the theoretical limit of your intelligence, and that, since &#8220;debugging is harder than coding&#8221;, you are not clever enough to see the bugs in your own code.</p>
-
-<p>That&#8217;s similar to saying that if you are doing the hardest Calculus question you are currently capable (or barely capable) of doing, if you make a mistake, you are unable to find and fix that mistake, because finding the mistake is (somehow) harder than solving the problem.</p>
-
-<p>Put that way, it seems absurd. Of course finding your mistake isn&#8217;t &#8220;harder&#8221; than solving the problem; finding the mistake is <em>part of</em> the problem. In fact, since generally every step in solving an equation or working out an integral or a derivative involves smaller steps based on things you have <em>already learned and mastered</em> (again&#8230; theoretically), you almost definitely <em>can</em>, for sure, find your error if you go through each of your steps carefully, thinking about what you are doing and why you&#8217;re doing it.</p>
-
-<p>Sure, finding bugs is hard. That&#8217;s because if it was easy, you wouldn&#8217;t have written the bug in the first place. The bug represents that place in your algebra homework where you&#8217;d make that tiny arithmetic error, or forget to flip the sign when a number was/wasn&#8217;t negative, or where you&#8217;d mis-apply some other mathematical rule. Spotting where you made that error is simply the process of learning math.</p>
-
-<p>That&#8217;s not the same as it being <em>too hard</em> for you to accomplish. I would guess (though I can&#8217;t <em>know</em> this) that Mr. Kernighan intended his little aphorism to be taken with a rather liberal grain of salt, that it was actually a bit of the subtle humor engineers and geeks are so fond of. The fact that we&#8217;ve taken it at face value and treated it as though it were actually true is <em>our</em> fault, not Brian Kernighan&#8217;s.</p>
-
-<p>Now, the actual quote (according to <a href="http://en.wikiquote.org/wiki/Brian_Kernighan">wikiquote</a>) seems to be from Elements of Programming Style, and goes:</p>
-
-<blockquote><p>&#8220;Everyone knows that debugging is twice as hard as writing a program in the first place. So if you&#8217;re as clever as you can be when you write it, how will you ever debug it?&#8221;</p></blockquote>
-
-<p>This still has that logical leap embedded in it (&#8221;<em>Everyone knows</em> that debugging is twice as hard&#8221;, etc.), but it does have a good, valid point, <em>depending on how you define &#8220;as clever as you can be&#8221;</em>. (If <em>being clever</em> is actually <em>being smart</em>, then &#8220;as clever as you can be&#8221; would be to only write code which you are capable of debugging&#8230; but I digress.)</p>
-
-<p>What I think this really is <em>intended</em> to mean is: if you write code <em>that you do not completely understand</em>, you will (potentially) introduce bugs <em>which you are not capable of identifying or resolving</em>.</p>
-
-<p>The key is code that <em>you don&#8217;t understand</em>. The reason you won&#8217;t be able to find the bugs is that you don&#8217;t understand what your code is doing in the first place. If that&#8217;s true, then yes, of course you have written un-debuggable software (for <em>you</em>, at least; someone who understands what you wrote can certainly find your bugs). The other side of this coin is that, if you take the time and effort to understand the code that you wrote, you <em>can</em> find the bugs. And you can remove them.</p>
-
-<p>This is called <em>programming</em>. You&#8217;ve probably been doing it for a long time. The fact that we&#8217;re still creating and fixing bugs only means that we haven&#8217;t finished learning to do it yet.</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-07-06T00:00:00-05:00" pubdate data-updated="true">Jul 6<span>th</span>, 2011</time></div>
 	<div class="tags">
 
 </div>

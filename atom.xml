@@ -4,7 +4,7 @@
   <title><![CDATA[philcrissman.com]]></title>
   <link href="http://philcrissman.com/atom.xml" rel="self"/>
   <link href="http://philcrissman.com/"/>
-  <updated>2012-10-10T14:24:11-05:00</updated>
+  <updated>2012-10-11T09:57:17-05:00</updated>
   <id>http://philcrissman.com/</id>
   <author>
     <name><![CDATA[Phil Crissman]]></name>
@@ -12,6 +12,17 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[We're only in it for the money]]></title>
+    <link href="http://philcrissman.com/2012/10/11/were-only-in-it-for-the-money/"/>
+    <updated>2012-10-11T09:44:00-05:00</updated>
+    <id>http://philcrissman.com/2012/10/11/were-only-in-it-for-the-money</id>
+    <content type="html"><![CDATA[<p><img src="http://philcrissman.com/images/posts/fz_the_money.jpg" title="A subtle reference" alt="Frank Zappa and the Mothers -- We're Only In It For the Money" /></p>
+
+<p>Those starry-eyed idealists, Frank Zappa and the Mothers of Invention.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Arnold's Blueprint]]></title>
@@ -678,15 +689,6 @@ Photo credit: <a href="http://www.flickr.com/photos/ihtatho/627226315/sizes/m/in
     <content type="html"><![CDATA[<p>UJS in Rails 3, tonight at RUM</p>
 
 <p>I&#8217;ll be speaking tonight on UJS and Rails 3 at <a href="http://ruby.mn/">RUM</a>. Slides will be posted somewhere later this week, and I may follow up with a post that summarizes the content, if the slides don&#8217;t seem complete enough to cover the topic on their own.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[looselyjoined.net]]></title>
-    <link href="http://philcrissman.com/2011/01/14/looselyjoinednet/"/>
-    <updated>2011-01-14T00:00:00-06:00</updated>
-    <id>http://philcrissman.com/2011/01/14/looselyjoinednet</id>
-    <content type="html"><![CDATA[<p>I&#8217;ve been piling a lot of links, images, and whatnot up on a <a href="http://posterous.com">posterous.com</a> website: see <a href="http://looselyjoined.net">looselyjoined.net</a>. Enjoy, if you are so inclined.</p>
 ]]></content>
   </entry>
   

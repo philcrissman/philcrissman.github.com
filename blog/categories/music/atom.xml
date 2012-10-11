@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: music | philcrissman.com]]></title>
+  <link href="http://philcrissman.com/blog/categories/music/atom.xml" rel="self"/>
+  <link href="http://philcrissman.com/"/>
+  <updated>2012-10-11T09:57:17-05:00</updated>
+  <id>http://philcrissman.com/</id>
+  <author>
+    <name><![CDATA[Phil Crissman]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[We're only in it for the money]]></title>
+    <link href="http://philcrissman.com/2012/10/11/were-only-in-it-for-the-money/"/>
+    <updated>2012-10-11T09:44:00-05:00</updated>
+    <id>http://philcrissman.com/2012/10/11/were-only-in-it-for-the-money</id>
+    <content type="html"><![CDATA[<p><img src="/images/posts/fz_the_money.jpg" title="A subtle reference" alt="Frank Zappa and the Mothers -- We're Only In It For the Money" /></p>
+
+<p>Those starry-eyed idealists, Frank Zappa and the Mothers of Invention.</p>
+]]></content>
+  </entry>
+  
+</feed>
