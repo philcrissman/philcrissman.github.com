@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: batman | philcrissman.com]]></title>
+  <link href="http://philcrissman.com/blog/categories/batman/atom.xml" rel="self"/>
+  <link href="http://philcrissman.com/"/>
+  <updated>2012-10-12T12:15:07-05:00</updated>
+  <id>http://philcrissman.com/</id>
+  <author>
+    <name><![CDATA[Phil Crissman]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Dress for the job you want]]></title>
+    <link href="http://philcrissman.com/2012/10/12/dress-for-the-job-you-want/"/>
+    <updated>2012-10-12T12:07:00-05:00</updated>
+    <id>http://philcrissman.com/2012/10/12/dress-for-the-job-you-want</id>
+    <content type="html"><![CDATA[<p><img src="/images/posts/batmans.jpg" title="Batmans" alt="Batmen" /></p>
+
+<p>Dress for the job you want, not the job you have.</p>
+
+<p>Image via <a href="http://ffffound.com/image/ac94fa122d849cb0615ba3fbb8b319f02ee90e86">ffffound</a>.</p>
+]]></content>
+  </entry>
+  
+</feed>

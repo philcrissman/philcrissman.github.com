@@ -7,8 +7,7 @@
 	<meta name="author" content="Phil Crissman">
 
 	
-	<meta name="description" content="You&#8217;re being a Good Software developer and diligently testing all your code, and lo and behold, you get this result to one of your tests: 1
-1 &hellip;">
+	<meta name="description" content="Photo by xiaming One of the hallmarks of object oriented programming in most every implementation of it that I know of is the ability to designate &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -99,6 +98,147 @@
 
 	
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/2009/06/26/rubys-objectsend-can-call-private-and-protected-methods/">Ruby&#8217;s Object#send Can Call Private and Protected Methods</a></h1>
+	<div class="entry-content">
+		<p><a href="http://www.flickr.com/photos/xiaming/99206245/"><img src="http://farm1.static.flickr.com/30/99206245_862bc5c93d.jpg?v=0" /></a>
+<small>Photo by <a href="http://www.flickr.com/photos/xiaming/99206245/">xiaming</a></small></p>
+
+<p>One of the hallmarks of object oriented programming in most every implementation of it that I know of is the ability to designate certain methods as &#8220;private&#8221; or &#8220;protected&#8221;, thus keeping them from being called willy-nilly by any old script that wants to call them. Ruby also has this, of course, but interestingly enough it can be easily circumvented.</p>
+
+<p>I guess there are a few posts floating around about it, but I discovered it by accident playing around in irb this evening. I was reading David A. Black&#8217;s The Well Grounded Rubyist, where he mentions that you could send a message to a class either within the class definition itself, or by simply sending it to the class object like you&#8217;d send any other message:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># The normal way to do it</span>
+</span><span class='line'><span class="k">class</span> <span class="nc">Thing</span>
+</span><span class='line'>  <span class="n">message</span> <span class="ss">:whatever</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="c1"># you could also do this</span>
+</span><span class='line'><span class="no">Thing</span><span class="o">.</span><span class="n">message</span><span class="p">(</span><span class="ss">:whatever</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>David mention&#8217;s attr_accessor in this context, so I thought I&#8217;d try that. Open <code>irb</code>:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="o">&gt;&gt;</span> <span class="k">class</span> <span class="nc">Thing</span>
+</span><span class='line'><span class="sc">?&gt;</span> <span class="k">end</span>
+</span><span class='line'><span class="o">&gt;&gt;</span> <span class="no">Thing</span><span class="o">.</span><span class="n">attr_accessor</span> <span class="ss">:name</span>
+</span><span class='line'><span class="no">NoMethodError</span><span class="p">:</span> <span class="kp">private</span> <span class="nb">method</span> <span class="s1">&#39;attr_accessor&#39;</span> <span class="n">called</span> <span class="k">for</span> <span class="no">Thing</span><span class="ss">:Class</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Oh. So much for that, then. But, knowing of the existence of the send method, I thought I&#8217;d try that.</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">Thing</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="ss">:attr_accessor</span><span class="p">,</span> <span class="ss">:name</span><span class="p">)</span>
+</span><span class='line'><span class="o">=&gt;</span> <span class="kp">nil</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>For the non-<code>irb</code> user, that <code>nil</code> that was returned, and the fact that no error message was returned, indicated that our experiment worked. Now <code>Thing</code>&#8217;s have a name attribute.</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="o">&gt;&gt;</span> <span class="n">t</span> <span class="o">=</span> <span class="no">Thing</span><span class="o">.</span><span class="n">new</span>
+</span><span class='line'><span class="o">&gt;&gt;</span> <span class="n">t</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Larry&quot;</span>
+</span><span class='line'><span class="o">=&gt;</span> <span class="s2">&quot;Larry&quot;</span>
+</span><span class='line'><span class="o">&gt;&gt;</span> <span class="n">t</span><span class="o">.</span><span class="n">name</span>
+</span><span class='line'><span class="o">=&gt;</span> <span class="s2">&quot;Larry&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>What&#8217;s interesting about all this is that <code>attr_accessor</code> is a private method on <code>Class</code>. Yet we just called it.</p>
+
+<p><code>send</code> is often introduced as a way to show how everything is an object and that you can do exciting things like <code>1.send(:+, 1)</code> and get <code>2</code> as the result. No one usually mentions that it can be used to call private or protected methods from outside a given class.</p>
+
+<p>To make it clear what you could do here:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="o">&gt;&gt;</span> <span class="k">class</span> <span class="nc">Thing</span>
+</span><span class='line'><span class="sc">?&gt;</span>    <span class="k">def</span> <span class="nf">hello</span>
+</span><span class='line'><span class="sc">?&gt;</span>     <span class="nb">puts</span> <span class="s2">&quot;Hello, world!&quot;</span>
+</span><span class='line'><span class="sc">?&gt;</span>   <span class="k">end</span>
+</span><span class='line'><span class="sc">?&gt;</span>   <span class="kp">private</span>
+</span><span class='line'><span class="sc">?&gt;</span>     <span class="k">def</span> <span class="nf">private_hello</span>
+</span><span class='line'><span class="sc">?&gt;</span>       <span class="nb">puts</span> <span class="s2">&quot;Hello, privately.&quot;</span>
+</span><span class='line'><span class="sc">?&gt;</span>     <span class="k">end</span>
+</span><span class='line'><span class="sc">?&gt;</span> <span class="k">end</span>
+</span><span class='line'><span class="o">&gt;&gt;</span> <span class="n">t</span> <span class="o">=</span> <span class="no">Thing</span><span class="o">.</span><span class="n">new</span>
+</span><span class='line'><span class="o">&gt;&gt;</span> <span class="n">t</span><span class="o">.</span><span class="n">hello</span>
+</span><span class='line'><span class="no">Hello</span><span class="p">,</span> <span class="n">world!</span>
+</span><span class='line'><span class="o">=&gt;</span> <span class="kp">nil</span>
+</span><span class='line'><span class="o">&gt;&gt;</span> <span class="n">t</span><span class="o">.</span><span class="n">private_hello</span>
+</span><span class='line'><span class="no">NoMethodError</span><span class="p">:</span> <span class="kp">private</span> <span class="nb">method</span> <span class="s1">&#39;private_hello&#39;</span> <span class="n">called</span> <span class="k">for</span> <span class="o">.</span><span class="n">.</span><span class="o">.</span>
+</span><span class='line'><span class="o">&gt;&gt;</span> <span class="n">t</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="ss">:private_hello</span><span class="p">)</span>
+</span><span class='line'><span class="no">Hello</span><span class="p">,</span> <span class="n">privately</span><span class="o">.</span>
+</span><span class='line'><span class="o">=&gt;</span> <span class="kp">nil</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>So, yes. You can do this, if you so choose. Please use your powers for good, and not for evil.</p>
+
+<p>Now <em>why</em> this works, I can&#8217;t yet say, though I&#8217;m interested in learning, if there is a reason. Evidently there <a href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-core/7404">may have been some debate</a> as to whether ruby 1.9 would still have this behavior, but as of this writing it does.</p>
+
+<p>Note: I did only a brief search, and it seems <a href="http://www.google.com/search?client=safari&rls=en-us&q=ruby+send+method&ie=UTF-8&oe=UTF-8">this functionality is not unknown</a>, though it still seems somewhat odd to me that such an easy way to sidestep the private/protected designation of methods exists.</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2009-06-26T00:00:00-05:00" pubdate data-updated="true">Jun 26<span>th</span>, 2009</time></div>
+	<div class="tags">
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -316,109 +456,6 @@
 
 
 <time datetime="2009-01-14T00:00:00-06:00" pubdate data-updated="true">Jan 14<span>th</span>, 2009</time></div>
-	<div class="tags">
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/2008/08/27/some-ruby-and-rails-tricks/">Some Ruby & Rails Tricks</a></h1>
-	<div class="entry-content">
-		<p>I certainly can&#8217;t claim to have <em>discovered</em> these tips; but they&#8217;ve been pretty helpful to me. Maybe this will just make them a little easier to find for whoever is looking for them next.</p>
-
-<h3>Getting A Collection&#8217;s Index From Within a Partial</h3>
-
-
-<p>Lets say you&#8217;re passing a collection to a partial, but that somewhere in that partial you are interested in knowing which index you&#8217;re at. Do you need to implement a counter? Nope; there already is one. A collection passed to a partial implicitly creates a counter called <code>[partial_name]_counter</code>. So, if you called with</p>
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='rb'><span class='line'><span class="o">&lt;</span> <span class="sx">%= render :partial =</span><span class="o">&gt;</span> <span class="s1">&#39;thing&#39;</span><span class="p">,</span> <span class="ss">:collection</span> <span class="o">=&gt;</span> <span class="vi">@a_few_of_my_favorite_things</span> <span class="o">%&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>then in your partial, you could use:</p>
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="o">&lt;</span> <span class="o">%=</span> <span class="n">thing_counter</span> <span class="o">%&gt;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>to return the index as you plow through the collection. Life is good. Rails is looking out for you. (Hat tip to <a href="http://gmarik.blogspot.com/2007/09/rails-collection-index-within-partial.html">GMarik</a>, which is where I saw this one.)</p>
-
-<h3>Obtaining a Class name From a String</h3>
-
-
-<p>Today I found myself wanting to take a string, let&#8217;s say <code>"Thing"</code>, and use it as a class name, <code>Thing</code>. Again, it turns out this can be done. In Ruby, class names are constants, so you can do</p>
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">str</span> <span class="o">=</span> <span class="s2">&quot;Thing&quot;</span> <span class="c1">#=&gt; &quot;Thing&quot;</span>
-</span><span class='line'><span class="no">Kernel</span><span class="o">.</span><span class="n">const_get</span><span class="p">(</span><span class="n">str</span><span class="p">)</span> <span class="c1">#=&gt; Thing</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Hooray!</p>
-
-<h3>Make Finding Easier</h3>
-
-
-<p>Find yourself writing long, complicated find expressions in your code? There is a better way.</p>
-
-<p>Perhaps in your code&#8230; maybe even in a view&#8230; maybe you want to find all <code>Things</code> that don&#8217;t belong to the current use, and which are flagged with some property, and you&#8217;re temped to write something like:</p>
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">Thing</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="ss">:all</span><span class="p">,</span> <span class="ss">:conditions</span> <span class="o">=&gt;</span> <span class="o">[</span><span class="s2">&quot;user != ? and flag = true&quot;</span><span class="p">,</span> <span class="n">current_user</span><span class="o">]</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>What we could do is put some <code>has_finder</code>s in the Thing model, something like</p>
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">Thing</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
-</span><span class='line'><span class="n">has_finder</span> <span class="ss">:exclude_user</span><span class="p">,</span> <span class="nb">lambda</span> <span class="p">{</span><span class="o">|</span><span class="n">user</span><span class="o">|</span> <span class="p">{</span><span class="ss">:conditions</span> <span class="o">=&gt;</span> <span class="s2">&quot;things.user_id != </span><span class="si">#{</span><span class="n">user</span><span class="o">.</span><span class="n">id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">}</span>
-</span><span class='line'><span class="n">has_finder</span> <span class="ss">:with_flag</span><span class="p">,</span> <span class="ss">:conditions</span> <span class="o">=&gt;</span> <span class="s2">&quot;things.flag = true&quot;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Having done that, you could now replace that first bit with:</p>
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">Thing</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="ss">:all</span><span class="p">)</span><span class="o">.</span><span class="n">with_flag</span><span class="o">.</span><span class="n">exclude_user</span><span class="p">(</span><span class="n">current_user</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>It&#8217;s a little shorter, sure, but more importantly, when you read it, it just makes more sense. A completely new person coming to look at this line would have a good idea what it was doing without even looking in the model to see what the <code>has_finder</code>s were doing.</p>
-
-<h3>Okay then</h3>
-
-
-<p>If you&#8217;ve spent any amount of time using rails, these probably aren&#8217;t new to you. Everything&#8217;s new at least <em>once</em>, though, so hopefully these are helpful to someone.</p>
-
-<p>Other favorite ruby or rails tricks? Leave a comment! Heck, we&#8217;re not prejudiced, here, go ahead and comment with your favorite Python or Perl or [other language] tricks, too, if you like.</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2008-08-27T00:00:00-05:00" pubdate data-updated="true">Aug 27<span>th</span>, 2008</time></div>
 	<div class="tags">
 
 </div>

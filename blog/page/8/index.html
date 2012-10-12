@@ -7,7 +7,7 @@
 	<meta name="author" content="Phil Crissman">
 
 	
-	<meta name="description" content="Every so often I remember reading posts like Why can&#8217;t programmers&#8230; program?, or Are you one of the 10% of programmers who can implement &hellip;">
+	<meta name="description" content="I didn&#8217;t expect to do a &#8220;code kata&#8221;-type post again so quickly, but here it is anyways. I was reading Randall Hyde&#8217;s &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -98,6 +98,299 @@
 
 	
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/2010/07/07/relative-primes/">Relative Primes</a></h1>
+	<div class="entry-content">
+		<p>I didn&#8217;t expect to do a &#8220;code kata&#8221;-type post again so quickly, but here it is anyways.</p>
+
+<p>I was reading Randall Hyde&#8217;s excellent <a href="http://www.amazon.com/gp/product/1593270038?ie=UTF8&amp;tag=idepermin-20&amp;linkCode=as2&amp;camp=1789&amp;creative=390957&amp;creativeASIN=1593270038">Writing Great Code: Volume 1</a> and came across the concept of relative primes.</p>
+
+<p>If you haven&#8217;t heard the term in awhile, relative primes are simply two numbers that are not both evenly divisible by the same value (not counting 1, of course).</p>
+
+<p>Writing some code to determine if two integers are relatively prime seemed interesting, so I gave it a first shot:</p>
+
+<figure class='code'><figcaption><span>relprime.rb </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+</pre></td><td class='code'><pre><code class='rb'><span class='line'><span class="c1"># relprime01.rb</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">def</span> <span class="nf">rel_prime</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+</span><span class='line'>  <span class="c1"># if either number is one, they are automatically relatively prime.</span>
+</span><span class='line'>  <span class="k">return</span> <span class="kp">true</span> <span class="k">if</span> <span class="p">(</span><span class="n">a</span> <span class="o">==</span> <span class="mi">1</span> <span class="o">||</span> <span class="n">b</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1"># determine a&#39;s factors.</span>
+</span><span class='line'>  <span class="n">fa</span> <span class="o">=</span> <span class="n">factors</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</span><span class='line'>  <span class="c1"># determine b&#39;s factors.</span>
+</span><span class='line'>  <span class="n">fb</span> <span class="o">=</span> <span class="n">factors</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1"># are any factors the same? then false</span>
+</span><span class='line'>  <span class="c1"># if no factors are shared, then true.</span>
+</span><span class='line'>  <span class="c1"># ie, if the intersect is empty, true, else false.</span>
+</span><span class='line'>  <span class="p">(</span><span class="n">fa</span> <span class="o">&amp;</span> <span class="n">fb</span><span class="p">)</span><span class="o">.</span><span class="n">empty?</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">def</span> <span class="nf">factors</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">return</span> <span class="n">a</span> <span class="k">if</span> <span class="n">a</span> <span class="o">==</span> <span class="mi">1</span>
+</span><span class='line'>  <span class="p">(</span><span class="mi">2</span><span class="o">.</span><span class="n">.a</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">{</span><span class="o">|</span><span class="n">k</span><span class="o">|</span> <span class="n">k</span> <span class="k">if</span> <span class="n">a</span><span class="o">%</span><span class="n">k</span><span class="o">==</span><span class="mi">0</span> <span class="p">}</span><span class="o">.</span><span class="n">compact</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>So, open up irb, <code>require 'rel_prime01.rb'</code>, and you have a method for determining if 2 integers are relatively prime. It has some issues, and would not be very efficient for large values. Before addressing that, I thought I&#8217;d just go straight to monkeypatching <code>Integer</code> again.</p>
+
+<p>Note: there&#8217;s another problem with the above method, too. See it? See below the next listing for what it is.</p>
+
+<figure class='code'><figcaption><span>relprime02.rb </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+</pre></td><td class='code'><pre><code class='rb'><span class='line'><span class="c1"># rel_prime02.rb</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="nc">Integer</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1"># usage: x.rel_prime?(y)</span>
+</span><span class='line'>  <span class="c1"># returns true if x and y are relatively prime.</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">rel_prime?</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">return</span> <span class="kp">true</span> <span class="k">if</span> <span class="p">(</span><span class="nb">self</span><span class="o">.</span><span class="n">abs</span> <span class="o">==</span> <span class="mi">1</span> <span class="o">||</span> <span class="n">n</span><span class="o">.</span><span class="n">abs</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c1"># All number pairs have 1 as a shared factor; it doesn&#39;t count. So we subtract it from the array before checking [ ].empty?</span>
+</span><span class='line'>    <span class="p">((</span><span class="nb">self</span><span class="o">.</span><span class="n">factors</span> <span class="o">&amp;</span> <span class="n">n</span><span class="o">.</span><span class="n">factors</span><span class="p">)</span> <span class="o">-</span> <span class="o">[</span><span class="mi">1</span><span class="o">]</span><span class="p">)</span><span class="o">.</span><span class="n">empty?</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1"># usage: x.factors</span>
+</span><span class='line'>  <span class="c1"># returns an array of the factors of x</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">factors</span>
+</span><span class='line'>    <span class="p">(</span><span class="mi">1</span><span class="o">.</span><span class="n">.self</span><span class="o">.</span><span class="n">abs</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">{</span><span class="o">|</span><span class="n">k</span><span class="o">|</span> <span class="n">k</span> <span class="k">if</span> <span class="nb">self</span><span class="o">.</span><span class="n">abs</span><span class="o">%</span><span class="n">k</span><span class="o">==</span><span class="mi">0</span> <span class="p">}</span><span class="o">.</span><span class="n">compact</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Essentially the same algorithm; if either integer is 1, then the numbers are automatically relative primes; 1 has no factors other than itself, so the only factor they share is 1. If both numbers are not 1, it gets the full list of factors of both numbers, checks to see if they have any in common, returns false if they do, and true if they don&#8217;t.</p>
+
+<p>The problem fixed in the second code is the use of Integer::abs in the appropriate places; that first code listing would blow up if you supplied a negative integer. Negative integers should be allowed, so this code uses .abs to make everything work properly, as it should.</p>
+
+<p>There&#8217;s still a big problem for checking large numbers. Each time we check relative primes, we&#8217;re getting ALL the factors of each integer, and then comparing them when we&#8217;re done. That could take a really long time, and the code above iterates though every single value from <code>1..x</code> for each <code>x</code> we give it&#8230; even if that number turns out to be (gasp!) prime. This won&#8217;t do at all. It will give us correct answers, but it will take a really long time to do it if we supply large values.</p>
+
+<p>How could we improve it? Well, one way would be to check common factors as we go. That way, if both numbers are even, we find out they share a factor on the very first iteration, and we simply stop: they are not relatively prime. Here&#8217;s this one:</p>
+
+<figure class='code'><figcaption><span>rel_prime03.rb </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+</pre></td><td class='code'><pre><code class='rb'><span class='line'><span class="c1"># rel_prime03.rb</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="nc">Integer</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1"># usage: x.rel_prime?(y)</span>
+</span><span class='line'>  <span class="c1"># returns true if x and y are relatively prime.</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">rel_prime?</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">return</span> <span class="kp">true</span> <span class="k">if</span> <span class="p">(</span><span class="nb">self</span><span class="o">.</span><span class="n">abs</span> <span class="o">==</span> <span class="mi">1</span> <span class="o">||</span> <span class="n">n</span><span class="o">.</span><span class="n">abs</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c1"># different approach; go through (1..min(self,n).abs), </span>
+</span><span class='line'>    <span class="c1"># build an array for each number&#39;s factors as we go.</span>
+</span><span class='line'>    <span class="c1"># each time you add a factor, check if the two arrays share it.</span>
+</span><span class='line'>    <span class="c1"># if they do, end right away with false; </span>
+</span><span class='line'>    <span class="c1"># else, keep searching for common factors.</span>
+</span><span class='line'>    <span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="o">=[]</span><span class="p">,</span><span class="o">[]</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>    <span class="p">(</span><span class="mi">2</span><span class="o">.</span><span class="n">.</span><span class="o">[</span><span class="nb">self</span><span class="p">,</span><span class="n">n</span><span class="o">].</span><span class="n">sort</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="n">abs</span><span class="p">)</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">k</span><span class="o">|</span>
+</span><span class='line'>      <span class="n">x</span> <span class="o">&lt;&lt;</span> <span class="n">k</span> <span class="k">if</span> <span class="nb">self</span> <span class="o">%</span> <span class="n">k</span>  <span class="o">==</span> <span class="mi">0</span>
+</span><span class='line'>      <span class="n">y</span> <span class="o">&lt;&lt;</span> <span class="n">k</span> <span class="k">if</span> <span class="n">n</span> <span class="o">%</span> <span class="n">k</span>     <span class="o">==</span> <span class="mi">0</span>
+</span><span class='line'>      <span class="k">return</span> <span class="kp">false</span> <span class="k">unless</span> <span class="p">(</span><span class="n">x</span> <span class="o">&amp;</span> <span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">empty?</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c1"># if you get here, it&#39;s because you found no common factors. return true.</span>
+</span><span class='line'>    <span class="kp">true</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>So, this time we make 2 empty arrays, x and y. Each time we find a factor of self or n we add it to either x or y and then check if the intersection of those two arrays (using &amp;) is empty; if it&#8217;s ever not empty, return false right away and stop checking. If we get all the way to the end without finding a common factor, we can return true.</p>
+
+<p>This is better; works great for large numbers IFF the common factor is a fairly low number. But what if it isn&#8217;t? What if the common factor is a 7 digit long prime number?</p>
+
+<p>We know that there will be cases &#8230; large primes, for example &#8230; where we do basically need to check all the way up till we reach the last value that could be possible (the lesser of self and n, whichever that happens to be). But there&#8217;s a lot of number in-between that we don&#8217;t need to check. For example, if 2 is not a common factor, then we never need to check multiples of 2 again. If 3 is not a common factor, we never need to check multiples of 3 again. And so on. So really, if x is the lesser of self and n, the range we need to check will look something like:</p>
+
+<p><code>[2,3,5,7,11,13 ... x]</code></p>
+
+<p>Hm. That list looks familiar. Basically, we only need to check to see if prime numbers are factors of self and n; if a given prime number is not a factor, neither will any of its multiples be a factor.</p>
+
+<p>Generating a list of primes wasn&#8217;t on the to-do list, but fortunately ruby has a class in mathn called Prime, which returns an enumerator for iterating over the prime numbers. How convenient!</p>
+
+<figure class='code'><figcaption><span>rel_prime04.rb </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+</pre></td><td class='code'><pre><code class='rb'><span class='line'><span class="c1"># rel_prime04.rb</span>
+</span><span class='line'><span class="nb">require</span> <span class="s1">&#39;mathn&#39;</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="nc">Integer</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="c1"># usage: x.rel_prime?(y)</span>
+</span><span class='line'>  <span class="c1"># returns true if x and y are relatively prime.</span>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">rel_prime?</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">return</span> <span class="kp">true</span> <span class="k">if</span> <span class="p">(</span><span class="nb">self</span><span class="o">.</span><span class="n">abs</span> <span class="o">==</span> <span class="mi">1</span> <span class="o">||</span> <span class="n">n</span><span class="o">.</span><span class="n">abs</span> <span class="o">==</span> <span class="mi">1</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c1"># one more quick check; does self % n == 0?</span>
+</span><span class='line'>    <span class="c1"># if it does, we save some time; we know right away they aren&#39;t relatively prime,</span>
+</span><span class='line'>    <span class="c1"># and we don&#39;t need to iterate all the way up before we find out.</span>
+</span><span class='line'>    <span class="k">return</span> <span class="kp">true</span> <span class="k">if</span> <span class="nb">self</span> <span class="o">%</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="n">x</span><span class="p">,</span><span class="n">y</span> <span class="o">=[]</span><span class="p">,</span><span class="o">[]</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c1"># Prime.instance gives us an enumerator over the Prime numbers.</span>
+</span><span class='line'>    <span class="c1"># Enumerating over only primes saves us the wasted effort </span>
+</span><span class='line'>    <span class="c1"># of rechecking multiples of factors we&#39;ve already ruled out.</span>
+</span><span class='line'>    <span class="c1"># etc.</span>
+</span><span class='line'>    <span class="nb">p</span> <span class="o">=</span> <span class="no">Prime</span><span class="o">.</span><span class="n">instance</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="nb">p</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">k</span><span class="o">|</span>
+</span><span class='line'>      <span class="n">x</span> <span class="o">&lt;&lt;</span> <span class="n">k</span> <span class="k">if</span> <span class="nb">self</span> <span class="o">%</span> <span class="n">k</span>  <span class="o">==</span> <span class="mi">0</span>
+</span><span class='line'>      <span class="n">y</span> <span class="o">&lt;&lt;</span> <span class="n">k</span> <span class="k">if</span> <span class="n">n</span> <span class="o">%</span> <span class="n">k</span>     <span class="o">==</span> <span class="mi">0</span>
+</span><span class='line'>      <span class="k">return</span> <span class="kp">false</span> <span class="k">unless</span> <span class="p">(</span><span class="n">x</span> <span class="o">&amp;</span> <span class="n">y</span><span class="p">)</span><span class="o">.</span><span class="n">empty?</span>
+</span><span class='line'>      <span class="k">break</span> <span class="k">if</span> <span class="n">k</span> <span class="o">&gt;=</span> <span class="o">[</span><span class="nb">self</span><span class="p">,</span><span class="n">n</span><span class="o">].</span><span class="n">sort</span><span class="o">[</span><span class="mi">0</span><span class="o">].</span><span class="n">abs</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c1"># if you get here, it&#39;s because you found no common factors. return true.</span>
+</span><span class='line'>    <span class="kp">true</span>
+</span><span class='line'>  <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Now, the above code uses Prime::instance to create the enumerator, which is a ruby 1.9 thing; you can do this in ruby 1.8.x, but you&#8217;ll need <code>Prime.new</code> instead of <code>Prime.instance</code>. Warning, though, I found that the Prime enumerator in 1.8.x was still pretty slow for larger integers. The 1.9 version is <em>very</em> fast. For easy ways to get ruby 1.9.x installed without messing too much with your existing environment, check out <a href="http://rvm.beginrescueend.com/">rvm</a>.</p>
+
+<p>So now we&#8217;re doing essentially the same as the rel_prime03.rb version, but we&#8217;re skipping the multiples of any factors we&#8217;ve already ruled out by <em>only</em> iterating through the prime numbers. In the loop, you&#8217;ll see we stop if <code>k >= [self,n].sort[0]</code>, which is the lesser of self and n (I felt like there might be a more elegant way to quickly find the lesser of two integers, but I didn&#8217;t look; anyone?).</p>
+
+<p>One more thing was added, here: right at the beginning, after checking if self or n (abs) is equal to 1, we also check if self % n == 0. If it does, we just saved some time; see the comments in the listing above.</p>
+
+<p>That&#8217;s that, then. A method added to Integer that checks if two integers are relatively prime.</p>
+
+<p>Is there a better way to do it? I&#8217;m fairly certain there is (there usually is), so if you know of one, feel free to leave a note or a link in the comments.</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-07-07T00:00:00-05:00" pubdate data-updated="true">Jul 7<span>th</span>, 2010</time></div>
+	<div class="tags">
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -371,45 +664,6 @@ git push heroku master
 
 
 <time datetime="2010-06-23T00:00:00-05:00" pubdate data-updated="true">Jun 23<span>rd</span>, 2010</time></div>
-	<div class="tags">
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/2010/06/18/whinyrendering/">WhinyRendering</a></h1>
-	<div class="entry-content">
-		<p>Quite often I&#8217;ll come into a Rails project with a good portion of the code already written. Depending on style the developers were using, this sometimes means that I may not be able to easily tell, when looking at a given view, how the view is being generated. The URL may <em>say</em> /pages/1, but for all I know, the routes file has instructions to use the ArmpitsController when it sees a route for pages/*; the URL might say /user/login, but for all we know, that may map to SessionController::sign_in. In other words, it&#8217;s not always clear.</p>
-
-<p>And that&#8217;s not even getting into the cases where there are multiple partials being used, some of which might be in app/views/shared, or who knows where.</p>
-
-<p>We&#8217;ve talked in the office a few times about a mythical plugin that could provide a little output stating exactly what controller, action, and template are being rendered, as well as any and all partials. Thus the idea for WhinyRendering was born.</p>
-
-<p>If any of the preceding scenario sounds familiar, I hope it&#8217;s helpful.</p>
-
-<p><a href="http://github.com/philcrissman/whiny_rendering">WhinyRendering</a></p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-06-18T00:00:00-05:00" pubdate data-updated="true">Jun 18<span>th</span>, 2010</time></div>
 	<div class="tags">
 
 </div>

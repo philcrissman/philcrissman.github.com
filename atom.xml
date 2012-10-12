@@ -4,7 +4,7 @@
   <title><![CDATA[philcrissman.com]]></title>
   <link href="http://philcrissman.com/atom.xml" rel="self"/>
   <link href="http://philcrissman.com/"/>
-  <updated>2012-10-11T09:57:17-05:00</updated>
+  <updated>2012-10-12T12:15:07-05:00</updated>
   <id>http://philcrissman.com/</id>
   <author>
     <name><![CDATA[Phil Crissman]]></name>
@@ -12,6 +12,19 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Dress for the job you want]]></title>
+    <link href="http://philcrissman.com/2012/10/12/dress-for-the-job-you-want/"/>
+    <updated>2012-10-12T12:07:00-05:00</updated>
+    <id>http://philcrissman.com/2012/10/12/dress-for-the-job-you-want</id>
+    <content type="html"><![CDATA[<p><img src="http://philcrissman.com/images/posts/batmans.jpg" title="Batmans" alt="Batmen" /></p>
+
+<p>Dress for the job you want, not the job you have.</p>
+
+<p>Image via <a href="http://ffffound.com/image/ac94fa122d849cb0615ba3fbb8b319f02ee90e86">ffffound</a>.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[We're only in it for the money]]></title>
@@ -678,17 +691,6 @@ Photo credit: <a href="http://www.flickr.com/photos/ihtatho/627226315/sizes/m/in
 
 
 
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[UJS in Rails 3 tonight at RUM]]></title>
-    <link href="http://philcrissman.com/2011/01/31/ujs-in-rails-3-tonight-at-rum/"/>
-    <updated>2011-01-31T00:00:00-06:00</updated>
-    <id>http://philcrissman.com/2011/01/31/ujs-in-rails-3-tonight-at-rum</id>
-    <content type="html"><![CDATA[<p>UJS in Rails 3, tonight at RUM</p>
-
-<p>I&#8217;ll be speaking tonight on UJS and Rails 3 at <a href="http://ruby.mn/">RUM</a>. Slides will be posted somewhere later this week, and I may follow up with a post that summarizes the content, if the slides don&#8217;t seem complete enough to cover the topic on their own.</p>
 ]]></content>
   </entry>
   
