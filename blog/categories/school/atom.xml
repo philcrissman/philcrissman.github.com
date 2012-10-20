@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: school | philcrissman.com]]></title>
+  <link href="http://philcrissman.com/blog/categories/school/atom.xml" rel="self"/>
+  <link href="http://philcrissman.com/"/>
+  <updated>2012-10-20T10:34:01-05:00</updated>
+  <id>http://philcrissman.com/</id>
+  <author>
+    <name><![CDATA[Phil Crissman]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[What I want to know]]></title>
+    <link href="http://philcrissman.com/2012/10/20/what-i-want-to-know/"/>
+    <updated>2012-10-20T10:22:00-05:00</updated>
+    <id>http://philcrissman.com/2012/10/20/what-i-want-to-know</id>
+    <content type="html"><![CDATA[<p><img src="/images/posts/calvin_on_school.jpg" title="What I want to know" alt="What I want to know" /></p>
+
+<p><a href="http://thisisnthappiness.com/post/33882373193/calvin-and-hobbes">via</a></p>
+]]></content>
+  </entry>
+  
+</feed>

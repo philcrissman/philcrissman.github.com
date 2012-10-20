@@ -7,7 +7,7 @@
 	<meta name="author" content="Phil Crissman">
 
 	
-	<meta name="description" content="I&#8217;ve seen the I write like links show up on facebook and twitter a few times, so I decided I&#8217;d take a look. Not content to simply feed &hellip;">
+	<meta name="description" content=" I know, I know, the faux motivational poster is an old and tired meme. Sorry. Jul 28th, 2010 ">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -110,6 +110,39 @@
 
 	
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/2010/07/28/faith/">Faith</a></h1>
+	<div class="entry-content">
+		<p><img src="http://philcrissman.com/images/posts/vader_faith.jpg" width="440" /></p>
+
+<p>I know, I know, the faux motivational poster is an old and tired <a href="http://en.wikipedia.org/wiki/Meme">meme</a>. Sorry.</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-07-28T00:00:00-05:00" pubdate data-updated="true">Jul 28<span>th</span>, 2010</time></div>
+	<div class="tags">
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -745,164 +778,6 @@ end
 
 
 <time datetime="2010-07-07T00:00:00-05:00" pubdate data-updated="true">Jul 7<span>th</span>, 2010</time></div>
-	<div class="tags">
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/2010/07/06/various-fizzbuzzes/">Various Fizzbuzzes</a></h1>
-	<div class="entry-content">
-		<p>Every so often I remember reading posts like <a href="http://www.codinghorror.com/blog/2007/02/why-cant-programmers-program.html">Why can&#8217;t programmers&#8230; program?</a>, or <a href="http://reprog.wordpress.com/2010/04/19/are-you-one-of-the-10-percent/">Are you one of the 10% of programmers who can implement a binary search?</a>, or even various things about the idea of <a href="http://duckduckgo.com/?q=code+kata&amp;v=">code kata</a>, and that makes me want to just spend a little time practicing, rather than just working. Very often while working, we&#8217;re resolving a problem we (and/or others) have solve dozens of times before, and it&#8217;s really not very challenging or stretching.</p>
-
-<p>Since I was thinking about it, I decided to just start with the FizzBuzz example, from <a href="http://weblog.raganwald.com/2007/01/dont-overthink-fizzbuzz.html">Reginald Braithwaite</a> via Jeff Atwood.</p>
-
-<p>First solution:</p>
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="p">(</span><span class="mi">1</span><span class="o">.</span><span class="n">.</span><span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">k</span><span class="o">|</span>
-</span><span class='line'>  <span class="nb">print</span> <span class="n">k</span> <span class="o">%</span> <span class="mi">3</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">?</span> <span class="s2">&quot;Fizz&quot;</span> <span class="p">:</span> <span class="s2">&quot;&quot;</span>
-</span><span class='line'>  <span class="nb">print</span> <span class="n">k</span> <span class="o">%</span> <span class="mi">5</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">?</span> <span class="s2">&quot;Buzz&quot;</span> <span class="p">:</span> <span class="s2">&quot;&quot;</span>
-</span><span class='line'>  <span class="nb">print</span> <span class="n">k</span> <span class="k">unless</span> <span class="p">(</span><span class="n">k</span> <span class="o">%</span> <span class="mi">3</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">k</span> <span class="o">%</span> <span class="mi">5</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
-</span><span class='line'>  <span class="nb">print</span> <span class="s2">&quot; &quot;</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>So, that&#8217;s simple enough. I thought maybe it could be a little more compact, but essentially unchanged, here was the next version:</p>
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="p">(</span><span class="mi">1</span><span class="o">.</span><span class="n">.</span><span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">k</span><span class="o">|</span>
-</span><span class='line'>  <span class="nb">print</span> <span class="n">k</span><span class="o">%</span><span class="mi">3</span><span class="o">==</span><span class="mi">0</span> <span class="o">?</span> <span class="s2">&quot;Fizz&quot;</span> <span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">k</span><span class="o">%</span><span class="mi">5</span><span class="o">==</span><span class="mi">0</span> <span class="o">?</span> <span class="s2">&quot;Buzz&quot;</span> <span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">k</span><span class="o">%</span><span class="mi">3</span><span class="o">==</span><span class="mi">0</span> <span class="o">||</span> <span class="n">k</span><span class="o">%</span><span class="mi">5</span><span class="o">==</span><span class="mi">0</span><span class="p">)</span> <span class="p">?</span> <span class="s2">&quot;&quot;</span> <span class="p">:</span> <span class="n">k</span><span class="p">,</span>  <span class="s2">&quot; &quot;</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>That&#8217;s nice and all, but I&#8217;m now trying to think if I can find other ways to do it. Preferably shorter and/or more elegant. Maybe. <code>003.rb</code> was next.</p>
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="p">(</span><span class="mi">1</span><span class="o">.</span><span class="n">.</span><span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">k</span><span class="o">|</span>
-</span><span class='line'>  <span class="n">word</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
-</span><span class='line'>  <span class="n">word</span> <span class="o">&lt;&lt;</span> <span class="s2">&quot;Fizz&quot;</span> <span class="k">if</span> <span class="n">k</span><span class="o">%</span><span class="mi">3</span><span class="o">==</span><span class="mi">0</span>
-</span><span class='line'>  <span class="n">word</span> <span class="o">&lt;&lt;</span> <span class="s2">&quot;Buzz&quot;</span> <span class="k">if</span> <span class="n">k</span><span class="o">%</span><span class="mi">5</span><span class="o">==</span><span class="mi">0</span>
-</span><span class='line'>  <span class="nb">print</span> <span class="n">word</span><span class="o">.</span><span class="n">empty?</span> <span class="p">?</span> <span class="n">k</span> <span class="p">:</span> <span class="n">word</span><span class="p">,</span> <span class="s2">&quot; &quot;</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Not really shorter or elegant, but a slightly different approach, filling a placeholder variable with &#8220;Fizz&#8221;, &#8220;Buzz&#8221; (or both), and then deciding which one to display based on whether or not the placeholder was <code>empty?</code> (If you aren&#8217;t familiar with Ruby, <code>"".empty? == true &amp;&amp; "anything".empty? == false</code>.)</p>
-
-<p>Again, I tried to pare that down a little.</p>
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="nb">puts</span> <span class="p">(</span><span class="mi">1</span><span class="o">.</span><span class="n">.</span><span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">map</span> <span class="p">{</span><span class="o">|</span><span class="n">k</span><span class="o">|</span> <span class="n">w</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">;</span><span class="n">w</span><span class="o">&lt;&lt;</span><span class="s2">&quot;Fizz&quot;</span><span class="k">if</span> <span class="n">k</span><span class="o">%</span><span class="mi">3</span><span class="o">==</span><span class="mi">0</span><span class="p">;</span><span class="n">w</span><span class="o">&lt;&lt;</span><span class="s2">&quot;Buzz&quot;</span><span class="k">if</span> <span class="n">k</span><span class="o">%</span><span class="mi">5</span><span class="o">==</span><span class="mi">0</span><span class="p">;</span><span class="n">w</span><span class="o">.</span><span class="n">empty?</span> <span class="p">?</span> <span class="n">k</span> <span class="p">:</span> <span class="n">w</span> <span class="p">}</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Well, I don&#8217;t know if it&#8217;s readable, or anything resembling elegant, but it&#8217;s, um&#8230; more compact.</p>
-
-<p>At that point I glanced back at my first solution, and something was bugging me about it; oh, yeah. The ternary expressions that returned &#8220;&#8221; for the false case. That seemed unnecessary. 005.rb tries to fix it.</p>
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="p">(</span><span class="mi">1</span><span class="o">.</span><span class="n">.</span><span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">each</span> <span class="k">do</span> <span class="o">|</span><span class="n">k</span><span class="o">|</span>
-</span><span class='line'>  <span class="nb">print</span> <span class="s2">&quot;Fizz&quot;</span> <span class="k">if</span> <span class="n">k</span> <span class="o">%</span> <span class="mi">3</span> <span class="o">==</span> <span class="mi">0</span>
-</span><span class='line'>  <span class="nb">print</span> <span class="s2">&quot;Buzz&quot;</span> <span class="k">if</span> <span class="n">k</span> <span class="o">%</span> <span class="mi">5</span> <span class="o">==</span> <span class="mi">0</span>
-</span><span class='line'>  <span class="nb">print</span> <span class="n">k</span> <span class="k">unless</span> <span class="p">(</span><span class="n">k</span> <span class="o">%</span> <span class="mi">3</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">k</span> <span class="o">%</span> <span class="mi">5</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
-</span><span class='line'>  <span class="nb">print</span> <span class="s2">&quot; &quot;</span>
-</span><span class='line'><span class="k">end</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Essentially unchanged. I&#8217;m not even sure it&#8217;s any more efficient but it <em>feels</em> less like there&#8217;s wasted code in there, so I like it a little better. Now, it&#8217;s not really <em>changing</em> much, but what if we extract the logic into it&#8217;s own method?</p>
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">def</span> <span class="nf">fizzbuzz</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
-</span><span class='line'>  <span class="n">w</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span>
-</span><span class='line'>  <span class="n">w</span> <span class="o">&lt;&lt;</span> <span class="s2">&quot;Fizz&quot;</span> <span class="k">if</span> <span class="n">k</span><span class="o">%</span><span class="mi">3</span><span class="o">==</span><span class="mi">0</span>
-</span><span class='line'>  <span class="n">w</span> <span class="o">&lt;&lt;</span> <span class="s2">&quot;Buzz&quot;</span> <span class="k">if</span> <span class="n">k</span><span class="o">%</span><span class="mi">5</span><span class="o">==</span><span class="mi">0</span>
-</span><span class='line'>  <span class="n">w</span><span class="o">.</span><span class="n">empty?</span> <span class="p">?</span> <span class="n">k</span> <span class="p">:</span> <span class="n">w</span>
-</span><span class='line'><span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'><span class="p">(</span><span class="mi">1</span><span class="o">.</span><span class="n">.</span><span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">each</span> <span class="p">{</span><span class="o">|</span><span class="n">k</span><span class="o">|</span> <span class="nb">print</span> <span class="n">fizzbuzz</span><span class="p">(</span><span class="n">k</span><span class="p">),</span> <span class="s2">&quot; &quot;</span> <span class="p">}</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Hey, that&#8217;s&#8230; well, it&#8217;s essentially the same, but the lesser rites of refactoring have been appeased by pulling that code into it&#8217;s own little method.</p>
-
-<p>Hey. That makes me think we could just:</p>
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">Integer</span>
-</span><span class='line'>  <span class="k">def</span> <span class="nf">fizzbuzz</span>
-</span><span class='line'>    <span class="n">w</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="nb">self</span><span class="o">%</span><span class="mi">3</span><span class="o">==</span><span class="mi">0</span> <span class="o">?</span> <span class="s2">&quot;Fizz&quot;</span> <span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">&lt;&lt;</span><span class="p">(</span><span class="nb">self</span><span class="o">%</span><span class="mi">5</span><span class="o">==</span><span class="mi">0</span> <span class="o">?</span> <span class="s2">&quot;Buzz&quot;</span> <span class="p">:</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
-</span><span class='line'>    <span class="n">w</span><span class="o">.</span><span class="n">empty?</span> <span class="p">?</span> <span class="nb">self</span> <span class="p">:</span> <span class="n">w</span>
-</span><span class='line'>  <span class="k">end</span>
-</span><span class='line'><span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'><span class="nb">puts</span> <span class="p">(</span><span class="mi">1</span><span class="o">.</span><span class="n">.</span><span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">map</span><span class="p">{</span><span class="o">|</span><span class="n">k</span><span class="o">|</span> <span class="n">k</span><span class="o">.</span><span class="n">fizzbuzz</span> <span class="p">}</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>So, a couple different things here. We open up <code>Integer</code> and add a fizzbuzz method to it. The idea of a place holder with either &#8220;Fizz&#8221;, &#8220;Buzz&#8221;, or both added to it is streamlined slightly by adding the concatenation lines right into the variable assignment. To make that work, we have to go back to using the ternary operator (can you see why? If we just did <code>w &lt;&lt; "Fizz" if k%3==0</code>, it would try to append <code>nil</code> to the String, and you&#8217;d get a horrible &#8220;Unable to convert nil to String&#8221; error anytime a non-multiple of 3 or 5 came up).</p>
-
-<p>So, that&#8217;s that. I know this is simple, maybe trivial, but hey, who wants to be the guy who couldn&#8217;t program a FizzBuzz solution in the interview?</p>
-
-<p>This was a fun exercise, so I&#8217;ll probably try to do some more like it. I&#8217;ll likely start by mining Code Kata, implementing some algorithms, or something. Feel free to leave problem suggestions in the comments.</p>
-
-<p>Thanks!</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-07-06T00:00:00-05:00" pubdate data-updated="true">Jul 6<span>th</span>, 2010</time></div>
 	<div class="tags">
 
 </div>
