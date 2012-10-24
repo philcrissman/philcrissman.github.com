@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: design | philcrissman.com]]></title>
+  <link href="http://philcrissman.com/blog/categories/design/atom.xml" rel="self"/>
+  <link href="http://philcrissman.com/"/>
+  <updated>2012-10-24T09:23:06-05:00</updated>
+  <id>http://philcrissman.com/</id>
+  <author>
+    <name><![CDATA[Phil Crissman]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[They came from another galaxy. So they were a bit tired.]]></title>
+    <link href="http://philcrissman.com/2012/10/24/they-came-from-another-galaxy-so-they-were-a-bit-tired/"/>
+    <updated>2012-10-24T09:17:00-05:00</updated>
+    <id>http://philcrissman.com/2012/10/24/they-came-from-another-galaxy-so-they-were-a-bit-tired</id>
+    <content type="html"><![CDATA[<p><img src="/images/posts/ibdm-poster.jpg" title="and boy are my arms tired" alt="I just flew in from another galaxy" /></p>
+
+<p><a href="http://www.ibelieveinadv.com/2010/12/h-57-creative-station-intercontinental-ballistic-design-missile-project/">via</a></p>
+
+<p>Found this somewhere in my bookmarks. I just like design, I guess.</p>
+]]></content>
+  </entry>
+  
+</feed>

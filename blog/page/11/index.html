@@ -7,7 +7,7 @@
 	<meta name="author" content="Phil Crissman">
 
 	
-	<meta name="description" content=" Apr 1st, 2010 ">
+	<meta name="description" content="So, let&#8217;s say you have a model, and a has_many relationship to another model. You want to accept nested attributes for the child models in &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -110,6 +110,142 @@
 
 	
 	<div id="content" class="inner">
+
+
+    <article class="post">
+	<h1 class="title"><a href="/2010/04/12/validating-nested-attributes-on-update/">Validating Nested Attributes on Update</a></h1>
+	<div class="entry-content">
+		<p>So, let&#8217;s say you have a model, and a has_many relationship to another model. You want to accept nested attributes for the child models in your forms, and you also want to validate that the children must be present; the parent model can&#8217;t be saved unless it has <em>at least one</em> of the child model associated. Easy enough, right?</p>
+
+<figure class='code'><figcaption><span>parent.rb </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+</pre></td><td class='code'><pre><code class='rb'><span class='line'><span class="k">class</span> <span class="nc">Parent</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
+</span><span class='line'>  <span class="n">has_many</span> <span class="ss">:children</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">accepts_nested_attributes_for</span> <span class="ss">:children</span><span class="p">,</span> <span class="ss">:allow_destroy</span> <span class="o">=&gt;</span> <span class="kp">true</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="n">validates_presence_of</span> <span class="ss">:children</span>
+</span><span class='line'><span class="k">end</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">class</span> <span class="nc">Child</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
+</span><span class='line'>  <span class="n">belongs_to</span> <span class="ss">:parent</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>That&#8217;s not too bad. But the thing is, this will validate presence of the children on create, but not on update&#8230;</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="o">&gt;&gt;</span> <span class="nb">p</span> <span class="o">=</span> <span class="no">Parent</span><span class="o">.</span><span class="n">new</span> <span class="c1"># note: no children</span>
+</span><span class='line'><span class="o">=&gt;</span> <span class="c1">#&amp;lt;Parent id:nil ... &gt;</span>
+</span><span class='line'><span class="o">&gt;&gt;</span> <span class="nb">p</span><span class="o">.</span><span class="n">save!</span>
+</span><span class='line'><span class="o">=&gt;</span> <span class="c1"># errors glaore</span>
+</span><span class='line'><span class="o">&gt;&gt;</span> <span class="n">p2</span> <span class="o">=</span> <span class="no">Parent</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="ss">:last</span><span class="p">)</span>
+</span><span class='line'><span class="o">=&gt;</span> <span class="c1">#&amp;lt;Parent id:23 ... &gt;</span>
+</span><span class='line'><span class="o">&gt;&gt;</span> <span class="n">p2</span><span class="o">.</span><span class="n">update_attributes</span><span class="p">(</span><span class="s2">&quot;childen_attributes&quot;</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="s2">&quot;0&quot;</span> <span class="o">=&gt;</span> <span class="p">{</span><span class="ss">:_destroy</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">},</span> <span class="o">[.</span><span class="n">.</span><span class="o">.</span> <span class="n">etc</span><span class="o">.</span> <span class="no">Assume</span> <span class="n">all</span> <span class="n">children</span> <span class="n">are</span> <span class="n">sent</span> <span class="n">a</span> <span class="n">destroy</span> <span class="n">flag</span> <span class="n">here</span><span class="o">]</span><span class="p">})</span>
+</span><span class='line'><span class="o">=&gt;</span> <span class="kp">true</span> <span class="c1"># what! it saved?</span>
+</span><span class='line'><span class="o">&gt;&gt;</span> <span class="n">p2</span><span class="o">.</span><span class="n">valid?</span>
+</span><span class='line'><span class="o">=&gt;</span> <span class="kp">false</span> <span class="c1"># what! it&#39;s saved, but not valid anymore... (because it has no children)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>So, the trouble is (I think), when you save the existing Parent, at the moment validation is checked, there are still children. They won&#8217;t be deleted until .save is called. So the object is valid. Then after it&#8217;s saved, the children have been deleted, and the object is saved, but it is no longer valid. What to do?</p>
+
+<p>Well, after some pondering, I wound up with this (in the update method):</p>
+
+<figure class='code'><figcaption><span>parents_controller.rb </span></figcaption>
+ <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+</pre></td><td class='code'><pre><code class='rb'><span class='line'><span class="k">class</span> <span class="nc">ParentsController</span> <span class="o">&lt;</span> <span class="no">ApplicationController</span>
+</span><span class='line'>  <span class="c1"># other methods...</span>
+</span><span class='line'>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">update</span>
+</span><span class='line'>    <span class="vi">@parent</span> <span class="o">=</span> <span class="no">Parent</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="n">params</span><span class="o">[</span><span class="ss">:id</span><span class="o">]</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c1"># assign the attributes _without trying to save_</span>
+</span><span class='line'>    <span class="vi">@parent</span><span class="o">.</span><span class="n">attributes</span> <span class="o">=</span> <span class="n">params</span><span class="o">[</span><span class="ss">:parent</span><span class="o">]</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c1"># this line winds up as true if all items are marked for deletion; otherwise, false</span>
+</span><span class='line'>    <span class="n">reject</span> <span class="o">=</span> <span class="vi">@parent</span><span class="o">.</span><span class="n">children</span><span class="o">.</span><span class="n">inject</span><span class="p">(</span><span class="kp">true</span><span class="p">){</span><span class="o">|</span><span class="n">truthiness</span><span class="p">,</span> <span class="n">n</span><span class="o">|</span> <span class="o">!!</span><span class="p">(</span><span class="n">truthiness</span> <span class="o">&amp;&amp;</span> <span class="n">n</span><span class="o">.</span><span class="n">marked_for_destruction?</span><span class="p">)</span> <span class="p">}</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c1"># check reject&#39;s truthiness first. Only try to save if reject is false. </span>
+</span><span class='line'>    <span class="c1"># If we save first, it will save even though items will all be deleted.</span>
+</span><span class='line'>    <span class="k">if</span> <span class="o">!</span><span class="n">reject</span> <span class="o">&amp;&amp;</span> <span class="vi">@parent</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">params</span><span class="o">[</span><span class="ss">:order_form</span><span class="o">]</span><span class="p">)</span>
+</span><span class='line'>      <span class="n">flash</span><span class="o">[</span><span class="ss">:notice</span><span class="o">]</span> <span class="o">=</span> <span class="s2">&quot;Object updated&quot;</span>
+</span><span class='line'>      <span class="n">redirect_to</span> <span class="n">parent_path</span><span class="p">(</span><span class="vi">@parent</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">else</span>
+</span><span class='line'>      <span class="n">flash</span><span class="o">[</span><span class="ss">:notice</span><span class="o">]</span> <span class="o">=</span> <span class="s2">&quot;Object could not be saved&quot;</span>
+</span><span class='line'>      <span class="n">render</span> <span class="ss">:action</span> <span class="o">=&gt;</span> <span class="ss">:edit</span>
+</span><span class='line'>    <span class="k">end</span>
+</span><span class='line'><span class="k">end</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Now, checking for an objects validity in the controller seems wrong to me, too, but it works. Anyone who has run into this find another way to do it?</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-04-12T00:00:00-05:00" pubdate data-updated="true">Apr 12<span>th</span>, 2010</time></div>
+	<div class="tags">
+
+</div>
+	
+</div></article>
 
 
     <article class="post">
@@ -250,65 +386,6 @@
 
 
 <time datetime="2010-02-28T00:00:00-06:00" pubdate data-updated="true">Feb 28<span>th</span>, 2010</time></div>
-	<div class="tags">
-
-</div>
-	
-</div></article>
-
-
-    <article class="post">
-	<h1 class="title"><a href="/2010/02/18/dumb-results-can-be-better-than-smart-results/">Dumb Results Can Be Better Than Smart Results</a></h1>
-	<div class="entry-content">
-		<p><img src="http://philcrissman.com/images/posts/find_x.jpg" alt="" title="find_x" width="394" /><br /></p>
-
-<p>The last couple posts have crossed over into a couple really big topics; one is web application usability, the other is the quality of results returned by an algorithm. They are not the same topic. Anything that can be made more usable should be. The quality of an algorithm&#8217;s results are not necessarily related to that. I started chatting with <a href="http://twitter.com/KuraFire">@Kurafire</a> about this, and he is making some great points&#8230; but I still don&#8217;t precisely agree.</p>
-
-<p>For example:</p>
-
-<blockquote><a href="http://twitter.com/KuraFire/status/9266841104">The problem with Google&#8217;s algorithm is that a &#8220;mere&#8221; blog could outweigh the second-most visited website on the planet.</a></blockquote>
-
-
-
-
-<blockquote><a href="http://twitter.com/KuraFire/status/9267865186">My point is that a site&#8217;s traffic rank should be weighed more heavily, certainly when the difference btwn the two is so huge.</a></blockquote>
-
-
-<p>Let&#8217;s forget the &#8220;Facebook login&#8221; going to ReadWriteWeb rather than Facebook itself, for a moment. Let&#8217;s generalize.</p>
-
-<p><strong style="font-size:1.5em;">Question: should an article <em>about</em> a company or entity <em>ever</em> get a higher search ranking than the website of the company or entity itself?</strong></p>
-
-<p>When you phrase it that way, I think the answer is clearly <strong>YES</strong>, there are situations where that could and should happen.</p>
-
-<p>In late 2001, it would make a lot of sense for a search for &#8220;ENRON quarterly earnings&#8221; to point to an article about the accounting scandal rather than simply going straight to an official PDF of their earnings.</p>
-
-<p>It&#8217;s reasonable that a search for &#8220;Amway&#8221; could return an article skeptical of MLMs as high or sometimes higher than the company&#8217;s own site.</p>
-
-<p>Not all the time, and not every time, but there are situations where an article about something could or should get a higher result than the thing itself.</p>
-
-<p>A human being organizing the results might never do that; or they would only do it after it became obvious. Algorithms are dumb. They will just spit out a result based on some sort of process. Sometimes, that&#8217;s better, since it removes our innate bias to how we think things should be ordered. If we try to weight an algorithm too much for the things we innately think should be on top, we could actually be detracting from the value of the algorithm.</p>
-
-<p>Just a thought. I&#8217;m by no means saying that the googorithm can do no wrong, or has no room for improvement. Just that it&#8217;s possible for dumb results to be better than &#8220;smart&#8221; results.</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-02-18T00:00:00-06:00" pubdate data-updated="true">Feb 18<span>th</span>, 2010</time></div>
 	<div class="tags">
 
 </div>

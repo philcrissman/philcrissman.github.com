@@ -4,7 +4,7 @@
   <title><![CDATA[philcrissman.com]]></title>
   <link href="http://philcrissman.com/atom.xml" rel="self"/>
   <link href="http://philcrissman.com/"/>
-  <updated>2012-10-22T14:16:03-05:00</updated>
+  <updated>2012-10-24T09:23:06-05:00</updated>
   <id>http://philcrissman.com/</id>
   <author>
     <name><![CDATA[Phil Crissman]]></name>
@@ -12,6 +12,19 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[They came from another galaxy. So they were a bit tired.]]></title>
+    <link href="http://philcrissman.com/2012/10/24/they-came-from-another-galaxy-so-they-were-a-bit-tired/"/>
+    <updated>2012-10-24T09:17:00-05:00</updated>
+    <id>http://philcrissman.com/2012/10/24/they-came-from-another-galaxy-so-they-were-a-bit-tired</id>
+    <content type="html"><![CDATA[<p><img src="http://philcrissman.com/images/posts/ibdm-poster.jpg" title="and boy are my arms tired" alt="I just flew in from another galaxy" /></p>
+
+<p><a href="http://www.ibelieveinadv.com/2010/12/h-57-creative-station-intercontinental-ballistic-design-missile-project/">via</a></p>
+
+<p>Found this somewhere in my bookmarks. I just like design, I guess.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[What I want to know]]></title>
@@ -590,37 +603,6 @@ Maybe you&#8217;re in a place with more mortar than brick. Maybe you aren&#8217;
     <id>http://philcrissman.com/2012/05/18/code-isnt-swayed-by-logic</id>
     <content type="html"><![CDATA[<p>&#8220;What is it that we want to get out of code? The most important thing is learning. The way I learn is to have a thought, then test it out to see if it is a good thought. Code is the best way I know of to do this. Code isn&#8217;t swayed by the power and logic of rhetoric. Code isn&#8217;t impressed by college degrees or large salaries. Code just sits there, happily doing exactly what you told it to do. If that isn&#8217;t what you thought you told it to do, that&#8217;s your problem.&#8221;
 - Kent Beck, <a href="http://www.amazon.com/gp/product/0321278658/ref=as_li_ss_tl?ie=UTF8&amp;tag=idepermin-20&amp;linkCode=as2&amp;camp=1789&amp;creative=390957&amp;creativeASIN=0321278658">Extreme Programming Explained</a></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[How To Read Web Analytics]]></title>
-    <link href="http://philcrissman.com/2011/10/10/how-to-read-web-analytics/"/>
-    <updated>2011-10-10T00:00:00-05:00</updated>
-    <id>http://philcrissman.com/2011/10/10/how-to-read-web-analytics</id>
-    <content type="html"><![CDATA[<p>The CEO of BigCorp just got the company&#8217;s web analytics report and is
-trying to make sense of it. He calls in his lead developer and asks him
-what the analytics report says.</p>
-
-<p>&#8220;We&#8217;re doing great,&#8221; says the developer. &#8220;Look at all these hits and
-page views. We&#8217;re having no scaling issues. The report says everything
-is going well.&#8221;</p>
-
-<p>Happy but not satisfied, the CEO calls in his head of marketing and asks
-her what the analytics report says.</p>
-
-<p>&#8220;Not so good,&#8221; says the head of marketing. &#8220;We have a lot of page views,
-but no one is sticking around very long or drilling deeper into the
-site. We need to generate more content and revamp our web design.&#8221;</p>
-
-<p>A little nervous now, the CEO also calls in the SEO consultant who&#8217;s
-been working with the company, and asks the consultant what the
-analytics report says.</p>
-
-<p>The SEO consultant spends a few minutes reading the report. After
-looking around to make sure the door is closed and no one is listening,
-the SEO consultant leans forward and asks, &#8220;What would you like it to
-say?&#8221;</p>
 ]]></content>
   </entry>
   
