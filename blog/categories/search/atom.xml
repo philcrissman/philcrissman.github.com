@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: search | philcrissman.com]]></title>
+  <link href="http://philcrissman.com/blog/categories/search/atom.xml" rel="self"/>
+  <link href="http://philcrissman.com/"/>
+  <updated>2012-11-05T12:05:51-06:00</updated>
+  <id>http://philcrissman.com/</id>
+  <author>
+    <name><![CDATA[Phil Crissman]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Picky]]></title>
+    <link href="http://philcrissman.com/2012/11/05/picky/"/>
+    <updated>2012-11-05T11:58:00-06:00</updated>
+    <id>http://philcrissman.com/2012/11/05/picky</id>
+    <content type="html"><![CDATA[<p>Picky is a category search engine for Ruby.</p>
+]]></content>
+  </entry>
+  
+</feed>
