@@ -7,7 +7,7 @@
 	<meta name="author" content="Phil Crissman">
 
 	
-	<meta name="description" content="Once upon a time there was an emperor of a far country. In this country, the internet prospered and grew, and the web was used by many of the &hellip;">
+	<meta name="description" content="I used a little jQuery last night to clear some form fields. The basic idea was, there were a couple text inputs in the form for first and last name &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -110,6 +110,190 @@
 
 	
 	<div id="content" class="inner">
+
+  
+  <!-- 
+
+
+
+
+
+
+
+
+
+ -->
+  <article class="post" ><h1 class="title">
+
+<a href="/2008/05/09/clearing-form-fields-with-jquery/">Clearing Form Fields With jQuery</a>
+
+</h1>
+
+
+	<div class="entry-content">
+		<p>I used a little jQuery last night to clear some form fields. The basic idea was, there were a couple text inputs in the form for first and last name; rather than label the fields, I made the value of each form to be initially &#8220;First&#8221; and &#8220;Last&#8221; respectively.</p>
+
+<p>Then I was requested to make it so that when the field was clicked on, the word &#8220;First&#8221; or &#8220;Last&#8221; (respectively) would disappear, so that you could then proceed to enter a value without needing to highlight and delete the existing value of the text field.</p>
+
+<p>It turns out that with jQuery, this is simple enough; let&#8217;s assume your field has the class &#8220;clearme&#8221;:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;.clearme&#39;</span><span class="p">).</span><span class="nx">focus</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>    <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">val</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">);</span>
+</span><span class='line'>  <span class="p">});</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>If you&#8217;re familiar with jQuery, you know that the wrapper <code>$(document).ready()</code> simply waits until the page is finished loading, then executes the function you&#8217;ve passed to it. In this case, the function passed looks for an item of the class &#8220;clearme&#8221; and waits for that element to receive focus. When it does, it changes the value to &#8220;&#8221;.</p>
+
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-6000752616661499";
+/* clear-jquery */
+google_ad_slot = "4377662715";
+google_ad_width = 300;
+google_ad_height = 250;
+//-->
+</script>
+
+
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+
+
+<p>Simple enough&#8230; but wait! Now if the user types in &#8220;Beauregard Charles Maurice&#8221; as a first name, if he inadvertently clicks on the text box again, his name will disappear. <em>He would need to type that all over again.</em> What can be done?</p>
+
+<p>There may be multiple ways; but jQuery has a handy method called &#8220;one&#8221; which will execute an event <em>one time only</em>, which sounds like just what we want. So we&#8217;d change the body of that inner function to look like:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='js'><span class='line'><span class="nx">$</span><span class="p">(</span><span class="s1">&#39;.clearme&#39;</span><span class="p">).</span><span class="nx">one</span><span class="p">(</span><span class="s2">&quot;focus&quot;</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+</span><span class='line'>  <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">val</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">);</span>
+</span><span class='line'><span class="p">});</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-05-09T00:00:00-05:00" pubdate data-updated="true">May 9<span>th</span>, 2008</time></div>
+	<div class="tags">
+
+</div>
+	
+  <div class="linkloggery">
+    <a rel="bookmark" href="/2008/05/09/clearing-form-fields-with-jquery/">&infin;</a>
+  </div>
+</div>
+</article>
+
+  
+  <!-- 
+
+
+
+
+
+
+
+
+
+ -->
+  <article class="post" ><h1 class="title">
+
+<a href="/2006/09/25/blizzard-closes-my-unused-world-of-warcraft-account-for-unclear-reasons/">Blizzard Closes My Unused World of Warcraft Account for Unclear Reasons</a>
+
+</h1>
+
+
+	<div class="entry-content">
+		<p>So, this was in my inbox this morning:</p>
+
+<blockquote style="text-align:left">
+***Notice of Account Closure***
+
+Greetings,
+
+This is a notification regarding your World of Warcraft account.  Access to this account has been permanently disabled for exploitation of the World of Warcraft economy or for being associated to accounts which have been closed for intended exploitation.  While we try to be as lenient as possible in our assessments of the results of exploitation investigations, reoccurring trends in exploitative endeavors on your account have ultimately resulted in account closure.
+
+As a result, this account will no longer be able to access any aspect of World of Warcraft.  This action has been taken in accordance with the Terms of Use (http://www.worldofwarcraft.com/legal/termsofuse.html) and our game policies (http://www.blizzard.com/support/wowgm/?id=agm01712p).  According to the World of Warcraft Terms of Use, to which all players agree when installing World of Warcraft, Section 3, Paragraph C [Rules Related to Game Play] states that you may not do anything that Blizzard Entertainment considers contrary to the &#8220;essence&#8221; of World of Warcraft.
+
+Thank you for your time and understanding of our position in this matter.  Please feel free to contact us with any questions or concerns you may have.
+
+Regards,
+
+Account Administration
+Blizzard Entertainment
+www.WorldOfWarcraft.com
+</blockquote>
+
+
+<p>Hmm. <em>Access to this account has been permanently disabled for exploitation of the World of Warcraft economy or for being associated to accounts which have been closed for intended exploitation.</em>  That&#8217;s interesting.</p>
+
+<p>It&#8217;s especially interesting considering I cancelled my subscription over a month ago since I simply <em>did not have time to play World of Warcraft</em>. I&#8217;m fairly certain I have not logged on to any WoW server in well over two months, possibly longer.</p>
+
+<p>I was considering re-activating the subscription at some point, if and/or when I have more free time to play MMORPG-type games (I just like typing MMORPG) &#8211; so this is a little annoying.</p>
+
+<p>I replied to them; hopefully they can explain exactly what it is about <em>NOT PLAYING</em> that flags an account as &#8220;exploitative&#8221;.</p>
+
+<p>UPDATE: Folks keep visiting this post, so I can only guess that this keeps happening to people, or that people are still trying to resolve it.</p>
+
+<p>In my own case, my World of Warcraft account is <em>still closed</em>. The only means they will accept to re-open it, apparently, is for me to send them a fax (yes! a FAX) of my driver&#8217;s license. I don&#8217;t have a fax machine, nor a scanner most of the time, so I keep putting this off. I finally got around to doing it one day, and they replied that the incoming fax was too fuzzy and that I should scan my ID again and re-fax it.</p>
+
+<p>That was about a year ago. I haven&#8217;t bothered to re-fax it yet.</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2006-09-25T00:00:00-05:00" pubdate data-updated="true">Sep 25<span>th</span>, 2006</time></div>
+	<div class="tags">
+
+</div>
+	
+  <div class="linkloggery">
+    <a rel="bookmark" href="/2006/09/25/blizzard-closes-my-unused-world-of-warcraft-account-for-unclear-reasons/">&infin;</a>
+  </div>
+</div>
+</article>
 
   
   <!-- 

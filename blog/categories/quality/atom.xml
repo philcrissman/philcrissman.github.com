@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: quality | philcrissman.com]]></title>
+  <link href="http://philcrissman.com/blog/categories/quality/atom.xml" rel="self"/>
+  <link href="http://philcrissman.com/"/>
+  <updated>2012-11-07T08:56:02-06:00</updated>
+  <id>http://philcrissman.com/</id>
+  <author>
+    <name><![CDATA[Phil Crissman]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[The real reason we write bad software]]></title>
+    <link href="http://philcrissman.com/2012/11/07/the-real-reason-we-write-bad-software/"/>
+    <updated>2012-11-07T08:42:00-06:00</updated>
+    <id>http://philcrissman.com/2012/11/07/the-real-reason-we-write-bad-software</id>
+    <content type="html"><![CDATA[<blockquote><p>... even the best of these APIs are hard to use because the documentation, supposedly written in English, is terrible. Most engineers can't write a single coherent sentence, never mind string together a paragraph.</p></blockquote>
+
+<p>I think I'd agree with this, but with reservations. For starters, I think many of the developers I know are better than average writers. Maybe I'm in an anomolous community, but that's my impression. Second, just because someone <em>can</em> write well, doesn't mean they will write any documentation, let alone <em>good</em> documentation. It's food for thought, though.</p>
+]]></content>
+  </entry>
+  
+</feed>

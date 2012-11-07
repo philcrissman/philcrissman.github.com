@@ -4,7 +4,7 @@
   <title><![CDATA[philcrissman.com]]></title>
   <link href="http://philcrissman.com/atom.xml" rel="self"/>
   <link href="http://philcrissman.com/"/>
-  <updated>2012-11-05T12:05:51-06:00</updated>
+  <updated>2012-11-07T08:56:02-06:00</updated>
   <id>http://philcrissman.com/</id>
   <author>
     <name><![CDATA[Phil Crissman]]></name>
@@ -12,6 +12,28 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[The real reason we write bad software]]></title>
+    <link href="http://philcrissman.com/2012/11/07/the-real-reason-we-write-bad-software/"/>
+    <updated>2012-11-07T08:42:00-06:00</updated>
+    <id>http://philcrissman.com/2012/11/07/the-real-reason-we-write-bad-software</id>
+    <content type="html"><![CDATA[<blockquote><p>&#8230; even the best of these APIs are hard to use because the documentation, supposedly written in English, is terrible. Most engineers can&#8217;t write a single coherent sentence, never mind string together a paragraph.</p></blockquote>
+
+<p>I think I&#8217;d agree with this, but with reservations. For starters, I think many of the developers I know are better than average writers. Maybe I&#8217;m in an anomolous community, but that&#8217;s my impression. Second, just because someone <em>can</em> write well, doesn&#8217;t mean they will write any documentation, let alone <em>good</em> documentation. It&#8217;s food for thought, though.</p>
+]]></content>
+  </entry>
+  
+  <entry>
+    <title type="html"><![CDATA[Misunderstood Genius]]></title>
+    <link href="http://philcrissman.com/2012/11/07/misunderstood-genius/"/>
+    <updated>2012-11-07T08:34:00-06:00</updated>
+    <id>http://philcrissman.com/2012/11/07/misunderstood-genius</id>
+    <content type="html"><![CDATA[<p><img src="http://philcrissman.com/images/posts/calvin-genius.jpg" title="Misunderstood" alt="Genius" /></p>
+
+<p><a href="http://thisisnthappiness.com/post/33414964859/calvin-and-hobbes">via</a></p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Picky]]></title>
@@ -524,51 +546,6 @@ Maybe you&#8217;re in a place with more mortar than brick. Maybe you aren&#8217;
 <p>Maybe, rather than trying to set up new software developers so that they never need to make any mistakes, ever, we should set them up to make as many mistakes as possible, as soon as possible, and give them the tools to identify these mistakes so that they don&#8217;t need to make them again.</p>
 
 <p>Maybe we can start to get better.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Thinking about Lift]]></title>
-    <link href="http://philcrissman.com/2012/08/03/thinking-about-lift/"/>
-    <updated>2012-08-03T08:37:00-05:00</updated>
-    <id>http://philcrissman.com/2012/08/03/thinking-about-lift</id>
-    <content type="html"><![CDATA[<p><a href="http://philcrissman.com/images/posts/lift-icon.png"><img src="http://philcrissman.com/images/posts/lift-icon.png" width='320' /></a></p>
-
-<p>Starters, <a href="http://lift.do">Lift</a> is a really nice app. It looks and acts great. It has a shiny checkbox that is large and round and easy to tap, and it has pretty graphs that look a little like graphic equalizers from mid-90s stereos with digital interfaces. I can choose a whole list &#8216;habits&#8217; which are then listed and shared, and if I check a habit for the day, then I can see all the other people who recently also did this habit. I can also give these complete strangers who have also seen fit to track their performance in consistent multivitamin consumption &#8220;props&#8221;, and can (in turn) receive &#8220;props&#8221; from them for performance of the same.</p>
-
-<!--more-->
-
-
-<p><a href="http://philcrissman.com/images/posts/lift-checkbox.png"><img src="http://philcrissman.com/images/posts/lift-checkbox.png" width='320' /></a> <a href="http://philcrissman.com/images/posts/lift-graph.png"><img src="http://philcrissman.com/images/posts/lift-graph.png" width='320' /></a></p>
-
-<p>Then I will get a cheery email in my inbox the next day, Clarence459 has given you props for taking a multivitamin.</p>
-
-<p>Thanks, Clarence459! It was rough, but I got it done. Now if only I can continue this arduous habit, I may be a statistical margin of error healthier when I&#8217;m eighty-four, so, I&#8217;m looking forward to that. Though, actually, the kudos are kind of nice. Who doesn&#8217;t like a pat on the back?</p>
-
-<p>There is also the assumption that everyone everywhere will be more than happy to share their personal goals, and in particular share them with everyone else who is trying to accomplish the same thing. So I&#8217;m guessing &#8220;stop looking at porn on the Internet&#8221; will <em>probably</em> not be showing up in the list of habits any time soon.</p>
-
-<p>That&#8217;s fine, though. It&#8217;s about affirmation, about things you want to change. I think most material about goals and habits would suggest that these things should ideally be positive and specific; not &#8220;Stop procrastinating&#8221; or &#8220;blog more&#8221;, but rather; &#8220;Work n hours&#8221;, &#8220;Write 1 blog post&#8221;, etc.</p>
-
-<p><a href="http://philcrissman.com/images/posts/lift-list.png"><img src="http://philcrissman.com/images/posts/lift-list.png" width="320" /></a></p>
-
-<p>This leads to another pitfall; when you first begin assembling your list of habits, you are shown the list of habits that other people have entered. It&#8217;s very easy to just start adding some habits, such as &#8220;Blog more&#8221;, because on seeing it you think, &#8220;Yeah, I actually would like to blog more. I should add this habit.&#8221; Not to get all motivational-speaker-goal-instructional, but that&#8217;s a terribly worded goal. More than what? If I have written one blog post in the last 6 months, then technically writing <em>two</em> blog posts in the next six months will be &#8220;blogging <em>more</em>&#8221;, but somehow I&#8217;m betting that&#8217;s not what we all had in mind when we checked off that habit. Once a habit is on your list, you have to take a bit of thought to remove it and replace it with a better worded habit. I mean, it isn&#8217;t hard, but there&#8217;s this thing you&#8217;d have to do and it&#8217;s really easy just not to bother.</p>
-
-<p>Don&#8217;t misunderstand me, I like the app. I think a good list of positive habits than you can track to see how you <em>really</em> do at what you think you <em>should</em> be doing is a good thing. I can see it helping me reinforce some habits. I can even see the social aspect having some influence, though I&#8217;m not totally sold yet.</p>
-
-<p>If you&#8217;d like to try Lift, visit <a href="http://lift.do">Lift</a>, or hit me up on <a href="http://twitter.com/philcrissman">twitter</a> and I can send you an invite. Even with an invite, I think they are rolling out the Beta in waves, so you might not get an invitation right away, but theoretically you might be higher in the queue.</p>
-
-<p>I guess now I can go check off &#8220;Blog more&#8221; in my list.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Not far from the tree]]></title>
-    <link href="http://philcrissman.com/2012/07/17/not-far-from-the-tree/"/>
-    <updated>2012-07-17T14:08:00-05:00</updated>
-    <id>http://philcrissman.com/2012/07/17/not-far-from-the-tree</id>
-    <content type="html"><![CDATA[<p><a href="http://philcrissman.com/images/posts/sam-laptop.jpeg"><img src="http://philcrissman.com/images/posts/sam-laptop.jpeg" width="440" /></a></p>
-
-<p>Our son Samuel is almost 17 months old, now. He&#8217;s the coolest.</p>
 ]]></content>
   </entry>
   
