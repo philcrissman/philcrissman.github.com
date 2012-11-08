@@ -7,7 +7,7 @@
 	<meta name="author" content="Phil Crissman">
 
 	
-	<meta name="description" content="By far the most common and seemingly reasonable objections to my recent post about internet applications and users have been along these lines: Well &hellip;">
+	<meta name="description" content="The last couple posts have crossed over into a couple really big topics; one is web application usability, the other is the quality of results &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -110,6 +110,85 @@
 
 	
 	<div id="content" class="inner">
+
+  
+  <!-- 
+
+
+
+
+
+
+
+
+
+ -->
+  <article class="post" ><h1 class="title">
+
+<a href="/2010/02/18/dumb-results-can-be-better-than-smart-results/">Dumb Results Can Be Better Than Smart Results</a>
+
+</h1>
+
+
+	<div class="entry-content">
+		<p><img src="http://philcrissman.com/images/posts/find_x.jpg" alt="" title="find_x" width="394" /><br /></p>
+
+<p>The last couple posts have crossed over into a couple really big topics; one is web application usability, the other is the quality of results returned by an algorithm. They are not the same topic. Anything that can be made more usable should be. The quality of an algorithm&#8217;s results are not necessarily related to that. I started chatting with <a href="http://twitter.com/KuraFire">@Kurafire</a> about this, and he is making some great points&#8230; but I still don&#8217;t precisely agree.</p>
+
+<p>For example:</p>
+
+<blockquote><a href="http://twitter.com/KuraFire/status/9266841104">The problem with Google&#8217;s algorithm is that a &#8220;mere&#8221; blog could outweigh the second-most visited website on the planet.</a></blockquote>
+
+
+
+
+<blockquote><a href="http://twitter.com/KuraFire/status/9267865186">My point is that a site&#8217;s traffic rank should be weighed more heavily, certainly when the difference btwn the two is so huge.</a></blockquote>
+
+
+<p>Let&#8217;s forget the &#8220;Facebook login&#8221; going to ReadWriteWeb rather than Facebook itself, for a moment. Let&#8217;s generalize.</p>
+
+<p><strong style="font-size:1.5em;">Question: should an article <em>about</em> a company or entity <em>ever</em> get a higher search ranking than the website of the company or entity itself?</strong></p>
+
+<p>When you phrase it that way, I think the answer is clearly <strong>YES</strong>, there are situations where that could and should happen.</p>
+
+<p>In late 2001, it would make a lot of sense for a search for &#8220;ENRON quarterly earnings&#8221; to point to an article about the accounting scandal rather than simply going straight to an official PDF of their earnings.</p>
+
+<p>It&#8217;s reasonable that a search for &#8220;Amway&#8221; could return an article skeptical of MLMs as high or sometimes higher than the company&#8217;s own site.</p>
+
+<p>Not all the time, and not every time, but there are situations where an article about something could or should get a higher result than the thing itself.</p>
+
+<p>A human being organizing the results might never do that; or they would only do it after it became obvious. Algorithms are dumb. They will just spit out a result based on some sort of process. Sometimes, that&#8217;s better, since it removes our innate bias to how we think things should be ordered. If we try to weight an algorithm too much for the things we innately think should be on top, we could actually be detracting from the value of the algorithm.</p>
+
+<p>Just a thought. I&#8217;m by no means saying that the googorithm can do no wrong, or has no room for improvement. Just that it&#8217;s possible for dumb results to be better than &#8220;smart&#8221; results.</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-02-18T00:00:00-06:00" pubdate data-updated="true">Feb 18<span>th</span>, 2010</time></div>
+	<div class="tags">
+
+</div>
+	
+  <div class="linkloggery">
+    <a rel="bookmark" href="/2010/02/18/dumb-results-can-be-better-than-smart-results/">&infin;</a>
+  </div>
+</div>
+</article>
 
   
   <!-- 
@@ -672,167 +751,6 @@ Photo by <a href="http://www.flickr.com/photos/steffe/">Steffe</a></p>
 	
   <div class="linkloggery">
     <a rel="bookmark" href="/2009/07/24/scriptconsole-under-the-hood/">&infin;</a>
-  </div>
-</div>
-</article>
-
-  
-  <!-- 
-
-
-
-
-
-
-
-
-
- -->
-  <article class="post" ><h1 class="title">
-
-<a href="/2009/06/26/rubys-objectsend-can-call-private-and-protected-methods/">Ruby&#8217;s Object#send Can Call Private and Protected Methods</a>
-
-</h1>
-
-
-	<div class="entry-content">
-		<p><a href="http://www.flickr.com/photos/xiaming/99206245/"><img src="http://farm1.static.flickr.com/30/99206245_862bc5c93d.jpg?v=0" /></a>
-<small>Photo by <a href="http://www.flickr.com/photos/xiaming/99206245/">xiaming</a></small></p>
-
-<p>One of the hallmarks of object oriented programming in most every implementation of it that I know of is the ability to designate certain methods as &#8220;private&#8221; or &#8220;protected&#8221;, thus keeping them from being called willy-nilly by any old script that wants to call them. Ruby also has this, of course, but interestingly enough it can be easily circumvented.</p>
-
-<p>I guess there are a few posts floating around about it, but I discovered it by accident playing around in irb this evening. I was reading David A. Black&#8217;s The Well Grounded Rubyist, where he mentions that you could send a message to a class either within the class definition itself, or by simply sending it to the class object like you&#8217;d send any other message:</p>
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="c1"># The normal way to do it</span>
-</span><span class='line'><span class="k">class</span> <span class="nc">Thing</span>
-</span><span class='line'>  <span class="n">message</span> <span class="ss">:whatever</span>
-</span><span class='line'><span class="k">end</span>
-</span><span class='line'>
-</span><span class='line'><span class="c1"># you could also do this</span>
-</span><span class='line'><span class="no">Thing</span><span class="o">.</span><span class="n">message</span><span class="p">(</span><span class="ss">:whatever</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>David mention&#8217;s attr_accessor in this context, so I thought I&#8217;d try that. Open <code>irb</code>:</p>
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="o">&gt;&gt;</span> <span class="k">class</span> <span class="nc">Thing</span>
-</span><span class='line'><span class="sc">?&gt;</span> <span class="k">end</span>
-</span><span class='line'><span class="o">&gt;&gt;</span> <span class="no">Thing</span><span class="o">.</span><span class="n">attr_accessor</span> <span class="ss">:name</span>
-</span><span class='line'><span class="no">NoMethodError</span><span class="p">:</span> <span class="kp">private</span> <span class="nb">method</span> <span class="s1">&#39;attr_accessor&#39;</span> <span class="n">called</span> <span class="k">for</span> <span class="no">Thing</span><span class="ss">:Class</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>Oh. So much for that, then. But, knowing of the existence of the send method, I thought I&#8217;d try that.</p>
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">Thing</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="ss">:attr_accessor</span><span class="p">,</span> <span class="ss">:name</span><span class="p">)</span>
-</span><span class='line'><span class="o">=&gt;</span> <span class="kp">nil</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>For the non-<code>irb</code> user, that <code>nil</code> that was returned, and the fact that no error message was returned, indicated that our experiment worked. Now <code>Thing</code>&#8217;s have a name attribute.</p>
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="o">&gt;&gt;</span> <span class="n">t</span> <span class="o">=</span> <span class="no">Thing</span><span class="o">.</span><span class="n">new</span>
-</span><span class='line'><span class="o">&gt;&gt;</span> <span class="n">t</span><span class="o">.</span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;Larry&quot;</span>
-</span><span class='line'><span class="o">=&gt;</span> <span class="s2">&quot;Larry&quot;</span>
-</span><span class='line'><span class="o">&gt;&gt;</span> <span class="n">t</span><span class="o">.</span><span class="n">name</span>
-</span><span class='line'><span class="o">=&gt;</span> <span class="s2">&quot;Larry&quot;</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>What&#8217;s interesting about all this is that <code>attr_accessor</code> is a private method on <code>Class</code>. Yet we just called it.</p>
-
-<p><code>send</code> is often introduced as a way to show how everything is an object and that you can do exciting things like <code>1.send(:+, 1)</code> and get <code>2</code> as the result. No one usually mentions that it can be used to call private or protected methods from outside a given class.</p>
-
-<p>To make it clear what you could do here:</p>
-
-<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-<span class='line-number'>15</span>
-<span class='line-number'>16</span>
-<span class='line-number'>17</span>
-<span class='line-number'>18</span>
-</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="o">&gt;&gt;</span> <span class="k">class</span> <span class="nc">Thing</span>
-</span><span class='line'><span class="sc">?&gt;</span>    <span class="k">def</span> <span class="nf">hello</span>
-</span><span class='line'><span class="sc">?&gt;</span>     <span class="nb">puts</span> <span class="s2">&quot;Hello, world!&quot;</span>
-</span><span class='line'><span class="sc">?&gt;</span>   <span class="k">end</span>
-</span><span class='line'><span class="sc">?&gt;</span>   <span class="kp">private</span>
-</span><span class='line'><span class="sc">?&gt;</span>     <span class="k">def</span> <span class="nf">private_hello</span>
-</span><span class='line'><span class="sc">?&gt;</span>       <span class="nb">puts</span> <span class="s2">&quot;Hello, privately.&quot;</span>
-</span><span class='line'><span class="sc">?&gt;</span>     <span class="k">end</span>
-</span><span class='line'><span class="sc">?&gt;</span> <span class="k">end</span>
-</span><span class='line'><span class="o">&gt;&gt;</span> <span class="n">t</span> <span class="o">=</span> <span class="no">Thing</span><span class="o">.</span><span class="n">new</span>
-</span><span class='line'><span class="o">&gt;&gt;</span> <span class="n">t</span><span class="o">.</span><span class="n">hello</span>
-</span><span class='line'><span class="no">Hello</span><span class="p">,</span> <span class="n">world!</span>
-</span><span class='line'><span class="o">=&gt;</span> <span class="kp">nil</span>
-</span><span class='line'><span class="o">&gt;&gt;</span> <span class="n">t</span><span class="o">.</span><span class="n">private_hello</span>
-</span><span class='line'><span class="no">NoMethodError</span><span class="p">:</span> <span class="kp">private</span> <span class="nb">method</span> <span class="s1">&#39;private_hello&#39;</span> <span class="n">called</span> <span class="k">for</span> <span class="o">.</span><span class="n">.</span><span class="o">.</span>
-</span><span class='line'><span class="o">&gt;&gt;</span> <span class="n">t</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="ss">:private_hello</span><span class="p">)</span>
-</span><span class='line'><span class="no">Hello</span><span class="p">,</span> <span class="n">privately</span><span class="o">.</span>
-</span><span class='line'><span class="o">=&gt;</span> <span class="kp">nil</span>
-</span></code></pre></td></tr></table></div></figure>
-
-
-<p>So, yes. You can do this, if you so choose. Please use your powers for good, and not for evil.</p>
-
-<p>Now <em>why</em> this works, I can&#8217;t yet say, though I&#8217;m interested in learning, if there is a reason. Evidently there <a href="http://blade.nagaokaut.ac.jp/cgi-bin/scat.rb/ruby/ruby-core/7404">may have been some debate</a> as to whether ruby 1.9 would still have this behavior, but as of this writing it does.</p>
-
-<p>Note: I did only a brief search, and it seems <a href="http://www.google.com/search?client=safari&rls=en-us&q=ruby+send+method&ie=UTF-8&oe=UTF-8">this functionality is not unknown</a>, though it still seems somewhat odd to me that such an easy way to sidestep the private/protected designation of methods exists.</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2009-06-26T00:00:00-05:00" pubdate data-updated="true">Jun 26<span>th</span>, 2009</time></div>
-	<div class="tags">
-
-</div>
-	
-  <div class="linkloggery">
-    <a rel="bookmark" href="/2009/06/26/rubys-objectsend-can-call-private-and-protected-methods/">&infin;</a>
   </div>
 </div>
 </article>

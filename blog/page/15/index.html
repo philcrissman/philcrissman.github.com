@@ -7,7 +7,7 @@
 	<meta name="author" content="Phil Crissman">
 
 	
-	<meta name="description" content="I used a little jQuery last night to clear some form fields. The basic idea was, there were a couple text inputs in the form for first and last name &hellip;">
+	<meta name="description" content="I certainly can&#8217;t claim to have discovered these tips; but they&#8217;ve been pretty helpful to me. Maybe this will just make them a little &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -110,6 +110,129 @@
 
 	
 	<div id="content" class="inner">
+
+  
+  <!-- 
+
+
+
+
+
+
+
+
+
+ -->
+  <article class="post" ><h1 class="title">
+
+<a href="/2008/08/27/some-ruby-and-rails-tricks/">Some Ruby & Rails Tricks</a>
+
+</h1>
+
+
+	<div class="entry-content">
+		<p>I certainly can&#8217;t claim to have <em>discovered</em> these tips; but they&#8217;ve been pretty helpful to me. Maybe this will just make them a little easier to find for whoever is looking for them next.</p>
+
+<h3>Getting A Collection&#8217;s Index From Within a Partial</h3>
+
+
+<p>Lets say you&#8217;re passing a collection to a partial, but that somewhere in that partial you are interested in knowing which index you&#8217;re at. Do you need to implement a counter? Nope; there already is one. A collection passed to a partial implicitly creates a counter called <code>[partial_name]_counter</code>. So, if you called with</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='rb'><span class='line'><span class="o">&lt;</span> <span class="sx">%= render :partial =</span><span class="o">&gt;</span> <span class="s1">&#39;thing&#39;</span><span class="p">,</span> <span class="ss">:collection</span> <span class="o">=&gt;</span> <span class="vi">@a_few_of_my_favorite_things</span> <span class="o">%&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>then in your partial, you could use:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="o">&lt;</span> <span class="o">%=</span> <span class="n">thing_counter</span> <span class="o">%&gt;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>to return the index as you plow through the collection. Life is good. Rails is looking out for you. (Hat tip to <a href="http://gmarik.blogspot.com/2007/09/rails-collection-index-within-partial.html">GMarik</a>, which is where I saw this one.)</p>
+
+<h3>Obtaining a Class name From a String</h3>
+
+
+<p>Today I found myself wanting to take a string, let&#8217;s say <code>"Thing"</code>, and use it as a class name, <code>Thing</code>. Again, it turns out this can be done. In Ruby, class names are constants, so you can do</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="n">str</span> <span class="o">=</span> <span class="s2">&quot;Thing&quot;</span> <span class="c1">#=&gt; &quot;Thing&quot;</span>
+</span><span class='line'><span class="no">Kernel</span><span class="o">.</span><span class="n">const_get</span><span class="p">(</span><span class="n">str</span><span class="p">)</span> <span class="c1">#=&gt; Thing</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Hooray!</p>
+
+<h3>Make Finding Easier</h3>
+
+
+<p>Find yourself writing long, complicated find expressions in your code? There is a better way.</p>
+
+<p>Perhaps in your code&#8230; maybe even in a view&#8230; maybe you want to find all <code>Things</code> that don&#8217;t belong to the current use, and which are flagged with some property, and you&#8217;re temped to write something like:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">Thing</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="ss">:all</span><span class="p">,</span> <span class="ss">:conditions</span> <span class="o">=&gt;</span> <span class="o">[</span><span class="s2">&quot;user != ? and flag = true&quot;</span><span class="p">,</span> <span class="n">current_user</span><span class="o">]</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>What we could do is put some <code>has_finder</code>s in the Thing model, something like</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="k">class</span> <span class="nc">Thing</span> <span class="o">&lt;</span> <span class="no">ActiveRecord</span><span class="o">::</span><span class="no">Base</span>
+</span><span class='line'><span class="n">has_finder</span> <span class="ss">:exclude_user</span><span class="p">,</span> <span class="nb">lambda</span> <span class="p">{</span><span class="o">|</span><span class="n">user</span><span class="o">|</span> <span class="p">{</span><span class="ss">:conditions</span> <span class="o">=&gt;</span> <span class="s2">&quot;things.user_id != </span><span class="si">#{</span><span class="n">user</span><span class="o">.</span><span class="n">id</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">}</span>
+</span><span class='line'><span class="n">has_finder</span> <span class="ss">:with_flag</span><span class="p">,</span> <span class="ss">:conditions</span> <span class="o">=&gt;</span> <span class="s2">&quot;things.flag = true&quot;</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Having done that, you could now replace that first bit with:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='ruby'><span class='line'><span class="no">Thing</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="ss">:all</span><span class="p">)</span><span class="o">.</span><span class="n">with_flag</span><span class="o">.</span><span class="n">exclude_user</span><span class="p">(</span><span class="n">current_user</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>It&#8217;s a little shorter, sure, but more importantly, when you read it, it just makes more sense. A completely new person coming to look at this line would have a good idea what it was doing without even looking in the model to see what the <code>has_finder</code>s were doing.</p>
+
+<h3>Okay then</h3>
+
+
+<p>If you&#8217;ve spent any amount of time using rails, these probably aren&#8217;t new to you. Everything&#8217;s new at least <em>once</em>, though, so hopefully these are helpful to someone.</p>
+
+<p>Other favorite ruby or rails tricks? Leave a comment! Heck, we&#8217;re not prejudiced, here, go ahead and comment with your favorite Python or Perl or [other language] tricks, too, if you like.</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2008-08-27T00:00:00-05:00" pubdate data-updated="true">Aug 27<span>th</span>, 2008</time></div>
+	<div class="tags">
+
+</div>
+	
+  <div class="linkloggery">
+    <a rel="bookmark" href="/2008/08/27/some-ruby-and-rails-tricks/">&infin;</a>
+  </div>
+</div>
+</article>
 
   
   <!-- 
