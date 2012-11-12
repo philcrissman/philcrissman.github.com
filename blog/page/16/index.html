@@ -7,7 +7,7 @@
 	<meta name="author" content="Phil Crissman">
 
 	
-	<meta name="description" content=" So, here&#8217;s those slides from the other night. UJS in Rails 3View more presentations from philcrissman. Feb 1st, 2011 &infin; ">
+	<meta name="description" content="The fully qualified directories in this particular &#8220;howto&#8221; are specific to SLED 10, and will undoubtedly be different on a different &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -125,18 +125,58 @@
  -->
   <article class="post" ><h1 class="title">
 
-<a href="/2011/02/01/ujs-in-rails-3-slides/">UJS in Rails 3 Slides</a>
+<a href="/2006/07/25/howto-add-your-xscreensavers-to-gnome-screensaver/">Howto Add Your Xscreensavers to Gnome Screensaver</a>
 
 </h1>
 
 
 	<div class="entry-content">
-		<p>So, here&#8217;s those slides from the other night.</p>
+		<p>The fully qualified directories in this particular &#8220;howto&#8221; are specific to SLED 10, and will undoubtedly be different on a different version of Linux.</p>
 
-<div style="width:425px" id="__ss_6775992"><strong style="display:block;margin:12px 0 4px"><a href="http://www.slideshare.net/philcrissman/ujs-in-rails-3-6775992" title="UJS in Rails 3">UJS in Rails 3</a></strong><object id="__sse6775992" width="425" height="355"><param name="movie" value="http://static.slidesharecdn.com/swf/ssplayer2.swf?doc=ujs-110201093325-phpapp02&stripped_title=ujs-in-rails-3-6775992&userName=philcrissman" /><param name="allowFullScreen" value="true"/><param name="allowScriptAccess" value="always"/><embed name="__sse6775992" src="http://static.slidesharecdn.com/swf/ssplayer2.swf?doc=ujs-110201093325-phpapp02&stripped_title=ujs-in-rails-3-6775992&userName=philcrissman" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="425" height="355"></embed></object><div style="padding:5px 0 12px">View more <a href="http://www.slideshare.net/">presentations</a> from <a href="http://www.slideshare.net/philcrissman">philcrissman</a>.</div></div>
+<p>Something you might notice on installing SLED 10 is that, like most distros which feature Gnome 2.12 or 2.14, xscreensaver has been partially or fully replaced by gnome-screensaver. In the case of SLED 10, xscreensaver was <em>installed</em>, but none of its screensavers were available; gnome-screensaver listed only a scant five or six options.</p>
+
+<p>I spent some time tracking down how to make xscreensaver&#8217;s hacks available to gnome-screensaver, so here it is.</p>
+
+<p>Each screensaver, for both gnome-screensaver and xscreensaver, has a config file. So to move files from xscreensaver to gnome-screensaver, we need to move not only the screensaver programs themselves, but also the config files.</p>
+
+<p>Moving the screensavers is the easy part; all you&#8217;d need to do is:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>cp -i /usr/lib/xscreensaver/* /opt/gnome/lib/gnome-screensaver/gnome-screensaver/
+</span></code></pre></td></tr></table></div></figure>
 
 
+<p>Yes, technically this code <em>copies</em> the screensavers, not moves them&#8230; but that&#8217;s okay. The -i switch is to make the process interactive; if any other the new screensavers has the same name as an existing one, it will as if you want to overwrite it, rather than just deciding for you. There should be only one such anomaly: popsquares. I chose not to overwrite it, as it works fine already and is probably exactly the same.</p>
 
+<p>Next, you need to move the config files. The only problem is, xscreensaver config files are .xml files, and gnome-screensaver files are .desktop files.</p>
+
+<p>It turns out that this is a problem with a ready made solution: our friends at Gnome have a script which will migrate our .xml files into .desktop files. For this to work, you&#8217;ll need 2 files:</p>
+
+<p><a href="http://cvs.gnome.org/viewcvs/gnome-screensaver/data/migrate-xscreensaver-config.sh?rev=1.1&view=log">migrate-xscreensaver-config.sh</a></p>
+
+<p><a href="http://cvs.gnome.org/viewcvs/gnome-screensaver/data/xscreensaver-config.xsl?rev=1.1&view=log">xscreensaver-config.xsl</a></p>
+
+<p>Just click the &#8220;download&#8221; links on the above two pages. I moved the two files to /opt/gnome/lib/gnome-screensaver/, but you can put them anywhere &#8211; they just need to be in the same place.</p>
+
+<p>You&#8217;ll need to make migrate-xscreensaver-config.sh executable (it should go without saying, but you&#8217;ll need to execute the following command from whatever directory you put the files in):</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c"># chmod +x migrate-xscreensaver-config.sh</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>That being done, all you&#8217;ll have left is:</p>
+
+<figure class='code'> <div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c"># cd /opt/gnome/share/gnome-screensaver/themes/</span>
+</span><span class='line'><span class="c"># /opt/gnome/lib/gnome-screensaver/migrate-xscreensaver-config.sh /etc/xscreensaver/*.xml</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>That&#8217;s that. You will find (at least on SLED 10) that you need to restart X &#8211; just logging out of Gnome and back in should do it.</p>
+
+<p>If you&#8217;re attempting to use these steps on a different version of linux, you may need to use find or locate to figure out the proper file paths to use. Enjoy.</p>
 
 		
 		
@@ -156,231 +196,21 @@
   
 
 
-<time datetime="2011-02-01T00:00:00-06:00" pubdate data-updated="true">Feb 1<span>st</span>, 2011</time></div>
+<time datetime="2006-07-25T00:00:00-05:00" pubdate data-updated="true">Jul 25<span>th</span>, 2006</time></div>
 	<div class="tags">
 
 </div>
 	
   <div class="linkloggery">
-    <a rel="bookmark" href="/2011/02/01/ujs-in-rails-3-slides/">&infin;</a>
-  </div>
-</div>
-</article>
-
-  
-  <!-- 
-
-
-
-
-
-
-
-
-
- -->
-  <article class="post" ><h1 class="title">
-
-<a href="/2011/01/31/ujs-in-rails-3-tonight-at-rum/">UJS in Rails 3 Tonight at RUM</a>
-
-</h1>
-
-
-	<div class="entry-content">
-		<p>UJS in Rails 3, tonight at RUM</p>
-
-<p>I&#8217;ll be speaking tonight on UJS and Rails 3 at <a href="http://ruby.mn/">RUM</a>. Slides will be posted somewhere later this week, and I may follow up with a post that summarizes the content, if the slides don&#8217;t seem complete enough to cover the topic on their own.</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-01-31T00:00:00-06:00" pubdate data-updated="true">Jan 31<span>st</span>, 2011</time></div>
-	<div class="tags">
-
-</div>
-	
-  <div class="linkloggery">
-    <a rel="bookmark" href="/2011/01/31/ujs-in-rails-3-tonight-at-rum/">&infin;</a>
-  </div>
-</div>
-</article>
-
-  
-  <!-- 
-
-
-
-
-
-
-
-
-
- -->
-  <article class="post" ><h1 class="title">
-
-<a href="/2011/01/14/looselyjoinednet/">looselyjoined.net</a>
-
-</h1>
-
-
-	<div class="entry-content">
-		<p>I&#8217;ve been piling a lot of links, images, and whatnot up on a <a href="http://posterous.com">posterous.com</a> website: see <a href="http://looselyjoined.net">looselyjoined.net</a>. Enjoy, if you are so inclined.</p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2011-01-14T00:00:00-06:00" pubdate data-updated="true">Jan 14<span>th</span>, 2011</time></div>
-	<div class="tags">
-
-</div>
-	
-  <div class="linkloggery">
-    <a rel="bookmark" href="/2011/01/14/looselyjoinednet/">&infin;</a>
-  </div>
-</div>
-</article>
-
-  
-  <!-- 
-
-
-
-
-
-
-
-
-
- -->
-  <article class="post" ><h1 class="title">
-
-<a href="/2010/11/11/lets-roll/">Let&#8217;s Roll</a>
-
-</h1>
-
-
-	<div class="entry-content">
-		<p><a href="/images/posts/d20-iwojima.jpg"><img src="/images/posts/d20-iwojima.jpg" width="440" /></a></p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-11-11T00:00:00-06:00" pubdate data-updated="true">Nov 11<span>th</span>, 2010</time></div>
-	<div class="tags">
-
-</div>
-	
-  <div class="linkloggery">
-    <a rel="bookmark" href="/2010/11/11/lets-roll/">&infin;</a>
-  </div>
-</div>
-</article>
-
-  
-  <!-- 
-
-
-
-
-
-
-
-
-
- -->
-  <article class="post" ><h1 class="title">
-
-<a href="/2010/11/09/anti-gravity/">Anti-Gravity</a>
-
-</h1>
-
-
-	<div class="entry-content">
-		<p><img src="/images/posts/antigravbook.jpg" alt="Anti-Gravity" /></p>
-
-<p><a href="http://comixed.memebase.com/2010/10/26/4-koma-comic-strip-a-real-page-turner/">link</a></p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-11-09T00:00:00-06:00" pubdate data-updated="true">Nov 9<span>th</span>, 2010</time></div>
-	<div class="tags">
-
-</div>
-	
-  <div class="linkloggery">
-    <a rel="bookmark" href="/2010/11/09/anti-gravity/">&infin;</a>
+    <a rel="bookmark" href="/2006/07/25/howto-add-your-xscreensavers-to-gnome-screensaver/">&infin;</a>
   </div>
 </div>
 </article>
 
 <nav id="pagenavi">
     
-        <a href="/blog/page/6/" class="prev">Prev</a>
+        <a href="/blog/page/15/" class="prev">Prev</a>
     
-    
-        <a href="/blog/page/8/" class="next">Next</a>
     
     <div class="center"><a href="/blog/archives">Blog Archives</a></div>
 </nav>

@@ -7,7 +7,7 @@
 	<meta name="author" content="Phil Crissman">
 
 	
-	<meta name="description" content="I didn&#8217;t expect to do a &#8220;code kata&#8221;-type post again so quickly, but here it is anyways. I was reading Randall Hyde&#8217;s &hellip;">
+	<meta name="description" content="As I thought; there&#8217;s always a better way to do it. @jmchilton, who was a TA when I took Structure of Computer Programming I (or whatever it &hellip;">
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -110,6 +110,83 @@
 
 	
 	<div id="content" class="inner">
+
+  
+  <!-- 
+
+
+
+
+
+
+
+
+
+ -->
+  <article class="post" ><h1 class="title">
+
+<a href="/2010/07/08/relative-primes-revisited/">Relative Primes, Revisited</a>
+
+</h1>
+
+
+	<div class="entry-content">
+		<p>As I thought; there&#8217;s always a better way to do it. <a href="http://twitter.com/jmchilton">@jmchilton</a>, who was a TA when I took Structure of Computer Programming I (or whatever it was called; the Scheme class) at the U of M, supplied this alternative solution to the relative prime problem:</p>
+
+<pre>
+<code class="ruby">
+def gcd(a, b); b == 0 ? a : gcd(b, a % b); end; def rp(a, b); gcd(a, b) == 1; end
+</code>
+</pre>
+
+
+<p>Or, indented:</p>
+
+<pre>
+<code class="ruby">
+def gcd(a, b)
+  b == 0 ? a : gcd(b, a % b)
+end
+
+def rp(a, b)
+  gcd(a, b) == 1
+end
+</code>
+</pre>
+
+
+<p>In other words, it pays to know your math. <code>gcd</code> is a recursive function, basically Euclid&#8217;s algorithm for finding the greatest common denominator. <code>rp</code>, then, simply returns true if the GCD of a and b is 1; otherwise false.</p>
+
+<p>Very nice. I wish I&#8217;d thought to do it that way, but I&#8217;ll certainly remember it.</p>
+
+		
+		
+	</div>
+
+
+<div class="meta">
+	<div class="date">
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2010-07-08T00:00:00-05:00" pubdate data-updated="true">Jul 8<span>th</span>, 2010</time></div>
+	<div class="tags">
+
+</div>
+	
+  <div class="linkloggery">
+    <a rel="bookmark" href="/2010/07/08/relative-primes-revisited/">&infin;</a>
+  </div>
+</div>
+</article>
 
   
   <!-- 
@@ -727,57 +804,6 @@ git push heroku master
 	
   <div class="linkloggery">
     <a rel="bookmark" href="/2010/06/25/rails-links-001/">&infin;</a>
-  </div>
-</div>
-</article>
-
-  
-  <!-- 
-
-
-
-
-
-
-
-
-
- -->
-  <article class="post" ><h1 class="title">
-
-<a href="/2010/06/23/its-unanimous/">It&#8217;s Unanimous</a>
-
-</h1>
-
-
-	<div class="entry-content">
-		<p><img src="/images/posts/bones-nod-kirk-nod.gif" /></p>
-
-		
-		
-	</div>
-
-
-<div class="meta">
-	<div class="date">
-
-
-
-
-
-
-
-
-  
-
-
-<time datetime="2010-06-23T00:00:00-05:00" pubdate data-updated="true">Jun 23<span>rd</span>, 2010</time></div>
-	<div class="tags">
-
-</div>
-	
-  <div class="linkloggery">
-    <a rel="bookmark" href="/2010/06/23/its-unanimous/">&infin;</a>
   </div>
 </div>
 </article>
