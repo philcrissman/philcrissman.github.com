@@ -4,7 +4,7 @@
   <title><![CDATA[philcrissman.com]]></title>
   <link href="http://philcrissman.com/atom.xml" rel="self"/>
   <link href="http://philcrissman.com/"/>
-  <updated>2012-11-12T14:38:34-06:00</updated>
+  <updated>2012-11-13T10:14:51-06:00</updated>
   <id>http://philcrissman.com/</id>
   <author>
     <name><![CDATA[Phil Crissman]]></name>
@@ -12,6 +12,17 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Programming with nothing]]></title>
+    <link href="http://philcrissman.com/2012/11/13/programming-with-nothing/"/>
+    <updated>2012-11-13T10:00:00-06:00</updated>
+    <id>http://philcrissman.com/2012/11/13/programming-with-nothing</id>
+    <content type="html"><![CDATA[<p>This is mentioned in the conclusion of Jim Weirich&#8217;s &#8220;Y Not?&#8221;, but it&#8217;s so interesting I just wanted to throw a link up to it on it&#8217;s own. From it&#8217;s front-matter:</p>
+
+<blockquote><p>Ruby is a powerful language, but how much power does it have if you remove all of its datatypes except for Proc and all of its features except for Proc.new and Proc#call? I’ll investigate by building proc-only representations of numbers, booleans, lists and strings, and using them to write an executable program.</p></blockquote>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Y Not?]]></title>
@@ -416,57 +427,6 @@ Maybe you&#8217;re in a place with more mortar than brick. Maybe you aren&#8217;
 <p>Also, <a href="http://brettterpstra.com">Brett Terpstra</a> is referenced. But without the enaging, idiosyncratic pronounciation of his last name.</p>
 
 <p>B2W E01. If you have never listened, it&#8217;s worthwhile to start right at the beginning.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Star Trek Ringtone]]></title>
-    <link href="http://philcrissman.com/2012/09/07/star-trek-ringtone/"/>
-    <updated>2012-09-07T14:26:00-05:00</updated>
-    <id>http://philcrissman.com/2012/09/07/star-trek-ringtone</id>
-    <content type="html"><![CDATA[<p>I made this a long time ago, but since it&#8217;s about to be the anniversary of the first episode (September 8, 1966), here&#8217;s a ringtone I made, using a snippet from the infamous &#8220;battle/fight music&#8221; from the original series.</p>
-
-<p>Download:</p>
-
-<p><a href="http://philcrissman.com/assets/startrek.m4r">startrek.m4r</a></p>
-
-<p>Listen before you download:</p>
-
-<script type='text/javascript' src='http://philcrissman.com/javascripts/libs/swfobject-dynamic.js'></script>
-
-
-
-
-<div id='mediaplayer'></div>
-
-
-
-
-<script type="text/javascript">
-
-   var flashvars = {
-      'file':   '/assets/startrek.mp3',
-      'controlbar':     'bottom'
-   };
-    
-   var params = {
-      'allowfullscreen':        'true',
-      'allowscriptaccess':      'always'
-   };
- 
-   var attributes = {
-      'id':                     'playerID',
-      'name':                   'playerID'
-   };
-
-   var callback = function(){};
-
-   swfobject.embedSWF('/assets/jwplayer/player.swf', 'mediaplayer', '560', '24', '9', flashvars, params, attributes);
-    
-</script>
-
-
-
 ]]></content>
   </entry>
   

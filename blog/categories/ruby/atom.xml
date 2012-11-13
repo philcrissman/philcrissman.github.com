@@ -4,7 +4,7 @@
   <title><![CDATA[Category: ruby | philcrissman.com]]></title>
   <link href="http://philcrissman.com/blog/categories/ruby/atom.xml" rel="self"/>
   <link href="http://philcrissman.com/"/>
-  <updated>2012-11-12T14:38:34-06:00</updated>
+  <updated>2012-11-13T10:14:51-06:00</updated>
   <id>http://philcrissman.com/</id>
   <author>
     <name><![CDATA[Phil Crissman]]></name>
@@ -12,6 +12,17 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Programming with nothing]]></title>
+    <link href="http://philcrissman.com/2012/11/13/programming-with-nothing/"/>
+    <updated>2012-11-13T10:00:00-06:00</updated>
+    <id>http://philcrissman.com/2012/11/13/programming-with-nothing</id>
+    <content type="html"><![CDATA[<p>This is mentioned in the conclusion of Jim Weirich's "Y Not?", but it's so interesting I just wanted to throw a link up to it on it's own. From it's front-matter:</p>
+
+<blockquote><p>Ruby is a powerful language, but how much power does it have if you remove all of its datatypes except for Proc and all of its features except for Proc.new and Proc#call? I’ll investigate by building proc-only representations of numbers, booleans, lists and strings, and using them to write an executable program.</p></blockquote>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Y Not?]]></title>
