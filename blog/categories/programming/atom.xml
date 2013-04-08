@@ -4,7 +4,7 @@
   <title><![CDATA[Category: programming | philcrissman.com]]></title>
   <link href="http://philcrissman.com/blog/categories/programming/atom.xml" rel="self"/>
   <link href="http://philcrissman.com/"/>
-  <updated>2013-02-06T10:00:41-06:00</updated>
+  <updated>2013-04-08T08:03:31-07:00</updated>
   <id>http://philcrissman.com/</id>
   <author>
     <name><![CDATA[Phil Crissman]]></name>
@@ -16,7 +16,7 @@
   <entry>
     <title type="html"><![CDATA[Alternate FizzBuzz Solution]]></title>
     <link href="http://philcrissman.com/2012/11/28/alternate-fizzbuzz-solution/"/>
-    <updated>2012-11-28T08:56:00-06:00</updated>
+    <updated>2012-11-28T08:56:00-08:00</updated>
     <id>http://philcrissman.com/2012/11/28/alternate-fizzbuzz-solution</id>
     <content type="html"><![CDATA[<p>If you aren't familiar with what 'FizzBuzz' refers to, see <a href="http://c2.com/cgi/wiki?FizzBuzzTest">http://c2.com/cgi/wiki?FizzBuzzTest</a>.</p>
 

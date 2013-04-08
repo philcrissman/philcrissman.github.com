@@ -4,7 +4,7 @@
   <title><![CDATA[philcrissman.com]]></title>
   <link href="http://philcrissman.com/atom.xml" rel="self"/>
   <link href="http://philcrissman.com/"/>
-  <updated>2013-02-06T10:00:41-06:00</updated>
+  <updated>2013-04-08T08:03:31-07:00</updated>
   <id>http://philcrissman.com/</id>
   <author>
     <name><![CDATA[Phil Crissman]]></name>
@@ -14,9 +14,26 @@
 
   
   <entry>
+    <title type="html"><![CDATA[Seattle]]></title>
+    <link href="http://philcrissman.com/2013/04/08/seattle/"/>
+    <updated>2013-04-08T07:47:00-07:00</updated>
+    <id>http://philcrissman.com/2013/04/08/seattle</id>
+    <content type="html"><![CDATA[<p><img src="http://philcrissman.com/images/posts/seattlehouse.jpg" title="zomg a house" alt="The new house. Don't be creepy" /></p>
+
+<p>We&#8217;ve just moved to Seattle. Although I&#8217;ve already done moves from British Columbia (my home town, Surrey) to Tulsa, Oklahoma, and then from Tulsa to Minneapolis, Minnesota, this is definitely the hugest move I&#8217;ve ever done. When I moved from BC to Tulsa, I was living in a furnished single room that I rented from a family; so I left all my boxes behind and moved with a single suitcase and a duffle bag. Or something like that. When I moved up to Minneapolis, I had been in Tulsa for a few years, but I still moved with a minimum of &#8220;stuff&#8221;: everything fit into the Nissan Sentra that I was driving at the time.</p>
+
+<p><em>This</em> move, Amy and I have been married for 11+ years, have a 2 year old, and all kinds of stuff. What started as a plan to use a single 16&#8217; PODS container morphed into me renting a 26&#8217; UHaul, packing it to the gills, and then driving that 1700 miles towing a Mazda CX-9 on a trailer. Let&#8217;s say I&#8217;ve decided to rule out &#8220;long distance truck driver&#8221; from my list of prospective mid-life crisis career changes.</p>
+
+<p>That said, everything has gone pretty well. Made the drive in about 2 1/2 days. The folks at UHaul on MLK way were simply <em>awesome</em>, allowing me to park the (full) UHaul in their lot until I was able to actually move into the new house, giving me some additional small discounts, and just generally being an absolute pleasure to work with. They&#8217;re getting a Christmas card this year. We had a friend of a friend of a friend find some guys who were willing and able to help unload the UHaul on a weekday, even knowing ahead of time that we had a piano (we have a piano).</p>
+
+<p>Everything is still a little chaotic, but it&#8217;s coming together. Looking forward to going to http://seattlerb.org tomorrow, if I can.</p>
+]]></content>
+  </entry>
+  
+  <entry>
     <title type="html"><![CDATA[No Asking Why the Clash are in the Punk Section]]></title>
     <link href="http://philcrissman.com/2013/02/06/no-asking-why-the-clash-are-in-the-punk-section/"/>
-    <updated>2013-02-06T09:53:00-06:00</updated>
+    <updated>2013-02-06T09:53:00-08:00</updated>
     <id>http://philcrissman.com/2013/02/06/no-asking-why-the-clash-are-in-the-punk-section</id>
     <content type="html"><![CDATA[<p><a href="http://www.passiveaggressivenotes.com/2013/01/15/high-fidelity/">via</a></p>
 
@@ -29,7 +46,7 @@
   <entry>
     <title type="html"><![CDATA[A year from now, you'll look back at your current self and realize you're an idiot]]></title>
     <link href="http://philcrissman.com/2013/01/08/a-year-from-now/"/>
-    <updated>2013-01-08T10:25:00-06:00</updated>
+    <updated>2013-01-08T10:25:00-08:00</updated>
     <id>http://philcrissman.com/2013/01/08/a-year-from-now</id>
     <content type="html"><![CDATA[<p>A recurring realization throughout my childhood was looking back at the things I had done or said or been interested in the year or years prior, and cringing to myself; being alternatively amused, ashamed, or dismayed by the sort of things I had thought or done. At nine, I thought 8-year old me was a bit of a doofus. At 10, I realized that 9-year old me was still a bit goofy. At 13, I figured out that pre-teen me was not very cool. At 15, I thought 13-year old me was a bit of a sycophant (disclosure: I don&#8217;t think I actually knew the word &#8220;sycophant&#8221; when I was 15). In my 20s, I thought teenage-me was totally clueless. By my late 20s, I saw that that period of cluelessness should be expanded to include my early 20s.</p>
 
@@ -48,7 +65,7 @@
   <entry>
     <title type="html"><![CDATA[Alternate FizzBuzz Solution]]></title>
     <link href="http://philcrissman.com/2012/11/28/alternate-fizzbuzz-solution/"/>
-    <updated>2012-11-28T08:56:00-06:00</updated>
+    <updated>2012-11-28T08:56:00-08:00</updated>
     <id>http://philcrissman.com/2012/11/28/alternate-fizzbuzz-solution</id>
     <content type="html"><![CDATA[<p>If you aren&#8217;t familiar with what &#8216;FizzBuzz&#8217; refers to, see <a href="http://c2.com/cgi/wiki?FizzBuzzTest">http://c2.com/cgi/wiki?FizzBuzzTest</a>.</p>
 
@@ -89,7 +106,7 @@
   <entry>
     <title type="html"><![CDATA[Programming with nothing]]></title>
     <link href="http://philcrissman.com/2012/11/13/programming-with-nothing/"/>
-    <updated>2012-11-13T10:00:00-06:00</updated>
+    <updated>2012-11-13T10:00:00-08:00</updated>
     <id>http://philcrissman.com/2012/11/13/programming-with-nothing</id>
     <content type="html"><![CDATA[<p>This is mentioned in the conclusion of Jim Weirich&#8217;s &#8220;Y Not?&#8221;, but it&#8217;s so interesting I just wanted to throw a link up to it on it&#8217;s own. From it&#8217;s front-matter:</p>
 
@@ -100,7 +117,7 @@
   <entry>
     <title type="html"><![CDATA[Y Not?]]></title>
     <link href="http://philcrissman.com/2012/11/12/y-not/"/>
-    <updated>2012-11-12T14:08:00-06:00</updated>
+    <updated>2012-11-12T14:08:00-08:00</updated>
     <id>http://philcrissman.com/2012/11/12/y-not</id>
     <content type="html"><![CDATA[<div class="video-container">
   <iframe width="560" height="315" src="http://www.youtube.com/embed/FITJMJjASUs" frameborder="0" allowfullscreen></iframe>
@@ -114,7 +131,7 @@
   <entry>
     <title type="html"><![CDATA[Kubrick's List of Alternate Titles for Dr. Strangelove]]></title>
     <link href="http://philcrissman.com/2012/11/08/kubricks-list-of-alternate-titles-for-dr-strangelove/"/>
-    <updated>2012-11-08T11:20:00-06:00</updated>
+    <updated>2012-11-08T11:20:00-08:00</updated>
     <id>http://philcrissman.com/2012/11/08/kubricks-list-of-alternate-titles-for-dr-strangelove</id>
     <content type="html"><![CDATA[<p>&#8220;Dr. Strangelove&#8217;s Secret uses of Uranus&#8221;?</p>
 
@@ -127,7 +144,7 @@
   <entry>
     <title type="html"><![CDATA[The real reason we write bad software]]></title>
     <link href="http://philcrissman.com/2012/11/07/the-real-reason-we-write-bad-software/"/>
-    <updated>2012-11-07T08:42:00-06:00</updated>
+    <updated>2012-11-07T08:42:00-08:00</updated>
     <id>http://philcrissman.com/2012/11/07/the-real-reason-we-write-bad-software</id>
     <content type="html"><![CDATA[<blockquote><p>&#8230; even the best of these APIs are hard to use because the documentation, supposedly written in English, is terrible. Most engineers can&#8217;t write a single coherent sentence, never mind string together a paragraph.</p></blockquote>
 
@@ -138,7 +155,7 @@
   <entry>
     <title type="html"><![CDATA[Misunderstood Genius]]></title>
     <link href="http://philcrissman.com/2012/11/07/misunderstood-genius/"/>
-    <updated>2012-11-07T08:34:00-06:00</updated>
+    <updated>2012-11-07T08:34:00-08:00</updated>
     <id>http://philcrissman.com/2012/11/07/misunderstood-genius</id>
     <content type="html"><![CDATA[<p><img src="http://philcrissman.com/images/posts/calvin-genius.jpg" title="Misunderstood" alt="Genius" /></p>
 
@@ -149,7 +166,7 @@
   <entry>
     <title type="html"><![CDATA[Picky]]></title>
     <link href="http://philcrissman.com/2012/11/05/picky/"/>
-    <updated>2012-11-05T11:58:00-06:00</updated>
+    <updated>2012-11-05T11:58:00-08:00</updated>
     <id>http://philcrissman.com/2012/11/05/picky</id>
     <content type="html"><![CDATA[<p>Picky is a category search engine for Ruby.</p>
 ]]></content>
@@ -158,7 +175,7 @@
   <entry>
     <title type="html"><![CDATA[The future we will create]]></title>
     <link href="http://philcrissman.com/2012/10/24/the-future-we-will-create/"/>
-    <updated>2012-10-24T16:56:00-05:00</updated>
+    <updated>2012-10-24T16:56:00-07:00</updated>
     <id>http://philcrissman.com/2012/10/24/the-future-we-will-create</id>
     <content type="html"><![CDATA[<p><img src="http://philcrissman.com/images/posts/the-future.jpg" title="vintage futurism" alt="The future we will create" /></p>
 
@@ -171,7 +188,7 @@
   <entry>
     <title type="html"><![CDATA[They came from another galaxy. So they were a bit tired.]]></title>
     <link href="http://philcrissman.com/2012/10/24/they-came-from-another-galaxy-so-they-were-a-bit-tired/"/>
-    <updated>2012-10-24T09:17:00-05:00</updated>
+    <updated>2012-10-24T09:17:00-07:00</updated>
     <id>http://philcrissman.com/2012/10/24/they-came-from-another-galaxy-so-they-were-a-bit-tired</id>
     <content type="html"><![CDATA[<p><img src="http://philcrissman.com/images/posts/ibdm-poster.jpg" title="and boy are my arms tired" alt="I just flew in from another galaxy" /></p>
 
@@ -184,7 +201,7 @@
   <entry>
     <title type="html"><![CDATA[What I want to know]]></title>
     <link href="http://philcrissman.com/2012/10/20/what-i-want-to-know/"/>
-    <updated>2012-10-20T10:22:00-05:00</updated>
+    <updated>2012-10-20T10:22:00-07:00</updated>
     <id>http://philcrissman.com/2012/10/20/what-i-want-to-know</id>
     <content type="html"><![CDATA[<p><img src="http://philcrissman.com/images/posts/calvin_on_school.jpg" title="What I want to know" alt="What I want to know" /></p>
 
@@ -195,7 +212,7 @@
   <entry>
     <title type="html"><![CDATA[Sometimes you need to ignore your mind]]></title>
     <link href="http://philcrissman.com/2012/10/19/sometimes-you-need-to-ignore-your-mind/"/>
-    <updated>2012-10-19T15:39:00-05:00</updated>
+    <updated>2012-10-19T15:39:00-07:00</updated>
     <id>http://philcrissman.com/2012/10/19/sometimes-you-need-to-ignore-your-mind</id>
     <content type="html"><![CDATA[<p><img src="http://philcrissman.com/images/posts/45lb_plate.jpg" title="45 lbs" alt="45 lbs" /></p>
 
@@ -230,7 +247,7 @@
   <entry>
     <title type="html"><![CDATA[Punk Rock]]></title>
     <link href="http://philcrissman.com/2012/10/16/punk-rock/"/>
-    <updated>2012-10-16T08:35:00-05:00</updated>
+    <updated>2012-10-16T08:35:00-07:00</updated>
     <id>http://philcrissman.com/2012/10/16/punk-rock</id>
     <content type="html"><![CDATA[<p><img src="http://philcrissman.com/images/posts/usedtobepunkrock.jpg" title="I used to be punk rock" alt="I used to be punk rock" /></p>
 
@@ -255,7 +272,7 @@
   <entry>
     <title type="html"><![CDATA[High Society]]></title>
     <link href="http://philcrissman.com/2012/10/12/high-society/"/>
-    <updated>2012-10-12T12:20:00-05:00</updated>
+    <updated>2012-10-12T12:20:00-07:00</updated>
     <id>http://philcrissman.com/2012/10/12/high-society</id>
     <content type="html"><![CDATA[<p><img src="http://philcrissman.com/images/posts/cerebus-high-society-wallpaper.jpg" title="Cerebus -- High Society" alt="High Society" /></p>
 
@@ -268,7 +285,7 @@
   <entry>
     <title type="html"><![CDATA[Dress for the job you want]]></title>
     <link href="http://philcrissman.com/2012/10/12/dress-for-the-job-you-want/"/>
-    <updated>2012-10-12T12:07:00-05:00</updated>
+    <updated>2012-10-12T12:07:00-07:00</updated>
     <id>http://philcrissman.com/2012/10/12/dress-for-the-job-you-want</id>
     <content type="html"><![CDATA[<p><img src="http://philcrissman.com/images/posts/batmans.jpg" title="Batmans" alt="Batmen" /></p>
 
@@ -281,7 +298,7 @@
   <entry>
     <title type="html"><![CDATA[We're only in it for the money]]></title>
     <link href="http://philcrissman.com/2012/10/11/were-only-in-it-for-the-money/"/>
-    <updated>2012-10-11T09:44:00-05:00</updated>
+    <updated>2012-10-11T09:44:00-07:00</updated>
     <id>http://philcrissman.com/2012/10/11/were-only-in-it-for-the-money</id>
     <content type="html"><![CDATA[<p><img src="http://philcrissman.com/images/posts/fz_the_money.jpg" title="A subtle reference" alt="Frank Zappa and the Mothers -- We're Only In It For the Money" /></p>
 
@@ -292,7 +309,7 @@
   <entry>
     <title type="html"><![CDATA[Arnold's Blueprint]]></title>
     <link href="http://philcrissman.com/2012/10/10/arnolds-blueprint/"/>
-    <updated>2012-10-10T13:58:00-05:00</updated>
+    <updated>2012-10-10T13:58:00-07:00</updated>
     <id>http://philcrissman.com/2012/10/10/arnolds-blueprint</id>
     <content type="html"><![CDATA[<p>I saw this a week or two ago, and never even thought about posting it. But it&#8217;s really relevant to everything else I&#8217;ve been thinking and writing about, so I thought I&#8217;d add it here.</p>
 
@@ -306,7 +323,7 @@
   <entry>
     <title type="html"><![CDATA[Grit?]]></title>
     <link href="http://philcrissman.com/2012/10/09/grit/"/>
-    <updated>2012-10-09T09:51:00-05:00</updated>
+    <updated>2012-10-09T09:51:00-07:00</updated>
     <id>http://philcrissman.com/2012/10/09/grit</id>
     <content type="html"><![CDATA[<p>The topic of &#8220;grit&#8221; is the focus of most of the most recent (<a href="http://5by5.tv/b2w/87">#87</a>) back to work. I&#8217;ve thought along these lines a lot. Like Merlin says a couple times, I feel like if I&#8217;m honest, I&#8217;m lacking in grit. Lack of grit has been an issue in accomplishing (or rather, not accomplishing) a lot of things I&#8217;d <em>like</em> to have done.</p>
 
@@ -350,45 +367,6 @@ I&#8217;ve accomplished a lot of things by being fortunate, or blessed, or just 
 <p>Okay, I&#8217;ve spilled over into Tony Robbins territory, but think about it anyways. What is it that you care enough about to pay the price to make it happen? And if you don&#8217;t care about anything that much, what would that thing be if you <em>could</em>, and is there any way you could <em>make</em> yourself care that much about it?</p>
 
 <p>If you don&#8217;t care that much about the think that you think you want to be your goal, try to imagine what it would feel like to care that much. Picture how you would feel if you were that sort of person. Again, more hippie motivational stuff. Throw it away if it sounds dumb to you. But you never know. It could help.</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Nothing 'just happens'.]]></title>
-    <link href="http://philcrissman.com/2012/10/03/nothing-just-happens/"/>
-    <updated>2012-10-03T17:16:00-05:00</updated>
-    <id>http://philcrissman.com/2012/10/03/nothing-just-happens</id>
-    <content type="html"><![CDATA[<p>More from <a href="https://en.wikipedia.org/wiki/Dave_Sim">Dave Sim</a>, this time from the <a href="http://www.cerebusfangirl.com/artists/nftp/185.php">Note from the President in #185</a>:</p>
-
-<blockquote><p>Self-publishing does not just happen. Even if I put everything that I know about self-publishing into a single volume and mailed a copy free to everyone who wrote in asking for advice, self-publishing would not just happen. One of the biggest obstacles you are going to face in trying to self-publish is your own inertia. Jeff Smith&#8217;s standard advice is to &#8216;do your homework&#8217;. By this he means that you should find out everything about publishing and distribution before you even attempt to enter the field. &#8216;Doing your homework&#8217; is very different, however, from the traditional view of that phrase, which has come to mean (in the last half of the twentieth century) send a list of thirty-five questions to an expert and then sit back and wait for a reply.</p>
-
-<p>Understand this:</p>
-
-<p>Not only doesn&#8217;t the world revolve around you, NOTHING revolves around you. You are a human being. Picture yourself as a planet. Your talent, your intended comic book, your story-to-be is your molten core. It is up to you to make an environment for that molten core which is conducive to growth, which will permit your talent to flourish in a hostile world. There are any number of ways to go about this. I always recommend that the story has to come first. You have to have something to say. The only way to find out if you have something to say and the determination and work ethic to see it through to its conclusion is to make a start and stick with it. I find, at this point, that most would-be self-publishers&#8217; eyes start to glaze over.</p>
-
-<p>SNAP SNAP.</p>
-
-<p>WAKE UP!</p></blockquote>
-
-<p>Love this. For years before I left Full Time Employment and went freelance, I would always look at anyone who was self-employed, or a contractor, or working freelance, and be a little jealous, and I would want to ask them <em>how do you do that?</em>, by which I really meant, <em>how can I do that?</em> Invariably, I wasn&#8217;t happy with the answer(s) I recieved. I always felt like there was some sort of magic dust that I was missing which would help me to suddenly &#8220;go freelance&#8221;.</p>
-
-<p>What the &#8220;secret sauce&#8221; actually turned out to be was to just <em>quit</em> a full time IT role at Oracle in exchange for a 3-month contract at a pretty low freelancing rate, because honestly, I really had no idea what I was doing at that point.</p>
-
-<p><em>3 months?</em></p>
-
-<p>Yeah.</p>
-
-<p><em>But what did you plan to do after 3 months?</em></p>
-
-<p>I had no idea. It turned out that the initial 3 months turned into 6 months, after which I was able to go do some work for a different local developer, and so on. In retrospect, I was incredibly fortunate. But I also would never have experienced that &#8220;good fortune&#8221; without just making a start, essentially jumping without a net. I&#8217;m still not sure how my wife dealt with the stress of my taking that leap. It&#8217;s worked out fine&mdash;better than we could have predicted, really, as I&#8217;ve been able to raise my rates substantially over the past 4+ years, and we&#8217;re now doing far better, financially, than if I had just kept my safe corporate job. My first freelancing contract was essentially a paid internship in Ruby on Rails and independent consulting and I&#8217;ll be forever grateful that I had that opportunity.</p>
-
-<p>But there was certainly no way to predict that when I took the leap.</p>
-
-<p>When I think about it now, it seems like one of the best decisions I&#8217;ve ever made. But prior to that, all my thinking and wishing about &#8220;going independent&#8221; was pretty much exactly what Dave Sim describes in the arena of self-publishing; I was hoping to find some nugget of knowledge, some magic step that would cause my indepence to &#8220;just happen&#8221;.</p>
-
-<p>Nothing &#8220;just happens&#8221;.</p>
-
-<p>Except maybe entropy.</p>
 ]]></content>
   </entry>
   
