@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: motivation | philcrissman.com]]></title>
+  <link href="http://philcrissman.com/blog/categories/motivation/atom.xml" rel="self"/>
+  <link href="http://philcrissman.com/"/>
+  <updated>2013-05-10T14:36:37-07:00</updated>
+  <id>http://philcrissman.com/</id>
+  <author>
+    <name><![CDATA[Phil Crissman]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Optimism or Overconfidence?]]></title>
+    <link href="http://philcrissman.com/2013/05/10/optimism-or-overconfidence/"/>
+    <updated>2013-05-10T13:58:00-07:00</updated>
+    <id>http://philcrissman.com/2013/05/10/optimism-or-overconfidence</id>
+    <content type="html"><![CDATA[<p>I recently moved to Seattle with no job or contract lined up. We had a little bit of a financial cushion (at the time we arrived in Seattle, about 2 months expenses, plus a little), and that was about it.</p>
+
+<p>About 3 weeks in, I decided to call into <a href="http://twitter.com/danbenjamin">Dan Benjamin</a> / <a href="http://5by5.tv">5by5</a>'s excellent <a href="http://5by5.tv/quit">QUIT!</a> podcast. This is run as a combination interview (usually there is at least one guest in the studio or on the line) and call in show. I had <em>planned</em> to call in and explain my situation, and to talk about how I wasn't really concerned: I was fairly confident I would find something.</p>
+
+<p>Dan was pretty concerned.</p>
+
+<p>And not without cause; by the time I called, I've been in Seattle for nearly a month, looking constantly, still not working, and only a little more than the next month's expenses covered. Also, I'm 39 (does this matter? I'm still not sure) and solely supporting my wife and son. Also, we're living in the middle of Seattle, and for better or worse, the house we picked has a moderately high rent. In other words, just going and getting a job at a fast food place to make ends meet isn't going to cut it; nothing to do with pride, but a whole months wages at McDonald's is not even going to cover my rent. Poor planning? Maybe. Would I do this again? Probably not.</p>
+
+<p>Since then, I found first some short term Ruby on Rails work, followed by a 6-month contract. So, in a sense, my "confidence" that I would land on my feet should be totally vindicated: I was "right". We're fine.</p>
+
+<p>After talking to Dan, and even after landing this contract, I've spent a lot of time asking myself <em>why</em> I was so confident that it would work out. I didn't really think twice about the "work" aspect of it as we were preparing to leave. I mean, I was working hard at finding something: I was calling everyone, following up with everyone, doing phone interviews, studying for technical interviews, looking into marketing for building a pipeline if I were to stay a consultant, all of these things. But I never <em>really</em> considered the possibility that the money would run out before I started working.</p>
+
+<p>Well: what if it had? It would have been rough. We could have eked out another month of expenses on credit. In a worst case, family <em>might</em> have been able to help us with some money, but I'm not very comfortable asking for that, and it would have been a last resort; just a way to cover rent and get some food if our credit was totally exhausted. To be honest, I probably would have taken money out of our retirement savings before asking family for help, because, I don't know, that's just me.</p>
+
+<p>What then? Well, presumably, I would have found <em>something</em> in that extra couple months that all that credit and retirement withdrawal would buy us. What if I hadn't?</p>
+
+<p>Good question.</p>
+
+<p>As it happens, I <em>did</em> find something. So I'm still asking myself: why was I so sure? It's tempting to phrase it "how did I <em>know</em> I would find something?", but of course, I didn't <em>know</em>&mdash;I was just <em>fairly certain it would work out</em>.</p>
+
+<p>Why?</p>
+
+<p>Maybe because it had always worked out in the past? That's possible. I've been doing freelance/contract work for nearly 5 years, and sure enough it <em>has</em> always worked out in the past. But as the SEC loves to remind us, <em>past performance is no guarantee of future results</em>, so maybe that isn't the best reason.</p>
+
+<p>One thing that came up on that first call was the idea of risk. Marco (Arment), a guest on that episode, remarked that he had always been far too risk-averse to attempt to cut anything that close.</p>
+
+<p>The funny thing is, you asked me if I were risk-averse, I would probably say yes. What in the world was wrong with me that I didn't consider this action as <em>risky</em> as, well, pretty much everyone else did?</p>
+
+<p>I look back to my first contract. I was working at what Dan likes to call a "corporate stooge" job for Oracle. (Actually, my team and my manager were phenomenal, but yes, it was tech support, and I had reached the point where I <em>really</em> didn't enjoy what I was doing; so I think it fits). I left that fairly "secure", (FWIW: there were layoffs in Oracle that affected our department about a year later), fairly prestigious (Oracle is a big deal!) role for a <em>three month contract</em>. Three months! That's not very long. What was I thinking?</p>
+
+<p>That first contract was for <a href="http://twitter.com/jondahl">Jon Dahl</a> (who is now more well known for co-founding <a href="http://zencoder.com">Zencoder</a>). I remember asking him about that: "3 months. I really want to take this", I think I may have said; "but 3 months isn't a long time. What will I do after three months?"</p>
+
+<p>He replied along the lines of, "Oh, there's lots of work out there. You'll be fine."</p>
+
+<p>Hm.</p>
+
+<p>For whatever reason, I jumped, and Jon's advice is something I took to heart. The work is out there, I always thought, and I'll be fine. And I was. There were a few rough spots due to poor planning on my part (just because the work is out there doesn't mean you don't need to work at finding it), but we made it through.</p>
+
+<p>So, when it came time to move to Seattle, and I was between contracts, rather than think <em>this is a terrible time to move, I'm between contracts</em>, I thought, <em>this is the ideal time to move, I'm between contracts</em>.</p>
+
+<p>Could it have gone horribly, horribly wrong? Well, yeah. It <em>could</em> have. It turns out that it <em>didn't</em>, but there's no way I could know that.</p>
+
+<p>To make it even <em>worse</em>, the contact that I'm about to start&mdash;the one that is, in a sense, literally saving our bacon&mdash;did not come from doing any of the right things.</p>
+
+<h2>How to find a new contract without really trying</h2>
+
+<p>The real way I wound up in this particular contract was by screwing up. I had an interview lined up at a certain local company, and I had been referred to that company some months earlier via a mailing list post, by an employee there. So, I thought that I'd just get a little more prepared by asking if he had any thoughts/tips for the interview. Of course, he couldn't say all that much, just offered some encouragement.</p>
+
+<p><strong>But</strong>, when I emailed him to ask for said advice, I was replying to that post on the local Ruby mailing list. From my phone. I hit "send" on the email without <em>really</em> checking the "to" address. Some readers have already guessed what I did: yep, I sent my little request for interview advice to the whole freaking mailing list.</p>
+
+<p>Ouch. There was nothing in the content of the email that embarrassed me, but just the simple fact of <em>accidentally</em> replying to the whole list; well, <em>that</em> was embarrassing. Oops. Oh well.</p>
+
+<p>Funny thing, though: because that went out to the whole list, I got a couple replies from other people who were looking to hire Ruby developers. Replies that I <em>never</em> would have seen otherwise. Opportunities that arose for no other reason than that I was asleep at the switch while writing an email, and I screwed up.</p>
+
+<p>Huh.</p>
+
+<p>All that hustling, and I wind up landing a role simply because of a dumb mistake.</p>
+
+<h2>Takeaways</h2>
+
+<p>I have no idea. Should you move to a new city with no job and only a couple months worth of savings? Probably not. Should you trust that if you're working hard at the right things, even your screw ups will turn to your benefit? Ah, probably not, again. Would I do this again? I don't think so. But now that I've done it, with the advantage of hindsight, I'm very glad I did.</p>
+
+<p>Was I really unwise to <em>assume</em> that everything would work out?</p>
+
+<p>I'm still not sure.</p>
+]]></content>
+  </entry>
+  
+</feed>
